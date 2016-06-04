@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace unCuartoSMART
 {
-    public partial class Form1 : Form
+    public partial class Form_ventana_principal : Form
     {
-        public Form1()
+        public Form_ventana_principal()
         {
             InitializeComponent();
         }
