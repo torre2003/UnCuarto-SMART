@@ -100,7 +100,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MBCIF\Archivos\MBCIF v0.0.0.8\MBCIF\ModeloMBCIF\ModeloMBCIF.csproj">
+    <ProjectReference Include="..\ModeloMBCIF\ModeloMBCIF.csproj">
       <Project>{ad59995f-df8b-4a27-8ef7-2fc42e51cb0e}</Project>
       <Name>ModeloMBCIF</Name>
     </ProjectReference>
