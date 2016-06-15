@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AccesoADatos.ManejadorDeDatosArchivos">
+    <Position X="4.25" Y="7.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>SCAAAAAgAAMAAAEAIABEAAAAAAAgAAAAAwwgAAACAAA=</HashCode>
+      <FileName>AccecoADatos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccesoADatos.ManejadorDeDatosBaseDeDatos">
+    <Position X="0.5" Y="11.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAQAAAAAACAAAAAAAEAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>AccecoADatos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeloMBCIF.Nodo">
+    <Position X="8" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QARAAGAIAAIBABCAAAggAAQAAAQIAAAACBQAQCIgAgQ=</HashCode>
+      <FileName>C_MBCIF .cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeloMBCIF.Dato">
+    <Position X="8" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAgA=</HashCode>
+      <FileName>C_MBCIF .cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeloMBCIF.Influencia">
+    <Position X="4.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAgACAABKAAAEBAAAQAAAAIAACAJABgAADAAAAAoAAA=</HashCode>
+      <FileName>C_MBCIF2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeloMBCIF.ManejadorMBCIF">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAABEAGAAAAAAEEIAAAAAAAGAAAAAAAAQACAAAA=</HashCode>
+      <FileName>C_MBCIF3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeloMBCIF.Sistema">
+    <Position X="0.5" Y="4.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAIAAABABCEAAAhgAAACAQIAAAAABQAAAIAAwA=</HashCode>
+      <FileName>C_MBCIF4.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ModeloMBCIF.ICalculosNodo">
+    <Position X="8" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>C_MBCIF .cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModeloMBCIF.ICalculosInfluencias">
+    <Position X="4.25" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C_MBCIF2.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ModeloMBCIF.ICalculosSistema">
+    <Position X="0.5" Y="10.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C_MBCIF4.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="ModeloMBCIF.delegadoGuardadoDeDatos" Collapsed="true">
+    <Position X="8" Y="12.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C_MBCIF3.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="ModeloMBCIF.delegadoAnalisisDeDato" Collapsed="true">
+    <Position X="8" Y="11.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C_MBCIF3.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
