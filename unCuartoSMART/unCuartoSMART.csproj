@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormVentanaIngresoDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentanaIngresoDatos.Designer.cs">
+      <DependentUpon>FormVentanaIngresoDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVentanaMBCIF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="GestionGraphviz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormVentanaIngresoDatos.resx">
+      <DependentUpon>FormVentanaIngresoDatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVentanaMBCIF.resx">
       <DependentUpon>FormVentanaMBCIF.cs</DependentUpon>
     </EmbeddedResource>
