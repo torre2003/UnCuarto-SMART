@@ -144,15 +144,16 @@ namespace ModeloMBCIF
             evento_guardado_de_datos += new delegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
         }
 
+
+
         //*************************************************************************
         // ingresar datos internos a nodo
         //*************************************************************************
-
         /// <summary>
         /// Metodo para actualizar los datos internos de un nodo especifico
         /// </summary>
-        /// <param name="datos">ArrayList<Dato> de tipo clave valor con el nombre y valor de las variables a actualizar en el nodo</param>
-        /// <param name="id_nodo">id del nodo a actualzar</param>
+        /// <param name="datos">ArrayList(Dato) de tipo clave valor con el nombre y valor de las variables a actualizar en el nodo</param>
+        /// <param name="id_nodo">id del nodo a actualizar</param>
         /// <returns>False, nodo no encontrado o variables incorrectas, True operacion realizada correctamente</returns>
         public bool ingresarDatosIntenosANodo(ArrayList datos, string id_nodo)
         {

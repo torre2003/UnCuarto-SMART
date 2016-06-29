@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,7 +72,7 @@ namespace ManejadorPostgreSQL
         /// <summary>
         /// Método para ingresar un nuevo estado los nodos a la base de datos
         /// </summary>
-        /// <param name="id_tuplas"> Id de las tuplas con ques e ingresara la información </param>
+        /// <param name="id_tuplas"> Id de las tuplas con que se ingresara la información </param>
         /// <param name="info_nodos"> ArrayList de ArrayList con la información de la id nodo en el primer elemento ("id") y los campos de esos nodos ("nombre:valor") </param>
         /// <returns>True si el procedimiento fue ejecutado correctamente </returns>
         public bool ingresarEstadoNodosALaBaseDeDatos(string id_tuplas, ArrayList info_nodos)
@@ -329,6 +330,35 @@ namespace ManejadorPostgreSQL
             {
                 return false;
             }
+        }
+
+
+        /// <summary>
+        /// Funcion para comprobar si la base de datos esta inicializada
+        /// </summary>
+        /// <returns>TRUE si esta inicialilzada FALSE en caso contrario</returns>
+        public bool baseDeDatosInicializada()
+        {
+            bool flag = false;
+            string consulta = "select count(*) as cantidad from detalle_tablas;";
+            if (!bdd_sql.conectado)
+                return false;
+            using (NpgsqlDataReader data = bdd_sql.consultaSelectDataReader(consulta))
+            {
+                if (data != null && data.HasRows)
+                {
+                    data.Read();
+                    string aux_string = "" + data["cantidad"];
+                    int cantidad = (int)Convert.ToDecimal(aux_string, CultureInfo.CreateSpecificCulture("en-US"));
+                    if (cantidad > 0)
+                        flag = true;
+                    data.Close();
+                }
+                
+                    
+                
+            }
+            return flag;
         }
 
 

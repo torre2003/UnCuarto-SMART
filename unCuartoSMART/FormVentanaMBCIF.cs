@@ -23,6 +23,12 @@ namespace unCuartoSMART
         //*****************************************************************************************************************
 
         //*******************************
+        //   manejador_MBCIF
+        //*******************************
+        private ManejadorMBCIF manejador_MBCIF = null;
+               
+        
+        //*******************************
         //   ruta carpeta matrices
         //*******************************
         public string ruta_carpeta_mbcif
@@ -86,9 +92,15 @@ namespace unCuartoSMART
         public FormVentanaMBCIF()
         {
             InitializeComponent();
-            
+            iniciarMBCIF();
         }
 
+
+        public void iniciarMBCIF()
+        {
+            manejador_MBCIF = null;
+            manejador_MBCIF = new ManejadorMBCIF(_ruta_carpeta_mbcif);
+        }
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -248,6 +260,11 @@ namespace unCuartoSMART
             textBox_informacion_elementos.AppendText("Peso influencia: \t\t" + influencia.peso_influencia + "\r\n");
             
         }
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            buscarSistema
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
 
 
         public void buscarSistema(string id_sistema)
@@ -260,6 +277,12 @@ namespace unCuartoSMART
                     MessageBox.Show("Sistema no encontrado", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     
         }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            mostrarInformacionSistema0
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
 
 
         public void mostrarInformacionSistema(Sistema sistema)
@@ -289,11 +312,75 @@ namespace unCuartoSMART
                 string aux_dato = id_datos_nodos[i] + ":\t" + sistema.extraerValorVariable(id_datos_nodos[i], Sistema.DATOS_NODOS) + "\r\n";
                 textBox_informacion_elementos.AppendText(aux_dato);
             }
-
-
-
         }
-        
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            extraerDatosInternosDeNodos
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+
+        public StringBuilder extraerDatosInternosDeNodos()
+        {
+            StringBuilder sb = new StringBuilder();
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            string[] nodos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+            for (int i = 0; i < nodos.Length; i++)
+            {
+                string info_nodo = "";
+                Nodo nodo = manejador_de_archivos.extraerNodo(nodos[i]);
+                info_nodo = nodo.id_nodo + ";";
+                string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
+                for (int j = 0; j < id_datos_internos.Length; j++)
+                {
+                    if (j != 0)
+                        info_nodo += "|";
+                    info_nodo += id_datos_internos[j] + ":" + nodo.extraerValorVariable(id_datos_internos[j], Nodo.DATOS_INTERNOS);
+                }
+                sb.AppendLine(info_nodo);
+            }
+            return sb;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            ingresarDatosInternosANodos
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+
+        public bool ingresarDatosInternosANodos(ArrayList lista_info_nodos )
+        {
+            try
+            {
+                foreach (string tupla in lista_info_nodos)
+                {
+                    ArrayList datos_nodos = new ArrayList();
+                    string id_nodo;
+                    string[] string_aux, dato_aux;
+                    string_aux = tupla.Split(';');//separamos la id de los elementos 
+                    id_nodo = string_aux[0];
+                    string_aux = string_aux[1].Split('|');//separamos los distintos elemntos 
+                    for (int i = 0; i < string_aux.Length; i++)
+                    {
+                        dato_aux = string_aux[i].Split(':');
+                        Dato dato = new Dato();
+                        string id_dato = dato_aux[0];
+                        double valor_dato = (double)Convert.ToDecimal(dato_aux[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+                        dato.id = id_dato;
+                        dato.valor = valor_dato;
+                        datos_nodos.Add(dato);
+                    }
+                    manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, id_nodo);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
         //*****************************************************************************************************************
         //-----------------------------------------------------------------------------------------------------------------
         //                                           EVENTOS
@@ -347,26 +434,46 @@ namespace unCuartoSMART
 
         private void button_buscar_Click(object sender, EventArgs e)
         {
-            if (!textBox_id_buscada.Text.Equals(""))
+            textBox_id_buscada.Text = "";
+            FormVentanaBuscar ventana_buscar =  null;
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            string[] archivos = null;
+            if (radioButton_nodo.Checked)
+            {
+                ventana_buscar = new FormVentanaBuscar("Nodos");
+                archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+            }
+            else if (radioButton_influencia.Checked)
+            {
+                ventana_buscar = new FormVentanaBuscar("Influencias");
+                archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.INFLUENCIAS);
+                
+            }
+            else if (radioButton_sistema.Checked)
+            {
+                ventana_buscar = new FormVentanaBuscar("Sistemas");
+                archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.SISTEMAS);
+            }
+            for (int i = 0; i < archivos.Length; i++)
+            {
+                ventana_buscar.agregarElemento(archivos[i]);
+            }
+            ventana_buscar.ShowDialog(this);
+            if (ventana_buscar.seleccion != null)
             {
                 if (radioButton_nodo.Checked)
                 {
-                    buscarNodo(textBox_id_buscada.Text);
+                    buscarNodo(ventana_buscar.seleccion);
                 }
                 else if (radioButton_influencia.Checked)
                 {
-                    buscarInfluencia(textBox_id_buscada.Text);
+                    buscarInfluencia(ventana_buscar.seleccion);
                 }
                 else if (radioButton_sistema.Checked)
                 {
-                    buscarSistema(textBox_id_buscada.Text);
+                    buscarSistema(ventana_buscar.seleccion);
                 }
             }
-            else
-            {
-                MessageBox.Show("No se ha completado el campo ID", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-            }
-            
         }
 
 
@@ -400,24 +507,10 @@ namespace unCuartoSMART
                     if (aux.valor != -666)
                         datos_nodos.Add(aux);
                 }
+                manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, nodo.id_nodo);
+                buscarNodo(nodo.id_nodo);
             }
-            
 
-            /*
-            
-            //Datos internos
-            string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
-            for (int i = 0; i < id_datos_internos.Length; i++)
-            {
-                string aux_dato = id_datos_internos[i] + " \t " + nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS);
-                textBox_informacion_elementos.AppendText(aux_dato + "\r\n");
-            }
-            Nodo nodo = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).extraerNodo(textBox_id_buscada.Text);
-            if (nodo != null)
-                Console.WriteLine("");//todo arreglar
-            else
-                MessageBox.Show("Nodo no encontrado", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-             */
         }
 
 
@@ -454,6 +547,50 @@ namespace unCuartoSMART
         {
             button_modificar_nodo.Enabled = false;
         }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            FormVentanaMBCIF_FormClosing
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void FormVentanaMBCIF_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            textBox_id_buscada_KeyPress
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void textBox_id_buscada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 13)
+            {
+                if (!textBox_id_buscada.Text.Equals(""))
+                {
+                    if (radioButton_nodo.Checked)
+                    {
+                        buscarNodo(textBox_id_buscada.Text);
+                    }
+                    else if (radioButton_influencia.Checked)
+                    {
+                        buscarInfluencia(textBox_id_buscada.Text);
+                    }
+                    else if (radioButton_sistema.Checked)
+                    {
+                        buscarSistema(textBox_id_buscada.Text);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha completado el campo ID", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+            
+        }
+
 
 
 

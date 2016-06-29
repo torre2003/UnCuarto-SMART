@@ -61,14 +61,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Graph1.dgml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ManejadorPostgreSQL\ManejadorPostgreSQL.csproj">
       <Project>{95c9de4e-b513-4c5f-86fe-e3786d631927}</Project>
       <Name>ManejadorPostgreSQL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Graph1.dgml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

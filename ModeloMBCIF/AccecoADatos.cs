@@ -596,6 +596,17 @@ namespace AccesoADatos
             return true;
         }
 
+        //*************************************************************************
+        // comproabrInicializacionBaseDeDatos
+        //*************************************************************************
+
+        public bool comproabrInicializacionBaseDeDatos()
+        {
+            if (!sql.conectado)
+                return false;
+            return sql.baseDeDatosInicializada();
+        }
+
 
 
     }// Fin Manejador de datos bdd
