@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeloMBCIF", "ModeloMBCIF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManejadorPostgreSQL", "ManejadorPostgreSQL\ManejadorPostgreSQL.csproj", "{95C9DE4E-B513-4C5F-86FE-E3786D631927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InicializadorDeArchivosModeloMBCIF", "InicializadorDeArchivosModeloMBCIF\InicializadorDeArchivosModeloMBCIF.csproj", "{8D9AEA8D-E66D-475A-96CF-C450FC90065E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContenedorImplementacionesInterfacesCalculoModeloMBCIF", "ContenedorImplementacionesInterfacesCalculoModeloMBCIF\ContenedorImplementacionesInterfacesCalculoModeloMBCIF.csproj", "{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{95C9DE4E-B513-4C5F-86FE-E3786D631927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C9DE4E-B513-4C5F-86FE-E3786D631927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C9DE4E-B513-4C5F-86FE-E3786D631927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9AEA8D-E66D-475A-96CF-C450FC90065E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9AEA8D-E66D-475A-96CF-C450FC90065E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9AEA8D-E66D-475A-96CF-C450FC90065E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9AEA8D-E66D-475A-96CF-C450FC90065E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

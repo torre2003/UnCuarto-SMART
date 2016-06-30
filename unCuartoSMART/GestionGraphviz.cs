@@ -84,11 +84,17 @@ namespace unCuartoSMART
                 string[] influencias = nodo_actual.listarVariables(Nodo.NODOS_INFLUENCIADOS);
                 for (int j = 0; j < influencias.Length; j++)
                 {
+                    /*
                     string id_influencia_actual = "i_" + nodo_actual.id_nodo + "_" + influencias[j];
                     Influencia influencia_actual = manejador_de_datos.extraerInfluencia(id_influencia_actual);
                     string color = "green";
                     if (influencia_actual.tipo_de_influencia == Influencia.INFLUENCIA_NEGATIVA)
                         color = "red";
+                    texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color=" + color + " ]");
+                     */
+                    string id_influencia_actual = "i_" + nodo_actual.id_nodo + "_" + influencias[j];
+                    Influencia influencia_actual = manejador_de_datos.extraerInfluencia(id_influencia_actual);
+                    string color = "black";
                     texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color=" + color + " ]");
                 }
             }

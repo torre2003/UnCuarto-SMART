@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ContenedorImplementacionInterfaces">
-      <HintPath>..\Extras\ContenedorImplementacionInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -118,6 +115,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContenedorImplementacionesInterfacesCalculoModeloMBCIF\ContenedorImplementacionesInterfacesCalculoModeloMBCIF.csproj">
+      <Project>{1b2357f7-24b0-4280-a2fe-1e0681b8d8d8}</Project>
+      <Name>ContenedorImplementacionesInterfacesCalculoModeloMBCIF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModeloMBCIF\ModeloMBCIF.csproj">
       <Project>{ad59995f-df8b-4a27-8ef7-2fc42e51cb0e}</Project>
       <Name>ModeloMBCIF</Name>

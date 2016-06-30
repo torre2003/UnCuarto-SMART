@@ -38,7 +38,7 @@ namespace unCuartoSMART
 
         private void button_aceptar_Click(object sender, EventArgs e)
         {
-            if (listBox_elementos.SelectedItem != null && listBox_elementos.SelectedItem != "")
+            if (listBox_elementos.SelectedItem != null && (string)listBox_elementos.SelectedItem != "")
             {
                 _seleccion = ""+listBox_elementos.SelectedItem;
                 this.Hide();
@@ -77,7 +77,7 @@ namespace unCuartoSMART
 //Tareas
 //Respecto a modelo
 //TODO implementacion influencia externa 
-//TODO cambiar implementacion de influencia negativa o positiva
+//TODO Cambiar la implementacion de calculo de influencias
 
 //respecto a GUI
 //todo Colores de lo nods en graphvis en funcion del peso 
