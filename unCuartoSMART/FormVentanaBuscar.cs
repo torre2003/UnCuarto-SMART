@@ -73,14 +73,18 @@ namespace unCuartoSMART
 
     }
 }
-//todo implementacion iteracion matriz
+
+//Tareas
+//Respecto a modelo
 //TODO implementacion influencia externa 
+//TODO cambiar implementacion de influencia negativa o positiva
+
+//respecto a GUI
 //todo Colores de lo nods en graphvis en funcion del peso 
 //todo sistemas deben conectarse por lineas no por flechas
 //todo Flechas de influencias de color negro cambiante según el peso de la influencia 
 //todo cambiar en el tiempo la imagen de la matriz
-//todo que sucede con la cola de actualización despues que se termina el proceso (se limpia ? )
 //todo graficos interactivos
-//todo si no hay nodos en cola de analisis ingresar todos los nodos una vez o preguntar comienzo
-//todo evento doble click al buscar
+
+
 
