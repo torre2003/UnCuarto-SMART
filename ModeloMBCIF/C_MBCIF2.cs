@@ -89,21 +89,6 @@ namespace ModeloMBCIF
         }
         string _id_nodo_influenciado;
 
-        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
-        // tipo de influencia 
-        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
-
-        /// <summary>
-        /// Se completa según constantes si el tipo de influencias es NEGATIVA o POSITIVA
-        /// </summary>
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        public int tipo_de_influencia
-        {
-            get { return _tipo_de_influencia; }
-            set { _tipo_de_influencia = value; }
-        }
-        int _tipo_de_influencia;
-
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // peso influencia
@@ -161,7 +146,7 @@ namespace ModeloMBCIF
         public Influencia(string id_influencia)
         {
             this.id_influencia = id_influencia;
-            this.tipo_de_influencia = Influencia.INFLUENCIA_POSITIVA;
+
         }
 
         //*************************************************************************
@@ -173,7 +158,7 @@ namespace ModeloMBCIF
         /// </summary>
         public void actualizacionInfluencia()
         {
-            peso_influencia = _calculos.calculoPeso(fuzzy,tipo_de_influencia);
+            peso_influencia = _calculos.calculoPeso(fuzzy);
         }
 
         //*************************************************************************
@@ -208,7 +193,7 @@ namespace ModeloMBCIF
         /// <param name="fuzzy">Sistema de inferencia difusa de la influencia</param>
         /// <param name="tipo_de_influencia">Constante de tipo de influencia, NEGATIVA o POSITIVA</param>
         /// <returns></returns>
-        double calculoPeso(InferenciaDifusa fuzzy, int tipo_de_influencia);
+        double calculoPeso(InferenciaDifusa fuzzy);
     }
 
 }
