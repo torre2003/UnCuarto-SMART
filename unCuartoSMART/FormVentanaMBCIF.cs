@@ -14,6 +14,8 @@ using System.Windows.Forms;
 
 namespace unCuartoSMART
 {
+    public delegate void DelegadoProcesoIterativoMBCIF (bool procesando);
+
     public partial class FormVentanaMBCIF : Form
     {
         //*****************************************************************************************************************
@@ -22,6 +24,9 @@ namespace unCuartoSMART
         //-----------------------------------------------------------------------------------------------------------------
         //*****************************************************************************************************************
 
+        public event DelegadoProcesoIterativoMBCIF evento_proceso_iterativo_mbcif;
+
+        
         //*******************************
         //   manejador_MBCIF
         //*******************************
@@ -44,7 +49,7 @@ namespace unCuartoSMART
         }
 
         public string _ruta_carpeta_mbcif = "recursos\\datos_matriz";
-
+        public string _ruta_carpeta_mbcif_en_blanco = "recursos\\datos_matriz_en_blanco";
         //*******************************
         //   Imagen Principal
         //*******************************
@@ -93,13 +98,20 @@ namespace unCuartoSMART
         {
             InitializeComponent();
             iniciarMBCIF();
+            mostrarDiagramaMatriz();
+            
         }
 
-
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            iniciarMBCIF
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
         public void iniciarMBCIF()
         {
             manejador_MBCIF = null;
             manejador_MBCIF = new ManejadorMBCIF(_ruta_carpeta_mbcif);
+            manejador_MBCIF.evento_guardado_de_datos += new delegadoGuardadoDeDatos(marcarGuardadoDeDatos);
         }
 
         //--------------------------------------------------------------
@@ -344,14 +356,15 @@ namespace unCuartoSMART
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-        //            ingresarDatosInternosANodos
+        //            establecerEstadoDeLaMatriz
         //--------------------------------------------------------------
         //--------------------------------------------------------------
 
-        public bool ingresarDatosInternosANodos(ArrayList lista_info_nodos )
+        public bool establecerEstadoDeLaMatriz(ArrayList lista_info_nodos )
         {
             try
             {
+                iniciarMBCIF();
                 foreach (string tupla in lista_info_nodos)
                 {
                     ArrayList datos_nodos = new ArrayList();
@@ -372,6 +385,8 @@ namespace unCuartoSMART
                     }
                     manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, id_nodo);
                 }
+                manejador_MBCIF.calculoPrevioDePesosNodos();
+                mostrarDiagramaMatriz();
                 return true;
             }
             catch (Exception)
@@ -380,6 +395,111 @@ namespace unCuartoSMART
             }
         }
 
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            mostrarDiagramaMatriz
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void mostrarDiagramaMatriz()
+        {
+            string path_carpeta_matriz = _ruta_carpeta_mbcif;
+            string path_codigo_graphviz = "recursos\\codigo_graphviz.txt";
+            string path_imagen_mcbif = "recursos\\mbcif.jpg";
+            GestionGraphviz gestion = new GestionGraphviz();
+            StringBuilder codigo_graphviz = gestion.generarCodigoMBCIF(path_carpeta_matriz);
+            gestion.generarArchivoDeTexto(codigo_graphviz, path_codigo_graphviz);
+            gestion.crearImagenGraphViz(path_codigo_graphviz, path_imagen_mcbif);
+            imagen_principal = gestion.cargarImagen(path_imagen_mcbif);
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            procesoMBCIF
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void procesoMBCIF()
+        {
+            if (evento_proceso_iterativo_mbcif != null)
+                evento_proceso_iterativo_mbcif(true);
+            //---------------------------------------------- inicio proceso
+            int maximo_de_iteraciones = (int)numericUpDown_numero_de_iteraciones.Value;
+            int intervalo_guardado_de_datos = (int)numericUpDown_intervalo_de_guardado_de_datos.Value;
+            int intervalo_analisis_de_datos = 0;
+
+            progressBar_proceso_iterativo.Maximum = maximo_de_iteraciones;
+            progressBar_proceso_iterativo.Value = 0;
+
+           
+            manejador_MBCIF.procesoMBCIF(maximo_de_iteraciones, intervalo_guardado_de_datos, intervalo_analisis_de_datos, checkBox_actualizacion_inmediata_nodos.Checked, false);
+
+
+
+
+            progressBar_proceso_iterativo.Value = maximo_de_iteraciones;
+            //---------------------------------------------- fin proceso
+            if (evento_proceso_iterativo_mbcif != null)
+                evento_proceso_iterativo_mbcif(false);
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            guardadoDeDatos
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void marcarGuardadoDeDatos(bool en_archivo)
+        {
+            progressBar_proceso_iterativo.Value += (int)numericUpDown_intervalo_de_guardado_de_datos.Value;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            limpiarColaDeAnalisis
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void limpiarColaDeAnalisis()
+        {
+            manejador_MBCIF.limpiarColaDeAnalisis();
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            reinicializarArchivosMBCIF
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void reinicializarArchivosMBCIF()
+        {
+             try
+                {
+                    DirectoryInfo directorio_mbcif = new DirectoryInfo(_ruta_carpeta_mbcif);
+                    FileInfo[] archivos_mbcif = directorio_mbcif.GetFiles();
+                    for (int i = 0; i < archivos_mbcif.Length; i++)
+                    {
+                        archivos_mbcif[i].Delete();
+                    }
+
+                    DirectoryInfo directorio_mbcif_en_blanco = new DirectoryInfo(_ruta_carpeta_mbcif_en_blanco);
+                    FileInfo[] archivos_mbcif_en_blanco = directorio_mbcif_en_blanco.GetFiles();
+                    for (int i = 0; i < archivos_mbcif_en_blanco.Length; i++)
+                    {
+                        File.Copy(_ruta_carpeta_mbcif_en_blanco + "\\" + archivos_mbcif_en_blanco[i].Name, _ruta_carpeta_mbcif + "\\" + archivos_mbcif_en_blanco[i].Name, true);
+                    }
+                    MessageBox.Show("Se ha reinicializado correctamente el modelo MBCIF", "Modelo MBCIF", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en la reinicializacion de archivos,\n Ejecute aplicación como administrador", "Error MBCIF", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            
+
+
+        }
+        
+        public bool preguntaSiNo(string titulo, string mensaje)
+        {
+            if (DialogResult.Yes == MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+                return true;
+            return false;
+        }
 
         //*****************************************************************************************************************
         //-----------------------------------------------------------------------------------------------------------------
@@ -407,23 +527,6 @@ namespace unCuartoSMART
         {
             escala_imagen -= 10;
             cambiarTamañoImagen(this.imagen_principal, escala_imagen, this.pictureBox_imagen);
-        }
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        //            button_fantasma_Click
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        
-        private void button_fantasma_Click(object sender, EventArgs e)
-        {
-            string path_carpeta_matriz = _ruta_carpeta_mbcif;
-            string path_codigo_graphviz = "recursos\\codigo_graphviz.txt";
-            string path_imagen_mcbif = "recursos\\mbcif.jpg";
-            GestionGraphviz gestion = new GestionGraphviz();
-            StringBuilder codigo_graphviz = gestion.generarCodigoMBCIF(path_carpeta_matriz);
-            gestion.generarArchivoDeTexto(codigo_graphviz,path_codigo_graphviz);
-            gestion.crearImagenGraphViz(path_codigo_graphviz, path_imagen_mcbif);
-            imagen_principal = gestion.cargarImagen(path_imagen_mcbif);
         }
 
         //--------------------------------------------------------------
@@ -589,6 +692,85 @@ namespace unCuartoSMART
                 }
             }
             
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            radioButton_iterar_paso_a_paso_CheckedChanged
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void radioButton_iterar_paso_a_paso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_iterar_todo_a_la_vez.Checked)
+                numericUpDown_tiempo_entre_iteracion.Enabled = false;
+            else
+                numericUpDown_tiempo_entre_iteracion.Enabled = true;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            radioButton_iterar_todo_a_la_vez_CheckedChanged
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void radioButton_iterar_todo_a_la_vez_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_iterar_todo_a_la_vez.Checked)
+                numericUpDown_tiempo_entre_iteracion.Enabled = false;
+            else
+                numericUpDown_tiempo_entre_iteracion.Enabled = true;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            numericUpDown_intervalo_de_guardado_de_datos_ValueChanged
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void numericUpDown_intervalo_de_guardado_de_datos_ValueChanged(object sender, EventArgs e)
+        {
+            
+            if (numericUpDown_numero_de_iteraciones.Value <= numericUpDown_intervalo_de_guardado_de_datos.Value)
+            {
+                MessageBox.Show("El intervalo de guardado debe ser menor al número de iteraciones", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                numericUpDown_intervalo_de_guardado_de_datos.Value = 1;
+            }
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_iniciar_iteracion_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void button_iniciar_iteracion_Click(object sender, EventArgs e)
+        {
+            if (manejador_MBCIF.numero_de_elementos_en_cola_de_analisis != 0)
+            {
+                procesoMBCIF();
+            }
+            else
+            {
+                string mensaje = "La cola de analisis esta vacia.\n" +
+                                  "¿Desea ingresar todos los nodos a la cola?.\n" +
+                                  "En caso contrario modifique algunos nodos";
+                if (DialogResult.Yes == MessageBox.Show(mensaje, "Cola de analisis Vacia", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    string[] lista_de_nodos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+                    bool flag = true;
+                    for (int i = 0; i < lista_de_nodos.Length && flag; i++)
+                    {
+                        if (!manejador_MBCIF.ingresarNuevoNodoAColaDeAnalisis(lista_de_nodos[i]))
+                        {
+                            flag = false;
+                            MessageBox.Show("Problemas con el encolamiento de los nodos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    procesoMBCIF();
+
+                }
+                else
+                {
+                    MessageBox.Show("No se ha iniciado el proceso iterativo", "Proceso iterativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
 

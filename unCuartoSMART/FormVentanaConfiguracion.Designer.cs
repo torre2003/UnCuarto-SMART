@@ -42,6 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button_limpiar_datos_matriz = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button_limpiar_cola_de_analisis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_estado_conexion_base_de_datos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bdd_inicializada)).BeginInit();
             this.panel1.SuspendLayout();
@@ -79,7 +80,7 @@
             this.button_conectar_bdd.Size = new System.Drawing.Size(121, 23);
             this.button_conectar_bdd.TabIndex = 2;
             this.button_conectar_bdd.Text = "Comprobar conexión";
-            this.button_conectar_bdd.UseVisualStyleBackColor = true;
+            this.button_conectar_bdd.UseVisualStyleBackColor = false;
             this.button_conectar_bdd.Click += new System.EventHandler(this.button_conectar_bdd_Click);
             // 
             // label2
@@ -106,7 +107,7 @@
             this.button_iniciar_bdd.Size = new System.Drawing.Size(121, 23);
             this.button_iniciar_bdd.TabIndex = 6;
             this.button_iniciar_bdd.Text = "Iniciar BDD";
-            this.button_iniciar_bdd.UseVisualStyleBackColor = true;
+            this.button_iniciar_bdd.UseVisualStyleBackColor = false;
             this.button_iniciar_bdd.Click += new System.EventHandler(this.button_iniciar_bdd_Click);
             // 
             // panel1
@@ -136,6 +137,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.button_limpiar_cola_de_analisis);
             this.panel2.Controls.Add(this.button_limpiar_datos_matriz);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(30, 206);
@@ -150,8 +152,7 @@
             this.button_limpiar_datos_matriz.Size = new System.Drawing.Size(196, 23);
             this.button_limpiar_datos_matriz.TabIndex = 9;
             this.button_limpiar_datos_matriz.Text = "Limpiar datos matriz";
-            this.button_limpiar_datos_matriz.UseVisualStyleBackColor = true;
-            this.button_limpiar_datos_matriz.Click += new System.EventHandler(this.button_limpiar_datos_matriz_Click);
+            this.button_limpiar_datos_matriz.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -161,6 +162,15 @@
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Modelo MBCIF";
+            // 
+            // button_limpiar_cola_de_analisis
+            // 
+            this.button_limpiar_cola_de_analisis.Location = new System.Drawing.Point(131, 67);
+            this.button_limpiar_cola_de_analisis.Name = "button_limpiar_cola_de_analisis";
+            this.button_limpiar_cola_de_analisis.Size = new System.Drawing.Size(196, 23);
+            this.button_limpiar_cola_de_analisis.TabIndex = 10;
+            this.button_limpiar_cola_de_analisis.Text = "Limpiar cola de análisis";
+            this.button_limpiar_cola_de_analisis.UseVisualStyleBackColor = false;
             // 
             // FormVentanaConfiguracion
             // 
@@ -194,7 +204,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button_limpiar_datos_matriz;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Button button_limpiar_cola_de_analisis;
+        public System.Windows.Forms.Button button_limpiar_datos_matriz;
     }
 }

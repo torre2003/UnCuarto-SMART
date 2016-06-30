@@ -44,6 +44,21 @@ namespace ModeloMBCIF
         /// Cola que almacena los nodos a analizar posteriormente
         /// </summary>
         Queue<string> cola_de_analisis = new Queue<string>();
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // numero_de_elementos_en_cola_de_analisis
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        
+        /// <summary>
+        /// Indica la cantidad de elementos en la cola de analisis
+        /// </summary>
+        public int numero_de_elementos_en_cola_de_analisis
+        {
+            get
+            {
+                return cola_de_analisis.Count;
+            }
+        }
         
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // ruta archivo MBCIF
@@ -332,11 +347,12 @@ namespace ModeloMBCIF
             {
                 if (contador_de_iteraciones != 0)
                 {
-                    if (contador_de_iteraciones % intervalo_guardado_de_datos == 0)
+                    if ( (intervalo_guardado_de_datos != 0 ) && (contador_de_iteraciones % intervalo_guardado_de_datos == 0) )
                     {
                         evento_guardado_de_datos(en_archivo);
                     }
-                    if (contador_de_iteraciones % intervalo_analisis_de_datos == 0)
+                    
+                    if ((intervalo_analisis_de_datos != 0) &&(contador_de_iteraciones % intervalo_analisis_de_datos == 0))
                     {
                         if (evento_analisis_de_datos != null)
                             evento_analisis_de_datos();
@@ -431,9 +447,24 @@ namespace ModeloMBCIF
             return texto_de_retorno;
         }
          * 
-         */ 
+         */
 
-        
+        /// <summary>
+        /// Método que encola un nodo a la cola de analisis 
+        /// </summary>
+        /// <param name="id_nodo">Id del nodo a encolar</param>
+        /// <returns>True si el nodo es valido, False en caso contrario</returns>
+        public bool ingresarNuevoNodoAColaDeAnalisis(string id_nodo)
+        {
+            bool flag = false;
+            Nodo nodo = manejador_de_datos_archivos.extraerNodo(id_nodo);
+            if (nodo != null)
+            {
+                flag = true;
+                cola_de_analisis.Enqueue(id_nodo);
+            }
+            return flag;
+        }
         //*************************************************************************
         // guardar estado de todos los nodos
         //*************************************************************************
@@ -449,6 +480,16 @@ namespace ModeloMBCIF
                 manejador_de_datos_bdd.almacenarEnBaseDatosNuevoEstadoDeLosNodos();
         }
 
+        //*************************************************************************
+        // limpiarColaDeAnalisis
+        //*************************************************************************
+        /// <summary>
+        /// Método que deja la cola de analisis sis elementos
+        /// </summary>
+        public void limpiarColaDeAnalisis()
+        {
+            cola_de_analisis.Clear();
+        }
 
     }
 }

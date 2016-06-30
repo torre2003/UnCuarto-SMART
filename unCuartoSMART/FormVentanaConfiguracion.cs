@@ -92,39 +92,21 @@ namespace unCuartoSMART
             return manejador_de_base_de_datos.comproabrInicializacionBaseDeDatos();
         }
 
+
+
+
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-        //            reinicializarArchivosMBCIF
+        //            preguntaSiNo
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-        private void reinicializarArchivosMBCIF()
+
+        public bool preguntaSiNo(string titulo, string mensaje)
         {
-            try
-            {
-                DirectoryInfo directorio_mbcif = new DirectoryInfo(_ruta_carpeta_mbcif);
-                FileInfo[] archivos_mbcif = directorio_mbcif.GetFiles();
-                for (int i = 0; i < archivos_mbcif.Length; i++)
-                {
-                    archivos_mbcif[i].Delete();
-                }
-
-                DirectoryInfo directorio_mbcif_en_blanco = new DirectoryInfo(_ruta_carpeta_mbcif_en_blanco);
-                FileInfo[] archivos_mbcif_en_blanco = directorio_mbcif_en_blanco.GetFiles();
-                for (int i = 0; i < archivos_mbcif_en_blanco.Length; i++)
-                {
-                    File.Copy(_ruta_carpeta_mbcif_en_blanco + "\\" + archivos_mbcif_en_blanco[i].Name, _ruta_carpeta_mbcif + "\\" + archivos_mbcif_en_blanco[i].Name, true);
-                }
-                MessageBox.Show("Se ha reinicializado correctamente el modelo MBCIF", "Modelo MBCIF", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                if (evento_reinicializacion_MBCIF != null)
-                    evento_reinicializacion_MBCIF();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error en la reinicializacion de archivos,\n Ejecute aplicación como administrador", "Error MBCIF", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            
+            if (DialogResult.Yes == MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+                return true;
+            return false;
         }
-
 
         //*****************************************************************************************************************
         //-----------------------------------------------------------------------------------------------------------------
@@ -168,36 +150,30 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void button_iniciar_bdd_Click(object sender, EventArgs e)
         {
-            pictureBox_bdd_inicializada.Image = imageList_estado.Images[0];
-            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
-            ManejadorDeDatosBaseDeDatos manejador_de_base_de_datos = new ManejadorDeDatosBaseDeDatos(manejador_de_archivos);
-            if (manejador_de_base_de_datos.bdd_conectada)
+            if (preguntaSiNo("Reinicializando base de datos", "Esta seguro de reinicializar la base de datos, \nSe borraran todos los datos guardados"))
             {
-                if (!manejador_de_base_de_datos.inicializarBaseDeDatos())
-                    MessageBox.Show("Problemas con la inicializacion de la bdd");
+                pictureBox_bdd_inicializada.Image = imageList_estado.Images[0];
+                ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+                ManejadorDeDatosBaseDeDatos manejador_de_base_de_datos = new ManejadorDeDatosBaseDeDatos(manejador_de_archivos);
+                if (manejador_de_base_de_datos.bdd_conectada)
+                {
+                    if (!manejador_de_base_de_datos.inicializarBaseDeDatos())
+                        MessageBox.Show("Problemas con la inicializacion de la bdd");
+                    else
+                    {
+                        pictureBox_bdd_inicializada.Image = imageList_estado.Images[1];
+                        MessageBox.Show("Base de datos iniciada correctamente", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        button_iniciar_bdd.Text = "Reinicializar BDD";
+                        if (comprobarBaseDeDatosIniciada() && evento_conexion_bdd != null)
+                            evento_conexion_bdd(true);
+                    }
+
+                }
                 else
                 {
-                    pictureBox_bdd_inicializada.Image = imageList_estado.Images[1];
-                    MessageBox.Show("Base de datos iniciada correctamente", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                    button_iniciar_bdd.Text = "Reinicializar BDD";
-                    if (comprobarBaseDeDatosIniciada() && evento_conexion_bdd != null)
-                        evento_conexion_bdd(true);
+                    MessageBox.Show("Problemas con la conexion de la base de datos");
                 }
-
             }
-            else
-            {
-                MessageBox.Show("Problemas con la conexion de la base de datos");
-            }
-        }
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        //            button_limpiar_datos_matriz_Click
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        private void button_limpiar_datos_matriz_Click(object sender, EventArgs e)
-        {
-            reinicializarArchivosMBCIF();
         }
 
     }

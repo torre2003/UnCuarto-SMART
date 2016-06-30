@@ -44,9 +44,18 @@ namespace unCuartoSMART
             ventana_configuracion_bdd = new FormVentanaConfiguracion();
             ventana_configuracion_bdd.MdiParent = this;
             ventana_configuracion_bdd.evento_conexion_bdd += new DelegadoConexionBDD(eventoBaseDeDatosFuncionando);
-            ventana_configuracion_bdd.evento_reinicializacion_MBCIF += new DelegadoReinicializacionMBCIF(eventoReinicializacionMBCIF);
+            ventana_configuracion_bdd.button_limpiar_datos_matriz.Click += button_limpiar_datos_matriz_Click;
             ventana_configuracion_bdd.comprobarBdd();
+            ventana_configuracion_bdd.button_limpiar_cola_de_analisis.Click += button_limpiar_cola_de_analisis_Click;
 
+        }
+
+
+        public bool preguntaSiNo(string titulo, string mensaje)
+        {
+            if (DialogResult.Yes == MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+                return true;
+            return false;
         }
 
 
@@ -107,17 +116,7 @@ namespace unCuartoSMART
             }
         }
 
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-        //            eventoReinicializacionBaseDeDatos
-        //--------------------------------------------------------------
-        //--------------------------------------------------------------
-
-        private void eventoReinicializacionMBCIF()
-        {
-            ventana_mbcif.iniciarMBCIF();
-        }
-
+        
         //--------------------------------------------------------------
         //--------------------------------------------------------------
         //            abrirToolStripMenuItem_Click
@@ -127,7 +126,7 @@ namespace unCuartoSMART
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ArrayList datos_matrices = new ArrayList();
+                ArrayList datos_nodos_matriz = new ArrayList();
                 try
                 {
                     using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
@@ -137,12 +136,12 @@ namespace unCuartoSMART
                         {
                             if (!lectura.Equals(""))
                             {
-                                datos_matrices.Add(lectura);
+                                datos_nodos_matriz.Add(lectura);
                             }
                         }
                         sr.Close();
                     }
-                    if (ventana_mbcif.ingresarDatosInternosANodos(datos_matrices))
+                    if (ventana_mbcif.establecerEstadoDeLaMatriz(datos_nodos_matriz))
                             MessageBox.Show("Datos cargados correctamente", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                     else 
                             MessageBox.Show("Error en la carga de datos", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
@@ -182,5 +181,40 @@ namespace unCuartoSMART
         {
             System.Environment.Exit(0);
         }
+
+
+
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            ventanaconfiguracion_button_limpiar_datos_matriz_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        void button_limpiar_cola_de_analisis_Click(object sender, EventArgs e)
+        {
+            if (preguntaSiNo("Limpiar cola de analisis", "Esta usted seguro de limpiar la cola de análisis"))
+            {
+                ventana_mbcif.limpiarColaDeAnalisis();
+                MessageBox.Show("Cola de analisis limpiada", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            }
+                
+        }
+       
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_limpiar_datos_matriz_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+
+        private void button_limpiar_datos_matriz_Click(object sender, EventArgs e)
+        {
+            if (preguntaSiNo("Limpiar datos matriz", "Esta usted seguro de limpiar los datos de la matriz"))
+            {
+                ventana_mbcif.reinicializarArchivosMBCIF();
+                ventana_mbcif.iniciarMBCIF();
+            }
+        }
+
+
     }
 }
