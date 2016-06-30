@@ -1,0 +1,117 @@
+[33mcommit 0f827fc9ed63c6f0c788895d82da39fb48c8a9a7[m
+Merge: c05606e ec80352
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 30 01:09:58 2016 -0400
+
+    Merge branch 'jcl'
+    
+    Ingresando ventanas funcionales
+    - configuracion
+    - gestion MBCIF
+    - abrir y guardar
+
+[33mcommit ec80352d94ad65478f4d2193cdb763d30ffd1ff0[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 30 00:54:19 2016 -0400
+
+    detalle
+
+[33mcommit 0b688f5bf53a5399e049753cf9bd8080711a6bed[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 30 00:09:58 2016 -0400
+
+    Primera version ventana gestion MBCIF
+
+[33mcommit 41dbb1123be56d97d538e05e1f55014e10f08287[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Wed Jun 29 18:36:30 2016 -0400
+
+    Avances Proyectos
+
+[33mcommit f0552f7d201eb0a6ecdea64b72ab36f95bf5d94f[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Wed Jun 15 01:11:02 2016 -0400
+
+    Resubida modelo MBCIF y Npgsql.dll
+
+[33mcommit 74f78cd6e83ebd2b266b835d38928b0988e2b99b[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Wed Jun 15 01:06:29 2016 -0400
+
+    npgsql
+
+[33mcommit df02f36f46830cc357c74dcfef0160f506912685[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Wed Jun 15 01:00:17 2016 -0400
+
+    Inclusion proyecto MBCIF y manejador PostgreSQL
+
+[33mcommit b8447f298a44599b9c62946546ca7f3b4d31a6de[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Wed Jun 15 00:48:02 2016 -0400
+
+    Implementacion ventana modificacion de nodos y muestra detalles nodos
+
+[33mcommit e79007447975c0821c1800a9d8dd0bea1f54bfb9[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Mon Jun 6 20:44:45 2016 -0400
+
+    avances ventana mbcif 1
+
+[33mcommit c05606ea9ba0241183e5b0a456f5d8345851ebbb[m
+Merge: 1c58fb0 f441f6f
+Author: torre2003 <torre2003@gmail.com>
+Date:   Sat Jun 4 16:42:13 2016 -0400
+
+    Merge branch 'jcl'
+    
+    Union proyecto base de para proyecto
+
+[33mcommit f441f6fe2e3981a666b3cef87ffbbdacab7334cd[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Sat Jun 4 16:40:44 2016 -0400
+
+    ico
+
+[33mcommit d2970df2221473e056f13e92511e4c61dec7a555[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Sat Jun 4 16:38:06 2016 -0400
+
+    Proyecto base ventana principal
+
+[33mcommit 368e47994b19fffdb8df0753ff4ad9c6e3add622[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Sat Jun 4 16:11:42 2016 -0400
+
+    Archivos extras 1
+
+[33mcommit c8f2ff99b92afae598fce59fbbf0c9a68a15c980[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Sat Jun 4 16:10:03 2016 -0400
+
+    Incorporación Libreria MBCIF
+
+[33mcommit 1c58fb038f1b8f14de63fcad23f1ead13e6a640e[m
+Merge: 302a04d 7d12ee8
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 2 19:04:24 2016 -0400
+
+    solucion mergue primera subida
+
+[33mcommit 302a04d5ccfd71ad2b285d26c6a0fb8f2e81ff3f[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 2 19:00:54 2016 -0400
+
+    Proyecto en blanco
+
+[33mcommit 34f6a416c9bbf995d3a9158b15aa06dff2ff3813[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 2 18:57:43 2016 -0400
+
+    Confirmación inicial para agregar los archivos .gitIgnore y .gitAttribute predeterminados.
+
+[33mcommit 7d12ee83c83ce760df95ef7688020384213c4a1e[m
+Author: torre2003 <torre2003@gmail.com>
+Date:   Thu Jun 2 19:52:49 2016 -0300
+
+    Initial commit
