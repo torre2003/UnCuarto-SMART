@@ -35,8 +35,12 @@
     <Reference Include="ContenedorImplementacionInterfaces">
       <HintPath>..\Extras\ContenedorImplementacionInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\Extras\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +63,10 @@
     <Compile Include="FormVentanaConfiguracion.Designer.cs">
       <DependentUpon>FormVentanaConfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVentanaGraficos.cs" />
+    <Compile Include="FormVentanaGraficos.Designer.cs">
+      <DependentUpon>FormVentanaGraficos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVentanaIngresoDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +86,7 @@
       <DependentUpon>FormVentanaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionGraphviz.cs" />
+    <Compile Include="LectorDatosGrafico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormVentanaBuscar.resx">
@@ -85,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVentanaConfiguracion.resx">
       <DependentUpon>FormVentanaConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentanaGraficos.resx">
+      <DependentUpon>FormVentanaGraficos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVentanaIngresoDatos.resx">
       <DependentUpon>FormVentanaIngresoDatos.cs</DependentUpon>
@@ -118,6 +130,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ManejadorPostgreSQL\ManejadorPostgreSQL.csproj">
+      <Project>{95C9DE4E-B513-4C5F-86FE-E3786D631927}</Project>
+      <Name>ManejadorPostgreSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModeloMBCIF\ModeloMBCIF.csproj">
       <Project>{ad59995f-df8b-4a27-8ef7-2fc42e51cb0e}</Project>
       <Name>ModeloMBCIF</Name>

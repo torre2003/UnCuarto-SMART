@@ -17,6 +17,7 @@ namespace unCuartoSMART
 
         FormVentanaMBCIF ventana_mbcif = null;
         FormVentanaConfiguracion ventana_configuracion_bdd = null;
+        FormVentanaGraficos ventana_graficos = null;
 
         bool bdd_funcionando = true;
 
@@ -47,6 +48,9 @@ namespace unCuartoSMART
             ventana_configuracion_bdd.button_limpiar_datos_matriz.Click += button_limpiar_datos_matriz_Click;
             ventana_configuracion_bdd.comprobarBdd();
             ventana_configuracion_bdd.button_limpiar_cola_de_analisis.Click += button_limpiar_cola_de_analisis_Click;
+            
+            ventana_graficos = new FormVentanaGraficos(ventana_mbcif._ruta_carpeta_mbcif);
+            ventana_graficos.MdiParent = this;
 
         }
 
@@ -214,6 +218,10 @@ namespace unCuartoSMART
                 ventana_mbcif.iniciarMBCIF();
             }
         }
+		void GraficosToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			ventana_graficos.Show();
+		}
 
 
     }

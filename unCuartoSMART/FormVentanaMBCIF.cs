@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace unCuartoSMART
 {
-    public delegate void DelegadoProcesoIterativoMBCIF (bool procesando);
+    
 
     public partial class FormVentanaMBCIF : Form
     {
@@ -775,7 +775,7 @@ namespace unCuartoSMART
 
 
 
-
+	public delegate void DelegadoProcesoIterativoMBCIF (bool procesando);
 
     }
 }
