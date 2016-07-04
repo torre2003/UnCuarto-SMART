@@ -35,6 +35,9 @@
     <Reference Include="ContenedorImplementacionInterfaces">
       <HintPath>..\Extras\ContenedorImplementacionInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.Microsoft.Office.Interop.Excel">
+      <HintPath>..\Extras\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\Extras\Npgsql.dll</HintPath>
     </Reference>
@@ -89,6 +92,7 @@
     <Compile Include="LectorDatosGrafico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte.cs" />
     <EmbeddedResource Include="FormVentanaBuscar.resx">
       <DependentUpon>FormVentanaBuscar.cs</DependentUpon>
     </EmbeddedResource>

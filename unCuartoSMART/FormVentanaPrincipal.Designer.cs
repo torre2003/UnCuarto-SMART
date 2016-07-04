@@ -39,6 +39,8 @@
         	this.salirToolStripMenuItem_salir = new System.Windows.Forms.ToolStripMenuItem();
         	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
         	this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+        	this.saveDialogReporte = new System.Windows.Forms.SaveFileDialog();
+        	this.generarReporteMSExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.menuStrip_principal.SuspendLayout();
         	this.SuspendLayout();
         	// 
@@ -60,6 +62,7 @@
 			this.configuracionToolStripMenuItem,
 			this.modeloToolStripMenuItem_modelo_mbcif,
 			this.graficosToolStripMenuItem,
+			this.generarReporteMSExcelToolStripMenuItem,
 			this.salirToolStripMenuItem_salir});
         	this.archivoToolStripMenuItem_archivo.Name = "archivoToolStripMenuItem_archivo";
         	this.archivoToolStripMenuItem_archivo.Size = new System.Drawing.Size(60, 20);
@@ -68,42 +71,42 @@
         	// abrirToolStripMenuItem
         	// 
         	this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-        	this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.abrirToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
         	this.abrirToolStripMenuItem.Text = "Abrir";
         	this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
         	// 
         	// guardarToolStripMenuItem
         	// 
         	this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-        	this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.guardarToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
         	this.guardarToolStripMenuItem.Text = "Guardar";
         	this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
         	// 
         	// configuracionToolStripMenuItem
         	// 
         	this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
-        	this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
         	this.configuracionToolStripMenuItem.Text = "Configuración";
         	this.configuracionToolStripMenuItem.Click += new System.EventHandler(this.configuracionToolStripMenuItem_Click);
         	// 
         	// modeloToolStripMenuItem_modelo_mbcif
         	// 
         	this.modeloToolStripMenuItem_modelo_mbcif.Name = "modeloToolStripMenuItem_modelo_mbcif";
-        	this.modeloToolStripMenuItem_modelo_mbcif.Size = new System.Drawing.Size(152, 22);
+        	this.modeloToolStripMenuItem_modelo_mbcif.Size = new System.Drawing.Size(208, 22);
         	this.modeloToolStripMenuItem_modelo_mbcif.Text = "Gestión MBCIF";
         	this.modeloToolStripMenuItem_modelo_mbcif.Click += new System.EventHandler(this.modeloToolStripMenuItem_modelo_mbcif_Click);
         	// 
         	// graficosToolStripMenuItem
         	// 
         	this.graficosToolStripMenuItem.Name = "graficosToolStripMenuItem";
-        	this.graficosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.graficosToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
         	this.graficosToolStripMenuItem.Text = "Gráficos";
         	this.graficosToolStripMenuItem.Click += new System.EventHandler(this.GraficosToolStripMenuItemClick);
         	// 
         	// salirToolStripMenuItem_salir
         	// 
         	this.salirToolStripMenuItem_salir.Name = "salirToolStripMenuItem_salir";
-        	this.salirToolStripMenuItem_salir.Size = new System.Drawing.Size(152, 22);
+        	this.salirToolStripMenuItem_salir.Size = new System.Drawing.Size(208, 22);
         	this.salirToolStripMenuItem_salir.Text = "Salir";
         	this.salirToolStripMenuItem_salir.Click += new System.EventHandler(this.salirToolStripMenuItem_salir_Click);
         	// 
@@ -116,6 +119,18 @@
         	// 
         	this.openFileDialog1.DefaultExt = "mbcif";
         	this.openFileDialog1.Filter = "Modelo MBCIF|*.mbcif";
+        	// 
+        	// saveDialogReporte
+        	// 
+        	this.saveDialogReporte.Filter = "Hoja de Cálculo MS Excel | *.xls";
+        	this.saveDialogReporte.Title = "Guardar Reporte MS Excel";
+        	// 
+        	// generarReporteMSExcelToolStripMenuItem
+        	// 
+        	this.generarReporteMSExcelToolStripMenuItem.Name = "generarReporteMSExcelToolStripMenuItem";
+        	this.generarReporteMSExcelToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+        	this.generarReporteMSExcelToolStripMenuItem.Text = "Generar Reporte MS Excel";
+        	this.generarReporteMSExcelToolStripMenuItem.Click += new System.EventHandler(this.GenerarReporteMSExcelToolStripMenuItemClick);
         	// 
         	// FormVentanaPrincipal
         	// 
@@ -148,5 +163,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem graficosToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveDialogReporte;
+        private System.Windows.Forms.ToolStripMenuItem generarReporteMSExcelToolStripMenuItem;
     }
 }

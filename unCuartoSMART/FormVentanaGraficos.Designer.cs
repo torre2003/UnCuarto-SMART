@@ -24,7 +24,7 @@ namespace unCuartoSMART
 		private System.Windows.Forms.Button btnGenerarGrafico;
 		private System.Windows.Forms.ListBox lstNodos;
 		private System.Windows.Forms.Button btnAgregarNodos;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnQuitar;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -61,7 +61,7 @@ namespace unCuartoSMART
 			this.btnGenerarGrafico = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.udIteraciones = new System.Windows.Forms.NumericUpDown();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnQuitar = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grEstados)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -118,7 +118,7 @@ namespace unCuartoSMART
 			this.groupBox1.Size = new System.Drawing.Size(883, 158);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Opciones Gráfico";
+			this.groupBox1.Text = "Opciones de Gráfico";
 			// 
 			// tableLayoutPanel2
 			// 
@@ -137,7 +137,7 @@ namespace unCuartoSMART
 			this.tableLayoutPanel2.Controls.Add(this.btnGenerarGrafico, 6, 1);
 			this.tableLayoutPanel2.Controls.Add(this.label2, 3, 2);
 			this.tableLayoutPanel2.Controls.Add(this.udIteraciones, 4, 2);
-			this.tableLayoutPanel2.Controls.Add(this.button1, 3, 1);
+			this.tableLayoutPanel2.Controls.Add(this.btnQuitar, 3, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -231,19 +231,19 @@ namespace unCuartoSMART
 			0,
 			0});
 			// 
-			// button1
+			// btnQuitar
 			// 
-			this.tableLayoutPanel2.SetColumnSpan(this.button1, 2);
-			this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button1.Location = new System.Drawing.Point(435, 35);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(141, 26);
-			this.button1.TabIndex = 6;
-			this.button1.Text = "Quitar";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.Button1Click);
+			this.tableLayoutPanel2.SetColumnSpan(this.btnQuitar, 2);
+			this.btnQuitar.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnQuitar.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitar.Image")));
+			this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnQuitar.Location = new System.Drawing.Point(435, 35);
+			this.btnQuitar.Name = "btnQuitar";
+			this.btnQuitar.Size = new System.Drawing.Size(141, 26);
+			this.btnQuitar.TabIndex = 6;
+			this.btnQuitar.Text = "Quitar";
+			this.btnQuitar.UseVisualStyleBackColor = true;
+			this.btnQuitar.Click += new System.EventHandler(this.btnQuitarClick);
 			// 
 			// FormVentanaGraficos
 			// 
@@ -252,7 +252,7 @@ namespace unCuartoSMART
 			this.ClientSize = new System.Drawing.Size(909, 567);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "FormVentanaGraficos";
-			this.Text = "FormVentanaGraficos";
+			this.Text = "Gráfico";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormVentanaGraficosFormClosing);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.grEstados)).EndInit();

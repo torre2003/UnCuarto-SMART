@@ -23,11 +23,12 @@ namespace AccesoADatos
 			sql.conectar();
 		}
 		
-		public List<List<double>> obtenerPesos(string[] nodos, int cantidadRegistros){
+		public List<List<double>> obtenerPesos(string[] nodos, int cantidadRegistros=-1){
 		
 			string campos = "" ;
 			string tablas = "" ;
 			string condic = "" ;
+			string limit = "";
 			for(int i=0 ; i < nodos.Length ; i++){
 				campos += nodos[i] +".peso";
 				tablas += nodos[i] ;
@@ -44,7 +45,10 @@ namespace AccesoADatos
 			if(nodos.Length > 1)
 				condic = " WHERE " + condic ;
 			
-			string consulta = "SELECT " + campos + " FROM " + tablas + condic +" LIMIT " + cantidadRegistros.ToString() +" ;";
+			if( cantidadRegistros > 0)
+				limit += " LIMIT " + cantidadRegistros.ToString() ;
+			
+			string consulta = "SELECT " + campos + " FROM " + tablas + condic + limit +" ;";
 			var reader = sql.consultaSelectDataReader(consulta);
 		
 			var salida = new List<List<double>>();

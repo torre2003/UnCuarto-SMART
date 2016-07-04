@@ -218,9 +218,35 @@ namespace unCuartoSMART
                 ventana_mbcif.iniciarMBCIF();
             }
         }
+        
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            GraficosToolStripMenuItemClick
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        
 		void GraficosToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			ventana_graficos.Show();
+		}
+		
+		//--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            GenerarReporteMSExcelToolStripMenuItemClick
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+		
+		void GenerarReporteMSExcelToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			 if (saveDialogReporte.ShowDialog() == DialogResult.OK)
+            {
+                var reporte = new Reporte(ventana_mbcif._ruta_carpeta_mbcif);
+                if(reporte.generarReporte(saveDialogReporte.FileName))
+                	MessageBox.Show("Reporte generado exitosamente","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                else
+                	MessageBox.Show("Ocurrió un error en la generación del reporte, inténtelo nuevamente.","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+			 }
+            
 		}
 
 
