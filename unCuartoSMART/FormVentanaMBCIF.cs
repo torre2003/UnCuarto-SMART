@@ -14,8 +14,9 @@ using System.Windows.Forms;
 
 namespace unCuartoSMART
 {
-    
 
+    
+    
     public partial class FormVentanaMBCIF : Form
     {
         //*****************************************************************************************************************
@@ -23,6 +24,7 @@ namespace unCuartoSMART
         //                                           ATRIBUTOS
         //-----------------------------------------------------------------------------------------------------------------
         //*****************************************************************************************************************
+        public delegate void DelegadoProcesoIterativoMBCIF(bool procesando);
 
         public event DelegadoProcesoIterativoMBCIF evento_proceso_iterativo_mbcif;
 
@@ -828,7 +830,7 @@ namespace unCuartoSMART
                 System.Threading.Thread.Sleep(tiempo_en_milisegundos);
             }
         }
-	//public delegate void DelegadoProcesoIterativoMBCIF (bool procesando);
+
 
 
     }

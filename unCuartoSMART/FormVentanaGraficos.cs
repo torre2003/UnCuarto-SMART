@@ -84,7 +84,8 @@ namespace unCuartoSMART
 			if (lstNodos.Items.Count < 1)
 				return;
 			
-			var data = new LectorDatosGrafico();
+            var manejador_archivos = new ManejadorDeDatosArchivos();
+            var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
 			
 			var nodos = new string[lstNodos.Items.Count];
 			for (int i = 0; i < lstNodos.Items.Count; i++)

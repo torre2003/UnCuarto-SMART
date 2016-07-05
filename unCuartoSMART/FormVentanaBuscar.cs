@@ -78,4 +78,5 @@ namespace unCuartoSMART
 
 //todo nombre de archivo en el titulo
 //todo iconos en ventanass
+//actualizacion de graficos interactivos
 

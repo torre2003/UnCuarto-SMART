@@ -32,7 +32,8 @@ namespace unCuartoSMART
 		public bool generarReporte(string fileName)
 		{
 			try {
-				var data = new LectorDatosGrafico();
+                var manejador_de_archivos = new ManejadorDeDatosArchivos();
+                var data = new ManejadorDeDatosBaseDeDatos(manejador_de_archivos);
 				var pesos = data.obtenerPesos(listaNodos);
 				Microsoft.Office.Interop.Excel.Application aplicacion;
 				Microsoft.Office.Interop.Excel.Workbook libros_trabajo;

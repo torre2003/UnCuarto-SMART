@@ -362,6 +362,60 @@ namespace ManejadorPostgreSQL
         }
 
 
+
+        /// <summary>
+        /// Obtiene lo pesos de los nodos almacenados en la base de datos
+        /// </summary>
+        /// <param name="nodos">Arreglo con las id de los nodos a buscar</param>
+        /// <param name="cantidadRegistros">cantidad de registros a extraer de la base de datos</param>
+        /// <returns>Lista de lista de valores de nodos    < <0.1:0.2:0.3:..><0.1:0.2:0.3:..><..> > NULL si hubo problemas en la consulta</returns>                             
+        public List<List<double>> obtenerPesos(string[] nodos, int cantidadRegistros = -1)
+        {
+            if (bdd_sql.conectado)
+            {
+                string campos = "";
+                string tablas = "";
+                string condic = "";
+                string limit = "";
+                for (int i = 0; i < nodos.Length; i++)
+                {
+                    campos += nodos[i] + ".peso";
+                    tablas += nodos[i];
+                    if (i >= 2)
+                        condic += " AND ";
+                    if (i >= 1)
+                        condic += nodos[i - 1] + ".id = " + nodos[i] + ".id";
+                    if (i < nodos.Length - 1)
+                    {
+                        campos += ",";
+                        tablas += ",";
+                    }
+                }
+                if (nodos.Length > 1)
+                    condic = " WHERE " + condic;
+
+                if (cantidadRegistros > 0)
+                    limit += " LIMIT " + cantidadRegistros.ToString();
+
+                string consulta = "SELECT " + campos + " FROM " + tablas + condic + limit + " ;";
+                var reader = bdd_sql.consultaSelectDataReader(consulta);
+
+                var salida = new List<List<double>>();
+                if (reader.HasRows)
+                {
+                    for (int i = 0; i < nodos.Length; i++)
+                        salida.Add(new List<double>());
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < nodos.Length; i++)
+                            salida[i].Add(reader.GetDouble(i));
+                    }
+                }
+                return salida;
+            }
+            return null;
+         }
+
     }// Fin consultaMBCIFPostgre
 
 }
