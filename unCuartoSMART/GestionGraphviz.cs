@@ -24,8 +24,8 @@ namespace unCuartoSMART
         //*******************************
         string[] colores = {
                                "aquamarine",
-                               "azure",
-                               "beige",
+                               "goldenrod3",
+                               "bisque",
                                "cadetblue1",
                                "chartreuse2",
                                "antiquewhite",
@@ -34,8 +34,44 @@ namespace unCuartoSMART
                                "chartreuse",
                                "powderblue",
                                "yellow1",
-                               "palegreen1"
+                               "palegreen1",
+                               "darkslategrey"
                            };
+
+        //*******************************
+        //   colores nodos
+        //*******************************
+        string[] colores_nodos = {
+                               "red",
+                               "orange",
+                               "yellow",
+                               "yellowgreen",
+                               "green"
+                           };
+
+        //*******************************
+        //   colores influencias
+        //*******************************
+        string[] colores_influencias = {
+                               "red",
+                               "black",
+                               "green3"
+                           };
+
+
+        public string nodo_marcado
+        {
+            get
+            {
+                return _nodo_marcado;
+            }
+            set
+            {
+                _nodo_marcado = value;
+            }
+        }
+
+        string _nodo_marcado = "";
 
 
         //*****************************************************************************************************************
@@ -43,6 +79,31 @@ namespace unCuartoSMART
         //                                           METODOS
         //-----------------------------------------------------------------------------------------------------------------
         //*****************************************************************************************************************
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //   Constructor
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public GestionGraphviz() { }
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //   Constructor
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public GestionGraphviz(string nodo_marcado)
+        {
+            this.nodo_marcado = nodo_marcado;
+        }
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //   limpiarNodoMarcado
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void limpiarNodoMarcado()
+        {
+            nodo_marcado = "";
+        }
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -78,18 +139,34 @@ namespace unCuartoSMART
             //Completando nodos
             for (int i = 0; i < nodos.Length; i++)
             {
+                bool flag_nodo_marcado = false;
                 Nodo nodo_actual = manejador_de_datos.extraerNodo(nodos[i]);
-                texto_graphviz.AppendLine(nodo_actual.id_nodo + " [ label=\"" + nodo_actual.id_nodo + "\\n" + nodo_actual.nombre + "\"  ]");
+                if (nodo_marcado != "" && nodo_actual.id_nodo.Equals(nodo_marcado))
+                    flag_nodo_marcado = true;
+                if (flag_nodo_marcado)
+                    texto_graphviz.AppendLine(nodo_actual.id_nodo + " [ label=\"" + nodo_actual.id_nodo + "\\n" + nodo_actual.nombre + "\" shape=tripleoctagon  ]");
+                else
+                    texto_graphviz.AppendLine(nodo_actual.id_nodo + " [ label=\"" + nodo_actual.id_nodo + "\\n" + nodo_actual.nombre + "\" ]");
+                texto_graphviz.AppendLine(nodo_actual.id_nodo + "[fillcolor=" + retornarColorNodo(nodo_actual.peso) + "]");
 
                 string[] influencias = nodo_actual.listarVariables(Nodo.NODOS_INFLUENCIADOS);
                 for (int j = 0; j < influencias.Length; j++)
                 {
+                    /*
                     string id_influencia_actual = "i_" + nodo_actual.id_nodo + "_" + influencias[j];
                     Influencia influencia_actual = manejador_de_datos.extraerInfluencia(id_influencia_actual);
                     string color = "green";
                     if (influencia_actual.tipo_de_influencia == Influencia.INFLUENCIA_NEGATIVA)
                         color = "red";
                     texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color=" + color + " ]");
+                     */
+                    string id_influencia_actual = "i_" + nodo_actual.id_nodo + "_" + influencias[j];
+                    Influencia influencia_actual = manejador_de_datos.extraerInfluencia(id_influencia_actual);
+                    string color = retornarColorInfluencia(influencia_actual.peso_influencia);
+                    if (flag_nodo_marcado)
+                        texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color= \"" + color+":"+color + "\" arrowhead=\"box\"]");//Flechas influencias
+                    else
+                        texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color=" + color + " ]");//Flechas influencias
                 }
             }
 
@@ -102,13 +179,13 @@ namespace unCuartoSMART
                 string[] nodos_sistema = sistema_actual.listarVariables(Sistema.DATOS_NODOS);
                 for (int j = 0; j < nodos_sistema.Length; j++)
                 {
-                    texto_graphviz.AppendLine(sistema_actual.id_sistema + " -> " + nodos_sistema[j]);
-                    texto_graphviz.AppendLine(nodos_sistema[j] + "[fillcolor=" + color + "]");
+                    texto_graphviz.AppendLine(sistema_actual.id_sistema + " -> " + nodos_sistema[j] + " [color= \""+color+":"+color+"\" dir=none size=\"8,5\"]");//lineas sistemas
+                 //   texto_graphviz.AppendLine(nodos_sistema[j] + "[fillcolor=" + color + "]");
                 }
                     
                 string[] sistemas_sistema = sistema_actual.listarVariables(Sistema.DATOS_SISTEMAS);
                 for (int j = 0; j < sistemas_sistema.Length; j++)
-                    texto_graphviz.AppendLine(sistema_actual.id_sistema + " -> " + sistemas_sistema[j]);
+                    texto_graphviz.AppendLine(sistema_actual.id_sistema + " -> " + sistemas_sistema[j] + " [color= \""+color+":"+color+"\" dir=none]");//Lineas sistemas
             }
 
             texto_graphviz.AppendLine("}");//fin digraph
@@ -146,6 +223,50 @@ namespace unCuartoSMART
             int indice_arreglo = indice % colores.Length;
             return colores[indice_arreglo];
         }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //  retornarColorNodo
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public string retornarColorNodo(double peso)
+        {
+            int indice_arreglo = 0;
+            if (peso >= 0.2 && peso < 0.4)
+                indice_arreglo = 1;
+            else
+            if (peso >= 0.4 && peso < 0.6)
+                indice_arreglo = 2;
+            else
+            if (peso >= 0.6 && peso < 0.8)
+                indice_arreglo = 3;
+            else
+            if (peso >= 0.8)
+                indice_arreglo = 4;
+            
+            return colores_nodos[indice_arreglo];
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //  retornarColorinfluencia
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public string retornarColorInfluencia(double peso)
+        {
+            
+            int indice_arreglo;
+            if (peso < 0)
+                indice_arreglo = 0;
+            else
+            if (peso > 0)
+                indice_arreglo = 2;
+            else
+                indice_arreglo = 1;
+
+            return colores_influencias[indice_arreglo];
+        }
+
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -199,8 +320,12 @@ namespace unCuartoSMART
             Image imagen = null;
             try
             {
-                FileStream fs = new FileStream(path_imagen, FileMode.Open, FileAccess.Read);
-                imagen = Image.FromStream(fs);
+                using(FileStream fs = new FileStream(path_imagen, FileMode.Open, FileAccess.Read))
+                {
+                    imagen = Image.FromStream(fs);
+                    fs.Close();
+                }
+                
             }
             catch (Exception e)
             {

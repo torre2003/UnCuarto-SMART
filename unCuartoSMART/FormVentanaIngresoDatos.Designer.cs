@@ -33,8 +33,16 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_campos = new System.Windows.Forms.Panel();
+            this.panel_influencia_externa_forzada = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trackBar_influencia_externa_forzada = new System.Windows.Forms.TrackBar();
+            this.textBox_influencia_externa_forzada = new System.Windows.Forms.TextBox();
+            this.button_limpiar_influencia_externa = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel_campos.SuspendLayout();
+            this.panel_influencia_externa_forzada.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_influencia_externa_forzada)).BeginInit();
             this.SuspendLayout();
             // 
             // button_aceptar
@@ -84,11 +92,64 @@
             // panel_campos
             // 
             this.panel_campos.AutoScroll = true;
+            this.panel_campos.Controls.Add(this.panel_influencia_externa_forzada);
             this.panel_campos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_campos.Location = new System.Drawing.Point(3, 3);
             this.panel_campos.Name = "panel_campos";
             this.panel_campos.Size = new System.Drawing.Size(524, 280);
             this.panel_campos.TabIndex = 1;
+            // 
+            // panel_influencia_externa_forzada
+            // 
+            this.panel_influencia_externa_forzada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_influencia_externa_forzada.Controls.Add(this.button_limpiar_influencia_externa);
+            this.panel_influencia_externa_forzada.Controls.Add(this.textBox_influencia_externa_forzada);
+            this.panel_influencia_externa_forzada.Controls.Add(this.trackBar_influencia_externa_forzada);
+            this.panel_influencia_externa_forzada.Controls.Add(this.label1);
+            this.panel_influencia_externa_forzada.Location = new System.Drawing.Point(3, 184);
+            this.panel_influencia_externa_forzada.Name = "panel_influencia_externa_forzada";
+            this.panel_influencia_externa_forzada.Size = new System.Drawing.Size(512, 93);
+            this.panel_influencia_externa_forzada.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Influencia externa forzada";
+            // 
+            // trackBar_influencia_externa_forzada
+            // 
+            this.trackBar_influencia_externa_forzada.LargeChange = 50;
+            this.trackBar_influencia_externa_forzada.Location = new System.Drawing.Point(25, 41);
+            this.trackBar_influencia_externa_forzada.Maximum = 1000;
+            this.trackBar_influencia_externa_forzada.Minimum = -1000;
+            this.trackBar_influencia_externa_forzada.Name = "trackBar_influencia_externa_forzada";
+            this.trackBar_influencia_externa_forzada.Size = new System.Drawing.Size(474, 45);
+            this.trackBar_influencia_externa_forzada.TabIndex = 1;
+            this.trackBar_influencia_externa_forzada.ValueChanged += new System.EventHandler(this.trackBar_influencia_externa_forzada_ValueChanged);
+            // 
+            // textBox_influencia_externa_forzada
+            // 
+            this.textBox_influencia_externa_forzada.Enabled = false;
+            this.textBox_influencia_externa_forzada.Location = new System.Drawing.Point(187, 15);
+            this.textBox_influencia_externa_forzada.Name = "textBox_influencia_externa_forzada";
+            this.textBox_influencia_externa_forzada.Size = new System.Drawing.Size(90, 20);
+            this.textBox_influencia_externa_forzada.TabIndex = 2;
+            this.textBox_influencia_externa_forzada.Text = "0";
+            this.textBox_influencia_externa_forzada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button_limpiar_influencia_externa
+            // 
+            this.button_limpiar_influencia_externa.Location = new System.Drawing.Point(340, 15);
+            this.button_limpiar_influencia_externa.Name = "button_limpiar_influencia_externa";
+            this.button_limpiar_influencia_externa.Size = new System.Drawing.Size(145, 23);
+            this.button_limpiar_influencia_externa.TabIndex = 3;
+            this.button_limpiar_influencia_externa.Text = "Limpiar influencia";
+            this.button_limpiar_influencia_externa.UseVisualStyleBackColor = true;
+            this.button_limpiar_influencia_externa.Click += new System.EventHandler(this.button_limpiar_influencia_externa_Click);
             // 
             // FormVentanaIngresoDatos
             // 
@@ -100,6 +161,10 @@
             this.Text = "Modificación de datos Nodo \"XXXX\"";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel_campos.ResumeLayout(false);
+            this.panel_influencia_externa_forzada.ResumeLayout(false);
+            this.panel_influencia_externa_forzada.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_influencia_externa_forzada)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -111,5 +176,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_campos;
+        private System.Windows.Forms.Panel panel_influencia_externa_forzada;
+        private System.Windows.Forms.Button button_limpiar_influencia_externa;
+        private System.Windows.Forms.TextBox textBox_influencia_externa_forzada;
+        private System.Windows.Forms.TrackBar trackBar_influencia_externa_forzada;
+        private System.Windows.Forms.Label label1;
     }
 }

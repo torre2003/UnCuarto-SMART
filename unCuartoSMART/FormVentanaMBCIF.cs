@@ -14,8 +14,9 @@ using System.Windows.Forms;
 
 namespace unCuartoSMART
 {
-    
 
+    
+    
     public partial class FormVentanaMBCIF : Form
     {
         //*****************************************************************************************************************
@@ -23,6 +24,7 @@ namespace unCuartoSMART
         //                                           ATRIBUTOS
         //-----------------------------------------------------------------------------------------------------------------
         //*****************************************************************************************************************
+        public delegate void DelegadoProcesoIterativoMBCIF(bool procesando);
 
         public event DelegadoProcesoIterativoMBCIF evento_proceso_iterativo_mbcif;
 
@@ -65,6 +67,7 @@ namespace unCuartoSMART
                 _imagen_principal = value;
                 cambiarTamañoImagen(_imagen_principal, 100,pictureBox_imagen);
                 pictureBox_imagen.Image = value;
+                pictureBox_imagen.Refresh();
             }
         }
 
@@ -111,7 +114,8 @@ namespace unCuartoSMART
         {
             manejador_MBCIF = null;
             manejador_MBCIF = new ManejadorMBCIF(_ruta_carpeta_mbcif);
-            manejador_MBCIF.evento_guardado_de_datos += new delegadoGuardadoDeDatos(marcarGuardadoDeDatos);
+            manejador_MBCIF.evento_guardado_de_datos += new DelegadoGuardadoDeDatos(marcarGuardadoDeDatos);
+            manejador_MBCIF.evento_iteracion += manejador_MBCIF_evento_iteracion;
         }
 
         //--------------------------------------------------------------
@@ -220,7 +224,9 @@ namespace unCuartoSMART
             {
                 textBox_informacion_elementos.AppendText(nodos_influenciados[i] + "\r\n");
             }
-
+            textBox_informacion_elementos.AppendText("-------------------------" + "\r\n");
+            textBox_informacion_elementos.AppendText("-- Influencias Externas Forzadas" + "\r\n");
+            textBox_informacion_elementos.AppendText("\t"+nodo.influencia_externa_forzada + "\r\n");
             // propertyGrid_inferencia_difusa.SelectedObject = nodo.fuzzy;
             // propertyGrid_inferencia_difusa.SelectedObject = nodo;
 
@@ -349,7 +355,9 @@ namespace unCuartoSMART
                         info_nodo += "|";
                     info_nodo += id_datos_internos[j] + ":" + nodo.extraerValorVariable(id_datos_internos[j], Nodo.DATOS_INTERNOS);
                 }
+                info_nodo += ";influencia_externa_forzada:" + nodo.influencia_externa_forzada;
                 sb.AppendLine(info_nodo);
+// Cada linea guarda el estado de un nodo con el siguiente formato-->      id_nodo;nombre_dato_interno1:valor|nombre_dato_interno2:valor|nombre_dato_internon:valor;influencia_forzada_externa:valor
             }
             return sb;
         }
@@ -359,7 +367,7 @@ namespace unCuartoSMART
         //            establecerEstadoDeLaMatriz
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-
+        
         public bool establecerEstadoDeLaMatriz(ArrayList lista_info_nodos )
         {
             try
@@ -368,22 +376,25 @@ namespace unCuartoSMART
                 foreach (string tupla in lista_info_nodos)
                 {
                     ArrayList datos_nodos = new ArrayList();
-                    string id_nodo;
-                    string[] string_aux, dato_aux;
-                    string_aux = tupla.Split(';');//separamos la id de los elementos 
-                    id_nodo = string_aux[0];
-                    string_aux = string_aux[1].Split('|');//separamos los distintos elemntos 
-                    for (int i = 0; i < string_aux.Length; i++)
+                    string id_nodo,string_influencia_forzada_externa;
+                    string[] conjunto_de_elemento_aux, dato_aux;
+                    conjunto_de_elemento_aux = tupla.Split(';');//separamos la id de los elementos 
+                    id_nodo = conjunto_de_elemento_aux[0];
+                    string_influencia_forzada_externa = conjunto_de_elemento_aux[2].Split(':')[1];//separamos el valor de la influencia forzada externa
+                    conjunto_de_elemento_aux = conjunto_de_elemento_aux[1].Split('|');//separamos los distintos elemntos 
+                    
+                    for (int i = 0; i < conjunto_de_elemento_aux.Length; i++)
                     {
-                        dato_aux = string_aux[i].Split(':');
+                        dato_aux = conjunto_de_elemento_aux[i].Split(':');//Separamos el valor del elemento
                         Dato dato = new Dato();
-                        string id_dato = dato_aux[0];
-                        double valor_dato = (double)Convert.ToDecimal(dato_aux[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+                        string id_dato = dato_aux[0];//Separamos la id del elemento
+                        double valor_dato = (double)Convert.ToDecimal(dato_aux[1]);
                         dato.id = id_dato;
                         dato.valor = valor_dato;
                         datos_nodos.Add(dato);
                     }
-                    manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, id_nodo);
+                    double valor_influencia_forzada_externa = (double)Convert.ToDecimal(string_influencia_forzada_externa);
+                    manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, id_nodo,valor_influencia_forzada_externa);
                 }
                 manejador_MBCIF.calculoPrevioDePesosNodos();
                 mostrarDiagramaMatriz();
@@ -400,17 +411,17 @@ namespace unCuartoSMART
         //            mostrarDiagramaMatriz
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-        public void mostrarDiagramaMatriz()
+        public void mostrarDiagramaMatriz(string id_nodo_marcado = "")
         {
             string path_carpeta_matriz = _ruta_carpeta_mbcif;
             string path_codigo_graphviz = "recursos\\codigo_graphviz.txt";
             string path_imagen_mcbif = "recursos\\mbcif.jpg";
-            GestionGraphviz gestion = new GestionGraphviz();
+            GestionGraphviz gestion = new GestionGraphviz(id_nodo_marcado);
             StringBuilder codigo_graphviz = gestion.generarCodigoMBCIF(path_carpeta_matriz);
             gestion.generarArchivoDeTexto(codigo_graphviz, path_codigo_graphviz);
             gestion.crearImagenGraphViz(path_codigo_graphviz, path_imagen_mcbif);
             imagen_principal = gestion.cargarImagen(path_imagen_mcbif);
-        }
+       }
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -439,6 +450,8 @@ namespace unCuartoSMART
             //---------------------------------------------- fin proceso
             if (evento_proceso_iterativo_mbcif != null)
                 evento_proceso_iterativo_mbcif(false);
+            mostrarDiagramaMatriz();
+            MessageBox.Show("Se han concluido las iteraciones", "Proceso MBCIF", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
 
         //--------------------------------------------------------------
@@ -460,6 +473,29 @@ namespace unCuartoSMART
         {
             manejador_MBCIF.limpiarColaDeAnalisis();
         }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            limpiarInfluenciasExternasForzadasEnNodos
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void limpiarInfluenciasExternasForzadasEnNodos()
+        {
+            manejador_MBCIF.limpiarInfluenciasExternasForzadaEnNodos();
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            limpiarBoxInfo
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        public void limpiarBoxInfo()
+        {
+            textBox_id_buscada.Text = "";
+            textBox_informacion_elementos.Text = "";
+            id_ultimo_nodo_consultado = "";
+        }
+
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -598,6 +634,7 @@ namespace unCuartoSMART
             {
                 ventana_modificacion_de_datos.agregarCampos(id_datos_internos[i], nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS),nodo.extraerRangoVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS));   
             }
+            ventana_modificacion_de_datos.influencia_externa_forzada = nodo.influencia_externa_forzada;
             ventana_modificacion_de_datos.ShowDialog(this);
             if (ventana_modificacion_de_datos.se_ingresaron_datos)
             {
@@ -610,7 +647,8 @@ namespace unCuartoSMART
                     if (aux.valor != -666)
                         datos_nodos.Add(aux);
                 }
-                manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, nodo.id_nodo);
+                double influencia_externa_forzada = ventana_modificacion_de_datos.influencia_externa_forzada;
+                manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, nodo.id_nodo,influencia_externa_forzada);
                 buscarNodo(nodo.id_nodo);
             }
 
@@ -625,6 +663,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void radioButton_influencia_CheckedChanged(object sender, EventArgs e)
         {
+            limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
         }
 
@@ -637,6 +676,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void radioButton_sistema_CheckedChanged(object sender, EventArgs e)
         {
+            limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
         }
 
@@ -648,6 +688,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void radioButton_nodo_CheckedChanged(object sender, EventArgs e)
         {
+            limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
         }
 
@@ -658,6 +699,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void FormVentanaMBCIF_FormClosing(object sender, FormClosingEventArgs e)
         {
+            limpiarBoxInfo();
             e.Cancel = true;
             this.Hide();
         }
@@ -742,6 +784,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void button_iniciar_iteracion_Click(object sender, EventArgs e)
         {
+            limpiarBoxInfo();
             if (manejador_MBCIF.numero_de_elementos_en_cola_de_analisis != 0)
             {
                 procesoMBCIF();
@@ -773,9 +816,22 @@ namespace unCuartoSMART
             }
         }
 
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            manejador_MBCIF_evento_iteracion
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        void manejador_MBCIF_evento_iteracion(string nodo_actual)
+        {
+            if (radioButton_iterar_paso_a_paso.Checked)
+            {
+                mostrarDiagramaMatriz(nodo_actual);
+                int tiempo_en_milisegundos = (int)(numericUpDown_tiempo_entre_iteracion.Value * 1000);
+                System.Threading.Thread.Sleep(tiempo_en_milisegundos);
+            }
+        }
 
 
-	public delegate void DelegadoProcesoIterativoMBCIF (bool procesando);
 
     }
 }

@@ -83,11 +83,39 @@ namespace ModeloMBCIF
         double   _peso_bruto = 0;
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // influencia_externa
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+        /// <summary>
+        /// Valor que representa una influencia externa a los nodos de la matriz, 
+        /// que puede tomar valores entre [-1 , 1] y la cual será agregada al
+        /// arreglo de influencias para su posterior calculo
+        /// </summary>
+        public double influencia_externa_forzada
+        {
+            get
+            {
+                return _influencia_externa_forzada.valor;
+            }
+            set
+            {
+                if (value > 1)
+                    value = 1;
+                else
+                if (value < -1)
+                    value = -1;
+                _influencia_externa_forzada.valor = value;
+
+            }
+        }
+        private Dato _influencia_externa_forzada = new Dato("influencia_externa_forzada", 0);
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // datos_internos
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
         /// <summary>
-        /// Arreglo de tipo Dato, que contiene los valores de las variables internas para el calculo difuso del nodo
+        /// Arreglo de tipo [Dato], que contiene los valores de las variables internas para el calculo difuso del nodo
         /// </summary>
          [TypeConverter(typeof(ExpandableObjectConverter))]
         public ArrayList datos_internos { get; set; }//= new ArrayList();
@@ -97,7 +125,7 @@ namespace ModeloMBCIF
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
     
         /// <summary>
-        /// Arreglo de tipo Dato, que contiene los valores de nodos externos para el calculo difuso del nodo
+        /// Arreglo de tipo [Dato], que contiene los valores de nodos externos para el calculo difuso del nodo
         /// </summary>
         [TypeConverter(typeof(ExpandableObjectConverter))]
          public ArrayList nodos_externos { get; set; }//= new ArrayList();
@@ -107,7 +135,7 @@ namespace ModeloMBCIF
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
         /// <summary>
-        /// Arreglo de tipo Dato, que contiene los valores de las influencias del nodo
+        /// Arreglo de tipo [Dato], que contiene los valores de las influencias del nodo
         /// </summary>
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public ArrayList influencias { get; set; }//= new ArrayList();
@@ -117,7 +145,7 @@ namespace ModeloMBCIF
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
         /// <summary>
-        /// Arreglo de string que contiene la lista de nodos influenciados por el nodo
+        /// Arreglo de [string] que contiene la lista de nodos influenciados por el nodo
         /// </summary>
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public ArrayList nodos_influenciados { get; set; }//= new ArrayList();
@@ -199,9 +227,35 @@ namespace ModeloMBCIF
         public void actualizacionNodo()
         {
             _peso_bruto     = _calculos.calculoPesoBruto(this.fuzzy);
-            _peso           = _calculos.calculoPeso(this._peso_bruto, influencias);
+
+
+            if (influencia_externa_forzada != 0)
+            {
+                ArrayList aux_influencias = new ArrayList();
+                foreach (Dato item in influencias)
+                {
+                    Dato aux_dato = new Dato(item.id, item.valor);
+                    aux_influencias.Add(aux_dato);
+                }
+                aux_influencias.Add(_influencia_externa_forzada);
+                _peso = _calculos.calculoPeso(this._peso_bruto, aux_influencias);
+            }
+            else
+                _peso = _calculos.calculoPeso(this._peso_bruto, influencias);
+
+
             _calculos.fuzzificarPeso(this.peso, this.fuzzy);
         }
+
+        /// <summary>
+        /// Método que limpia la influencia externa forzada dejandola en cero.
+        /// </summary>
+        public void limpiarInfluenciaExternaForzada()
+        {
+            influencia_externa_forzada = 0;
+        }
+
+
 
         //*************************************************************************
         // actualizarVariable
@@ -436,7 +490,6 @@ namespace ModeloMBCIF
                 case DATOS_INTERNOS:
                     datos_internos.Add(dato);
                     return true;
-                    break;
                 case DATOS_NODOS_EXTERNOS:
                     nodos_externos.Add(dato);
                     return true;

@@ -607,7 +607,24 @@ namespace AccesoADatos
             return sql.baseDeDatosInicializada();
         }
 
+        //*************************************************************************
+        // inicializarBaseDeDatos
+        //*************************************************************************
 
+        /// <summary>
+        /// Obtiene lo pesos de los nodos almacenados en la base de datos
+        /// </summary>
+        /// <param name="nodos">Arreglo con las id de los nodos a buscar</param>
+        /// <param name="cantidadRegistros">cantidad de registros a extraer de la base de datos</param>
+        /// <returns>Lista de lista de valores de nodos    < <0.1:0.2:0.3:..><0.1:0.2:0.3:..><..> > NULL si hubo problemas en la consulta</returns>  
+        public List<List<double>> obtenerPesos(string[] nodos, int cantidadRegistros = -1)
+        {
+            if (sql.conectado)
+            {
+                return sql.obtenerPesos(nodos, cantidadRegistros);
+            }
+            return null;
+        }
 
     }// Fin Manejador de datos bdd
 }

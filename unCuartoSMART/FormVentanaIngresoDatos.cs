@@ -23,6 +23,21 @@ namespace unCuartoSMART
         int ultima_posicion_label_y     = -1;
         int ultima_posicion_textbox_y   = -4;
 
+        public double influencia_externa_forzada
+        {
+            get
+            {
+                return _influencia_externa_forzada;
+            }
+            set
+            {
+                trackBar_influencia_externa_forzada.Value = (int)(value*1000);
+                textBox_influencia_externa_forzada.Text = "" + value;
+                _influencia_externa_forzada = value;
+            }
+        }
+
+        double _influencia_externa_forzada = 0;
         //*****************************************************************************************************************
         //-----------------------------------------------------------------------------------------------------------------
         //                                           METODOS
@@ -48,6 +63,7 @@ namespace unCuartoSMART
         {
             InitializeComponent();
             this.Text = "Modificación de datos Nodo \" "+nombre_nodo+"\"";
+
         }
 
         //--------------------------------------------------------------
@@ -91,11 +107,12 @@ namespace unCuartoSMART
             this.panel_campos.Controls.Add(label_nombre_variable);
             this.panel_campos.Controls.Add(label_rango);
             this.panel_campos.Controls.Add(nuevo_textBox);
-            
+
+            this.panel_influencia_externa_forzada.Location = new System.Drawing.Point(this.panel_influencia_externa_forzada.Location.X, ultima_posicion_textbox_y + 25);
 
         }
 
-
+        
         //--------------------------------------------------------------
         //--------------------------------------------------------------
         //            ComprobarRangos
@@ -198,6 +215,28 @@ namespace unCuartoSMART
         private void button_cancelar_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            trackBar_influencia_externa_forzada_ValueChanged
+        //--------------------------------------------------------------
+        //-------------------------------------------------------------
+        private void trackBar_influencia_externa_forzada_ValueChanged(object sender, EventArgs e)
+        {
+            influencia_externa_forzada = ((double)trackBar_influencia_externa_forzada.Value) / 1000;
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_limpiar_influencia_externa_Click
+        //--------------------------------------------------------------
+        //-------------------------------------------------------------
+        private void button_limpiar_influencia_externa_Click(object sender, EventArgs e)
+        {
+            influencia_externa_forzada = 0;
+            trackBar_influencia_externa_forzada.Value = 0;
+            textBox_influencia_externa_forzada.Text = ""+0;
         }
 
 

@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="Interop.Microsoft.Office.Interop.Excel">
       <HintPath>..\Extras\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\Extras\Npgsql.dll</HintPath>
@@ -66,7 +67,9 @@
     <Compile Include="FormVentanaConfiguracion.Designer.cs">
       <DependentUpon>FormVentanaConfiguracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVentanaGraficos.cs" />
+    <Compile Include="FormVentanaGraficos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormVentanaGraficos.Designer.cs">
       <DependentUpon>FormVentanaGraficos.cs</DependentUpon>
     </Compile>
@@ -89,7 +92,6 @@
       <DependentUpon>FormVentanaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionGraphviz.cs" />
-    <Compile Include="LectorDatosGrafico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporte.cs" />
@@ -134,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContenedorImplementacionesInterfacesCalculoModeloMBCIF\ContenedorImplementacionesInterfacesCalculoModeloMBCIF.csproj">
+      <Project>{1b2357f7-24b0-4280-a2fe-1e0681b8d8d8}</Project>
+      <Name>ContenedorImplementacionesInterfacesCalculoModeloMBCIF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ManejadorPostgreSQL\ManejadorPostgreSQL.csproj">
       <Project>{95C9DE4E-B513-4C5F-86FE-E3786D631927}</Project>
       <Name>ManejadorPostgreSQL</Name>
