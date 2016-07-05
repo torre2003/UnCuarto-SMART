@@ -78,5 +78,6 @@ namespace unCuartoSMART
 
 //todo nombre de archivo en el titulo
 //todo iconos en ventanass
-//actualizacion de graficos interactivos
+//todo actualizacion de graficos interactivos
+//todo la imagen debe respetar el tamaño al actualizarse Paso a Paso
 

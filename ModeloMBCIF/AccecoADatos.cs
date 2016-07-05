@@ -608,7 +608,7 @@ namespace AccesoADatos
         }
 
         //*************************************************************************
-        // inicializarBaseDeDatos
+        // obtenerPesos
         //*************************************************************************
 
         /// <summary>
@@ -625,6 +625,27 @@ namespace AccesoADatos
             }
             return null;
         }
+
+        //*************************************************************************
+        // obtenerUltimaIdCreada
+        //*************************************************************************
+        /// <summary>
+        /// Obtiene la ultima id de activacion creada en la base de datos
+        /// </summary>
+        /// <returns>cadena con la ultima id creada, NULL si falla</returns>
+        public string obtenerUltimaIdCreada()
+        {
+            if (sql.conectado)
+            {
+                string aux_ultima_id_creada = sql.nuevaIdTuplasDatos();
+                int aux_id_creada = Convert.ToInt32(aux_ultima_id_creada);
+                aux_id_creada--;
+                aux_ultima_id_creada = "" + aux_id_creada;
+                return aux_ultima_id_creada;
+            }
+            return null;
+        }
+
 
     }// Fin Manejador de datos bdd
 }
