@@ -17,7 +17,7 @@ namespace unCuartoSMART
 
         FormVentanaMBCIF ventana_mbcif = null;
         FormVentanaConfiguracion ventana_configuracion = null;
-
+        FormVentanaGraficos ventana_graficos = null;
         bool bdd_funcionando = true;
 
 
@@ -39,7 +39,6 @@ namespace unCuartoSMART
             InitializeComponent();
             ventana_mbcif = new FormVentanaMBCIF();
             ventana_mbcif.MdiParent = this;
-           
 
             ventana_configuracion = new FormVentanaConfiguracion();
             ventana_configuracion.MdiParent = this;
@@ -48,6 +47,10 @@ namespace unCuartoSMART
             ventana_configuracion.comprobarBdd();
             ventana_configuracion.button_limpiar_cola_de_analisis.Click += button_limpiar_cola_de_analisis_Click;
             ventana_configuracion.button_limpiar_influencias_forzadas.Click += button_limpiar_influencias_forzadas_Click;
+            
+            ventana_graficos = new FormVentanaGraficos(ventana_mbcif._ruta_carpeta_mbcif);
+            ventana_graficos.MdiParent = this;
+
 
         }
 
@@ -224,6 +227,36 @@ namespace unCuartoSMART
                 ventana_mbcif.mostrarDiagramaMatriz();
             }
         }
+        
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            GraficosToolStripMenuItemClick
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        
+		void GraficosToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			ventana_graficos.Show();
+		}
+		
+		//--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            GenerarReporteMSExcelToolStripMenuItemClick
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+		
+		void GenerarReporteMSExcelToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			 if (saveDialogReporte.ShowDialog() == DialogResult.OK)
+            {
+                var reporte = new Reporte(ventana_mbcif._ruta_carpeta_mbcif);
+                if(reporte.generarReporte(saveDialogReporte.FileName))
+                	MessageBox.Show("Reporte generado exitosamente","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                else
+                	MessageBox.Show("Ocurrió un error en la generación del reporte, inténtelo nuevamente.","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+			 }
+            
+		}
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
