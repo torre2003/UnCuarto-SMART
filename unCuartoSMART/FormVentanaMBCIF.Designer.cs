@@ -43,32 +43,32 @@
             this.button_aumentar = new System.Windows.Forms.Button();
             this.pictureBox_imagen = new System.Windows.Forms.PictureBox();
             this.panel_controles = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown_tiempo_entre_iteracion = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_numero_de_iteraciones = new System.Windows.Forms.NumericUpDown();
-            this.button_iniciar_iteracion = new System.Windows.Forms.Button();
-            this.radioButton_iterar_todo_a_la_vez = new System.Windows.Forms.RadioButton();
-            this.radioButton_iterar_paso_a_paso = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox_actualizacion_inmediata_nodos = new System.Windows.Forms.CheckBox();
+            this.progressBar_proceso_iterativo = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown_intervalo_de_guardado_de_datos = new System.Windows.Forms.NumericUpDown();
-            this.progressBar_proceso_iterativo = new System.Windows.Forms.ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox_actualizacion_inmediata_nodos = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_numero_de_iteraciones = new System.Windows.Forms.NumericUpDown();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.radioButton_iterar_paso_a_paso = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.radioButton_iterar_todo_a_la_vez = new System.Windows.Forms.RadioButton();
+            this.numericUpDown_tiempo_entre_iteracion = new System.Windows.Forms.NumericUpDown();
+            this.button_iniciar_iteracion = new System.Windows.Forms.Button();
             this.tableLayoutPanel_principal.SuspendLayout();
             this.panel_datos.SuspendLayout();
             this.panel_vizor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_imagen)).BeginInit();
             this.panel_controles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tiempo_entre_iteracion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numero_de_iteraciones)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_intervalo_de_guardado_de_datos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numero_de_iteraciones)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tiempo_entre_iteracion)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_principal
@@ -192,6 +192,7 @@
             // panel_vizor
             // 
             this.panel_vizor.AutoScroll = true;
+            this.panel_vizor.BackColor = System.Drawing.Color.White;
             this.panel_vizor.Controls.Add(this.button_disminuir);
             this.panel_vizor.Controls.Add(this.button_aumentar);
             this.panel_vizor.Controls.Add(this.pictureBox_imagen);
@@ -245,148 +246,12 @@
             this.panel_controles.Size = new System.Drawing.Size(547, 194);
             this.panel_controles.TabIndex = 2;
             // 
-            // label3
+            // progressBar_proceso_iterativo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Forma de iterar";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Número de iteraciones";
-            // 
-            // numericUpDown_tiempo_entre_iteracion
-            // 
-            this.numericUpDown_tiempo_entre_iteracion.DecimalPlaces = 2;
-            this.numericUpDown_tiempo_entre_iteracion.Enabled = false;
-            this.numericUpDown_tiempo_entre_iteracion.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown_tiempo_entre_iteracion.Location = new System.Drawing.Point(220, 33);
-            this.numericUpDown_tiempo_entre_iteracion.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown_tiempo_entre_iteracion.Name = "numericUpDown_tiempo_entre_iteracion";
-            this.numericUpDown_tiempo_entre_iteracion.Size = new System.Drawing.Size(64, 20);
-            this.numericUpDown_tiempo_entre_iteracion.TabIndex = 4;
-            this.numericUpDown_tiempo_entre_iteracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_tiempo_entre_iteracion.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            // 
-            // numericUpDown_numero_de_iteraciones
-            // 
-            this.numericUpDown_numero_de_iteraciones.Location = new System.Drawing.Point(122, 30);
-            this.numericUpDown_numero_de_iteraciones.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_numero_de_iteraciones.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDown_numero_de_iteraciones.Name = "numericUpDown_numero_de_iteraciones";
-            this.numericUpDown_numero_de_iteraciones.Size = new System.Drawing.Size(85, 20);
-            this.numericUpDown_numero_de_iteraciones.TabIndex = 3;
-            this.numericUpDown_numero_de_iteraciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_numero_de_iteraciones.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // button_iniciar_iteracion
-            // 
-            this.button_iniciar_iteracion.BackColor = System.Drawing.Color.YellowGreen;
-            this.button_iniciar_iteracion.Location = new System.Drawing.Point(384, 94);
-            this.button_iniciar_iteracion.Name = "button_iniciar_iteracion";
-            this.button_iniciar_iteracion.Size = new System.Drawing.Size(154, 74);
-            this.button_iniciar_iteracion.TabIndex = 2;
-            this.button_iniciar_iteracion.Text = "Iniciar iteración";
-            this.button_iniciar_iteracion.UseVisualStyleBackColor = false;
-            this.button_iniciar_iteracion.Click += new System.EventHandler(this.button_iniciar_iteracion_Click);
-            // 
-            // radioButton_iterar_todo_a_la_vez
-            // 
-            this.radioButton_iterar_todo_a_la_vez.AutoSize = true;
-            this.radioButton_iterar_todo_a_la_vez.Checked = true;
-            this.radioButton_iterar_todo_a_la_vez.Location = new System.Drawing.Point(9, 36);
-            this.radioButton_iterar_todo_a_la_vez.Name = "radioButton_iterar_todo_a_la_vez";
-            this.radioButton_iterar_todo_a_la_vez.Size = new System.Drawing.Size(90, 17);
-            this.radioButton_iterar_todo_a_la_vez.TabIndex = 1;
-            this.radioButton_iterar_todo_a_la_vez.TabStop = true;
-            this.radioButton_iterar_todo_a_la_vez.Text = "Todo a la vez";
-            this.radioButton_iterar_todo_a_la_vez.UseVisualStyleBackColor = true;
-            this.radioButton_iterar_todo_a_la_vez.CheckedChanged += new System.EventHandler(this.radioButton_iterar_todo_a_la_vez_CheckedChanged);
-            // 
-            // radioButton_iterar_paso_a_paso
-            // 
-            this.radioButton_iterar_paso_a_paso.AutoSize = true;
-            this.radioButton_iterar_paso_a_paso.Location = new System.Drawing.Point(120, 36);
-            this.radioButton_iterar_paso_a_paso.Name = "radioButton_iterar_paso_a_paso";
-            this.radioButton_iterar_paso_a_paso.Size = new System.Drawing.Size(85, 17);
-            this.radioButton_iterar_paso_a_paso.TabIndex = 0;
-            this.radioButton_iterar_paso_a_paso.Text = "Paso a Paso";
-            this.radioButton_iterar_paso_a_paso.UseVisualStyleBackColor = true;
-            this.radioButton_iterar_paso_a_paso.CheckedChanged += new System.EventHandler(this.radioButton_iterar_paso_a_paso_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(217, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Tiempo entre iteración";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(290, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Seg.";
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.radioButton_iterar_paso_a_paso);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.radioButton_iterar_todo_a_la_vez);
-            this.panel1.Controls.Add(this.numericUpDown_tiempo_entre_iteracion);
-            this.panel1.Location = new System.Drawing.Point(17, 94);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(342, 74);
-            this.panel1.TabIndex = 9;
-            // 
-            // checkBox_actualizacion_inmediata_nodos
-            // 
-            this.checkBox_actualizacion_inmediata_nodos.AutoSize = true;
-            this.checkBox_actualizacion_inmediata_nodos.Location = new System.Drawing.Point(6, 56);
-            this.checkBox_actualizacion_inmediata_nodos.Name = "checkBox_actualizacion_inmediata_nodos";
-            this.checkBox_actualizacion_inmediata_nodos.Size = new System.Drawing.Size(241, 17);
-            this.checkBox_actualizacion_inmediata_nodos.TabIndex = 10;
-            this.checkBox_actualizacion_inmediata_nodos.Text = "Actualización inmediata del nodo influenciado";
-            this.checkBox_actualizacion_inmediata_nodos.UseVisualStyleBackColor = true;
+            this.progressBar_proceso_iterativo.Location = new System.Drawing.Point(17, 168);
+            this.progressBar_proceso_iterativo.Name = "progressBar_proceso_iterativo";
+            this.progressBar_proceso_iterativo.Size = new System.Drawing.Size(521, 23);
+            this.progressBar_proceso_iterativo.TabIndex = 12;
             // 
             // panel2
             // 
@@ -401,15 +266,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(521, 88);
             this.panel2.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Opciones de proceso";
             // 
             // label7
             // 
@@ -444,12 +300,157 @@
             0});
             this.numericUpDown_intervalo_de_guardado_de_datos.ValueChanged += new System.EventHandler(this.numericUpDown_intervalo_de_guardado_de_datos_ValueChanged);
             // 
-            // progressBar_proceso_iterativo
+            // label6
             // 
-            this.progressBar_proceso_iterativo.Location = new System.Drawing.Point(17, 168);
-            this.progressBar_proceso_iterativo.Name = "progressBar_proceso_iterativo";
-            this.progressBar_proceso_iterativo.Size = new System.Drawing.Size(521, 23);
-            this.progressBar_proceso_iterativo.TabIndex = 12;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Opciones de proceso";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Número de iteraciones";
+            // 
+            // checkBox_actualizacion_inmediata_nodos
+            // 
+            this.checkBox_actualizacion_inmediata_nodos.AutoSize = true;
+            this.checkBox_actualizacion_inmediata_nodos.Location = new System.Drawing.Point(6, 56);
+            this.checkBox_actualizacion_inmediata_nodos.Name = "checkBox_actualizacion_inmediata_nodos";
+            this.checkBox_actualizacion_inmediata_nodos.Size = new System.Drawing.Size(241, 17);
+            this.checkBox_actualizacion_inmediata_nodos.TabIndex = 10;
+            this.checkBox_actualizacion_inmediata_nodos.Text = "Actualización inmediata del nodo influenciado";
+            this.checkBox_actualizacion_inmediata_nodos.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown_numero_de_iteraciones
+            // 
+            this.numericUpDown_numero_de_iteraciones.Location = new System.Drawing.Point(122, 30);
+            this.numericUpDown_numero_de_iteraciones.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_numero_de_iteraciones.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown_numero_de_iteraciones.Name = "numericUpDown_numero_de_iteraciones";
+            this.numericUpDown_numero_de_iteraciones.Size = new System.Drawing.Size(85, 20);
+            this.numericUpDown_numero_de_iteraciones.TabIndex = 3;
+            this.numericUpDown_numero_de_iteraciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_numero_de_iteraciones.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.radioButton_iterar_paso_a_paso);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.radioButton_iterar_todo_a_la_vez);
+            this.panel1.Controls.Add(this.numericUpDown_tiempo_entre_iteracion);
+            this.panel1.Location = new System.Drawing.Point(17, 94);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(342, 74);
+            this.panel1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Forma de iterar";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(290, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Seg.";
+            // 
+            // radioButton_iterar_paso_a_paso
+            // 
+            this.radioButton_iterar_paso_a_paso.AutoSize = true;
+            this.radioButton_iterar_paso_a_paso.Location = new System.Drawing.Point(120, 36);
+            this.radioButton_iterar_paso_a_paso.Name = "radioButton_iterar_paso_a_paso";
+            this.radioButton_iterar_paso_a_paso.Size = new System.Drawing.Size(85, 17);
+            this.radioButton_iterar_paso_a_paso.TabIndex = 0;
+            this.radioButton_iterar_paso_a_paso.Text = "Paso a Paso";
+            this.radioButton_iterar_paso_a_paso.UseVisualStyleBackColor = true;
+            this.radioButton_iterar_paso_a_paso.CheckedChanged += new System.EventHandler(this.radioButton_iterar_paso_a_paso_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(217, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Tiempo entre iteración";
+            // 
+            // radioButton_iterar_todo_a_la_vez
+            // 
+            this.radioButton_iterar_todo_a_la_vez.AutoSize = true;
+            this.radioButton_iterar_todo_a_la_vez.Checked = true;
+            this.radioButton_iterar_todo_a_la_vez.Location = new System.Drawing.Point(9, 36);
+            this.radioButton_iterar_todo_a_la_vez.Name = "radioButton_iterar_todo_a_la_vez";
+            this.radioButton_iterar_todo_a_la_vez.Size = new System.Drawing.Size(90, 17);
+            this.radioButton_iterar_todo_a_la_vez.TabIndex = 1;
+            this.radioButton_iterar_todo_a_la_vez.TabStop = true;
+            this.radioButton_iterar_todo_a_la_vez.Text = "Todo a la vez";
+            this.radioButton_iterar_todo_a_la_vez.UseVisualStyleBackColor = true;
+            this.radioButton_iterar_todo_a_la_vez.CheckedChanged += new System.EventHandler(this.radioButton_iterar_todo_a_la_vez_CheckedChanged);
+            // 
+            // numericUpDown_tiempo_entre_iteracion
+            // 
+            this.numericUpDown_tiempo_entre_iteracion.DecimalPlaces = 2;
+            this.numericUpDown_tiempo_entre_iteracion.Enabled = false;
+            this.numericUpDown_tiempo_entre_iteracion.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown_tiempo_entre_iteracion.Location = new System.Drawing.Point(220, 33);
+            this.numericUpDown_tiempo_entre_iteracion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown_tiempo_entre_iteracion.Name = "numericUpDown_tiempo_entre_iteracion";
+            this.numericUpDown_tiempo_entre_iteracion.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown_tiempo_entre_iteracion.TabIndex = 4;
+            this.numericUpDown_tiempo_entre_iteracion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_tiempo_entre_iteracion.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // button_iniciar_iteracion
+            // 
+            this.button_iniciar_iteracion.BackColor = System.Drawing.Color.YellowGreen;
+            this.button_iniciar_iteracion.Location = new System.Drawing.Point(384, 94);
+            this.button_iniciar_iteracion.Name = "button_iniciar_iteracion";
+            this.button_iniciar_iteracion.Size = new System.Drawing.Size(154, 74);
+            this.button_iniciar_iteracion.TabIndex = 2;
+            this.button_iniciar_iteracion.Text = "Iniciar iteración";
+            this.button_iniciar_iteracion.UseVisualStyleBackColor = false;
+            this.button_iniciar_iteracion.Click += new System.EventHandler(this.button_iniciar_iteracion_Click);
             // 
             // FormVentanaMBCIF
             // 
@@ -467,13 +468,13 @@
             this.panel_vizor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_imagen)).EndInit();
             this.panel_controles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tiempo_entre_iteracion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numero_de_iteraciones)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_intervalo_de_guardado_de_datos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numero_de_iteraciones)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tiempo_entre_iteracion)).EndInit();
             this.ResumeLayout(false);
 
         }

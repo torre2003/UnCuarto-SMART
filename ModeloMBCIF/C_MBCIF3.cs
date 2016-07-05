@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace ModeloMBCIF
 {
-    public delegate void delegadoGuardadoDeDatos(bool en_archivo);
+    public delegate void DelegadoGuardadoDeDatos(bool en_archivo);
 
-    public delegate void delegadoAnalisisDeDato();
+    public delegate void DelegadoAnalisisDeDato();
 
+    public delegate void DelegadoEventoIteracion(string nodo_actual);
     //-----------------------------------------------------------------------------------------------
     // ManejadorMBCIF
     //-----------------------------------------------------------------------------------------------
@@ -26,7 +27,7 @@ namespace ModeloMBCIF
         /// <summary>
         /// Evento de guardado de datos
         /// </summary>
-        public event delegadoGuardadoDeDatos    evento_guardado_de_datos;
+        public event DelegadoGuardadoDeDatos    evento_guardado_de_datos;
         
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // evento_analisis_de_datos
@@ -34,8 +35,16 @@ namespace ModeloMBCIF
         /// <summary>
         /// Evento de analisis de datos
         /// </summary>
-        public event delegadoAnalisisDeDato     evento_analisis_de_datos;
-        
+        public event DelegadoAnalisisDeDato     evento_analisis_de_datos;
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // evento_iteracion
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// Evento de iteración del proceso de analisis
+        /// </summary>
+        public event DelegadoEventoIteracion    evento_iteracion;
+
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // cola de analisis
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -99,7 +108,7 @@ namespace ModeloMBCIF
         {
             manejador_de_datos_archivos = new ManejadorDeDatosArchivos();
             manejador_de_datos_bdd = new ManejadorDeDatosBaseDeDatos(manejador_de_datos_archivos);
-            evento_guardado_de_datos += new delegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
+            evento_guardado_de_datos += new DelegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
         }
         
         
@@ -117,7 +126,7 @@ namespace ModeloMBCIF
             this.ruta_archivo_MBCIF = ruta_archivo_MBCIF;
             manejador_de_datos_archivos = new ManejadorDeDatosArchivos(ruta_archivo_MBCIF);
             manejador_de_datos_bdd = new ManejadorDeDatosBaseDeDatos(manejador_de_datos_archivos);
-            evento_guardado_de_datos += new delegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
+            evento_guardado_de_datos += new DelegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
         }
 
         //*************************************************************************
@@ -137,7 +146,7 @@ namespace ModeloMBCIF
         {
             manejador_de_datos_archivos = new ManejadorDeDatosArchivos();
             manejador_de_datos_bdd = new ManejadorDeDatosBaseDeDatos(manejador_de_datos_archivos,server,user,port,password,database);
-            evento_guardado_de_datos += new delegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
+            evento_guardado_de_datos += new DelegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
         }
 
         //*************************************************************************
@@ -156,8 +165,14 @@ namespace ModeloMBCIF
         {
             manejador_de_datos_archivos = new ManejadorDeDatosArchivos(ruta_archivo_MBCIF);
             manejador_de_datos_bdd = new ManejadorDeDatosBaseDeDatos(manejador_de_datos_archivos, server, user, port, password, database);
-            evento_guardado_de_datos += new delegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
+            evento_guardado_de_datos += new DelegadoGuardadoDeDatos(this.guardarEstadoDeTodosLosNodos);
         }
+
+
+
+
+
+
 
 
 
@@ -169,12 +184,14 @@ namespace ModeloMBCIF
         /// </summary>
         /// <param name="datos">ArrayList(Dato) de tipo clave valor con el nombre y valor de las variables a actualizar en el nodo</param>
         /// <param name="id_nodo">id del nodo a actualizar</param>
+        /// <param name="influencia_externa_forzada">Valor que debe estar entre -1 y 1, indicando el peso de la influencia externa en el nodo, 0 si no existe influencia</param>
         /// <returns>False, nodo no encontrado o variables incorrectas, True operacion realizada correctamente</returns>
-        public bool ingresarDatosIntenosANodo(ArrayList datos, string id_nodo)
+        public bool ingresarDatosIntenosANodo(ArrayList datos, string id_nodo, double influencia_externa_forzada = 0)
         {
             Nodo nodo = manejador_de_datos_archivos.extraerNodo(id_nodo);
             if (nodo != null)
             {
+                nodo.influencia_externa_forzada = influencia_externa_forzada;
                 foreach (var item in datos)
                 {
                     try
@@ -347,12 +364,12 @@ namespace ModeloMBCIF
             {
                 if (contador_de_iteraciones != 0)
                 {
-                    if ( (intervalo_guardado_de_datos != 0 ) && (contador_de_iteraciones % intervalo_guardado_de_datos == 0) )
+                    if ( (intervalo_guardado_de_datos != 0 ) && (contador_de_iteraciones % intervalo_guardado_de_datos == 0) )//Evento guardado
                     {
                         evento_guardado_de_datos(en_archivo);
                     }
                     
-                    if ((intervalo_analisis_de_datos != 0) &&(contador_de_iteraciones % intervalo_analisis_de_datos == 0))
+                    if ((intervalo_analisis_de_datos != 0) &&(contador_de_iteraciones % intervalo_analisis_de_datos == 0)) //Evento analisis
                     {
                         if (evento_analisis_de_datos != null)
                             evento_analisis_de_datos();
@@ -360,6 +377,9 @@ namespace ModeloMBCIF
                 }
                 //Actualizando Nodo
                 string id_nodo_actual = cola_de_analisis.Dequeue();
+                if (evento_iteracion != null) // Evento iterancion
+                    evento_iteracion(id_nodo_actual);
+
                 Nodo nodo_actual = manejador_de_datos_archivos.extraerNodo(id_nodo_actual);
                 string[] lista_nodos_externos = nodo_actual.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);//Lista de nodos, de los cuales se necesitan sus datos para la inferencia difusa del nodo_actual
                 if (lista_nodos_externos != null && lista_nodos_externos.Length != 0)
@@ -448,6 +468,19 @@ namespace ModeloMBCIF
         }
          * 
          */
+
+        public void limpiarInfluenciasExternasForzadaEnNodos()
+        {
+            string[] id_nodos = manejador_de_datos_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+            for (int i = 0; i < id_nodos.Length; i++)
+            {
+                Nodo nodo_actual = manejador_de_datos_archivos.extraerNodo(id_nodos[i]);
+                nodo_actual.limpiarInfluenciaExternaForzada();
+                manejador_de_datos_archivos.actualizarNodo(nodo_actual);
+            }
+        }
+
+
 
         /// <summary>
         /// Método que encola un nodo a la cola de analisis 

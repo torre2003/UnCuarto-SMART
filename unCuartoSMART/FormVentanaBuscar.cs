@@ -74,17 +74,8 @@ namespace unCuartoSMART
     }
 }
 
-//Tareas
-//Respecto a modelo
-//TODO implementacion influencia externa 
-//TODO Cambiar la implementacion de calculo de influencias
+//tareas
 
-//respecto a GUI
-//todo Colores de lo nods en graphvis en funcion del peso 
-//todo sistemas deben conectarse por lineas no por flechas
-//todo Flechas de influencias de color negro cambiante según el peso de la influencia 
-//todo cambiar en el tiempo la imagen de la matriz
-//todo graficos interactivos
-
-
+//todo nombre de archivo en el titulo
+//todo iconos en ventanass
 

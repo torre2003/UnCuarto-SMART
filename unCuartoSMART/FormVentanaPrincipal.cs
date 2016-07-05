@@ -16,7 +16,7 @@ namespace unCuartoSMART
     {
 
         FormVentanaMBCIF ventana_mbcif = null;
-        FormVentanaConfiguracion ventana_configuracion_bdd = null;
+        FormVentanaConfiguracion ventana_configuracion = null;
 
         bool bdd_funcionando = true;
 
@@ -41,15 +41,17 @@ namespace unCuartoSMART
             ventana_mbcif.MdiParent = this;
            
 
-            ventana_configuracion_bdd = new FormVentanaConfiguracion();
-            ventana_configuracion_bdd.MdiParent = this;
-            ventana_configuracion_bdd.evento_conexion_bdd += new DelegadoConexionBDD(eventoBaseDeDatosFuncionando);
-            ventana_configuracion_bdd.button_limpiar_datos_matriz.Click += button_limpiar_datos_matriz_Click;
-            ventana_configuracion_bdd.comprobarBdd();
-            ventana_configuracion_bdd.button_limpiar_cola_de_analisis.Click += button_limpiar_cola_de_analisis_Click;
+            ventana_configuracion = new FormVentanaConfiguracion();
+            ventana_configuracion.MdiParent = this;
+            ventana_configuracion.evento_conexion_bdd += new DelegadoConexionBDD(eventoBaseDeDatosFuncionando);
+            ventana_configuracion.button_limpiar_datos_matriz.Click += button_limpiar_datos_matriz_Click;
+            ventana_configuracion.comprobarBdd();
+            ventana_configuracion.button_limpiar_cola_de_analisis.Click += button_limpiar_cola_de_analisis_Click;
+            ventana_configuracion.button_limpiar_influencias_forzadas.Click += button_limpiar_influencias_forzadas_Click;
 
         }
 
+        
 
         public bool preguntaSiNo(string titulo, string mensaje)
         {
@@ -74,7 +76,7 @@ namespace unCuartoSMART
 
         private void configuracionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ventana_configuracion_bdd.Show();
+            ventana_configuracion.Show();
         }
 
 
@@ -90,7 +92,7 @@ namespace unCuartoSMART
                 ventana_mbcif.Show();
             else
             {
-                ventana_configuracion_bdd.Show();
+                ventana_configuracion.Show();
                 MessageBox.Show("Problemas con la base de datos", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
 
@@ -112,7 +114,7 @@ namespace unCuartoSMART
             {
                 MessageBox.Show("Problemas con la base de datos", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 bdd_funcionando = false;
-                ventana_configuracion_bdd.Show();
+                ventana_configuracion.Show();
             }
         }
 
@@ -142,7 +144,11 @@ namespace unCuartoSMART
                         sr.Close();
                     }
                     if (ventana_mbcif.establecerEstadoDeLaMatriz(datos_nodos_matriz))
-                            MessageBox.Show("Datos cargados correctamente", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    {
+                        MessageBox.Show("Datos cargados correctamente", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        ventana_mbcif.limpiarBoxInfo();
+                        ventana_mbcif.mostrarDiagramaMatriz();
+                    }
                     else 
                             MessageBox.Show("Error en la carga de datos", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     
@@ -170,6 +176,7 @@ namespace unCuartoSMART
                 {
                     outfile.Write(sb.ToString());
                 }
+                ventana_mbcif.limpiarBoxInfo();
             }
         }
         //--------------------------------------------------------------
@@ -196,6 +203,7 @@ namespace unCuartoSMART
             {
                 ventana_mbcif.limpiarColaDeAnalisis();
                 MessageBox.Show("Cola de analisis limpiada", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                ventana_mbcif.limpiarBoxInfo();
             }
                 
         }
@@ -212,7 +220,25 @@ namespace unCuartoSMART
             {
                 ventana_mbcif.reinicializarArchivosMBCIF();
                 ventana_mbcif.iniciarMBCIF();
+                ventana_mbcif.limpiarBoxInfo();
+                ventana_mbcif.mostrarDiagramaMatriz();
             }
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_limpiar_influencias_forzadas_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        void button_limpiar_influencias_forzadas_Click(object sender, EventArgs e)
+        {
+            if (preguntaSiNo("Limpiar influencias externas forzadas en Nodos", "Se procedera a eliminar todas las influencias forzadas en Nodos,\n Desea continuar?"))
+            {
+                ventana_mbcif.limpiarInfluenciasExternasForzadasEnNodos();
+                MessageBox.Show("Se ha completado la operación con exito", "Limpiar influecias externas forzadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ventana_mbcif.limpiarBoxInfo();
+            }
+            
         }
 
 

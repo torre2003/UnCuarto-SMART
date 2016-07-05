@@ -40,9 +40,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_limpiar_cola_de_analisis = new System.Windows.Forms.Button();
             this.button_limpiar_datos_matriz = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button_limpiar_cola_de_analisis = new System.Windows.Forms.Button();
+            this.button_limpiar_influencias_forzadas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_estado_conexion_base_de_datos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_bdd_inicializada)).BeginInit();
             this.panel1.SuspendLayout();
@@ -137,6 +138,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.button_limpiar_influencias_forzadas);
             this.panel2.Controls.Add(this.button_limpiar_cola_de_analisis);
             this.panel2.Controls.Add(this.button_limpiar_datos_matriz);
             this.panel2.Controls.Add(this.label4);
@@ -145,9 +147,18 @@
             this.panel2.Size = new System.Drawing.Size(454, 100);
             this.panel2.TabIndex = 8;
             // 
+            // button_limpiar_cola_de_analisis
+            // 
+            this.button_limpiar_cola_de_analisis.Location = new System.Drawing.Point(131, 67);
+            this.button_limpiar_cola_de_analisis.Name = "button_limpiar_cola_de_analisis";
+            this.button_limpiar_cola_de_analisis.Size = new System.Drawing.Size(196, 23);
+            this.button_limpiar_cola_de_analisis.TabIndex = 10;
+            this.button_limpiar_cola_de_analisis.Text = "Limpiar cola de análisis";
+            this.button_limpiar_cola_de_analisis.UseVisualStyleBackColor = false;
+            // 
             // button_limpiar_datos_matriz
             // 
-            this.button_limpiar_datos_matriz.Location = new System.Drawing.Point(131, 38);
+            this.button_limpiar_datos_matriz.Location = new System.Drawing.Point(34, 38);
             this.button_limpiar_datos_matriz.Name = "button_limpiar_datos_matriz";
             this.button_limpiar_datos_matriz.Size = new System.Drawing.Size(196, 23);
             this.button_limpiar_datos_matriz.TabIndex = 9;
@@ -163,14 +174,14 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Modelo MBCIF";
             // 
-            // button_limpiar_cola_de_analisis
+            // button_limpiar_influencias_forzadas
             // 
-            this.button_limpiar_cola_de_analisis.Location = new System.Drawing.Point(131, 67);
-            this.button_limpiar_cola_de_analisis.Name = "button_limpiar_cola_de_analisis";
-            this.button_limpiar_cola_de_analisis.Size = new System.Drawing.Size(196, 23);
-            this.button_limpiar_cola_de_analisis.TabIndex = 10;
-            this.button_limpiar_cola_de_analisis.Text = "Limpiar cola de análisis";
-            this.button_limpiar_cola_de_analisis.UseVisualStyleBackColor = false;
+            this.button_limpiar_influencias_forzadas.Location = new System.Drawing.Point(236, 38);
+            this.button_limpiar_influencias_forzadas.Name = "button_limpiar_influencias_forzadas";
+            this.button_limpiar_influencias_forzadas.Size = new System.Drawing.Size(196, 23);
+            this.button_limpiar_influencias_forzadas.TabIndex = 11;
+            this.button_limpiar_influencias_forzadas.Text = "Limpiar influencias forzadas Nodos";
+            this.button_limpiar_influencias_forzadas.UseVisualStyleBackColor = false;
             // 
             // FormVentanaConfiguracion
             // 
@@ -207,5 +218,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button button_limpiar_cola_de_analisis;
         public System.Windows.Forms.Button button_limpiar_datos_matriz;
+        public System.Windows.Forms.Button button_limpiar_influencias_forzadas;
     }
 }
