@@ -39,8 +39,7 @@ namespace AccesoADatos
 				if(i < nodos.Length -1){
 					campos += "," ;
 					tablas += "," ;
-				}
-				
+				}	
 			}
 			if(nodos.Length > 1)
 				condic = " WHERE " + condic ;
