@@ -395,7 +395,7 @@ namespace ManejadorPostgreSQL
                     condic = " WHERE " + condic;
 
                 if (cantidadRegistros > 0)
-                    limit += " LIMIT " + cantidadRegistros.ToString();
+                    limit += " OFFSET ( (SELECT MAX(id_tupla) FROM activacion) - " + cantidadRegistros.ToString()+")";
 
                 string consulta = "SELECT " + campos + " FROM " + tablas + condic + limit + " ;";
                 var reader = bdd_sql.consultaSelectDataReader(consulta);
