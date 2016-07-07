@@ -39,9 +39,6 @@
       <HintPath>..\Extras\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Npgsql">
-      <HintPath>..\Extras\Npgsql.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
@@ -139,10 +136,6 @@
     <ProjectReference Include="..\ContenedorImplementacionesInterfacesCalculoModeloMBCIF\ContenedorImplementacionesInterfacesCalculoModeloMBCIF.csproj">
       <Project>{1b2357f7-24b0-4280-a2fe-1e0681b8d8d8}</Project>
       <Name>ContenedorImplementacionesInterfacesCalculoModeloMBCIF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ManejadorPostgreSQL\ManejadorPostgreSQL.csproj">
-      <Project>{95C9DE4E-B513-4C5F-86FE-E3786D631927}</Project>
-      <Name>ManejadorPostgreSQL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModeloMBCIF\ModeloMBCIF.csproj">
       <Project>{ad59995f-df8b-4a27-8ef7-2fc42e51cb0e}</Project>

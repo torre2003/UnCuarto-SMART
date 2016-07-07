@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContenedorDeInterfaceCalculoModeloMBCIF.cs" />
+    <Compile Include="InterfacesCalculoFacultadDeCiencias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
