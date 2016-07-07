@@ -236,7 +236,15 @@ namespace unCuartoSMART
         
 		void GraficosToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			ventana_graficos.Show();
+			if (bdd_funcionando)
+                ventana_graficos.Show();
+            else
+            {
+                ventana_configuracion.Show();
+                MessageBox.Show("Problemas con la base de datos", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+			
+			
 		}
 		
 		//--------------------------------------------------------------
@@ -247,14 +255,24 @@ namespace unCuartoSMART
 		
 		void GenerarReporteMSExcelToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			 if (saveDialogReporte.ShowDialog() == DialogResult.OK)
-            {
-                var reporte = new Reporte(ventana_mbcif._ruta_carpeta_mbcif);
-                if(reporte.generarReporte(saveDialogReporte.FileName))
-                	MessageBox.Show("Reporte generado exitosamente","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                else
-                	MessageBox.Show("Ocurrió un error en la generación del reporte, inténtelo nuevamente.","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-			 }
+			 
+			if (bdd_funcionando){
+            		
+				if (saveDialogReporte.ShowDialog() == DialogResult.OK)
+	            {
+	                Cursor = Cursors.WaitCursor;
+					var reporte = new Reporte(ventana_mbcif._ruta_carpeta_mbcif);
+					bool flag = reporte.generarReporte(saveDialogReporte.FileName);
+					Cursor = Cursors.Default;
+					if(flag)
+	                	MessageBox.Show("Reporte generado exitosamente","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Information);
+	                else
+	                	MessageBox.Show("Ocurrió un error en la generación del reporte, inténtelo nuevamente.","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+				 }
+			}else{
+                ventana_configuracion.Show();
+                MessageBox.Show("Problemas con la base de datos", "Base de datos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
             
 		}
 

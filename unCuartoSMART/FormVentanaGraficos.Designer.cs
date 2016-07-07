@@ -204,7 +204,7 @@ namespace unCuartoSMART
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(80, 26);
 			this.label2.TabIndex = 1;
-			this.label2.Text = "N° Iteraciones";
+			this.label2.Text = "Ultimas Iteraciones";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// udIteraciones
@@ -225,6 +225,7 @@ namespace unCuartoSMART
 			this.udIteraciones.Size = new System.Drawing.Size(55, 20);
 			this.udIteraciones.TabIndex = 2;
 			this.udIteraciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.udIteraciones.ThousandsSeparator = true;
 			this.udIteraciones.Value = new decimal(new int[] {
 			2,
 			0,
@@ -253,6 +254,7 @@ namespace unCuartoSMART
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "FormVentanaGraficos";
 			this.Text = "Gráfico";
+			this.Activated += new System.EventHandler(this.FormVentanaGraficosActivated);
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormVentanaGraficosFormClosing);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.grEstados)).EndInit();
