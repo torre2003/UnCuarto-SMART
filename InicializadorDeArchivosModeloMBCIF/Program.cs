@@ -20,7 +20,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             nombre_de_archivo += ".yap";
             File.Delete(nombre_de_archivo);
             */
-
+            /*
             ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
             Console.WriteLine("Repositorio limpiado");
             Console.WriteLine(manejador_de_datos.limpiarDirectorioRepositorioDeDatos());
@@ -32,9 +32,17 @@ namespace InicializadorDeArchivosModeloMBCIF
             Program.generarSistemaTransporte();
 
             Console.ReadKey();
+            */
+
+            new NodosFacultadDeCiencias().crearNodosFacultadDeCiencias();
+        
         } // END MAIN
 
 
+
+
+
+        /*
         public static void generarMina()
         {
             //_____________________________________ 
@@ -88,11 +96,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             Console.WriteLine("Sistema Mina ingresado");
 
         }
-
-
-
-
-
+        
         public static void generarProduccion()
         {
             Sistema N1Produccion;
@@ -943,6 +947,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             Console.WriteLine("Sistema transporte ingresado");
         }
         //--------------------------------------------------------------------------------------------------------------------------
-
+        */
     } // End Program
 }
