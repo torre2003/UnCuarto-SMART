@@ -12,7 +12,7 @@ using AccesoADatos;
 namespace unCuartoSMART
 {
 	/// <summary>
-	/// Description of Reporte.
+	/// Genera un reporte en formato MS Excel
 	/// </summary>
 	public class Reporte
 	{
@@ -29,6 +29,11 @@ namespace unCuartoSMART
 			listaNodos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
 		}
 		//--------------------------------------------------------------------------------------
+		/// <summary>
+		/// Genera un reporte en formato MS Excel
+		/// </summary>
+		/// <param name="fileName">Ruta de destino de archivo .xls generado</param>
+		/// <returns></returns>
 		public bool generarReporte(string fileName)
 		{
 			try {
@@ -51,8 +56,8 @@ namespace unCuartoSMART
 				libros_trabajo.SaveAs(fileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
 				libros_trabajo.Close(true);
 				return true;
-			} catch (Exception e) {
-				e = null;
+			} catch (Exception) {
+				//e = null;
 				return false;
 			}			
 		}

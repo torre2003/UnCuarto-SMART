@@ -20,7 +20,10 @@ namespace unCuartoSMART
 	public partial class FormVentanaGraficos : Form
 	{
 
+		private ManejadorDeDatosArchivos manejador_archivos ;
+		//private ManejadorDeDatosBaseDeDatos data;
 		private string[] listaNodos = null;
+		private int maxActual = 0;
 	//--------------------------------------------------------------------------------------
 		public FormVentanaGraficos(string _ruta_carpeta_mbcif)
 		{
@@ -32,7 +35,6 @@ namespace unCuartoSMART
 			cargarListadoNodos(_ruta_carpeta_mbcif);
 			
 			var a = grEstados.ChartAreas[0];
-			a.AxisX.Minimum = 1;
 			a.AxisX.Title = "Iteraciones" ;
 			a.AxisY.Maximum = 1.1 ;
 			a.AxisY.Title = "Estado" ;
@@ -40,6 +42,15 @@ namespace unCuartoSMART
 			a.AxisX.MajorGrid.Enabled = false;
 			a.AxisY.MajorGrid.Enabled = false;
 			a.BorderDashStyle = ChartDashStyle.Solid;
+			
+			manejador_archivos = new ManejadorDeDatosArchivos();
+			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+			if(data.bdd_conectada)
+				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
+			else
+				maxActual = 10 ;
+			udIteraciones.Value = maxActual;
+			udIteraciones.Maximum = maxActual;
 			
 		}
 	//--------------------------------------------------------------------------------------
@@ -84,28 +95,38 @@ namespace unCuartoSMART
 			if (lstNodos.Items.Count < 1)
 				return;
 			
-            var manejador_archivos = new ManejadorDeDatosArchivos();
-            var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
-			
 			var nodos = new string[lstNodos.Items.Count];
 			for (int i = 0; i < lstNodos.Items.Count; i++)
 				nodos[i] = lstNodos.Items[i].ToString();
 			
+			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
 			var pesos = data.obtenerPesos(nodos, (int)udIteraciones.Value);
 			
 			grEstados.Series.Clear();
-			grEstados.ChartAreas[0].AxisX.Maximum = (double)udIteraciones.Value;
+			
             
 			for (int col = 0; col < pesos.Count; col++) {          
 				var lines = new Series(nodos[col]);
 				lines.ChartType = SeriesChartType.Line; 
 				for (int fil = 0; fil < pesos[col].Count; fil++)
-					lines.Points.Add(new DataPoint(fil + 1, pesos[col][fil]));
+					lines.Points.Add(new DataPoint((maxActual-pesos[col].Count + fil+1 ), pesos[col][fil]));
 				lines.YAxisType = AxisType.Primary;
 				grEstados.Series.Add(lines);
                 
 			}
 
+		}
+		void FormVentanaGraficosActivated(object sender, EventArgs e)
+		{
+			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+			var maxNuevo = Int32.Parse(data.obtenerUltimaIdCreada());
+			var dif = maxNuevo - maxActual ;
+			udIteraciones.Maximum = maxNuevo;
+			udIteraciones.Value += dif ;
+			maxActual = maxNuevo;
+			
+			if(dif > 0)
+				BtnGenerarGraficoClick(null,null);
 		}
 	//--------------------------------------------------------------------------------------
 	}
