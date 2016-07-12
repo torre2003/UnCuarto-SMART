@@ -30,6 +30,7 @@
         {
             this.tableLayoutPanel_principal = new System.Windows.Forms.TableLayoutPanel();
             this.panel_datos = new System.Windows.Forms.Panel();
+            this.button_modificar_ajuste_influencia = new System.Windows.Forms.Button();
             this.radioButton_sistema = new System.Windows.Forms.RadioButton();
             this.radioButton_influencia = new System.Windows.Forms.RadioButton();
             this.radioButton_nodo = new System.Windows.Forms.RadioButton();
@@ -92,6 +93,7 @@
             // 
             this.panel_datos.AutoScroll = true;
             this.panel_datos.AutoSize = true;
+            this.panel_datos.Controls.Add(this.button_modificar_ajuste_influencia);
             this.panel_datos.Controls.Add(this.radioButton_sistema);
             this.panel_datos.Controls.Add(this.radioButton_influencia);
             this.panel_datos.Controls.Add(this.radioButton_nodo);
@@ -103,8 +105,19 @@
             this.panel_datos.Location = new System.Drawing.Point(3, 3);
             this.panel_datos.Name = "panel_datos";
             this.tableLayoutPanel_principal.SetRowSpan(this.panel_datos, 2);
-            this.panel_datos.Size = new System.Drawing.Size(291, 580);
+            this.panel_datos.Size = new System.Drawing.Size(291, 606);
             this.panel_datos.TabIndex = 0;
+            // 
+            // button_modificar_ajuste_influencia
+            // 
+            this.button_modificar_ajuste_influencia.Enabled = false;
+            this.button_modificar_ajuste_influencia.Location = new System.Drawing.Point(21, 580);
+            this.button_modificar_ajuste_influencia.Name = "button_modificar_ajuste_influencia";
+            this.button_modificar_ajuste_influencia.Size = new System.Drawing.Size(267, 23);
+            this.button_modificar_ajuste_influencia.TabIndex = 9;
+            this.button_modificar_ajuste_influencia.Text = "Modificar Ajuste Influencia";
+            this.button_modificar_ajuste_influencia.UseVisualStyleBackColor = true;
+            this.button_modificar_ajuste_influencia.Click += new System.EventHandler(this.button_modificar_ajuste_influencia_Click);
             // 
             // radioButton_sistema
             // 
@@ -512,5 +525,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_intervalo_de_guardado_de_datos;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ProgressBar progressBar_proceso_iterativo;
+        private System.Windows.Forms.Button button_modificar_ajuste_influencia;
     }
 }

@@ -30,17 +30,19 @@ namespace unCuartoSMART
         }
 
 
-        public void agregarElemento(string elemento)
+        public void agregarElemento(string elemento, string descripcion_elemento = null)
         {
-            listBox_elementos.Items.Add(elemento);
+            ElementosCheckBox elementoCheck = new ElementosCheckBox(elemento, descripcion_elemento);
+            listBox_elementos.Items.Add(elementoCheck);
         }
 
 
         private void button_aceptar_Click(object sender, EventArgs e)
         {
-            if (listBox_elementos.SelectedItem != null && (string)listBox_elementos.SelectedItem != "")
+            if (listBox_elementos.SelectedItem != null )
             {
-                _seleccion = ""+listBox_elementos.SelectedItem;
+                ElementosCheckBox elemento_seleccionado = (ElementosCheckBox)listBox_elementos.SelectedItem;
+                _seleccion = ""+elemento_seleccionado.id_elemento;
                 this.Hide();
                 this.Dispose();
             }
@@ -60,7 +62,8 @@ namespace unCuartoSMART
         {
             if (listBox_elementos.SelectedItem != null && listBox_elementos.SelectedItem != "")
             {
-                _seleccion = "" + listBox_elementos.SelectedItem;
+                ElementosCheckBox elemento_seleccionado = (ElementosCheckBox)listBox_elementos.SelectedItem;
+                _seleccion = "" + elemento_seleccionado.id_elemento;
                 this.Hide();
                 this.Dispose();
             }
@@ -71,13 +74,41 @@ namespace unCuartoSMART
         }
 
 
+        private struct ElementosCheckBox
+        {
+            public string id_elemento;
+            public string descripcion_elemento;
+    
+            public ElementosCheckBox(string id_elemento, string descripcion_elemento)
+            {
+                this.id_elemento = id_elemento;
+                this.descripcion_elemento = descripcion_elemento;
+            }
+
+
+            public override string ToString() 
+            { 
+                string retorno = id_elemento;
+                if (descripcion_elemento != null)
+                    retorno += "  " + descripcion_elemento;
+                return retorno;
+            }
+        }
+
     }
 }
 
 //tareas
 
+
+
+//TODO arreglar el archivo de guardado - con las ponderaciones
+
+
+// Extras
 //todo nombre de archivo en el titulo
 //todo iconos en ventanass
 //todo actualizacion de graficos interactivos
 //todo la imagen debe respetar el tamaño al actualizarse Paso a Paso
+//todo ventana de busqueda nodos con nombre 
 

@@ -34,10 +34,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_campos = new System.Windows.Forms.Panel();
             this.panel_influencia_externa_forzada = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.trackBar_influencia_externa_forzada = new System.Windows.Forms.TrackBar();
-            this.textBox_influencia_externa_forzada = new System.Windows.Forms.TextBox();
             this.button_limpiar_influencia_externa = new System.Windows.Forms.Button();
+            this.textBox_influencia_externa_forzada = new System.Windows.Forms.TextBox();
+            this.trackBar_influencia_externa_forzada = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel_campos.SuspendLayout();
@@ -111,14 +111,25 @@
             this.panel_influencia_externa_forzada.Size = new System.Drawing.Size(512, 93);
             this.panel_influencia_externa_forzada.TabIndex = 0;
             // 
-            // label1
+            // button_limpiar_influencia_externa
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Influencia externa forzada";
+            this.button_limpiar_influencia_externa.Location = new System.Drawing.Point(340, 15);
+            this.button_limpiar_influencia_externa.Name = "button_limpiar_influencia_externa";
+            this.button_limpiar_influencia_externa.Size = new System.Drawing.Size(145, 23);
+            this.button_limpiar_influencia_externa.TabIndex = 3;
+            this.button_limpiar_influencia_externa.Text = "Limpiar influencia";
+            this.button_limpiar_influencia_externa.UseVisualStyleBackColor = true;
+            this.button_limpiar_influencia_externa.Click += new System.EventHandler(this.button_limpiar_influencia_externa_Click);
+            // 
+            // textBox_influencia_externa_forzada
+            // 
+            this.textBox_influencia_externa_forzada.Enabled = false;
+            this.textBox_influencia_externa_forzada.Location = new System.Drawing.Point(187, 15);
+            this.textBox_influencia_externa_forzada.Name = "textBox_influencia_externa_forzada";
+            this.textBox_influencia_externa_forzada.Size = new System.Drawing.Size(90, 20);
+            this.textBox_influencia_externa_forzada.TabIndex = 2;
+            this.textBox_influencia_externa_forzada.Text = "0";
+            this.textBox_influencia_externa_forzada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // trackBar_influencia_externa_forzada
             // 
@@ -131,25 +142,14 @@
             this.trackBar_influencia_externa_forzada.TabIndex = 1;
             this.trackBar_influencia_externa_forzada.ValueChanged += new System.EventHandler(this.trackBar_influencia_externa_forzada_ValueChanged);
             // 
-            // textBox_influencia_externa_forzada
+            // label1
             // 
-            this.textBox_influencia_externa_forzada.Enabled = false;
-            this.textBox_influencia_externa_forzada.Location = new System.Drawing.Point(187, 15);
-            this.textBox_influencia_externa_forzada.Name = "textBox_influencia_externa_forzada";
-            this.textBox_influencia_externa_forzada.Size = new System.Drawing.Size(90, 20);
-            this.textBox_influencia_externa_forzada.TabIndex = 2;
-            this.textBox_influencia_externa_forzada.Text = "0";
-            this.textBox_influencia_externa_forzada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button_limpiar_influencia_externa
-            // 
-            this.button_limpiar_influencia_externa.Location = new System.Drawing.Point(340, 15);
-            this.button_limpiar_influencia_externa.Name = "button_limpiar_influencia_externa";
-            this.button_limpiar_influencia_externa.Size = new System.Drawing.Size(145, 23);
-            this.button_limpiar_influencia_externa.TabIndex = 3;
-            this.button_limpiar_influencia_externa.Text = "Limpiar influencia";
-            this.button_limpiar_influencia_externa.UseVisualStyleBackColor = true;
-            this.button_limpiar_influencia_externa.Click += new System.EventHandler(this.button_limpiar_influencia_externa_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Influencia externa forzada";
             // 
             // FormVentanaIngresoDatos
             // 

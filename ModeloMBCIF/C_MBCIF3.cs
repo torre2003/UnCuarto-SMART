@@ -8,10 +8,21 @@ using System.Threading.Tasks;
 
 namespace ModeloMBCIF
 {
+    /// <summary>
+    /// Delegado de evento guardado de datos 
+    /// </summary>
+    /// <param name="en_archivo">true para guardar en archivo, false en caso contrario</param>
     public delegate void DelegadoGuardadoDeDatos(bool en_archivo);
 
+    /// <summary>
+    /// Delegado de evento analisis de datos
+    /// </summary>
     public delegate void DelegadoAnalisisDeDato();
 
+    /// <summary>
+    /// Delegado de evento de iteracion en el proceso de las MBCIF
+    /// </summary>
+    /// <param name="nodo_actual"></param>
     public delegate void DelegadoEventoIteracion(string nodo_actual);
     //-----------------------------------------------------------------------------------------------
     // ManejadorMBCIF
@@ -136,7 +147,6 @@ namespace ModeloMBCIF
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        /// <param name="ruta_archivo_MBCIF">Ruta del archivo que contiene la base de datos a trabajar</param>
         /// <param name="server">ip del servidor</param>
         /// <param name="user">usuario de la base de datos</param>
         /// <param name="port">puerto de comunicacion de la base de datos</param>
@@ -156,6 +166,7 @@ namespace ModeloMBCIF
         /// <summary>
         /// Constructor de la clase
         /// </summary>
+        /// <param name="ruta_archivo_MBCIF">Ruta del archivo que contiene la base de datos a trabajar</param>
         /// <param name="server">ip del servidor</param>
         /// <param name="user">usuario de la base de datos</param>
         /// <param name="port">puerto de comunicacion de la base de datos</param>
@@ -211,6 +222,57 @@ namespace ModeloMBCIF
             }
             return false;
         }
+
+
+        //*************************************************************************
+        // ingresarPonderacionesANodo
+        //*************************************************************************
+        /// <summary>
+        /// Método para ingresar nuevas ponderaciones al nodo
+        /// </summary>
+        /// <param name="id_nodo">id del nodo a modificar</param>
+        /// <param name="ponderaciones_datos_internos">ArrayList de tipo [Dato] con la informacion de las ponderaciones de datos internos</param>
+        /// <param name="ponderaciones_nodos_externos">ArrayList de tipo [Dato] con la informacion de las ponderaciones de nodos externos</param>
+        /// <returns></returns>
+        public bool ingresarPonderacionesANodo(string id_nodo, ArrayList ponderaciones_datos_internos = null, ArrayList ponderaciones_nodos_externos = null)
+        {
+            Nodo nodo = manejador_de_datos_archivos.extraerNodo(id_nodo);
+            if (nodo != null)
+            {
+                if (ponderaciones_datos_internos != null)
+                    foreach ( Dato item_dato_interno in ponderaciones_datos_internos)
+                    {
+                        try
+                        {
+                            nodo.actualizarPonderacionVariable(item_dato_interno.id, item_dato_interno.valor, Nodo.DATOS_INTERNOS);
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                    }
+                
+                if (ponderaciones_nodos_externos != null)
+                    foreach (Dato item_nodos_externos in ponderaciones_nodos_externos)
+                    {
+                        try
+                        {
+                            nodo.actualizarPonderacionVariable(item_nodos_externos.id, item_nodos_externos.valor, Nodo.DATOS_NODOS_EXTERNOS);
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                    }
+                
+                manejador_de_datos_archivos.actualizarNodo(nodo);
+                return true;
+            }
+            return false;
+        }
+
+
+
 
         //*************************************************************************
         // actualizar datos nodos externos en nodo
@@ -332,14 +394,14 @@ namespace ModeloMBCIF
                 }
                 else
                 {
-                    nodo.actualizacionNodo();
+                    manejador_de_datos_archivos.actualizarNodo(nodo);
                 }
-                manejador_de_datos_archivos.actualizarNodo(nodo);
+                nodo.actualizacionNodo();
             }
 
             while (cola_final_de_actualizacion.Count > 0)
             {
-                string id_nodo = cola_de_actualizacion.Dequeue();
+                string id_nodo = cola_final_de_actualizacion.Dequeue();
                 Nodo nodo = manejador_de_datos_archivos.extraerNodo(id_nodo);
                 nodo = actualizarDatosNodoExternosEnNodo(nodo.id_nodo);
                 nodo.actualizacionNodo();
@@ -347,17 +409,26 @@ namespace ModeloMBCIF
             }
         }
 
+
+
+
+
+
+
+
+
         //*************************************************************************
         // Proceso MBCIF
         //*************************************************************************
-        
         /// <summary>
         /// Metodo para procesar y analizar la MBCIF
         /// </summary>
         /// <param name="maximo_de_iteraciones">Numero maximo de iteraciones a realizar por el proceso</param>
         /// <param name="intervalo_guardado_de_datos">Frecuencia con que se guardaran los datos</param>
         /// <param name="intervalo_analisis_de_datos">Frecuencia con que se analizaran los datos con ID... </param>
-        public void procesoMBCIF(int maximo_de_iteraciones, int intervalo_guardado_de_datos, int intervalo_analisis_de_datos, bool actualizacion_inmediata_de_nodo_influenciado = false, bool en_archivo = false)
+        /// <param name="actualizacion_inmediata_de_nodo_influenciado">TRUE si se los nodos afectados por el analisado actualizan su peso inmediatamente,antes de que entrar en la cola de analisis, FALSE en caso contrario</param>
+        /// <param name="en_archivo">TRUE para guardar en archivo los datos correspodientes a las tuplas, FALSE para guardar en base de datos</param>
+           public void procesoMBCIF(int maximo_de_iteraciones, int intervalo_guardado_de_datos, int intervalo_analisis_de_datos, bool actualizacion_inmediata_de_nodo_influenciado = false, bool en_archivo = false)
         {
             int contador_de_iteraciones = 0;
             while (contador_de_iteraciones < maximo_de_iteraciones && cola_de_analisis.Count != 0)
@@ -469,6 +540,9 @@ namespace ModeloMBCIF
          * 
          */
 
+        /// <summary>
+        /// Método para establecer todas las influencias forzadas de los nodos en 0
+        /// </summary>
         public void limpiarInfluenciasExternasForzadaEnNodos()
         {
             string[] id_nodos = manejador_de_datos_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);

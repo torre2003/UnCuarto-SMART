@@ -85,6 +85,13 @@ namespace unCuartoSMART
         
         private string id_ultimo_nodo_consultado = "";
 
+
+        //*******************************
+        //   id_ultima_influencia_consultado
+        //*******************************
+
+        private string id_ultima_influencia_consultado = "";
+
         //*****************************************************************************************************************
         //-----------------------------------------------------------------------------------------------------------------
         //                                           METODOS
@@ -151,6 +158,7 @@ namespace unCuartoSMART
         /// <returns></returns>
         public void buscarNodo(string id_nodo)
         {
+            id_ultima_influencia_consultado = "";
             Nodo nodo = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).extraerNodo(id_nodo);
             if (nodo != null)
             {
@@ -195,7 +203,8 @@ namespace unCuartoSMART
             string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
             for (int i = 0; i < id_datos_internos.Length; i++)
             {
-                string aux_dato = id_datos_internos[i] + " \t " + nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS);
+                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS, true));
+                string aux_dato = "(" + ponderacion + ")  " + id_datos_internos[i] + " \t " + nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS);
                 textBox_informacion_elementos.AppendText(aux_dato + "\r\n");
             }
             textBox_informacion_elementos.AppendText("-------------------------" + "\r\n");
@@ -204,7 +213,8 @@ namespace unCuartoSMART
             string[] id_nodo_externos = nodo.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);
             for (int i = 0; i < id_nodo_externos.Length; i++)
             {
-                string aux_dato = id_nodo_externos[i] + " \t " + nodo.extraerValorVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS);
+                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS, true));
+                string aux_dato = "(" + ponderacion + ")  " + id_nodo_externos[i] + " \t " + nodo.extraerValorVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS);
                 textBox_informacion_elementos.AppendText(aux_dato + "\r\n");
             }
             textBox_informacion_elementos.AppendText("-------------------------" + "\r\n");
@@ -248,12 +258,22 @@ namespace unCuartoSMART
         public void buscarInfluencia(string id_influencia)
         {
             id_ultimo_nodo_consultado = "";
+            id_ultima_influencia_consultado = "";
             Influencia influencia = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).extraerInfluencia(id_influencia);
             if (influencia != null)
+            {
                 mostrarInformacionInfluencia(influencia);
+                id_ultima_influencia_consultado = influencia.id_influencia;
+                button_modificar_ajuste_influencia.Enabled = true;
+            }
             else
-                MessageBox.Show("Influencia no encontrada", "Error", System.Windows.Forms.MessageBoxButtons.OK, 
+            {
+                button_modificar_ajuste_influencia.Enabled = false;
+                id_ultima_influencia_consultado = "";
+                MessageBox.Show("Influencia no encontrada", "Error", System.Windows.Forms.MessageBoxButtons.OK,
                                 System.Windows.Forms.MessageBoxIcon.Error);
+            }
+                
         }
 
         //--------------------------------------------------------------
@@ -273,9 +293,14 @@ namespace unCuartoSMART
             textBox_informacion_elementos.Text = "";
             textBox_informacion_elementos.AppendText("Id influencia " + "\r\n \t\"" + influencia.id_influencia + "\"\r\n");
             textBox_informacion_elementos.AppendText("Id nodo origen " + "\r\n \t\"" + influencia.id_nodo_origen + "\"\r\n" + "\r\n");
+            if (!influencia.nombre_nodo_origen.Equals(""))
+                textBox_informacion_elementos.AppendText("Nombre nodo origen " + "\r\n \t\"" + influencia.nombre_nodo_origen + "\"\r\n" + "\r\n");
             textBox_informacion_elementos.AppendText("Id nodo influenciado " + "\r\n \t\"" + influencia.id_nodo_influenciado + "\"\r\n" + "\r\n");
+            if (!influencia.nombre_nodo_destino.Equals(""))
+                textBox_informacion_elementos.AppendText("Nombre nodo influenciado " + "\r\n \t\"" + influencia.nombre_nodo_destino + "\"\r\n" + "\r\n");
             textBox_informacion_elementos.AppendText("Peso nodo origen:\t" + influencia.peso_nodo_origen + "\r\n" + "\r\n");
             textBox_informacion_elementos.AppendText("Peso influencia: \t\t" + influencia.peso_influencia + "\r\n");
+            textBox_informacion_elementos.AppendText("Valor ajuste influencia: \t\t" + influencia.valor_ajuste_influencia + "\r\n");
             
         }
         //--------------------------------------------------------------
@@ -288,6 +313,7 @@ namespace unCuartoSMART
         public void buscarSistema(string id_sistema)
         {
              id_ultimo_nodo_consultado = "";
+             id_ultima_influencia_consultado = "";
              Sistema sistema = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).extraerSistema(id_sistema);
                 if (sistema != null)
                     mostrarInformacionSistema(sistema);
@@ -337,27 +363,49 @@ namespace unCuartoSMART
         //            extraerDatosInternosDeNodos
         //--------------------------------------------------------------
         //--------------------------------------------------------------
-
+        // Cada linea guarda el estado de nodos e influencias con el siguiente formato   
+        //(NO nodo,IN influencia, ID id,DI dato interno,  NE nodo externo, IF infleuncia forzada externa, VA valor ajuste influencia)-->
+        //NO!ID:id_influencia|DI:nombre_dato_interno_1:valor|DI:nombre_dato_interno_2:valor:ponderacion|NE:nombre_nodod_externo:valor:ponderacion|IF:valor
+        //IN!ID:id_influencia|VA:valor
         public StringBuilder extraerDatosInternosDeNodos()
         {
             StringBuilder sb = new StringBuilder();
             ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            
+            //Ingresando Nodos
             string[] nodos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
             for (int i = 0; i < nodos.Length; i++)
             {
-                string info_nodo = "";
+                string info_nodo = "NO!";
                 Nodo nodo = manejador_de_archivos.extraerNodo(nodos[i]);
-                info_nodo = nodo.id_nodo + ";";
+                info_nodo += "ID:"+nodo.id_nodo;
+                //Datos internos
                 string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
                 for (int j = 0; j < id_datos_internos.Length; j++)
                 {
-                    if (j != 0)
-                        info_nodo += "|";
-                    info_nodo += id_datos_internos[j] + ":" + nodo.extraerValorVariable(id_datos_internos[j], Nodo.DATOS_INTERNOS);
+                    info_nodo += "|DI:";
+                    info_nodo += id_datos_internos[j] + ":" + nodo.extraerValorVariable(id_datos_internos[j], Nodo.DATOS_INTERNOS) + ":" + nodo.extraerPonderacionVariable(id_datos_internos[j], Nodo.DATOS_INTERNOS);
                 }
-                info_nodo += ";influencia_externa_forzada:" + nodo.influencia_externa_forzada;
+                //Nodos externos
+                string[] id_nodos_externos = nodo.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);
+                for (int j = 0; j < id_nodos_externos.Length; j++)
+                {
+                    info_nodo += "|NE:";
+                    info_nodo += id_nodos_externos[j] + ":" + nodo.extraerPonderacionVariable(id_nodos_externos[j], Nodo.DATOS_NODOS_EXTERNOS);
+                }
+                info_nodo += "|IF:" + nodo.influencia_externa_forzada;
                 sb.AppendLine(info_nodo);
-// Cada linea guarda el estado de un nodo con el siguiente formato-->      id_nodo;nombre_dato_interno1:valor|nombre_dato_interno2:valor|nombre_dato_internon:valor;influencia_forzada_externa:valor
+            }
+            //Ingresando influencias
+            string[] influencias = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.INFLUENCIAS);
+            for (int i = 0; i < influencias.Length; i++)
+            {
+                
+                string info_influencia = "IN!";
+                Influencia influencia_actual = manejador_de_archivos.extraerInfluencia(influencias[i]);
+                info_influencia += "ID:" + influencia_actual.id_influencia;
+                info_influencia += "|VA:"+influencia_actual.valor_ajuste_influencia;
+                sb.AppendLine(info_influencia);
             }
             return sb;
         }
@@ -373,29 +421,69 @@ namespace unCuartoSMART
             try
             {
                 iniciarMBCIF();
+                ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
                 foreach (string tupla in lista_info_nodos)
                 {
-                    ArrayList datos_nodos = new ArrayList();
-                    string id_nodo,string_influencia_forzada_externa;
-                    string[] conjunto_de_elemento_aux, dato_aux;
-                    conjunto_de_elemento_aux = tupla.Split(';');//separamos la id de los elementos 
-                    id_nodo = conjunto_de_elemento_aux[0];
-                    string_influencia_forzada_externa = conjunto_de_elemento_aux[2].Split(':')[1];//separamos el valor de la influencia forzada externa
-                    conjunto_de_elemento_aux = conjunto_de_elemento_aux[1].Split('|');//separamos los distintos elemntos 
-                    
-                    for (int i = 0; i < conjunto_de_elemento_aux.Length; i++)
+                    string tipo_tupla = tupla.Split('!')[0];
+                    string contenido_tupla = tupla.Split('!')[1];
+                    string[] datos = contenido_tupla.Split('|');
+                    switch (tipo_tupla)
                     {
-                        dato_aux = conjunto_de_elemento_aux[i].Split(':');//Separamos el valor del elemento
-                        Dato dato = new Dato();
-                        string id_dato = dato_aux[0];//Separamos la id del elemento
-                        double valor_dato = (double)Convert.ToDecimal(dato_aux[1]);
-                        dato.id = id_dato;
-                        dato.valor = valor_dato;
-                        datos_nodos.Add(dato);
-                    }
-                    double valor_influencia_forzada_externa = (double)Convert.ToDecimal(string_influencia_forzada_externa);
-                    manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, id_nodo,valor_influencia_forzada_externa);
-                }
+                        case "NO"://caso nodo
+                            string id_nodo = "";
+                            ArrayList array_datos_internos_nodo = new ArrayList();
+                            ArrayList array_ponderacion_datos_internos_nodo = new ArrayList();
+                            ArrayList array_ponderacion_nodos_externos_nodo = new ArrayList();
+                            double valor_influencia_forzada_externa = 0;
+                            for (int i = 0; i < datos.Length; i++)
+                            {
+                                string[] aux = datos[i].Split(':');
+                                switch (aux[0])
+                                {
+                                    case "ID":
+                                        id_nodo = aux[1];
+                                        break;
+                                    case "DI":
+                                        Dato dato_interno = new Dato(aux[1], (double)Convert.ToDecimal(aux[2]));
+                                        Dato dato_ponderacion = new Dato(aux[1], (double)Convert.ToDecimal(aux[3]));
+                                        array_datos_internos_nodo.Add(dato_interno);
+                                        array_ponderacion_datos_internos_nodo.Add(dato_ponderacion);
+                                        break;
+                                    case "NE":
+                                        Dato dato_externo = new Dato(aux[1], (double)Convert.ToDecimal(aux[2]));
+                                        array_ponderacion_nodos_externos_nodo.Add(dato_externo);
+                                        break;
+                                    case "IF":
+                                        valor_influencia_forzada_externa = (double)Convert.ToDecimal(aux[1]);
+                                        break;
+                                }
+                            }
+                            manejador_MBCIF.ingresarDatosIntenosANodo(array_datos_internos_nodo, id_nodo, valor_influencia_forzada_externa);
+                            manejador_MBCIF.ingresarPonderacionesANodo(id_nodo, array_ponderacion_datos_internos_nodo, array_ponderacion_nodos_externos_nodo);
+                            break;//fin caso nodo
+                        case "IN"://caso influencia
+                            string id_influencia = "";
+                            double valor_de_ajuste = 1;
+                            for (int i = 0; i < datos.Length; i++)
+                            {
+                                string[] aux = datos[i].Split(':');
+                                switch (aux[0])
+	                            {
+		                            case "ID":
+                                        id_influencia = aux[1];
+                                        break;
+                                    case "VA":
+                                        valor_de_ajuste = (double)Convert.ToDecimal(aux[1]);
+                                        break;
+	                            }
+                            }
+                            Influencia influencia = manejador_de_datos.extraerInfluencia(id_influencia);
+                            influencia.valor_ajuste_influencia = valor_de_ajuste;
+                            manejador_de_datos.actualizarInfluencia(influencia);
+                            break;//fin caso influencia
+                  
+                    }//End sw
+                }//End foreach
                 manejador_MBCIF.calculoPrevioDePesosNodos();
                 mostrarDiagramaMatriz();
                 return true;
@@ -494,6 +582,7 @@ namespace unCuartoSMART
             textBox_id_buscada.Text = "";
             textBox_informacion_elementos.Text = "";
             id_ultimo_nodo_consultado = "";
+            id_ultima_influencia_consultado = "";
         }
 
 
@@ -577,25 +666,46 @@ namespace unCuartoSMART
             FormVentanaBuscar ventana_buscar =  null;
             ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
             string[] archivos = null;
+            string[] descripcion = null;
             if (radioButton_nodo.Checked)
             {
                 ventana_buscar = new FormVentanaBuscar("Nodos");
                 archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+                descripcion = new string[archivos.Length];
+                for (int i = 0; i < archivos.Length; i++)
+                {
+                    Nodo nodo = manejador_de_archivos.extraerNodo(archivos[i]);
+                    descripcion[i] = nodo.nombre;
+                }
             }
             else if (radioButton_influencia.Checked)
             {
                 ventana_buscar = new FormVentanaBuscar("Influencias");
                 archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.INFLUENCIAS);
-                
+                descripcion = new string[archivos.Length];
+                for (int i = 0; i < archivos.Length; i++)
+                {
+                    Influencia influencia = manejador_de_archivos.extraerInfluencia(archivos[i]);
+                    descripcion[i] = influencia.nombre_influencia;
+                }
             }
             else if (radioButton_sistema.Checked)
             {
                 ventana_buscar = new FormVentanaBuscar("Sistemas");
                 archivos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.SISTEMAS);
+                descripcion = new string[archivos.Length];
+                for (int i = 0; i < archivos.Length; i++)
+                {
+                    Sistema sistema = manejador_de_archivos.extraerSistema(archivos[i]);
+                    descripcion[i] = sistema.nombre;
+                }
             }
             for (int i = 0; i < archivos.Length; i++)
             {
-                ventana_buscar.agregarElemento(archivos[i]);
+                if (descripcion == null)
+                    ventana_buscar.agregarElemento(archivos[i]);
+                else
+                    ventana_buscar.agregarElemento(archivos[i] , descripcion[i]);
             }
             ventana_buscar.ShowDialog(this);
             if (ventana_buscar.seleccion != null)
@@ -632,8 +742,14 @@ namespace unCuartoSMART
             string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
             for (int i = 0; i < id_datos_internos.Length; i++)
             {
-                ventana_modificacion_de_datos.agregarCampos(id_datos_internos[i], nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS),nodo.extraerRangoVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS));   
+                ventana_modificacion_de_datos.agregarCampos(id_datos_internos[i], nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS),nodo.extraerRangoVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS),nodo.extraerPonderacionVariable(id_datos_internos[i],Nodo.DATOS_INTERNOS));   
             }
+            string[] id_nodos_externos = nodo.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);
+            for (int i = 0; i < id_nodos_externos.Length; i++)
+            {
+                ventana_modificacion_de_datos.agregarCampos(id_nodos_externos[i], nodo.extraerValorVariable(id_nodos_externos[i], Nodo.DATOS_NODOS_EXTERNOS), new double[] { 0,1},nodo.extraerPonderacionVariable(id_nodos_externos[i],Nodo.DATOS_NODOS_EXTERNOS),false);
+            }
+
             ventana_modificacion_de_datos.influencia_externa_forzada = nodo.influencia_externa_forzada;
             ventana_modificacion_de_datos.ShowDialog(this);
             if (ventana_modificacion_de_datos.se_ingresaron_datos)
@@ -643,12 +759,35 @@ namespace unCuartoSMART
                 {
                     Dato aux = new Dato();
                     aux.id = id_datos_internos[i];
-                    aux.valor = ventana_modificacion_de_datos.ExtraerValorVariablePorNombre(id_datos_internos[i]);
+                    aux.valor = ventana_modificacion_de_datos.extraerValorVariablePorNombre(id_datos_internos[i]);
                     if (aux.valor != -666)
                         datos_nodos.Add(aux);
                 }
                 double influencia_externa_forzada = ventana_modificacion_de_datos.influencia_externa_forzada;
                 manejador_MBCIF.ingresarDatosIntenosANodo(datos_nodos, nodo.id_nodo,influencia_externa_forzada);
+                
+                if (ventana_modificacion_de_datos.se_modificaron_ponderaciones)
+                {
+                    ArrayList ponderaciones_datos_internos = new ArrayList();
+                    ArrayList ponderaciones_nodos_externos = new ArrayList();
+                    for (int i = 0; i < id_datos_internos.Length; i++)
+                    {
+                        Dato dato = new Dato(id_datos_internos[i], ventana_modificacion_de_datos.extraerValorPonderacionVariablePorNombre(id_datos_internos[i]));
+                        ponderaciones_datos_internos.Add(dato);
+                    }
+                    
+                    for (int i = 0; i < id_nodos_externos.Length; i++)
+                    {
+                        Dato dato = new Dato(id_nodos_externos[i], ventana_modificacion_de_datos.extraerValorPonderacionVariablePorNombre(id_nodos_externos[i]));
+                        ponderaciones_nodos_externos.Add(dato);
+                    }
+
+                    manejador_MBCIF.ingresarPonderacionesANodo(this.id_ultimo_nodo_consultado, ponderaciones_datos_internos, ponderaciones_nodos_externos);
+                }
+
+
+
+
                 buscarNodo(nodo.id_nodo);
             }
 
@@ -665,6 +804,7 @@ namespace unCuartoSMART
         {
             limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
+            button_modificar_ajuste_influencia.Enabled = false;
         }
 
 
@@ -678,6 +818,7 @@ namespace unCuartoSMART
         {
             limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
+            button_modificar_ajuste_influencia.Enabled = false;
         }
 
 
@@ -690,6 +831,7 @@ namespace unCuartoSMART
         {
             limpiarBoxInfo();
             button_modificar_nodo.Enabled = false;
+            button_modificar_ajuste_influencia.Enabled = false;
         }
 
         //--------------------------------------------------------------
@@ -828,6 +970,26 @@ namespace unCuartoSMART
                 mostrarDiagramaMatriz(nodo_actual);
                 int tiempo_en_milisegundos = (int)(numericUpDown_tiempo_entre_iteracion.Value * 1000);
                 System.Threading.Thread.Sleep(tiempo_en_milisegundos);
+            }
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_modificar_ajuste_influencia_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void button_modificar_ajuste_influencia_Click(object sender, EventArgs e)
+        {
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            Influencia influencia = manejador_de_archivos.extraerInfluencia(id_ultima_influencia_consultado);
+            
+            FormVentanaModificacionInfluencia ventana_modificacion_de_influencia = new FormVentanaModificacionInfluencia(id_ultima_influencia_consultado,influencia.nombre_influencia,influencia.valor_ajuste_influencia);
+            ventana_modificacion_de_influencia.ShowDialog();
+            if (ventana_modificacion_de_influencia.se_ingresarion_datos)
+            {
+                influencia.valor_ajuste_influencia = ventana_modificacion_de_influencia.valor_ajuste_influencia;
+                manejador_de_archivos.actualizarInfluencia(influencia);
+                mostrarInformacionInfluencia(influencia);
             }
         }
 
