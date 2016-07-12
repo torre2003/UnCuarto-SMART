@@ -188,8 +188,11 @@ namespace unCuartoSMART
                 TextBox aux = (TextBox)textboxs[i];
                 try
                 {
-
-                    double valor = (double)Convert.ToDecimal(aux.Text, CultureInfo.CreateSpecificCulture("en-US"));
+                    double valor = 0;
+                    if (aux.Enabled)
+                        valor = (double)Convert.ToDecimal(aux.Text, CultureInfo.CreateSpecificCulture("en-US"));
+                    else
+                        valor = (double)Convert.ToDecimal(aux.Text);
                     double[] rango = (double[])rangos[i];
 
                     if (valor < rango[0] || rango[1] < valor)
