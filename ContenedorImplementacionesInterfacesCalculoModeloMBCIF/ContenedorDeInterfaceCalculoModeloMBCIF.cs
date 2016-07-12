@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
 {
   
-    /*
+    
     
     //-----------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------
@@ -659,6 +659,6 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
 
 
 
-    */
+    
 
 }

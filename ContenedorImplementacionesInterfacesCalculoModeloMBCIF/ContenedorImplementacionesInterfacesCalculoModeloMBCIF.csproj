@@ -30,7 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FuzzyCore">
+    <Reference Include="FuzzyCore, Version=2.1.6022.606, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Extras\FuzzyCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />

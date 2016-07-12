@@ -82,6 +82,12 @@
     <Compile Include="FormVentanaMBCIF.Designer.cs">
       <DependentUpon>FormVentanaMBCIF.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVentanaModificacionInfluencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentanaModificacionInfluencia.Designer.cs">
+      <DependentUpon>FormVentanaModificacionInfluencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVentanaMBCIF.resx">
       <DependentUpon>FormVentanaMBCIF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentanaModificacionInfluencia.resx">
+      <DependentUpon>FormVentanaModificacionInfluencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVentanaPrincipal.resx">
       <DependentUpon>FormVentanaPrincipal.cs</DependentUpon>

@@ -14,13 +14,6 @@ namespace InicializadorDeArchivosModeloMBCIF
     {
         static void Main(string[] args)
         {
-            /*
-            Console.WriteLine("Ingrese nombre de la base de datos");
-            string nombre_de_archivo = Console.ReadLine();
-            nombre_de_archivo += ".yap";
-            File.Delete(nombre_de_archivo);
-            */
-            /*
             ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
             Console.WriteLine("Repositorio limpiado");
             Console.WriteLine(manejador_de_datos.limpiarDirectorioRepositorioDeDatos());
@@ -32,7 +25,10 @@ namespace InicializadorDeArchivosModeloMBCIF
             Program.generarSistemaTransporte();
 
             Console.ReadKey();
-            */
+            
+
+
+
 
             new NodosFacultadDeCiencias().crearNodosFacultadDeCiencias();
         
@@ -42,7 +38,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-        /*
+        
         public static void generarMina()
         {
             //_____________________________________ 
@@ -191,11 +187,22 @@ namespace InicializadorDeArchivosModeloMBCIF
 					                                         	new FuncionHombro("Poco", 0, 10, 60),
 					                                         	new FuncionSaturacion("Mucho", 40, 90, 100)
 					                                         })},
+                    {"n21", new VariableDifusa("n21", 0, 1,
+					                                         new List<FuncionPertenencia>(){
+					                                         	new FuncionHombro("Poco", 0, 0.10, 0.60),
+					                                         	new FuncionSaturacion("Mucho", 0.40, 0.90, 1.00)
+					                                         })},
+                    {"n22", new VariableDifusa("n22", 0, 1,
+					                                         new List<FuncionPertenencia>(){
+					                                         	new FuncionHombro("Poco", 0, 0.10, 0.60),
+					                                         	new FuncionSaturacion("Mucho", 0.40, 0.90, 1.00)
+					                                         })},
 					{"Numero de Operarios LHD", new VariableDifusa("Numero de Operarios LHD", 0, 100,
 					                                               new List<FuncionPertenencia>(){
 					                                               	new FuncionHombro("Poco", 0, 10, 60),
 			                                                      	new FuncionSaturacion("Mucho", 40, 90, 100)
 					                                               })}},
+                    
                 //salidas 
                 new Dictionary<string, VariableDifusa> {
 					{"Numero de operarios presentes", new VariableDifusa("Numero de operarios presentes", 0, 1,
@@ -209,6 +216,8 @@ namespace InicializadorDeArchivosModeloMBCIF
             n11_Operarios.agregarVariable("Numero de Tecnicos", Nodo.DATOS_INTERNOS);
             n11_Operarios.agregarVariable("Numero de Mineros", Nodo.DATOS_INTERNOS);
             n11_Operarios.agregarVariable("Numero de Operarios LHD", Nodo.DATOS_INTERNOS);
+            n11_Operarios.agregarVariable("n21", Nodo.DATOS_NODOS_EXTERNOS);
+            n11_Operarios.agregarVariable("n22", Nodo.DATOS_NODOS_EXTERNOS);
 
             n11_Operarios.agregarVariable("i_n31_n11", Nodo.INFLUENCIAS_EXTERNAS);
             n11_Operarios.agregarVariable("i_n22_n11", Nodo.INFLUENCIAS_EXTERNAS);
@@ -226,6 +235,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             i_n11_n12.id_nodo_origen = "n11";
             i_n11_n12.id_nodo_influenciado = "n12";
+            i_n11_n12.nombre_nodo_origen = "n11";
+            i_n11_n12.nombre_nodo_destino = "n12";
             i_n11_n12.calculos = new ICalculosInfluencia_i_n11_n12();
             i_n11_n12.fuzzy = new InferenciaDifusa(
                 //entradas
@@ -252,6 +263,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             i_n11_n13.id_nodo_origen = "n11";
             i_n11_n13.id_nodo_influenciado = "n13";
+            i_n11_n13.nombre_nodo_origen = "n11";
+            i_n11_n13.nombre_nodo_destino = "n13";
             i_n11_n13.calculos = new ICalculosInfluencia_i_n11_n13();
             i_n11_n13.fuzzy = new InferenciaDifusa(
                 //entradas
@@ -278,6 +291,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             i_n11_n31.id_nodo_origen = "n11";
             i_n11_n31.id_nodo_influenciado = "n31";
+            i_n11_n31.nombre_nodo_origen = "n11";
+            i_n11_n31.nombre_nodo_destino = "n31";
             i_n11_n31.calculos = new ICalculosInfluencia_i_n11_n31();
             i_n11_n31.fuzzy = new InferenciaDifusa(
                 //entradas
@@ -947,6 +962,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             Console.WriteLine("Sistema transporte ingresado");
         }
         //--------------------------------------------------------------------------------------------------------------------------
-        */
+        
     } // End Program
 }

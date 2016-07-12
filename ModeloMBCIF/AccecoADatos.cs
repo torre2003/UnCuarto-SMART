@@ -20,8 +20,17 @@ namespace AccesoADatos
     /// </summary>
     public class ManejadorDeDatosArchivos
     {
+        /// <summary>
+        /// Constantes de NODOS
+        /// </summary>
         public const int NODOS          = 1;
+        /// <summary>
+        /// Constante de INFLUENCIAS
+        /// </summary>
         public const int INFLUENCIAS    = 2;
+        /// <summary>
+        /// Constante de SISTEMAS
+        /// </summary>
         public const int SISTEMAS       = 3;
         
         
@@ -513,6 +522,7 @@ namespace AccesoADatos
             sql.conectar();
         }
 
+
         //*************************************************************************
         //Constructor
         //*************************************************************************
@@ -520,6 +530,7 @@ namespace AccesoADatos
         /// <summary>
         /// Función para iniciar y conectar la base de datos
         /// </summary>
+        /// <param name="manejador_de_archivos">Variable desde la cual se accede a los datos en el sistema de archivos</param>
         /// <param name="server">ip del servidor</param>
         /// <param name="user">usuario de la base de datos</param>
         /// <param name="port">puerto de comunicacion de la base de datos</param>
@@ -599,7 +610,10 @@ namespace AccesoADatos
         //*************************************************************************
         // comproabrInicializacionBaseDeDatos
         //*************************************************************************
-
+        /// <summary>
+        /// Metodo para comprobar la inicialñizacion de la base de datos 
+        /// </summary>
+        /// <returns></returns>
         public bool comproabrInicializacionBaseDeDatos()
         {
             if (!sql.conectado)
@@ -616,7 +630,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="nodos">Arreglo con las id de los nodos a buscar</param>
         /// <param name="cantidadRegistros">cantidad de registros a extraer de la base de datos</param>
-        /// <returns>Lista de lista de valores de nodos    < <0.1:0.2:0.3:..><0.1:0.2:0.3:..><..> > NULL si hubo problemas en la consulta</returns>  
+        /// <returns>Lista de lista de valores de nodos    [[0.1:0.2:0.3:..][0.1:0.2:0.3:..][..]] NULL si hubo problemas en la consulta</returns>  
         public List<List<double>> obtenerPesos(string[] nodos, int cantidadRegistros = -1)
         {
             if (sql.conectado)

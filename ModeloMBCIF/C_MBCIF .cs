@@ -20,10 +20,25 @@ namespace ModeloMBCIF
     [Serializable()]
     public class Nodo
     {
+        /// <summary>
+        /// Constante de DATOS INTERNOS
+        /// </summary>
         public const int DATOS_INTERNOS             = 1;
+        /// <summary>
+        /// Constante de DATOS NODOS EXTERNOS
+        /// </summary>
         public const int DATOS_NODOS_EXTERNOS       = 2;
+        /// <summary>
+        /// Constante de INFLUENCIAS EXTERNAS
+        /// </summary>
         public const int INFLUENCIAS_EXTERNAS       = 3;
+        /// <summary>
+        /// Constantes de NODOS INFLUENCIADOS
+        /// </summary>
         public const int NODOS_INFLUENCIADOS        = 4;
+        /// <summary>
+        /// Constante de DATOS DE SALIDA
+        /// </summary>
         public const int DATOS_DE_SALIDA            = 5;
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -130,6 +145,25 @@ namespace ModeloMBCIF
         [TypeConverter(typeof(ExpandableObjectConverter))]
          public ArrayList nodos_externos { get; set; }//= new ArrayList();
 
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        //  ponderacion datos internos
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// Array list de tipo [Dato], que contiene los valores de ponderacion de los datos internos que va de 0 - 1
+        /// </summary>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public ArrayList ponderacion_datos_internos { get; set; }//= new ArrayList();
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        //  ponderacion nodos externos
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// Array list de tipo [Dato], que contiene los valores de ponderacion de los nodos externos que va de 0 - 1
+        /// </summary>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public ArrayList ponderacion_nodos_externos { get; set; }//= new ArrayList();
+        
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // influencias
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -193,8 +227,8 @@ namespace ModeloMBCIF
             nodos_externos = new ArrayList();
             influencias = new ArrayList();
             nodos_influenciados = new ArrayList();
-
-
+            ponderacion_datos_internos = new ArrayList();
+            ponderacion_nodos_externos = new ArrayList();
         }
         
         //*************************************************************************
@@ -215,6 +249,8 @@ namespace ModeloMBCIF
             nodos_externos = new ArrayList();
             influencias = new ArrayList();
             nodos_influenciados = new ArrayList();
+            ponderacion_datos_internos = new ArrayList();
+            ponderacion_nodos_externos = new ArrayList();
         }
 
         //*************************************************************************
@@ -227,7 +263,6 @@ namespace ModeloMBCIF
         public void actualizacionNodo()
         {
             _peso_bruto     = _calculos.calculoPesoBruto(this.fuzzy);
-
 
             if (influencia_externa_forzada != 0)
             {
@@ -314,7 +349,56 @@ namespace ModeloMBCIF
             }
             return false;
         }
+
+
+        /// <summary>
+        /// Método para actualizar las distintas ponderaciones de las variables del nodo
+        /// </summary>
+        /// <param name="id_variable">Nombre de la variable a actualizar</param>
+        /// <param name="valor_ponderacion">Ponderacion a ingresar a la variable entre 0 - 1 </param>
+        /// <param name="tipo_de_variable">Constante con el tipo de variable a actualizar DATO_INTERNO o NODO_EXTERNO</param>
+        /// <returns>true si existe la variable, false en caso contrario</returns>
+        public bool actualizarPonderacionVariable(string id_variable, double valor_ponderacion, int tipo_de_variable)
+        {
+            if (valor_ponderacion < 0)
+                valor_ponderacion = 0;
+            if (valor_ponderacion > 1)
+                valor_ponderacion = 1;
+            switch (tipo_de_variable)
+            {
+                case DATOS_INTERNOS:
+                    foreach (var item in ponderacion_datos_internos)
+                    {
+                        Dato variable = (Dato)item;
+                        if (variable.id.Equals(id_variable))
+                        {
+                            variable.valor = valor_ponderacion;
+                            fuzzy.Entradas[id_variable].FactorPonderacion = valor_ponderacion;
+                            return true;
+                        }
+                    }
+                    break;
+                case DATOS_NODOS_EXTERNOS:
+                    foreach (var item in ponderacion_nodos_externos)
+                    {
+                        Dato variable = (Dato)item;
+                        if (variable.id.Equals(id_variable))
+                        {
+                            variable.valor = valor_ponderacion;
+                            fuzzy.Entradas[id_variable].FactorPonderacion = valor_ponderacion; 
+                            return true;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
         
+
+
+
         //*************************************************************************
         // extraerValorVariable 
         //*************************************************************************
@@ -351,6 +435,50 @@ namespace ModeloMBCIF
                         Dato variable = (Dato)item;
                         if (variable.id.Equals(id_variable))
                             return variable.valor;
+                    }
+                    break;
+            }
+            return -666;
+        }
+
+
+        //*************************************************************************
+        // extraerPonderacionVariable 
+        //*************************************************************************
+
+        /// <summary>
+        /// Método para extraer la ponderacion  de la variable en el nodo
+        /// </summary>
+        /// <param name="id_variable">Id de la variable</param>
+        /// <param name="tipo_de_variable">Constante con el tipo de variable a consultar DATO_INTERNO o NODO_EXTERNO; </param>
+        /// <param name="normalizada">Valor booleana opcional si se quiere el valor de la Ponderacion normalizada en base a todas las ponderaciones</param>
+        /// <returns>valor de la variable, -666 en caso de no existir la variable</returns>
+        public double extraerPonderacionVariable(string id_variable, int tipo_de_variable, bool normalizada = false)
+        {
+            switch (tipo_de_variable)
+            {
+                case DATOS_INTERNOS:
+                    foreach (Dato item in ponderacion_datos_internos)
+                    {
+                        if (item.id.Equals(id_variable))
+                        {
+                            if (!normalizada)
+                                return item.valor;
+                            else
+                                return item.valor / sumaTotalPonderaciones();
+                        }
+                    }
+                    break;
+                case DATOS_NODOS_EXTERNOS:
+                    foreach (Dato item in ponderacion_nodos_externos)
+                    {
+                        if (item.id.Equals(id_variable))
+                        {
+                            if (!normalizada)
+                                return item.valor;
+                            else
+                                return item.valor / sumaTotalPonderaciones();
+                        }
                     }
                     break;
             }
@@ -471,8 +599,9 @@ namespace ModeloMBCIF
         /// <param name="id_variable">id de la nueva variable a ingresar</param>
         /// <param name="tipo_de_variable">Constante de identificación para el tipo de variables DATO_INTERNO,NODO_EXTERNO,INFLUENCIA,NODO_INFLUENCIADO; </param>
         /// <param name="valor">Parametro opcional con el valor de la variable</param>
+        /// <param name="ponderacion">Parametro opcional con el valor de la ponderación entre 0 - 1, Aplicable a DATOS_INTERNOS y DATOS_NODOS_EXTERNOS</param>
         /// <returns>true si se ingresa la variable correctamente, false si es repetida, null o vacia</returns>
-        public bool agregarVariable(string id_variable, int tipo_de_variable, double valor = 0)
+        public bool agregarVariable(string id_variable, int tipo_de_variable, double valor = 0, double ponderacion = 1)
         {
             string[] lista_de_variables = listarVariables(tipo_de_variable);
             if (id_variable == null || id_variable.Equals(""))
@@ -482,19 +611,34 @@ namespace ModeloMBCIF
                 if (lista_de_variables[i].Equals(id_variable))
                     return false;
             }
-            Dato dato = new Dato();
-            dato.id = id_variable;
-            dato.valor = valor;
+
+            if (ponderacion < 0)
+                ponderacion = 0;
+            if (ponderacion > 1)
+                ponderacion = 1;
+            
+            Dato dato_variable = new Dato();
+            dato_variable.id = id_variable;
+            dato_variable.valor = valor;
+
+            Dato dato_ponderacion = new Dato();
+            dato_ponderacion.id = id_variable;
+            dato_ponderacion.valor = ponderacion;
+
             switch (tipo_de_variable)
             {
                 case DATOS_INTERNOS:
-                    datos_internos.Add(dato);
+                    datos_internos.Add(dato_variable);
+                    ponderacion_datos_internos.Add(dato_ponderacion);
+                    fuzzy.Entradas[id_variable].FactorPonderacion = ponderacion;
                     return true;
                 case DATOS_NODOS_EXTERNOS:
-                    nodos_externos.Add(dato);
+                    nodos_externos.Add(dato_variable);
+                    ponderacion_nodos_externos.Add(dato_ponderacion);
+                    fuzzy.Entradas[id_variable].FactorPonderacion = ponderacion;
                     return true;
                 case INFLUENCIAS_EXTERNAS:
-                    influencias.Add(dato);
+                    influencias.Add(dato_variable);
                     return true;
                 case NODOS_INFLUENCIADOS:
                     nodos_influenciados.Add(id_variable);
@@ -531,6 +675,26 @@ namespace ModeloMBCIF
             }
             return datos_de_retorno;
         }
+
+        //*************************************************************************
+        //  sumaTotalPonderaciones
+        //*************************************************************************
+        /// <summary>
+        /// Método que devuelve las suma de todas las ponderaciones de DATOS_INTERNOS y DATOS_NODOS_EXTERNOS
+        /// </summary>
+        /// <returns>Suma de todas las ponderaciones</returns>
+        public double sumaTotalPonderaciones()
+        {
+            double suma_total = 0;
+            foreach (Dato item in ponderacion_datos_internos)
+                suma_total += item.valor;
+            foreach (Dato item in ponderacion_nodos_externos)
+                suma_total += item.valor;
+            return suma_total;
+        }
+
+        
+
 
 
     } // fin Clase Nodo
@@ -603,6 +767,10 @@ namespace ModeloMBCIF
             this.id = id;
             this.valor = valor;
         }
+        /// <summary>
+        /// ToString
+        /// </summary>
+        /// <returns>ToString</returns>
         public override string ToString()
         {
             return string.Format("{0} [{1}]", id, valor);

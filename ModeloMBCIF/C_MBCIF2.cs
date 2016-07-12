@@ -19,16 +19,7 @@ namespace ModeloMBCIF
     [Serializable()]
     public class Influencia
     {
-        /// <summary>
-        /// Constante tipo de influencia
-        /// </summary>
-        public const int INFLUENCIA_POSITIVA = 1;
-        /// <summary>
-        /// Constante tipo de influencia
-        /// </summary>
-        public const int INFLUENCIA_NEGATIVA = -1;
-        
-        
+          
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // id influencia
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -106,6 +97,72 @@ namespace ModeloMBCIF
         double _peso_influencia;
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // valor ajuste influencia
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+        /// <summary>
+        /// Valor de ajuste de la influencia que va de 0 a 2, siendo 1 el valor por defecto y significando un 100% de la influencia
+        /// </summary>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public double valor_ajuste_influencia
+        {
+            get { return _valor_ajuste_influencia; }
+            set 
+            {
+                if (value < 0)
+                    value = 0;
+                if (value > 2)
+                    value = 2;
+                _valor_ajuste_influencia = value; 
+            }
+        }
+        double _valor_ajuste_influencia = 1;
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // nombre_influencia
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// Nombre de la influencia
+        /// </summary>
+        public string nombre_influencia
+        {
+            get 
+            {
+                if (nombre_nodo_destino.Equals("") || nombre_nodo_origen.Equals(""))
+                    return "";
+                else
+                    return "Desde " + nombre_nodo_origen + " a " + nombre_nodo_destino;
+            }
+        }
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // nombre_nodo_origen
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// nombre nodo origen
+        /// </summary>
+        public string nombre_nodo_origen
+        {
+            get { return _nombre_nodo_origen; }
+            set { _nombre_nodo_origen = value; }
+        }
+        string _nombre_nodo_origen = "";
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // nombre_nodo_destino
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        /// <summary>
+        /// nombre nodo destino
+        /// </summary>
+        public string nombre_nodo_destino
+        {
+            get { return _nombre_nodo_destino; }
+            set { _nombre_nodo_destino = value; }
+        }
+        string _nombre_nodo_destino = "";
+
+
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // fuzzy
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
@@ -135,10 +192,10 @@ namespace ModeloMBCIF
         }
         ICalculosInfluencias _calculos;
 
+
         //*************************************************************************
         // Constructor
         //*************************************************************************
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -147,6 +204,23 @@ namespace ModeloMBCIF
         {
             this.id_influencia = id_influencia;
 
+        }
+
+
+        //*************************************************************************
+        // Constructor
+        //*************************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_influencia"></param>
+        /// <param name="nombre_nodo_origen"></param>
+        /// <param name="nombre_nodo_destino"></param>
+        public Influencia(string id_influencia, string nombre_nodo_origen, string nombre_nodo_destino)
+        {
+            this.id_influencia = id_influencia;
+            this.nombre_nodo_origen = nombre_nodo_origen;
+            this.nombre_nodo_destino = nombre_nodo_destino;
         }
 
         //*************************************************************************
@@ -159,6 +233,7 @@ namespace ModeloMBCIF
         public void actualizacionInfluencia()
         {
             peso_influencia = _calculos.calculoPeso(fuzzy);
+            peso_influencia = peso_influencia * valor_ajuste_influencia;
         }
 
         //*************************************************************************
@@ -191,8 +266,7 @@ namespace ModeloMBCIF
         /// Método para el calculo del peso de la influencia
         /// </summary>
         /// <param name="fuzzy">Sistema de inferencia difusa de la influencia</param>
-        /// <param name="tipo_de_influencia">Constante de tipo de influencia, NEGATIVA o POSITIVA</param>
-        /// <returns></returns>
+        /// <returns>peso de la influencia en base a la inferencia difusa</returns>
         double calculoPeso(InferenciaDifusa fuzzy);
     }
 
