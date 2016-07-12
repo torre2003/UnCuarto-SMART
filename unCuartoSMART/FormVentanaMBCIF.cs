@@ -203,7 +203,7 @@ namespace unCuartoSMART
             string[] id_datos_internos = nodo.listarVariables(Nodo.DATOS_INTERNOS);
             for (int i = 0; i < id_datos_internos.Length; i++)
             {
-                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS, true));
+                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS));
                 string aux_dato = "(" + ponderacion + ")  " + id_datos_internos[i] + " \t " + nodo.extraerValorVariable(id_datos_internos[i], Nodo.DATOS_INTERNOS);
                 textBox_informacion_elementos.AppendText(aux_dato + "\r\n");
             }
@@ -213,7 +213,7 @@ namespace unCuartoSMART
             string[] id_nodo_externos = nodo.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);
             for (int i = 0; i < id_nodo_externos.Length; i++)
             {
-                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS, true));
+                string ponderacion = String.Format("{0:0.00}", nodo.extraerPonderacionVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS));
                 string aux_dato = "(" + ponderacion + ")  " + id_nodo_externos[i] + " \t " + nodo.extraerValorVariable(id_nodo_externos[i], Nodo.DATOS_NODOS_EXTERNOS);
                 textBox_informacion_elementos.AppendText(aux_dato + "\r\n");
             }

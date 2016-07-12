@@ -264,7 +264,7 @@ namespace ModeloMBCIF
                             return false;
                         }
                     }
-                
+                nodo.normalizarPonderaciones();
                 manejador_de_datos_archivos.actualizarNodo(nodo);
                 return true;
             }

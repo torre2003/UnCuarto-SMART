@@ -630,12 +630,14 @@ namespace ModeloMBCIF
                 case DATOS_INTERNOS:
                     datos_internos.Add(dato_variable);
                     ponderacion_datos_internos.Add(dato_ponderacion);
-                    fuzzy.Entradas[id_variable].FactorPonderacion = ponderacion;
+                    restablecerPonderaciones();
+                    fuzzy.Entradas[id_variable].FactorPonderacion = extraerPonderacionVariable(id_variable,Nodo.DATOS_INTERNOS);
                     return true;
                 case DATOS_NODOS_EXTERNOS:
                     nodos_externos.Add(dato_variable);
                     ponderacion_nodos_externos.Add(dato_ponderacion);
-                    fuzzy.Entradas[id_variable].FactorPonderacion = ponderacion;
+                    restablecerPonderaciones();
+                    fuzzy.Entradas[id_variable].FactorPonderacion = extraerPonderacionVariable(id_variable,Nodo.DATOS_NODOS_EXTERNOS);;
                     return true;
                 case INFLUENCIAS_EXTERNAS:
                     influencias.Add(dato_variable);
@@ -647,6 +649,40 @@ namespace ModeloMBCIF
                     break;
             }
             return false;
+        }
+
+        //*************************************************************************
+        // restablecerPonderaciones
+        //*************************************************************************
+        /// <summary>
+        /// Método que deja todas las ponderaciones con el mismo valor equivalente
+        /// </summary>
+        public void restablecerPonderaciones()
+        {
+            foreach (Dato item in ponderacion_datos_internos)
+                item.valor = 1;
+            foreach (Dato item in ponderacion_nodos_externos)
+                item.valor = 1;
+            double suma_ponderaciones = sumaTotalPonderaciones();
+            foreach (Dato item in ponderacion_datos_internos)
+                item.valor = item.valor/suma_ponderaciones;
+            foreach (Dato item in ponderacion_nodos_externos)
+                item.valor = item.valor / suma_ponderaciones;
+        }
+
+        //*************************************************************************
+        // normalizarPonderaciones
+        //*************************************************************************
+        /// <summary>
+        /// Metodo para normalizar todas la ponderaciones
+        /// </summary>
+        public void normalizarPonderaciones()
+        {
+            double suma_ponderaciones = sumaTotalPonderaciones();
+            foreach (Dato item in ponderacion_datos_internos)
+                item.valor = item.valor / suma_ponderaciones;
+            foreach (Dato item in ponderacion_nodos_externos)
+                item.valor = item.valor / suma_ponderaciones;
         }
 
         //*************************************************************************

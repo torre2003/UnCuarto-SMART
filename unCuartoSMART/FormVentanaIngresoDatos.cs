@@ -114,7 +114,8 @@ namespace unCuartoSMART
             nuevo_textBox.Name = "";
             nuevo_textBox.Size = new System.Drawing.Size(100, 20);
             nuevo_textBox.TabIndex = 1;
-            nuevo_textBox.Text = "" + valor_actual;
+            string aux_texto = "" + valor_actual;
+            nuevo_textBox.Text = aux_texto.Replace(',', '.');
             nuevo_textBox.Enabled = textBox_editable;
 
             Label label_rango = new Label();
@@ -189,10 +190,13 @@ namespace unCuartoSMART
                 try
                 {
                     double valor = 0;
+                    /*
                     if (aux.Enabled)
                         valor = (double)Convert.ToDecimal(aux.Text, CultureInfo.CreateSpecificCulture("en-US"));
                     else
                         valor = (double)Convert.ToDecimal(aux.Text);
+                     */
+                    valor = (double)Convert.ToDecimal(aux.Text, CultureInfo.CreateSpecificCulture("en-US"));
                     double[] rango = (double[])rangos[i];
 
                     if (valor < rango[0] || rango[1] < valor)
