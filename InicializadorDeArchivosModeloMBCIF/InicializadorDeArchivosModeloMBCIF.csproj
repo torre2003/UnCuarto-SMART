@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NodosDoctorado.cs" />
     <Compile Include="NodosFacultadDeCiencias.cs" />
+    <Compile Include="NodosPostitulos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
