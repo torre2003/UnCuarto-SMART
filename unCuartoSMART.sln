@@ -1,7 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-# SharpDevelop 5.1
+# Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unCuartoSMART", "unCuartoSMART\unCuartoSMART.csproj", "{61349857-4969-4287-865E-70E66259BAA2}"
@@ -13,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InicializadorDeArchivosModeloMBCIF", "InicializadorDeArchivosModeloMBCIF\InicializadorDeArchivosModeloMBCIF.csproj", "{8D9AEA8D-E66D-475A-96CF-C450FC90065E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContenedorImplementacionesInterfacesCalculoModeloMBCIF", "ContenedorImplementacionesInterfacesCalculoModeloMBCIF\ContenedorImplementacionesInterfacesCalculoModeloMBCIF.csproj", "{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComprobadorDeIntegridadDeNodos", "ComprobadorDeIntegridadDeNodos\ComprobadorDeIntegridadDeNodos.csproj", "{FD571F8C-DAF0-4A4D-98AC-C5A7C87E569B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +41,10 @@ Global
 		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B2357F7-24B0-4280-A2FE-1E0681B8D8D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD571F8C-DAF0-4A4D-98AC-C5A7C87E569B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD571F8C-DAF0-4A4D-98AC-C5A7C87E569B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD571F8C-DAF0-4A4D-98AC-C5A7C87E569B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD571F8C-DAF0-4A4D-98AC-C5A7C87E569B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

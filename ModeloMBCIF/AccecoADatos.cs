@@ -40,7 +40,7 @@ namespace AccesoADatos
         /// <summary>
         /// Contiene la ruta a la carpeta en donde se encuentran los archivos a utilizar en el programa
         /// </summary>
-        string ruta_carpeta_archivos = "repositorio de datos\\";
+        public string ruta_carpeta_archivos = "repositorio de datos\\";
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // nombre archivo de analisis

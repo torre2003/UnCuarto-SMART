@@ -98,11 +98,8 @@ namespace unCuartoSMART
     }
 }
 
+
 //tareas
-
-
-
-//TODO arreglar el archivo de guardado - con las ponderaciones
 
 
 // Extras
