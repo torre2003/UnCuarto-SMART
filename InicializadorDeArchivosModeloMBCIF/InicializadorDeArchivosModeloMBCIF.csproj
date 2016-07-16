@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="NodosDoctorado.cs" />
     <Compile Include="NodosFacultadDeCiencias.cs" />
+    <Compile Include="NodosFacultadDeCienciasSocialesyEconomicas.cs" />
+    <Compile Include="NodosFacultadDeHumanidades.cs" />
+    <Compile Include="NodosFacultadDeIngenieria.cs" />
     <Compile Include="NodosPostitulos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

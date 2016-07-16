@@ -74,14 +74,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 					}
 				);
 				doctorado_en_quimica.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
-				doctorado_en_quimica.agregarVariable("acreditación", Nodo.DATOS_INTERNOS);
+				doctorado_en_quimica.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				doctorado_en_quimica.agregarVariable("n.nadeq", Nodo.DATOS_NODOS_EXTERNOS);
 				
 				//doctorado_en_quimica.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);
 				
 				doctorado_en_quimica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);	
-				doctorado_en_quimica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);				
+				doctorado_en_quimica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+				doctorado_en_quimica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);				
 	
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 				
@@ -134,8 +135,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(doctorado_en_quimica);
-				manejador_de_datos.ingresarNuevoNodo(nivel_academico_doctorado_en_quimica);
 				Console.WriteLine("Nodo Doctorado en quimica ingresado");
+				manejador_de_datos.ingresarNuevoNodo(nivel_academico_doctorado_en_quimica);
+				Console.WriteLine("Nodo nivel academico Doctorado en quimica ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion			
@@ -189,7 +191,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 					}
 				);
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
-				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("acreditación", Nodo.DATOS_INTERNOS);
+				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.nadeidayb", Nodo.DATOS_NODOS_EXTERNOS);
 				
@@ -197,7 +199,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				
+				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 	
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 				
@@ -250,8 +252,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(doctorado_en_ingeniería_de_alimentos_y_bioprocesos);
+				Console.WriteLine("Nodo Doctorado en Ingeniería de Alimentos y Bioprocesos ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_ingenieria_en_alimentos_y_bioprocesos);
-				Console.WriteLine("Nodos Ingeniería de Alimentos y Bioprocesos ingresado");
+				Console.WriteLine("Nodo nivel academico Doctorado en Ingeniería de Alimentos y Bioprocesos ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion
@@ -305,7 +308,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 					}
 				);
 				doctorado_en_biologia.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
-				doctorado_en_biologia.agregarVariable("acreditación", Nodo.DATOS_INTERNOS);
+				doctorado_en_biologia.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				doctorado_en_biologia.agregarVariable("n.nadebyea", Nodo.DATOS_NODOS_EXTERNOS);
 				
@@ -313,7 +316,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				doctorado_en_biologia.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				doctorado_en_biologia.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				
+				doctorado_en_biologia.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);	
 
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 				
@@ -366,8 +369,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(doctorado_en_biologia);
+				Console.WriteLine("Nodo Doctorado en Biología ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_doctorado_en_biologia);
-				Console.WriteLine("Nodos ingresados ingresado");
+				Console.WriteLine("Nodo nivel academico Doctorado en Biología ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion

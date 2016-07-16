@@ -14,7 +14,16 @@ namespace InicializadorDeArchivosModeloMBCIF
     {
         static void Main(string[] args)
         {
-            /*
+            
+        	var doctorados = new NodosDoctorado();
+        	var postitulos = new NodosPostitulos();
+        	var academicosCiencias = new NodosFacultadDeCiencias();
+        	var acdemicosFacse = new NodosFacultadDeCienciasSocialesyEconomicas();
+        	var academicosIngenieria = new NodosFacultadDeIngenieria();
+        	var academicosHumanidades = new NodosFacultadDeHumanidades();
+        	
+        	
+        	/*
             ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
             Console.WriteLine("Repositorio limpiado");
             Console.WriteLine(manejador_de_datos.limpiarDirectorioRepositorioDeDatos());

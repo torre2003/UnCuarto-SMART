@@ -127,12 +127,12 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 						
 				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-						
-						
+											
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(diplomado_innovacion_educativa);
+				Console.WriteLine("Nodo Diplomado Innovación Educativa ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_innovacion_educativa);
-				Console.WriteLine("Nodos ingresados ingresado");
+				Console.WriteLine("Nodo nivel academico Diplomado Innovación Educativa ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion
@@ -247,8 +247,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(diplomado_gestion_tributaria);
+				Console.WriteLine("Nodo Diplomado Gestion Tributaria ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_gestion_tributaria);
-				Console.WriteLine("Nodos ingresados ingresado");
+				Console.WriteLine("Nodo nivel academico Diplomado Gestion Tributaria ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion
@@ -317,7 +318,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo Nivel academico postitulo_en_algo _________
 				//______________________________________________________________________________________________________
 				Nodo nivel_academico_postitulo_mencion_docentes_s_ciclo;
-				nivel_academico_postitulo_mencion_docentes_s_ciclo = new Nodo("n.nanapmpdqeescdebppelacnpea", "nivel academico Postítulo Mención para Docentes que ejercen en segundo ciclo de Enseñanza básica para Profesores en la Asignatura de Ciencias Naturales");
+				nivel_academico_postitulo_mencion_docentes_s_ciclo = new Nodo("n.napmpdqeescdebppelacn", "nivel academico Postítulo Mención para Docentes que ejercen en segundo ciclo de Enseñanza básica para Profesores en la Asignatura de Ciencias Naturales");
 				nivel_academico_postitulo_mencion_docentes_s_ciclo.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -359,8 +360,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(postitulo_mencion_docentes_s_ciclo);
+				Console.WriteLine("Nodo Postitulo Mencion Docentes ....... ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_postitulo_mencion_docentes_s_ciclo);
-				Console.WriteLine("Nodos ingresados ingresado");
+				Console.WriteLine("Nodo nivel academico Postitulo Mencion Docentes ....... ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion		
@@ -471,8 +473,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(diplomado_en_eficiencia_energética);
+				Console.WriteLine("Nodo Diplomado Eficiencia Energetica ingresado");
 				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_en_eficiencia_energética);
-				Console.WriteLine("Nodos ingresados ingresado");
+				Console.WriteLine("Nodo nivel academico Diplomado Eficiencia Energetica ingresado");
 				// escribir nodos X
 				#endregion	
 			#endregion
