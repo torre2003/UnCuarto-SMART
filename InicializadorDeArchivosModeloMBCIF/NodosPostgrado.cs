@@ -16,6 +16,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
         public void crearNodosPostgrado()
         {
+            #region Nodo Postgrado
             //____________________________________________________________________________________________
             //_________________ Nodo Postgrado ___________________________________________________
             //____________________________________________________________________________________________
@@ -75,11 +76,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               
 //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-//           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
 
-
-
+              #region Nodo Postgrado Sección Doctorados
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Doctorados ___________________________________________________
               //____________________________________________________________________________________________
@@ -133,9 +134,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
-
-
+              #region Nodo Postgrado Sección Magister
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Magister ___________________________________________________
               //____________________________________________________________________________________________
@@ -219,9 +220,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
-
-
+              #region Nodo Postgrado Sección diplomados y postitulos
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección diplomados y postitulos ___________________________________________________
               //____________________________________________________________________________________________
@@ -283,10 +284,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
 
-
-
+              #region nodo Personal Postgrado
               //____________________________________________________________________________________________
               //_________________ Nodo Personal Postgrado  ___________________________________________________
               //____________________________________________________________________________________________
@@ -333,9 +334,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
-
-
+              #region Nodo Secretaria Postgrado
               //____________________________________________________________________________________________
               //_________________ Nodo Secretaria Postgrado  ___________________________________________________
               //____________________________________________________________________________________________
@@ -417,8 +418,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
-
+              #region nodo Director Postgrado
               //____________________________________________________________________________________________
               //_________________ Nodo Director Postgrado  ___________________________________________________
               //____________________________________________________________________________________________
@@ -488,6 +490,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 
 
+              #endregion
 
 
 
@@ -500,8 +503,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-          
-          		//Escribiendo nodos en archivo
+              //Escribiendo nodos en archivo
 
 
               manejador_de_archivos.ingresarNuevoNodo(nodo_postrado);

@@ -16,6 +16,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
         public void crearNodosInvestigaciones()
         {
+            #region Nodo Investigacion
             //____________________________________________________________________________________________
             //_________________ Nodo Investigacion ___________________________________________________
             //____________________________________________________________________________________________
@@ -80,8 +81,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //Escribiendo nodos en archivo
 
-
-
+            #endregion
+            #region Nodo Personal Investigacion
             //____________________________________________________________________________________________
             //_________________ Nodo Personal Investigacion  ___________________________________________________
             //____________________________________________________________________________________________
@@ -128,9 +129,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
-
-
+            #region Nodo Secretaria Investigacion
             //____________________________________________________________________________________________
             //_________________ Nodo Secretaria Investigacion  ___________________________________________________
             //____________________________________________________________________________________________
@@ -213,9 +214,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 
+            #endregion
 
-
-
+            #region Nodo Director Investigacion
             //____________________________________________________________________________________________
             //_________________ Nodo Director Investigacion  ___________________________________________________
             //____________________________________________________________________________________________
@@ -283,8 +284,8 @@ namespace InicializadorDeArchivosModeloMBCIF
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-
-
+            #endregion
+            #region Nodo Publicaciones ISI
             //____________________________________________________________________________________________
             //_________________ Nodo Publicaciones ISI  ___________________________________________________
             //____________________________________________________________________________________________
@@ -332,10 +333,10 @@ namespace InicializadorDeArchivosModeloMBCIF
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
 
-
-
+            #region Nodo Publicaciones SciELO
             //____________________________________________________________________________________________
             //_________________ Nodo Publicaciones SciELO  ___________________________________________________
             //____________________________________________________________________________________________
@@ -382,8 +383,8 @@ namespace InicializadorDeArchivosModeloMBCIF
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-
-
+            #endregion
+            #region Nodo Publicaciones equivalentes
             //____________________________________________________________________________________________
             //_________________ Nodo Publicaciones equivalentes  ___________________________________________________
             //____________________________________________________________________________________________
@@ -432,7 +433,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 
-
+            #endregion
 
 
 

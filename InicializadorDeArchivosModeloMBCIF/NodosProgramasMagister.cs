@@ -14,6 +14,7 @@ namespace InicializadorDeArchivosModeloMBCIF
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
         public void crearNodosProgramasMagister()
         {
+            #region Nodo Magister en Mecánica Computacional
             //ingresar nodos X
             //TODO Magister en Mecánica Computacional 
             //___________________________________________________________________________________
@@ -70,8 +71,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             //  nodo_mag_en_mecanica_computacional.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //  nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
-
+            #region Nodo Nivel academico Magister en Mecánica Computacional
             //______________________________________________________________________________________________________
             //_________________ Nodo Nivel academico Magister en Mecánica Computacional _________
             //______________________________________________________________________________________________________
@@ -112,8 +114,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
             //nivel_academico_nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+            #endregion
 
-
+            #region  Nodo Magister en Ciencias en Física
             //____________________________________________________________________________________________
             //_________________ Nodo Magister en Ciencias en Física_______________________________________
             //____________________________________________________________________________________________
@@ -169,7 +172,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             //nodo_magister_en_ciencias_fiscas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
+            #region Nodo Nivel academico Magister en Ciencias en Física
             //______________________________________________________________________________________________________
             //_________________ Nodo Nivel academico Magister en Ciencias en Física _____________________________________________
             //______________________________________________________________________________________________________
@@ -210,11 +215,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nivel_academico_magister_en_ciencias_fisicas.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
             //nivel_academico_magister_en_ciencias_fisicas.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+            #endregion
 
 
 
-
-            
+            #region  Nodo Magister en Matemáticas"
             //____________________________________________________________________________________________
             //_________________ Nodo Magister en Matemáticas" ___________________________________________________
             //____________________________________________________________________________________________
@@ -270,7 +275,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             //postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
             //postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
+            #region  Nodo Nivel academico Magister en Matemáticas
             //______________________________________________________________________________________________________
             //_________________ Nodo Nivel academico Magister en Matemáticas _____________________________________________
             //______________________________________________________________________________________________________
@@ -311,11 +318,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nivel_academico_magister_en_matematica.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
             //nivel_academico_magister_en_matematica.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-          
 
-            
+            #endregion
 
-             //____________________________________________________________________________________________
+            #region Nodo Magister en Liderazgo, Dirección y comunicación Estratégica
+            //____________________________________________________________________________________________
             //_________________ Nodo Magister en Liderazgo, Dirección y comunicación Estratégica ___________________________________________________
             //____________________________________________________________________________________________
           	Nodo nodo_mag_en_lid_dir_y_com_est;
@@ -368,9 +375,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               
 //        		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-//              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            #endregion
 
-			//______________________________________________________________________________________________________
+              #region Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica
+              //______________________________________________________________________________________________________
             //_________________ Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica _____________________________________________
             //______________________________________________________________________________________________________
           	Nodo nivel_academico_mag_en_lid_dir_y_com_est;
@@ -407,10 +416,11 @@ namespace InicializadorDeArchivosModeloMBCIF
           
               nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("n.alr", Nodo.DATOS_NODOS_EXTERNOS);
               nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-              
-//              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
 
+              //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              #endregion
 
+              #region Nodo Magister en Astronomía
               //____________________________________________________________________________________________
               //_________________ Nodo Magister en Astronomía ___________________________________________________
               //____________________________________________________________________________________________
@@ -466,7 +476,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //          		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
+              #region Nodo Nivel academico Magister en Astronomía
               //______________________________________________________________________________________________________
               //_________________ Nodo Nivel academico Magister en Astronomía _____________________________________________
               //______________________________________________________________________________________________________
@@ -507,7 +519,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               nivel_academico_mag_en_astronomia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
               //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              #endregion
 
+              #region Nodo Magister en Ciencias mención Ingeniería en Alimentos
               //____________________________________________________________________________________________
               //_________________ Nodo Magister en Ciencias mención Ingeniería en Alimentos ___________________________________________________
               //____________________________________________________________________________________________
@@ -563,7 +577,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
+              #region Nodo Nivel academico Magister en Ciencias mención Ingeniería en Alimentos
               //______________________________________________________________________________________________________
               //_________________ Nodo Nivel academico Magister en Ciencias mención Ingeniería en Alimentos _____________________________________________
               //______________________________________________________________________________________________________
@@ -604,10 +620,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
               //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              #endregion
 
 
-
-
+              #region Nodo Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
               //____________________________________________________________________________________________
               //_________________ Nodo Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura ___________________________________________________
               //____________________________________________________________________________________________
@@ -663,7 +679,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
               //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              #endregion
 
+              #region Nodo Nivel academico Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
               //______________________________________________________________________________________________________
               //_________________ Nodo Nivel academico Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura _____________________________________________
               //______________________________________________________________________________________________________
@@ -705,6 +723,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
 
+              #endregion
 
 
 
@@ -712,32 +731,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //*******************************************************************************************************
+              //*******************************************************************************************************
             //*****************************           Ingresando Nodos
             //*******************************************************************************************************
 

@@ -17,6 +17,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
         public void crearNodosAtributosExternos()
         {
+            #region Nodo Financiamiento y Becas
             //____________________________________________________________________________________________
             //_________________ Nodo Financiamiento y Becas ___________________________________________________
             //____________________________________________________________________________________________
@@ -88,10 +89,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             manejador_de_archivos.ingresarNuevoNodo(nodo_financiamiento_y_becas);
 
             Console.WriteLine("Nodos Atributos Externos ingresados");
+            #endregion
         }
-
-
-
+        
 
     }
 }
