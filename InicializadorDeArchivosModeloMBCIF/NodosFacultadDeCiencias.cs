@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 //using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
@@ -11,8 +12,7 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosFacultadDeCiencias
     {
         ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
-		public List<Nodo> Nodos = new List<Nodo>();
-		
+
         public NodosFacultadDeCiencias()
         {
 			#region Nodo Academico Guillermo Saa Gamboa
@@ -79,8 +79,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_guillermo_saa.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_guillermo_saa.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-
+                academico_guillermo_saa.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_guillermo_saa);
+				Console.WriteLine("Nodo academico Guillermo Saa Gamboa ingresado");
 					
 			#endregion
 			
@@ -148,8 +151,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_francisco_squeo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_francisco_squeo.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-
+                academico_francisco_squeo.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_francisco_squeo);
+				Console.WriteLine("Nodo academico Francisco Squeo ingresado");
 					
 			#endregion
 			
@@ -216,7 +222,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_pedro_vega.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_pedro_vega.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_pedro_vega.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_pedro_vega);
+				Console.WriteLine("Nodo academico Pedro Vega ingresado");
 					
 			#endregion
 			
@@ -283,7 +293,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_marco_corgini.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_marco_corgini.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_marco_corgini.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_marco_corgini);
+				Console.WriteLine("Nodo academico Marco Corgini ingresado");
 					
 			#endregion
 			
@@ -350,7 +364,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_julia_arias.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_julia_arias.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_julia_arias.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_julia_arias);
+				Console.WriteLine("Nodo academica Julia Arias ingresado");
 					
 			#endregion
 			
@@ -417,26 +435,20 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_ivan_fernandez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_ivan_fernandez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+				academico_ivan_fernandez.calculos = new InterfaceCalculoProfesores();
+				
+            
+            
+               //Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_ivan_fernandez);
+				Console.WriteLine("Nodo academico Ivan Fernandez ingresado");
+					
 			#endregion
 			
-			// lista para crear influencias
-			Nodos.Add(academico_julia_arias);
-			Nodos.Add(academico_marco_corgini);
-			Nodos.Add(academico_pedro_vega);
-			Nodos.Add(academico_francisco_squeo);
-			Nodos.Add(academico_guillermo_saa);
-			Nodos.Add(academico_ivan_fernandez);
-			
-			//Escribiendo nodos en archivo
-			manejador_de_datos.ingresarNuevoNodo(academico_julia_arias);
-			manejador_de_datos.ingresarNuevoNodo(academico_marco_corgini);
-			manejador_de_datos.ingresarNuevoNodo(academico_pedro_vega);
-			manejador_de_datos.ingresarNuevoNodo(academico_francisco_squeo);
-			manejador_de_datos.ingresarNuevoNodo(academico_guillermo_saa);
-			manejador_de_datos.ingresarNuevoNodo(academico_ivan_fernandez);
-			Console.WriteLine("Nodos Academicos Facultad Ciencias ingresados");
-	
         }
+
+
+
+
     }
 }

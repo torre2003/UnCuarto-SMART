@@ -87,7 +87,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_financiamiento_y_becas.calculos = new InterfaceCalculosGenerica(new string[] { "conicyt", "financiamiento interno", "otros financiamientos", "cyted" });
 
 
             //Escribiendo nodos en archivo

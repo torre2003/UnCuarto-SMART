@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -20,8 +21,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 	public class NodosFacultadDeIngenieria
 	{
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
-		public List<Nodo> Nodos = new List<Nodo>();
-		
 		public NodosFacultadDeIngenieria()
 		{
 			#region Nodo Academico Mauricio Godoy Seura
@@ -86,9 +85,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				academico_mauricio_godoy.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);				
+				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_mauricio_godoy.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
+				Console.WriteLine("Nodo academico Mauricio Godoy Seura ingresado");
 				
 			#endregion	
 				
@@ -156,7 +159,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_nelson_moraga.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_nelson_moraga.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_nelson_moraga.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
+				Console.WriteLine("Nodo academico Nelson Moraga ingresado");
 					
 			#endregion
 			
@@ -223,20 +230,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_hector_paez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_hector_paez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-			#endregion
-			
-			Nodos.Add(academico_nelson_moraga);
-			Nodos.Add(academico_mauricio_godoy);
-			Nodos.Add(academico_hector_paez);
-			
-			//Escribiendo nodos en archivo
-			manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
-			manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
-			manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
-			Console.WriteLine("Nodos Academico Facultad Ingenieria ingresados");
+                academico_hector_paez.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
+				Console.WriteLine("Nodo academico Hector Paez ingresado");
 					
-			
+			#endregion
 		}
 	}
 }

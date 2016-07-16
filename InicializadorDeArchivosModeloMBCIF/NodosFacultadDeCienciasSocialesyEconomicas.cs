@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -21,7 +22,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 	{
 		
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
-		public List<Nodo> Nodos = new List<Nodo>();
 		
 		public NodosFacultadDeCienciasSocialesyEconomicas()
 		{
@@ -87,9 +87,13 @@ namespace InicializadorDeArchivosModeloMBCIF
         		academico_luperfina_rojas.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
 				academico_luperfina_rojas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_luperfina_rojas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_luperfina_rojas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_luperfina_rojas.calculos = new InterfaceCalculoProfesores();
+				
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_luperfina_rojas);
+				Console.WriteLine("Nodo academico Luperfina rojas ingresado");
 				
 			#endregion	
 				
@@ -157,17 +161,16 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_alberto_hernandez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_alberto_hernandez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-			#endregion
-			
-			Nodos.Add(academico_luperfina_rojas);
-			Nodos.Add(academico_alberto_hernandez);
+                academico_alberto_hernandez.calculos = new InterfaceCalculoProfesores();
 				
-			//Escribiendo nodos en archivo
-			manejador_de_datos.ingresarNuevoNodo(academico_luperfina_rojas);
-			manejador_de_datos.ingresarNuevoNodo(academico_alberto_hernandez);
-			Console.WriteLine("Nodos Academicos FACSE ingresados");
-	
+				//Escribiendo nodos en archivo
+				manejador_de_datos.ingresarNuevoNodo(academico_alberto_hernandez);
+				Console.WriteLine("Nodo academico Alberto Hernandez ingresado");
+				
+				#endregion
+		
+			
+				
 		}
 	}
 }

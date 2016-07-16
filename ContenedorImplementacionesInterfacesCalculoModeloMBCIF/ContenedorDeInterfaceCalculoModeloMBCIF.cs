@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
 {
-  
+
 
     /*
     //-----------------------------------------------------------------------------------------------
@@ -72,7 +72,8 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
         
         public double calculoPeso(InferenciaDifusa fuzzy)
         {
-            fuzzy.Si(fuzzy.Entradas["n21"].Es("Mucho") & fuzzy.Entradas["n22"].Es("Mucho")).Entonces(fuzzy.Salidas["Reduccion"], "Mucho");
+            VariableDifusa n21 = fuzzy.Entradas["n21"];
+            fuzzy.Si(n21.Es("Mucho") & fuzzy.Entradas["n22"].Es("Mucho")).Entonces(fuzzy.Salidas["Reduccion"], "Mucho");
             fuzzy.Si(fuzzy.Entradas["n21"].Es("Mucho") & fuzzy.Entradas["n22"].Es("Poco")).Entonces(fuzzy.Salidas["Reduccion"], "Poco");
             fuzzy.Si(fuzzy.Entradas["n21"].Es("Poco") & fuzzy.Entradas["n22"].Es("Mucho")).Entonces(fuzzy.Salidas["Reduccion"], "Mucho");
             fuzzy.Si(fuzzy.Entradas["n21"].Es("Poco") & fuzzy.Entradas["n22"].Es("Poco")).Entonces(fuzzy.Salidas["Reduccion"], "Poco");
@@ -659,6 +660,6 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
 
     */
 
-    
+
 
 }
