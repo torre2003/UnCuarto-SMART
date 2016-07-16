@@ -21,6 +21,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 	{
 		
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		//List<Nodo> Nodos = new List<Nodo>();
 		
 		public NodosPostitulos()
 		{
@@ -127,13 +128,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 						
 				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-											
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(diplomado_innovacion_educativa);
-				Console.WriteLine("Nodo Diplomado Innovación Educativa ingresado");
-				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_innovacion_educativa);
-				Console.WriteLine("Nodo nivel academico Diplomado Innovación Educativa ingresado");
-				// escribir nodos X
+
 				#endregion	
 			#endregion
 			
@@ -243,14 +238,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 						
 				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-						
-						
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(diplomado_gestion_tributaria);
-				Console.WriteLine("Nodo Diplomado Gestion Tributaria ingresado");
-				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_gestion_tributaria);
-				Console.WriteLine("Nodo nivel academico Diplomado Gestion Tributaria ingresado");
-				// escribir nodos X
+
 				#endregion	
 			#endregion
 			
@@ -356,14 +344,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 						
 				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-						
-						
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(postitulo_mencion_docentes_s_ciclo);
-				Console.WriteLine("Nodo Postitulo Mencion Docentes ....... ingresado");
-				manejador_de_datos.ingresarNuevoNodo(nivel_academico_postitulo_mencion_docentes_s_ciclo);
-				Console.WriteLine("Nodo nivel academico Postitulo Mencion Docentes ....... ingresado");
-				// escribir nodos X
+
 				#endregion	
 			#endregion		
 			
@@ -470,15 +451,31 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_diplomado_en_eficiencia_energética.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 						
 				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();		
-						
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(diplomado_en_eficiencia_energética);
-				Console.WriteLine("Nodo Diplomado Eficiencia Energetica ingresado");
-				manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_en_eficiencia_energética);
-				Console.WriteLine("Nodo nivel academico Diplomado Eficiencia Energetica ingresado");
-				// escribir nodos X
 				#endregion	
 			#endregion
+			
+			/*
+			Nodos.Add(diplomado_innovacion_educativa);
+			Nodos.Add(nivel_academico_diplomado_innovacion_educativa);
+			Nodos.Add(diplomado_gestion_tributaria);
+			Nodos.Add(nivel_academico_diplomado_gestion_tributaria);
+			Nodos.Add(postitulo_mencion_docentes_s_ciclo);
+			Nodos.Add(nivel_academico_postitulo_mencion_docentes_s_ciclo);
+			Nodos.Add(diplomado_en_eficiencia_energética);
+			Nodos.Add(nivel_academico_diplomado_en_eficiencia_energética);
+			*/
+			
+			//Escribiendo nodos en archivo
+			manejador_de_datos.ingresarNuevoNodo(diplomado_innovacion_educativa);
+			manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_innovacion_educativa);
+			manejador_de_datos.ingresarNuevoNodo(diplomado_gestion_tributaria);
+			manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_gestion_tributaria);
+			manejador_de_datos.ingresarNuevoNodo(postitulo_mencion_docentes_s_ciclo);
+			manejador_de_datos.ingresarNuevoNodo(nivel_academico_postitulo_mencion_docentes_s_ciclo);
+			manejador_de_datos.ingresarNuevoNodo(diplomado_en_eficiencia_energética);
+			manejador_de_datos.ingresarNuevoNodo(nivel_academico_diplomado_en_eficiencia_energética);
+			Console.WriteLine("Nodos Postitulos ingresado");
+
 		}
 	}
 }

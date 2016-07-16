@@ -14,8 +14,9 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosAtributosExternos
     {
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
+        public Nodo Becas;
 
-        public void crearNodosAtributosExternos()
+        public NodosAtributosExternos()
         {
             #region Nodo Financiamiento y Becas
             //____________________________________________________________________________________________
@@ -70,10 +71,19 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_financiamiento_y_becas.agregarVariable("financiamiento interno", Nodo.DATOS_INTERNOS);
             nodo_financiamiento_y_becas.agregarVariable("otros financiamientos", Nodo.DATOS_INTERNOS);
             nodo_financiamiento_y_becas.agregarVariable("cyted", Nodo.DATOS_INTERNOS);
+            
+            //-- influencias DESDE este nodo -----
+            nodo_financiamiento_y_becas.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.deidayb", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.debyea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.memc", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.mecef", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.mem", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.meldyce", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.mea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.mecmiea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("n.meelmelofol", Nodo.NODOS_INFLUENCIADOS);
 
-            //			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
@@ -82,7 +92,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //Escribiendo nodos en archivo
 
-
+            Becas = nodo_financiamiento_y_becas;
 
             // ingreso de nodos
 

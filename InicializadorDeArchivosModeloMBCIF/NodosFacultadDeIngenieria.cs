@@ -20,6 +20,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 	public class NodosFacultadDeIngenieria
 	{
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		public List<Nodo> Nodos = new List<Nodo>();
+		
 		public NodosFacultadDeIngenieria()
 		{
 			#region Nodo Academico Mauricio Godoy Seura
@@ -88,10 +90,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 				
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
-				Console.WriteLine("Nodo academico Mauricio Godoy Seura ingresado");
-				
 			#endregion	
 				
 			#region Nodo Academico Nelson Moraga
@@ -159,10 +157,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_nelson_moraga.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-				
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
-				Console.WriteLine("Nodo academico Nelson Moraga ingresado");
 					
 			#endregion
 			
@@ -230,12 +224,19 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_hector_paez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-				
-				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
-				Console.WriteLine("Nodo academico Hector Paez ingresado");
-					
 			#endregion
+			
+			Nodos.Add(academico_nelson_moraga);
+			Nodos.Add(academico_mauricio_godoy);
+			Nodos.Add(academico_hector_paez);
+			
+			//Escribiendo nodos en archivo
+			manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
+			manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
+			manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
+			Console.WriteLine("Nodos Academico Facultad Ingenieria ingresados");
+					
+			
 		}
 	}
 }

@@ -12,7 +12,9 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosProgramasMagister
     {
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
-        public void crearNodosProgramasMagister()
+        public List<Nodo> Nodos = new List<Nodo>();
+        
+        public NodosProgramasMagister()
         {
             #region Nodo Magister en Mecánica Computacional
             //ingresar nodos X
@@ -63,12 +65,16 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_mag_en_mecanica_computacional.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
             nodo_mag_en_mecanica_computacional.agregarVariable("n.namemc", Nodo.DATOS_NODOS_EXTERNOS);
-
-            //  nodo_mag_en_mecanica_computacional.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //  nodo_mag_en_mecanica_computacional.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //  nodo_mag_en_mecanica_computacional.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			
+            //-- influencias DESDE este nodo -----
+			nodo_mag_en_mecanica_computacional.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.dp_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.i_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.fyb_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
 
             //  nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -165,11 +171,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             nodo_magister_en_ciencias_fiscas.agregarVariable("n.namecef", Nodo.DATOS_NODOS_EXTERNOS);
 
-            //nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //nodo_magister_en_ciencias_fiscas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //nodo_magister_en_ciencias_fiscas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.dp_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.i_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.fyb_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
 
             //nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -224,9 +234,9 @@ namespace InicializadorDeArchivosModeloMBCIF
             //_________________ Nodo Magister en Matemáticas" ___________________________________________________
             //____________________________________________________________________________________________
             //TODO Nodo Magister en Matemáticas"
-            Nodo nodo_magister_en_matemacica;
-            nodo_magister_en_matemacica = new Nodo("n.mem", "Magister en Matemáticas");
-            nodo_magister_en_matemacica.fuzzy = new InferenciaDifusa(
+            Nodo nodo_magister_en_matematica;
+            nodo_magister_en_matematica = new Nodo("n.mem", "Magister en Matemáticas");
+            nodo_magister_en_matematica.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
                     {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
@@ -263,16 +273,20 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                            })}
                    }
               );
-            nodo_magister_en_matemacica.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
-            nodo_magister_en_matemacica.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
+            nodo_magister_en_matematica.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
+            nodo_magister_en_matematica.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-            nodo_magister_en_matemacica.agregarVariable("n.namem", Nodo.DATOS_NODOS_EXTERNOS);
+            nodo_magister_en_matematica.agregarVariable("n.namem", Nodo.DATOS_NODOS_EXTERNOS);
 
-//            postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-//            postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_magister_en_matematica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_matematica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_matematica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_magister_en_matematica.agregarVariable("i_n.dp_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_matematica.agregarVariable("i_n.i_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_matematica.agregarVariable("i_n.fyb_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
 
             //postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -369,11 +383,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.nameldyce", Nodo.DATOS_NODOS_EXTERNOS);
               
-//				postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-              
-//              postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-              
-//        		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.dp_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.i_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.fyb_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
 
               //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -469,11 +487,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               nodo_mag_en_astronomia.agregarVariable("n.namea", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //							postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //              postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //          		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_mag_en_astronomia.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_astronomia.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_astronomia.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_mag_en_astronomia.agregarVariable("i_n.dp_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_astronomia.agregarVariable("i_n.i_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_astronomia.agregarVariable("i_n.fyb_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
 
               //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
               #endregion
@@ -570,11 +592,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.namecmiea", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //			postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //            postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.dp_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.i_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.fyb_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
 
               //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
               #endregion
@@ -672,11 +698,15 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               nodo_mag_es_std_lat.agregarVariable("n.nameelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //			postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //            postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+			nodo_mag_es_std_lat.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_es_std_lat.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_es_std_lat.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_mag_es_std_lat.agregarVariable("i_n.dp_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_es_std_lat.agregarVariable("i_n.i_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_es_std_lat.agregarVariable("i_n.fyb_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
 
               //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
               #endregion
@@ -734,7 +764,15 @@ namespace InicializadorDeArchivosModeloMBCIF
               //*******************************************************************************************************
             //*****************************           Ingresando Nodos
             //*******************************************************************************************************
-
+			
+            // lista para crear influencias
+            Nodos.Add(nodo_mag_en_mecanica_computacional);
+            Nodos.Add(nodo_magister_en_ciencias_fiscas);
+            Nodos.Add(nodo_magister_en_matematica);
+            Nodos.Add(nodo_mag_en_lid_dir_y_com_est);
+            Nodos.Add(nodo_mag_en_astronomia);
+            Nodos.Add(nodo_mag_en_ciencias_mencion_ing_en_alimentos);
+            Nodos.Add(nodo_mag_es_std_lat);
 
             //Escribiendo nodos en archivo
             manejador_de_archivos.ingresarNuevoNodo(nodo_mag_en_mecanica_computacional);
@@ -743,7 +781,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             manejador_de_archivos.ingresarNuevoNodo(nodo_magister_en_ciencias_fiscas);
             manejador_de_archivos.ingresarNuevoNodo(nivel_academico_magister_en_ciencias_fisicas);
 
-            manejador_de_archivos.ingresarNuevoNodo(nodo_magister_en_matemacica);
+            manejador_de_archivos.ingresarNuevoNodo(nodo_magister_en_matematica);
             manejador_de_archivos.ingresarNuevoNodo(nivel_academico_magister_en_matematica);
 
             manejador_de_archivos.ingresarNuevoNodo(nodo_mag_en_lid_dir_y_com_est);

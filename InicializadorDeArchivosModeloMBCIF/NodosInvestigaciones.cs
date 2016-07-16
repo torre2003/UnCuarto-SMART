@@ -13,8 +13,12 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosInvestigaciones
     {
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
-
-        public void crearNodosInvestigaciones()
+		public Nodo Investigacion;
+		public Nodo Director;
+		public Nodo Secretaria;
+		public List<Nodo> Publicaciones = new List<Nodo>();
+		
+        public NodosInvestigaciones()
         {
             #region Nodo Investigacion
             //____________________________________________________________________________________________
@@ -22,7 +26,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             //____________________________________________________________________________________________
             //TODO Investigacion
             Nodo nodo_investigacion;
-            nodo_investigacion = new Nodo("n.p", "Investigacion");
+            nodo_investigacion = new Nodo("n.i", "Investigacion");
             nodo_investigacion.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -70,15 +74,23 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_investigacion.agregarVariable("n.pisi", Nodo.DATOS_NODOS_EXTERNOS);
             nodo_investigacion.agregarVariable("n.pscielo", Nodo.DATOS_NODOS_EXTERNOS);
             nodo_investigacion.agregarVariable("n.pe", Nodo.DATOS_NODOS_EXTERNOS);
-            //			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
 
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+            //-- influencias DESDE este nodo -----
+            nodo_investigacion.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.deidayb", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.debyea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.memc", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.mecef", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.mem", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.meldyce", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.mea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.mecmiea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_investigacion.agregarVariable("n.meelmelofol", Nodo.NODOS_INFLUENCIADOS);            
+            nodo_investigacion.agregarVariable("n.p", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-
-
+			//-- influencias HACIA este nodo -----
+			nodo_investigacion.agregarVariable("i_n.d_n.i", Nodo.INFLUENCIAS_EXTERNAS);
+			
             //Escribiendo nodos en archivo
 
             #endregion
@@ -137,7 +149,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             //____________________________________________________________________________________________
             //TODO Secretaria Investigacion
             Nodo nodo_secretaria_investigacion;
-            nodo_secretaria_investigacion = new Nodo("n.sp", "Secretaria Investigacion");
+            nodo_secretaria_investigacion = new Nodo("n.si", "Secretaria Investigacion");
             nodo_secretaria_investigacion.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -206,13 +218,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_secretaria_investigacion.agregarVariable("sistematibilidad", Nodo.DATOS_INTERNOS);
             nodo_secretaria_investigacion.agregarVariable("manejo de tics", Nodo.DATOS_INTERNOS);
 
-            //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+			//-- influencias DESDE este nodo -----
+			nodo_secretaria_investigacion.agregarVariable("n.sp", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_secretaria_investigacion.agregarVariable("i_n.sp_n.si", Nodo.INFLUENCIAS_EXTERNAS);
 
             #endregion
 
@@ -277,11 +287,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_director_investigacion.agregarVariable("compromiso", Nodo.DATOS_INTERNOS);
             nodo_director_investigacion.agregarVariable("gestion externa", Nodo.DATOS_INTERNOS);
 
-            //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			//-- influencias DESDE este nodo -----
+			nodo_secretaria_investigacion.agregarVariable("n.dp", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_secretaria_investigacion.agregarVariable("i_n.dp_n.di", Nodo.INFLUENCIAS_EXTERNAS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -324,13 +334,33 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             nodo_publicaciones_isi.agregarVariable("tasa de publicaciones anuales", Nodo.DATOS_INTERNOS);
             nodo_publicaciones_isi.agregarVariable("promedio de impacto publicaciones", Nodo.DATOS_INTERNOS);
-            
-
-            //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			
+			//-- influencias HACIA este nodo -----
+			nodo_publicaciones_isi.agregarVariable("i_n.deq_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.deidayb_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.debyea_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.memc_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.mecef_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.mem_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.meldyce_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.mea_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.mecmiea_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.meelmelofol_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			
+			nodo_publicaciones_isi.agregarVariable("i_n.agsg_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.afs_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.apv_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.amc_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.aja_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.aif_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_isi.agregarVariable("i_n.alr_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.aah_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_isi.agregarVariable("i_n.acnp_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.asldm_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.amea_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_isi.agregarVariable("i_n.amgs_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.anm_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_isi.agregarVariable("i_n.ahp_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -376,11 +406,32 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_publicaciones_scielo.agregarVariable("promedio de impacto publicaciones", Nodo.DATOS_INTERNOS);
 
 
-            //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			//-- influencias HACIA este nodo -----
+			nodo_publicaciones_scielo.agregarVariable("i_n.deq_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.deidayb_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.debyea_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.memc_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.mecef_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.mem_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.meldyce_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.mea_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.mecmiea_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.meelmelofol_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			
+			nodo_publicaciones_scielo.agregarVariable("i_n.agsg_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.afs_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.apv_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.amc_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.aja_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.aif_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_scielo.agregarVariable("i_n.alr_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.aah_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_scielo.agregarVariable("i_n.acnp_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.asldm_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.amea_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_scielo.agregarVariable("i_n.amgs_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.anm_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_scielo.agregarVariable("i_n.ahp_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
             #endregion
@@ -424,12 +475,32 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_publicaciones_equivalentes.agregarVariable("tasa de publicaciones anuales", Nodo.DATOS_INTERNOS);
             nodo_publicaciones_equivalentes.agregarVariable("promedio de impacto publicaciones", Nodo.DATOS_INTERNOS);
 
-
-            //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-            //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-            //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+			//-- influencias HACIA este nodo -----
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.deq_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.deidayb_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.debyea_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.memc_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.mecef_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.mem_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.meldyce_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.mea_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.mecmiea_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.meelmelofol_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.agsg_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.afs_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.apv_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.amc_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.aja_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.aif_n.pe", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.alr_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.aah_n.pe", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.acnp_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.asldm_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.amea_n.pe", Nodo.INFLUENCIAS_EXTERNAS);			
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.amgs_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.anm_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_publicaciones_equivalentes.agregarVariable("i_n.ahp_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
 
             //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
 
@@ -437,7 +508,14 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-
+            Investigacion =  nodo_investigacion ;
+            //Nodos.Add(nodo_personal_investigacion);
+            Secretaria = nodo_secretaria_investigacion ;
+            Director = nodo_director_investigacion ;
+            
+            Publicaciones.Add(nodo_publicaciones_isi);
+            Publicaciones.Add(nodo_publicaciones_scielo);
+            Publicaciones.Add(nodo_publicaciones_equivalentes);
 
 
             // ingreso de nodos
