@@ -98,17 +98,14 @@ namespace unCuartoSMART
     }
 }
 
+
 //tareas
 
 
-
-//TODO arreglar el archivo de guardado - con las ponderaciones
-
-
 // Extras
-//todo nombre de archivo en el titulo
-//todo iconos en ventanass
-//todo actualizacion de graficos interactivos
-//todo la imagen debe respetar el tamaño al actualizarse Paso a Paso
-//todo ventana de busqueda nodos con nombre 
+//TODO nombre de archivo en el titulo
+//TODO iconos en ventanass
+//TODO actualizacion de graficos interactivos
+//TODO la imagen debe respetar el tamaño al actualizarse Paso a Paso
+//TODO ventana de busqueda nodos con nombre 
 
