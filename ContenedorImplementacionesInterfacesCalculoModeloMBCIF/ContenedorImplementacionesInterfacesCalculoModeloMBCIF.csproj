@@ -46,7 +46,7 @@
     <Compile Include="ContenedorDeInterfaceCalculoModeloMBCIF.cs" />
     <Compile Include="InterfacesCalculoFacultadDeCiencias.cs" />
     <Compile Include="InterfacesCalculoPostgrado.cs" />
-    <Compile Include="InterfacesCalculoProgramasMagister.cs" />
+    <Compile Include="InterfacesDeCalculoProgramas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

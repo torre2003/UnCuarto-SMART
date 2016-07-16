@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -40,7 +41,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -82,9 +83,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				doctorado_en_quimica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);	
 				doctorado_en_quimica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-				doctorado_en_quimica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);				
-	
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+				doctorado_en_quimica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+
+                doctorado_en_quimica.calculos = new ICalculosNodo_programas("n.nadeq");
 				
 				#endregion
 				
@@ -129,8 +130,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_doctorado_en_quimica.agregarVariable("n.agsg", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_doctorado_en_quimica.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+
+                nivel_academico_doctorado_en_quimica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.agsg" });
 						
 						
 				//Escribiendo nodos en archivo
@@ -157,7 +158,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -200,8 +201,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
-	
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+
+                doctorado_en_ingeniería_de_alimentos_y_bioprocesos.calculos = new ICalculosNodo_programas("n.nadeidayb");
 				
 				#endregion
 				
@@ -246,9 +247,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_ingenieria_en_alimentos_y_bioprocesos.agregarVariable("n.anm", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_ingenieria_en_alimentos_y_bioprocesos.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
-						
+
+
+                nivel_academico_ingenieria_en_alimentos_y_bioprocesos.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.anm" });		
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(doctorado_en_ingeniería_de_alimentos_y_bioprocesos);
@@ -274,7 +275,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("Acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -316,9 +317,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				doctorado_en_biologia.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				doctorado_en_biologia.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				doctorado_en_biologia.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);	
+				doctorado_en_biologia.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                doctorado_en_biologia.calculos = new ICalculosNodo_programas("n.nadebyea");
 				
 				#endregion
 			
@@ -363,8 +364,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_doctorado_en_biologia.agregarVariable("n.afs", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_doctorado_en_biologia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+
+                nivel_academico_doctorado_en_biologia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.afs" });	
 						
 						
 				//Escribiendo nodos en archivo

@@ -1,6 +1,7 @@
 ﻿using AccesoADatos;
 using ModeloMBCIF;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace ComprobadorDeIntegridadDeNodos
     {
         static void Main(string[] args)
         {
+          
+            
+            
             ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
             //Listar nodos 
             
@@ -33,12 +37,17 @@ namespace ComprobadorDeIntegridadDeNodos
             */ 
             //--------------------------------------
 
-
+            
             Program comprobador = new Program();
+            Console.ReadKey();
             comprobador.comprobarNodos(manejador_de_archivos, false);
             comprobador.comprobarTodasLasInfluencias(manejador_de_archivos);
-        }
+           
 
+
+
+        }
+        
 
         public void comprobarNodos(ManejadorDeDatosArchivos manejador_de_archivos, bool paso)
         {

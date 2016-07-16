@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -87,8 +88,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_cristian_noemi.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_cristian_noemi.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-				
+
+                academico_cristian_noemi.calculos = new InterfaceCalculoProfesores();
+
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(academico_cristian_noemi);
 				Console.WriteLine("Nodo academico Cristian Noemi Padilla ingresado");
@@ -100,9 +102,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//___________________________________________________
 				//______Nodo academico Silvia Lopez de Maturana _________
 				//___________________________________________________
-				Nodo academico_n_n;
-				academico_n_n = new Nodo("n.asldm", "academico Silvia Lopez de Maturana");
-				academico_n_n.fuzzy = new InferenciaDifusa(
+				Nodo academico_silvia_lopez;
+				academico_silvia_lopez = new Nodo("n.asldm", "academico Silvia Lopez de Maturana");
+				academico_silvia_lopez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
 						{"publicaciones isi-wos", new VariableDifusa("publicaciones isi-wos", 0, 6,
@@ -149,19 +151,18 @@ namespace InicializadorDeArchivosModeloMBCIF
 					}
 				);
 				
-				academico_n_n.agregarVariable("publicaciones isi-wos", Nodo.DATOS_INTERNOS);
-				academico_n_n.agregarVariable("publicaciones scielo", Nodo.DATOS_INTERNOS);
-				academico_n_n.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
-				academico_n_n.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
+				academico_silvia_lopez.agregarVariable("publicaciones isi-wos", Nodo.DATOS_INTERNOS);
+				academico_silvia_lopez.agregarVariable("publicaciones scielo", Nodo.DATOS_INTERNOS);
+				academico_silvia_lopez.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
+				academico_silvia_lopez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_n_n.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_n_n.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_n_n.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_silvia_lopez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_silvia_lopez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_silvia_lopez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
-				
+				academico_silvia_lopez.calculos = new InterfaceCalculoProfesores();
 				//Escribiendo nodos en archivo
-				manejador_de_datos.ingresarNuevoNodo(academico_n_n);
+				manejador_de_datos.ingresarNuevoNodo(academico_silvia_lopez);
 				Console.WriteLine("Nodo academico Silvia Lopez de Maturana ingresado");
 					
 			#endregion
@@ -229,7 +230,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_maria_ester_alvarez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_maria_ester_alvarez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_maria_ester_alvarez.calculos = new InterfaceCalculoProfesores();
 				
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(academico_maria_ester_alvarez);

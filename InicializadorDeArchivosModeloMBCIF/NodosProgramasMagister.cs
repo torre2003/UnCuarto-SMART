@@ -1,4 +1,5 @@
 ﻿using AccesoADatos;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 using FuzzyCore;
 using ModeloMBCIF;
 using System;
@@ -29,7 +30,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -70,7 +71,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //  nodo_mag_en_mecanica_computacional.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //  nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_programas("n.namemc");
+            
             #endregion
 
             #region Nodo Nivel academico Magister en Mecánica Computacional
@@ -88,13 +90,16 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}
+                                                                
+                     /*                                           ,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
                                             })}
+                      */ 
                 },
                 //salidas 
                 new Dictionary<string, VariableDifusa> {
@@ -111,10 +116,16 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
             nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("n.amgs", Nodo.DATOS_NODOS_EXTERNOS);
-            nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-
-            //nivel_academico_nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+            //nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+            
+            nivel_academico_nodo_mag_en_mecanica_computacional.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amgs" });
+            
             #endregion
+
+
+
+
+
 
             #region  Nodo Magister en Ciencias en Física
             //____________________________________________________________________________________________
@@ -130,7 +141,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -171,8 +182,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //nodo_magister_en_ciencias_fiscas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_programas("n.namecef");
             #endregion
+
+
+
+
+
 
             #region Nodo Nivel academico Magister en Ciencias en Física
             //______________________________________________________________________________________________________
@@ -189,13 +205,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })} /*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                 //salidas 
                 new Dictionary<string, VariableDifusa> {
@@ -212,9 +228,12 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
             nivel_academico_magister_en_ciencias_fisicas.agregarVariable("n.apv", Nodo.DATOS_NODOS_EXTERNOS);
-            nivel_academico_magister_en_ciencias_fisicas.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+            //nivel_academico_magister_en_ciencias_fisicas.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-            //nivel_academico_magister_en_ciencias_fisicas.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+            nivel_academico_magister_en_ciencias_fisicas.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.apv" });
+
+
+            
             #endregion
 
 
@@ -233,7 +252,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -274,7 +293,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_magister_en_matemacica.calculos = new ICalculosNodo_programas("n.namem");
             #endregion
 
             #region  Nodo Nivel academico Magister en Matemáticas
@@ -292,13 +311,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}/*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                 //salidas 
                 new Dictionary<string, VariableDifusa> {
@@ -315,9 +334,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
             nivel_academico_magister_en_matematica.agregarVariable("n.amg", Nodo.DATOS_NODOS_EXTERNOS);
-            nivel_academico_magister_en_matematica.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+            //nivel_academico_magister_en_matematica.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-            //nivel_academico_magister_en_matematica.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+            nivel_academico_magister_en_matematica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amg" });
 
             #endregion
 
@@ -334,7 +353,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -375,9 +394,9 @@ namespace InicializadorDeArchivosModeloMBCIF
               
 //        		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-              //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_mag_en_lid_dir_y_com_est.calculos = new ICalculosNodo_programas("n.nameldyce"); ;
             #endregion
-
+            
               #region Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica
               //______________________________________________________________________________________________________
             //_________________ Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica _____________________________________________
@@ -392,13 +411,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}/*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                 //salidas 
                 new Dictionary<string, VariableDifusa> {
@@ -415,10 +434,16 @@ namespace InicializadorDeArchivosModeloMBCIF
   
           
               nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("n.alr", Nodo.DATOS_NODOS_EXTERNOS);
-              nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+              //nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              nivel_academico_mag_en_lid_dir_y_com_est.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.alr" });
               #endregion
+
+
+
+
+
+
 
               #region Nodo Magister en Astronomía
               //____________________________________________________________________________________________
@@ -434,7 +459,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -475,7 +500,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               //          		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-              //              postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_mag_en_astronomia.calculos = new ICalculosNodo_programas("n.namea");
               #endregion
 
               #region Nodo Nivel academico Magister en Astronomía
@@ -493,13 +518,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}/*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                   //salidas 
                   new Dictionary<string, VariableDifusa> {
@@ -516,10 +541,14 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
               nivel_academico_mag_en_astronomia.agregarVariable("n.aja", Nodo.DATOS_NODOS_EXTERNOS);
-              nivel_academico_mag_en_astronomia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+              //nivel_academico_mag_en_astronomia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.aja" });
               #endregion
+
+
+
+
 
               #region Nodo Magister en Ciencias mención Ingeniería en Alimentos
               //____________________________________________________________________________________________
@@ -535,7 +564,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -572,11 +601,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               //			postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
 
-              //            postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+              //postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 
               //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-              //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_mag_en_ciencias_mencion_ing_en_alimentos.calculos = new ICalculosNodo_programas("n.namecmiea");
               #endregion
 
               #region Nodo Nivel academico Magister en Ciencias mención Ingeniería en Alimentos
@@ -594,13 +623,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}/*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                   //salidas 
                   new Dictionary<string, VariableDifusa> {
@@ -617,10 +646,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
               nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.ahp", Nodo.DATOS_NODOS_EXTERNOS);
-              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+              //nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.ahp" });
               #endregion
+
+
+
 
 
               #region Nodo Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
@@ -637,7 +669,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
                                                                   new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -678,7 +710,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
               //      		postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-              //            postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_mag_es_std_lat.calculos = new ICalculosNodo_programas("n.nameelmelofol");
               #endregion
 
               #region Nodo Nivel academico Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
@@ -696,13 +728,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                                                   new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                                                })},
+                                                                })}/*,
                     {"docente 2", new VariableDifusa("docente 2", 0, 1,	
                                             new List<FuncionPertenencia>() {
                                               new FuncionHombro("calificado", 0, 0.2, 0.4),
                                               new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
                                               new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-                                            })}
+                                            })}*/
                   },
                   //salidas 
                   new Dictionary<string, VariableDifusa> {
@@ -719,11 +751,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
               nivel_academico_mag_es_std_lat.agregarVariable("n.acnp", Nodo.DATOS_NODOS_EXTERNOS);
-              nivel_academico_mag_es_std_lat.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+              //nivel_academico_mag_es_std_lat.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
-              //              nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+              nivel_academico_mag_es_std_lat.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.acnp" });
 
               #endregion
+
+
 
 
 

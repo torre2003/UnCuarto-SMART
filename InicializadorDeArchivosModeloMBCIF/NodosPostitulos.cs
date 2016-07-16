@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -40,7 +41,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditación", new VariableDifusa("acreditación", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -77,10 +78,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 				diplomado_innovacion_educativa.agregarVariable("acreditación", Nodo.DATOS_INTERNOS);
 				
 				diplomado_innovacion_educativa.agregarVariable("n.nadieie", Nodo.DATOS_NODOS_EXTERNOS);
-				
-				//postitulo_en_algo.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                diplomado_innovacion_educativa.agregarVariable("i_n.dp_n.dieie", Nodo.INFLUENCIAS_EXTERNAS);
+
+                diplomado_innovacion_educativa.calculos = new ICalculosNodo_programas("n.nadieie");
 				
 				#endregion
 			
@@ -125,8 +126,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_diplomado_innovacion_educativa.agregarVariable("n.asldm", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_postitulo_en_algo.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+
+                nivel_academico_diplomado_innovacion_educativa.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.asldm" });
 											
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(diplomado_innovacion_educativa);
@@ -152,7 +153,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -189,14 +190,16 @@ namespace InicializadorDeArchivosModeloMBCIF
 				diplomado_gestion_tributaria.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				diplomado_gestion_tributaria.agregarVariable("n.nadegt", Nodo.DATOS_NODOS_EXTERNOS);
-				
-				//diplomado_gestion_tributaria.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);
+
+                diplomado_gestion_tributaria.agregarVariable("i_n.dp_n.degt", Nodo.INFLUENCIAS_EXTERNAS);
+
+
 				
 				diplomado_gestion_tributaria.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				diplomado_gestion_tributaria.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				
+				diplomado_gestion_tributaria.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+
+                diplomado_gestion_tributaria.calculos = new ICalculosNodo_programas("n.nadegt");
 				
 				#endregion
 			
@@ -241,8 +244,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_diplomado_gestion_tributaria.agregarVariable("n.aah", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+
+                nivel_academico_diplomado_gestion_tributaria.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.aah" });
 						
 						
 				//Escribiendo nodos en archivo
@@ -269,7 +272,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -306,10 +309,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 				postitulo_mencion_docentes_s_ciclo.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				postitulo_mencion_docentes_s_ciclo.agregarVariable("n.napmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
-				
-				//postitulo_mencion_docentes_s_ciclo.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);				
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                postitulo_mencion_docentes_s_ciclo.agregarVariable("i_n.dp_n.pmpdqeescdebppelacn", Nodo.INFLUENCIAS_EXTERNAS);
+
+                postitulo_mencion_docentes_s_ciclo.calculos = new ICalculosNodo_programas("n.napmpdqeescdebppelacn");
 				
 				#endregion
 			
@@ -354,8 +357,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_postitulo_mencion_docentes_s_ciclo.agregarVariable("n.amea", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();
+
+                nivel_academico_postitulo_mencion_docentes_s_ciclo.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amea" });
 						
 						
 				//Escribiendo nodos en archivo
@@ -383,7 +386,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("exedido", 4, 6, 10)
+									new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -420,10 +423,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 				diplomado_en_eficiencia_energética.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 				
 				diplomado_en_eficiencia_energética.agregarVariable("n.nadeee", Nodo.DATOS_NODOS_EXTERNOS);
-				
-				//diplomado_en_eficiencia_energética.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);				
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                diplomado_en_eficiencia_energética.agregarVariable("i_n.dp_n.deee", Nodo.INFLUENCIAS_EXTERNAS);
+
+                diplomado_en_eficiencia_energética.calculos = new ICalculosNodo_programas("n.nadeee");
 				
 				#endregion
 			
@@ -468,8 +471,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 				nivel_academico_diplomado_en_eficiencia_energética.agregarVariable("n.anm", Nodo.DATOS_NODOS_EXTERNOS);
 				//nivel_academico_diplomado_en_eficiencia_energética.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-						
-				//nivel_academico_postitulo_en_algo.calculos = new ICalculosNodo_nivel_academico_postitulo_en_algo();		
+
+                nivel_academico_diplomado_en_eficiencia_energética.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.anm" });
 						
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(diplomado_en_eficiencia_energética);

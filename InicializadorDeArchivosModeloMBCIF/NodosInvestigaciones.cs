@@ -76,7 +76,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_investigacion.calculos = new InterfaceCalculosGenerica(new string[] { "n.pi", "n.pisi", "n.pscielo", "n.pe"});
 
 
             //Escribiendo nodos en archivo
@@ -128,7 +128,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_personal_investigacion.calculos = new InterfaceCalculosPersonas(new string[] { "n.di", "n.si" });
             #endregion
 
             #region Nodo Secretaria Investigacion
@@ -212,7 +212,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_secretaria_investigacion.calculos = new InterfaceCalculosPersonas(new string[] { "compromiso", "empatia", "manejo verbal", "flexibilidad", "trabajo bajo presion", "sistematibilidad", "manejo de tics" });
 
             #endregion
 
@@ -283,7 +283,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_director_investigacion.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
             #endregion
             #region Nodo Publicaciones ISI
             //____________________________________________________________________________________________
@@ -332,7 +332,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_publicaciones_isi.calculos = new ICalculosPublicaciones();
             #endregion
 
 
@@ -382,7 +382,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_publicaciones_scielo.calculos = new ICalculosPublicaciones();
             #endregion
             #region Nodo Publicaciones equivalentes
             //____________________________________________________________________________________________
@@ -431,7 +431,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-            //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+            nodo_publicaciones_equivalentes.calculos = new ICalculosPublicaciones();
 
             #endregion
 

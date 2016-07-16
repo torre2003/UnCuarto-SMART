@@ -20,7 +20,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             //____________________________________________________________________________________________
             //_________________ Nodo Postgrado ___________________________________________________
             //____________________________________________________________________________________________
-            //TODO Postgrado
           	Nodo nodo_postrado;
             nodo_postrado = new Nodo("n.p", "Postgrado");
             nodo_postrado.fuzzy = new InferenciaDifusa(
@@ -69,22 +68,18 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postrado.agregarVariable("n.psd", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado.agregarVariable("n.psm", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado.agregarVariable("n.psdyp", Nodo.DATOS_NODOS_EXTERNOS);
-              
-//			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-              
-//           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-              
-//           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_postrado.agregarVariable("i_n.i_n.p", Nodo.INFLUENCIAS_EXTERNAS);
+
+              nodo_postrado.agregarVariable("n.i", Nodo.NODOS_INFLUENCIADOS);
+              nodo_postrado.calculos = new InterfaceCalculosGenerica(new string[] { "n.pp", "n.psd", "n.psm", "n.psdyp"});
             #endregion
 
 
               #region Nodo Postgrado Sección Doctorados
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Doctorados ___________________________________________________
-              //____________________________________________________________________________________________
-              //TODO Postgrado Sección Doctorados
+              //_________________________________________________________________________________________
               Nodo nodo_postrado_seccion_doctorados;
               nodo_postrado_seccion_doctorados = new Nodo("n.psd", "Postgrado Sección Doctorados");
               nodo_postrado_seccion_doctorados.fuzzy = new InferenciaDifusa(
@@ -126,21 +121,14 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postrado_seccion_doctorados.agregarVariable("n.deq", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado_seccion_doctorados.agregarVariable("n.deidayb", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado_seccion_doctorados.agregarVariable("n.debyea", Nodo.DATOS_NODOS_EXTERNOS);
-            
-              //			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+        
+              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.debyea", "n.deidayb", "n.deq" });
               #endregion
 
               #region Nodo Postgrado Sección Magister
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Magister ___________________________________________________
               //____________________________________________________________________________________________
-              //TODO Postgrado Sección Magister
               Nodo nodo_postrado_seccion_magister;
               nodo_postrado_seccion_magister = new Nodo("n.psm", "Postgrado Sección Magister");
               nodo_postrado_seccion_magister.fuzzy = new InferenciaDifusa(
@@ -212,14 +200,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postrado_seccion_magister.agregarVariable("n.mecmiea", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado_seccion_magister.agregarVariable("n.meelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
-
-              //			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.memc", "n.mecef", "n.mem", "n.meldyce", "n.mea", "n.mecmiea", "n.meelmelofol" });
               #endregion
 
               #region Nodo Postgrado Sección diplomados y postitulos
@@ -276,14 +257,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.pmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.dee", Nodo.DATOS_NODOS_EXTERNOS);
 
-
-              //			 postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dgt", "n.dieie", "n.pmpdqeescdebppelacn", "n.dee" });
               #endregion
 
 
@@ -327,13 +301,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_personal_postgrado.agregarVariable("n.dp", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_personal_postgrado.agregarVariable("n.sp", Nodo.DATOS_NODOS_EXTERNOS);
               
-              //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
-
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_personal_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "n.dp", "n.sp" });
               #endregion
 
               #region Nodo Secretaria Postgrado
@@ -411,13 +379,12 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_secretaria_postgrado.agregarVariable("sistematibilidad", Nodo.DATOS_INTERNOS);
               nodo_secretaria_postgrado.agregarVariable("manejo de tics", Nodo.DATOS_INTERNOS);
 
-              //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_secretaria_postgrado.agregarVariable("i_n.si_n.sp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_secretaria_postgrado.agregarVariable("n.si", Nodo.NODOS_INFLUENCIADOS);
 
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+              
 
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_secretaria_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "compromiso", "empatia", "manejo verbal", "flexibilidad", "trabajo bajo presion", "sistematibilidad", "manejo de tics" });
               #endregion
 
               #region nodo Director Postgrado
@@ -480,14 +447,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_director_postgrado.agregarVariable("poder de resolucion", Nodo.DATOS_INTERNOS);
               nodo_director_postgrado.agregarVariable("compromiso", Nodo.DATOS_INTERNOS);
               nodo_director_postgrado.agregarVariable("gestion externa", Nodo.DATOS_INTERNOS);
-            
-              //		   postitulo_en_algo.agregarVariable("i_n.i_n.pea", Nodo.INFLUENCIAS_EXTERNAS);
 
-              //           postitulo_en_algo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("i_n.di_n.dp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_director_postgrado.agregarVariable("n.di", Nodo.INFLUENCIAS_EXTERNAS);
 
-              //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-              //           postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+              nodo_director_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
 
 
               #endregion

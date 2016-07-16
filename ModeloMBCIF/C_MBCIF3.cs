@@ -294,6 +294,12 @@ namespace ModeloMBCIF
                     for (int i = 0; i < id_nodos_externos_necesarios.Length; i++)
                     {
                         Nodo nodo_externo = manejador_de_datos_archivos.extraerNodo(id_nodos_externos_necesarios[i]);
+                        //aqui deberia agregarse recursividad y actualizacion de peso
+                        //TODO !!!! cambio sin probar !!!!       recursividad en la actualizacion de pesos
+                        nodo_externo = actualizarDatosNodoExternosEnNodo(nodo_externo.id_nodo);
+                        nodo_externo.actualizacionNodo();
+                        manejador_de_datos_archivos.actualizarNodo(nodo_externo);
+                        //fin cambio
                         nodo.actualizarVariable(nodo_externo.id_nodo, nodo_externo.peso, Nodo.DATOS_NODOS_EXTERNOS);
                     }
                     manejador_de_datos_archivos.actualizarNodo(nodo);

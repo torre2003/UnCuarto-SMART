@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using AccesoADatos;
 using FuzzyCore;
 using ModeloMBCIF;
+using ContenedorImplementacionesInterfacesCalculoModeloMBCIF;
 
 namespace InicializadorDeArchivosModeloMBCIF
 {
@@ -84,9 +85,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				academico_mauricio_godoy.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);				
+				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_mauricio_godoy.calculos = new InterfaceCalculoProfesores();
 				
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
@@ -158,7 +159,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_nelson_moraga.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_nelson_moraga.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_nelson_moraga.calculos = new InterfaceCalculoProfesores();
 				
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
@@ -229,7 +230,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_hector_paez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_hector_paez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-				//postitulo_en_algo.calculos = new ICalculosNodo_postitulo_en_algo();
+                academico_hector_paez.calculos = new InterfaceCalculoProfesores();
 				
 				//Escribiendo nodos en archivo
 				manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
