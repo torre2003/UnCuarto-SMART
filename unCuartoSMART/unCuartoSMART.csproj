@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ContenedorImplementacionInterfaces">
-      <HintPath>..\Extras\ContenedorImplementacionInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.Microsoft.Office.Interop.Excel">
       <HintPath>..\Extras\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>

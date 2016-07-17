@@ -113,7 +113,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
     //***********************************************************************************************
     //************************    InterfaceCalculoNivelesAcademicos
     //***********************************************************************************************
-
+    [Serializable()]
     public class InterfaceCalculoNivelesAcademicos : ICalculosNodo
     {
         string[] salidas_1 = new string[] { "pesimo", "regular", "excelente" };
@@ -245,7 +245,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
     //***********************************************************************************************
     //************************    InterfaceCalculoProfesores
     //***********************************************************************************************
-
+    [Serializable()]
     public class InterfaceCalculoProfesores : ICalculosNodo
     {
         string[] salidas_actual = new string[] { "pesimo","malo" ,"regular", "bueno","excelente" };
@@ -358,7 +358,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
     //***********************************************************************************************
     //************************    InterfaceCalculosSeccionesPostgrado
     //***********************************************************************************************
-
+    [Serializable()]
     public class InterfaceCalculosSeccionesPostgrado : ICalculosNodo
     {
         string[] salidas_actual = new string[] { "pesimo", "malo", "regular", "bueno", "excelente" };
@@ -504,7 +504,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
     //***********************************************************************************************
     //************************    InterfaceCalculosPersonas
     //***********************************************************************************************
-
+    [Serializable()]
     public class InterfaceCalculosPersonas : ICalculosNodo
     {
         string[] salidas_actual = new string[] { "pesimo", "malo", "regular", "bueno", "excelente" };
@@ -650,7 +650,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
     //***********************************************************************************************
     //************************    InterfaceCalculosGenerica
     //***********************************************************************************************
-
+    [Serializable()]
     public class InterfaceCalculosGenerica : ICalculosNodo
     {
         string[] salidas_actual = new string[] { "pesimo", "malo", "regular", "bueno", "excelente" };
