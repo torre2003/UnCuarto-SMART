@@ -89,7 +89,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				academico_luperfina_rojas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				academico_luperfina_rojas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
+                academico_luperfina_rojas.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
                 academico_luperfina_rojas.calculos = new InterfaceCalculoProfesores();
 				

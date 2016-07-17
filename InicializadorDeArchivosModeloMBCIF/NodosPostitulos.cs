@@ -194,13 +194,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
                 diplomado_gestion_tributaria.agregarVariable("i_n.dp_n.degt", Nodo.INFLUENCIAS_EXTERNAS);
 
-
-				
-				diplomado_gestion_tributaria.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				diplomado_gestion_tributaria.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-
-
-
                 diplomado_gestion_tributaria.calculos = new ICalculosNodo_programas("n.nadegt");
 				
 				#endregion

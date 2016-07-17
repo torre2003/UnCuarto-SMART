@@ -111,13 +111,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-						}/*, {"docente 2", new VariableDifusa("docente 2", 0, 1,
-								new List<FuncionPertenencia>() {
-									new FuncionHombro("calificado", 0, 0.2, 0.4),
-									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
-									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-								})
-						}*/
+						}
 				},
 						//salidas
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
@@ -135,18 +129,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 						
 				nivel_academico_doctorado_en_quimica.agregarVariable("n.agsg", Nodo.DATOS_NODOS_EXTERNOS);
-				//nivel_academico_doctorado_en_quimica.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
-			
-			//-- influencias DESDE este nodo -----
-			nivel_academico_doctorado_en_quimica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nivel_academico_doctorado_en_quimica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nivel_academico_doctorado_en_quimica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
-			
-			//-- influencias HACIA este nodo -----
-			nivel_academico_doctorado_en_quimica.agregarVariable("i_n.dp_n.deq", Nodo.NODOS_INFLUENCIADOS);
-			nivel_academico_doctorado_en_quimica.agregarVariable("i_n.i_n.deq", Nodo.NODOS_INFLUENCIADOS);
-			nivel_academico_doctorado_en_quimica.agregarVariable("i_n.fyb_n.deq", Nodo.NODOS_INFLUENCIADOS);
-			
 			
             nivel_academico_doctorado_en_quimica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.agsg" });
 						

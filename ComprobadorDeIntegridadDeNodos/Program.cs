@@ -119,13 +119,16 @@ namespace ComprobadorDeIntegridadDeNodos
                 else
                     Console.WriteLine("ERROR en nodo");
                 Console.WriteLine("**************************************************");
-                Console.ReadKey();
+                if (!flag)
+                    Console.ReadKey();
                 Console.Clear();
 
                 for (int j = 0; j < influencias_externas.Length; j++)
                 {
-                    comprobarInfluencia(manejador_de_archivos, influencias_externas[j], nodo_actual.id_nodo);
-                    Console.ReadKey();
+                    if (!comprobarInfluencia(manejador_de_archivos, influencias_externas[j], nodo_actual.id_nodo))
+                    {
+                        Console.ReadKey();
+                    }
                     Console.Clear();
 
                 }
@@ -134,7 +137,7 @@ namespace ComprobadorDeIntegridadDeNodos
         }
 
 
-        public void comprobarInfluencia(ManejadorDeDatosArchivos manejador_de_archivos, string id_influencia, string en_nodo = null)
+        public bool comprobarInfluencia(ManejadorDeDatosArchivos manejador_de_archivos, string id_influencia, string en_nodo = null)
         {
             bool flag = true;
             
@@ -142,9 +145,9 @@ namespace ComprobadorDeIntegridadDeNodos
             if (influencia == null)
             {
                 Console.WriteLine("**************************************************");
-                Console.WriteLine("ERROR Influencia NO EXISTE");
+                Console.WriteLine("ERROR Influencia NO EXISTE     \"" + id_influencia+"\"");
                 Console.WriteLine("**************************************************");
-                return;
+                return false;
             }
             bool existe_influencia, existe_nodo_origen, existe_nodo_destino;
             bool concuerda_nodo_origen, concuerda_nodo_destino;
@@ -187,7 +190,7 @@ namespace ComprobadorDeIntegridadDeNodos
             else
                 Console.WriteLine("ERROR en influencia");
             Console.WriteLine("**************************************************");
-            
+            return flag;
         }
 
         public void comprobarTodasLasInfluencias(ManejadorDeDatosArchivos manejador_de_archivos)
@@ -202,8 +205,8 @@ namespace ComprobadorDeIntegridadDeNodos
             string[] lista_de_influencias = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.INFLUENCIAS);
             for (int i = 0; i < lista_de_influencias.Length; i++)
             {
-                comprobarInfluencia(manejador_de_archivos, lista_de_influencias[i]);
-                Console.ReadKey();
+                if(!comprobarInfluencia(manejador_de_archivos, lista_de_influencias[i]))
+                    Console.ReadKey();
                 Console.Clear();
             }
         }

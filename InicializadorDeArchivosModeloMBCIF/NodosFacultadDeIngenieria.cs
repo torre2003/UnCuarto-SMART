@@ -87,7 +87,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				academico_mauricio_godoy.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
+				academico_mauricio_godoy.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_mauricio_godoy.calculos = new InterfaceCalculoProfesores();

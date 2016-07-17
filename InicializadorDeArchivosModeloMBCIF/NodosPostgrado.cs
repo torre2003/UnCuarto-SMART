@@ -228,13 +228,13 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado_seccion_diplomados_y_postitulos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                   {"n.dgt", new VariableDifusa("n.dgt", 0, 1,	
+                   {"n.dieie", new VariableDifusa("n.dgt", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })}, 
-                   {"n.dieie", new VariableDifusa("n.dieie", 0, 1,	
+                   {"n.degt", new VariableDifusa("n.dieie", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -246,7 +246,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.dee", new VariableDifusa("n.dee", 0, 1,
+                    {"n.deee", new VariableDifusa("n.dee", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -268,15 +268,14 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dgt", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dieie", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.degt", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.pmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dee", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.deee", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dgt", "n.dieie", "n.pmpdqeescdebppelacn", "n.dee" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dieie", "n.degt", "n.pmpdqeescdebppelacn", "n.deee" });
               #endregion
-
 
               #region nodo Personal Postgrado
               //____________________________________________________________________________________________
@@ -468,9 +467,26 @@ namespace InicializadorDeArchivosModeloMBCIF
 
     
               nodo_director_postgrado.agregarVariable("i_n.di_n.dp", Nodo.INFLUENCIAS_EXTERNAS);
-              nodo_director_postgrado.agregarVariable("n.di", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_director_postgrado.agregarVariable("n.di", Nodo.NODOS_INFLUENCIADOS);
 
-
+            // doctorados
+              nodo_director_postgrado.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.deidayb", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.debyea", Nodo.NODOS_INFLUENCIADOS);
+            //magister
+              nodo_director_postgrado.agregarVariable("n.memc", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.mecef", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.mem", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.meldyce", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.mea", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.mecmiea", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.meelmelofol", Nodo.NODOS_INFLUENCIADOS);  
+            //postitulos 
+              nodo_director_postgrado.agregarVariable("n.dieie", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.degt", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.pmpdqeescdebppelacn", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("n.deee", Nodo.NODOS_INFLUENCIADOS);
+            
               nodo_director_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
 
 

@@ -92,7 +92,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_investigacion.agregarVariable("i_n.d_n.i", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_investigacion.agregarVariable("i_n.p_n.i", Nodo.INFLUENCIAS_EXTERNAS);
 
 
             nodo_investigacion.calculos = new InterfaceCalculosGenerica(new string[] { "n.pi", "n.pisi", "n.pscielo", "n.pe"});
@@ -304,11 +304,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 			//-- influencias DESDE este nodo -----
-			nodo_secretaria_investigacion.agregarVariable("n.dp", Nodo.NODOS_INFLUENCIADOS);
+            nodo_director_investigacion.agregarVariable("n.dp", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_secretaria_investigacion.agregarVariable("i_n.dp_n.di", Nodo.INFLUENCIAS_EXTERNAS);
+            nodo_director_investigacion.agregarVariable("i_n.dp_n.di", Nodo.INFLUENCIAS_EXTERNAS);
 
             nodo_director_investigacion.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
             #endregion

@@ -322,7 +322,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             nivel_academico_magister_en_matematica.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.amg", new VariableDifusa("n.amg", 0, 1,	
+                    {"n.amc", new VariableDifusa("n.amc", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -343,11 +343,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
 
 
-            nivel_academico_magister_en_matematica.agregarVariable("n.amg", Nodo.DATOS_NODOS_EXTERNOS);
+            nivel_academico_magister_en_matematica.agregarVariable("n.amc", Nodo.DATOS_NODOS_EXTERNOS);
 
 
 
-            nivel_academico_magister_en_matematica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amg" });
+            nivel_academico_magister_en_matematica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amc" });
 
             #endregion
 
