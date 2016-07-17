@@ -13,16 +13,21 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosPostgrado
     {
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
+        public Nodo Postgrado ;
+        public Nodo Director ;
+        public Nodo Secretaria ;
 
-        public void crearNodosPostgrado()
+
+        public NodosPostgrado()
         {
             #region Nodo Postgrado
             //____________________________________________________________________________________________
             //_________________ Nodo Postgrado ___________________________________________________
             //____________________________________________________________________________________________
-          	Nodo nodo_postrado;
-            nodo_postrado = new Nodo("n.p", "Postgrado");
-            nodo_postrado.fuzzy = new InferenciaDifusa(
+
+          	Nodo nodo_postgrado;
+            nodo_postgrado = new Nodo("n.p", "Postgrado");
+            nodo_postgrado.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
                     {"n.pp", new VariableDifusa("n.pp", 0, 1,	
@@ -64,12 +69,14 @@ namespace InicializadorDeArchivosModeloMBCIF
                    }
               );
             
-              nodo_postrado.agregarVariable("n.pp", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado.agregarVariable("n.psd", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado.agregarVariable("n.psm", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado.agregarVariable("n.psdyp", Nodo.DATOS_NODOS_EXTERNOS);
+
+              nodo_postgrado.agregarVariable("n.pp", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("n.psd", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("n.psm", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("n.psdyp", Nodo.DATOS_NODOS_EXTERNOS);
 
               nodo_postrado.agregarVariable("i_n.i_n.p", Nodo.INFLUENCIAS_EXTERNAS);
+
 
               nodo_postrado.agregarVariable("n.i", Nodo.NODOS_INFLUENCIADOS);
               nodo_postrado.calculos = new InterfaceCalculosGenerica(new string[] { "n.pp", "n.psd", "n.psm", "n.psdyp"});
@@ -80,9 +87,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Doctorados ___________________________________________________
               //_________________________________________________________________________________________
-              Nodo nodo_postrado_seccion_doctorados;
-              nodo_postrado_seccion_doctorados = new Nodo("n.psd", "Postgrado Sección Doctorados");
-              nodo_postrado_seccion_doctorados.fuzzy = new InferenciaDifusa(
+
+              Nodo nodo_postgrado_seccion_doctorados;
+              nodo_postgrado_seccion_doctorados = new Nodo("n.psd", "Postgrado Sección Doctorados");
+              nodo_postgrado_seccion_doctorados.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
                     {"n.deq", new VariableDifusa("n.deq", 0, 1,	
@@ -118,10 +126,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                    }
                 );
 
-              nodo_postrado_seccion_doctorados.agregarVariable("n.deq", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_doctorados.agregarVariable("n.deidayb", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_doctorados.agregarVariable("n.debyea", Nodo.DATOS_NODOS_EXTERNOS);
+
+              nodo_postgrado_seccion_doctorados.agregarVariable("n.deq", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_doctorados.agregarVariable("n.deidayb", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_doctorados.agregarVariable("n.debyea", Nodo.DATOS_NODOS_EXTERNOS);
         
+
+
               nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.debyea", "n.deidayb", "n.deq" });
               #endregion
 
@@ -129,9 +140,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               //____________________________________________________________________________________________
               //_________________ Nodo Postgrado Sección Magister ___________________________________________________
               //____________________________________________________________________________________________
-              Nodo nodo_postrado_seccion_magister;
-              nodo_postrado_seccion_magister = new Nodo("n.psm", "Postgrado Sección Magister");
-              nodo_postrado_seccion_magister.fuzzy = new InferenciaDifusa(
+
+              Nodo nodo_postgrado_seccion_magister;
+              nodo_postgrado_seccion_magister = new Nodo("n.psm", "Postgrado Sección Magister");
+              nodo_postgrado_seccion_magister.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
                    {"n.memc", new VariableDifusa("n.memc", 0, 1,	
@@ -192,13 +204,15 @@ namespace InicializadorDeArchivosModeloMBCIF
                    }
                 );
 
-              nodo_postrado_seccion_magister.agregarVariable("n.memc", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.mecef", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.mem", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.meldyce", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.mea", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.mecmiea", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_magister.agregarVariable("n.meelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
+
+              nodo_postgrado_seccion_magister.agregarVariable("n.memc", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.mecef", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.mem", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.meldyce", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.mea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.mecmiea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("n.meelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
+
 
               nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.memc", "n.mecef", "n.mem", "n.meldyce", "n.mea", "n.mecmiea", "n.meelmelofol" });
               #endregion
@@ -208,9 +222,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               //_________________ Nodo Postgrado Sección diplomados y postitulos ___________________________________________________
               //____________________________________________________________________________________________
               //TODO Postgrado Sección diplomados y postitulos
-              Nodo nodo_postrado_seccion_diplomados_y_postitulos;
-              nodo_postrado_seccion_diplomados_y_postitulos = new Nodo("n.psdyp", "Postgrado Sección diplomados y postitulos");
-              nodo_postrado_seccion_diplomados_y_postitulos.fuzzy = new InferenciaDifusa(
+
+              Nodo nodo_postgrado_seccion_diplomados_y_postitulos;
+              nodo_postgrado_seccion_diplomados_y_postitulos = new Nodo("n.psdyp", "Postgrado Sección diplomados y postitulos");
+              nodo_postgrado_seccion_diplomados_y_postitulos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
                    {"n.dgt", new VariableDifusa("n.dgt", 0, 1,	
@@ -252,10 +267,12 @@ namespace InicializadorDeArchivosModeloMBCIF
                    }
                 );
 
-              nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.dgt", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.dieie", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.pmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postrado_seccion_diplomados_y_postitulos.agregarVariable("n.dee", Nodo.DATOS_NODOS_EXTERNOS);
+
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dgt", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dieie", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.pmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dee", Nodo.DATOS_NODOS_EXTERNOS);
+
 
               nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dgt", "n.dieie", "n.pmpdqeescdebppelacn", "n.dee" });
               #endregion
@@ -301,6 +318,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_personal_postgrado.agregarVariable("n.dp", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_personal_postgrado.agregarVariable("n.sp", Nodo.DATOS_NODOS_EXTERNOS);
               
+
               nodo_personal_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "n.dp", "n.sp" });
               #endregion
 
@@ -379,10 +397,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_secretaria_postgrado.agregarVariable("sistematibilidad", Nodo.DATOS_INTERNOS);
               nodo_secretaria_postgrado.agregarVariable("manejo de tics", Nodo.DATOS_INTERNOS);
 
+
               nodo_secretaria_postgrado.agregarVariable("i_n.si_n.sp", Nodo.INFLUENCIAS_EXTERNAS);
               nodo_secretaria_postgrado.agregarVariable("n.si", Nodo.NODOS_INFLUENCIADOS);
 
-              
 
               nodo_secretaria_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "compromiso", "empatia", "manejo verbal", "flexibilidad", "trabajo bajo presion", "sistematibilidad", "manejo de tics" });
               #endregion
@@ -448,8 +466,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_director_postgrado.agregarVariable("compromiso", Nodo.DATOS_INTERNOS);
               nodo_director_postgrado.agregarVariable("gestion externa", Nodo.DATOS_INTERNOS);
 
+    
               nodo_director_postgrado.agregarVariable("i_n.di_n.dp", Nodo.INFLUENCIAS_EXTERNAS);
               nodo_director_postgrado.agregarVariable("n.di", Nodo.INFLUENCIAS_EXTERNAS);
+
 
               nodo_director_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
 
@@ -457,23 +477,18 @@ namespace InicializadorDeArchivosModeloMBCIF
               #endregion
 
 
+              Postgrado = nodo_postgrado;
 
-
-
-
-
-
-
-
-
+              Secretaria = nodo_secretaria_postgrado;
+              Director = nodo_director_postgrado;
 
               //Escribiendo nodos en archivo
 
 
-              manejador_de_archivos.ingresarNuevoNodo(nodo_postrado);
-              manejador_de_archivos.ingresarNuevoNodo(nodo_postrado_seccion_doctorados);
-              manejador_de_archivos.ingresarNuevoNodo(nodo_postrado_seccion_magister);
-              manejador_de_archivos.ingresarNuevoNodo(nodo_postrado_seccion_diplomados_y_postitulos);
+              manejador_de_archivos.ingresarNuevoNodo(nodo_postgrado);
+              manejador_de_archivos.ingresarNuevoNodo(nodo_postgrado_seccion_doctorados);
+              manejador_de_archivos.ingresarNuevoNodo(nodo_postgrado_seccion_magister);
+              manejador_de_archivos.ingresarNuevoNodo(nodo_postgrado_seccion_diplomados_y_postitulos);
               manejador_de_archivos.ingresarNuevoNodo(nodo_personal_postgrado);
               manejador_de_archivos.ingresarNuevoNodo(nodo_secretaria_postgrado);
               manejador_de_archivos.ingresarNuevoNodo(nodo_director_postgrado);

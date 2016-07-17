@@ -15,12 +15,79 @@ namespace InicializadorDeArchivosModeloMBCIF
         static void Main(string[] args)
         {
             
-        	var doctorados = new NodosDoctorado();
+        	var investigacion = new NodosInvestigaciones();
+        	var postgrados = new NodosPostgrado();
+        	var attExterno = new NodosAtributosExternos();
+        	
+        	var doctorados = new NodosDoctorado();        	
+        	var magister = new NodosProgramasMagister();
         	var postitulos = new NodosPostitulos();
+        	
         	var academicosCiencias = new NodosFacultadDeCiencias();
-        	var acdemicosFacse = new NodosFacultadDeCienciasSocialesyEconomicas();
+        	var academicosFacse = new NodosFacultadDeCienciasSocialesyEconomicas();
         	var academicosIngenieria = new NodosFacultadDeIngenieria();
         	var academicosHumanidades = new NodosFacultadDeHumanidades();
+
+        	
+        	//-- influencia desde Postgrado hacia Investigacion ------------------------------------------
+        	InfluenciaNodo.crearInfluencias(postgrados.Postgrado.id_nodo, postgrados.Postgrado.nombre, 
+        	                                postgrados.Postgrado.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_INVESTIGACION_POSTGRADO);
+        	
+        	//-- influencia desde Director Postgrado hacia Programas postgrado y Director Investigacion------------------------------------------
+        	InfluenciaNodo.crearInfluencias(postgrados.Director.id_nodo, postgrados.Director.nombre,
+        	                                postgrados.Director.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_DIRPOSTGRADO_PROGRAMAS);
+        	
+        	//-- influencia desde Secretaria Postgrado hacia Secretaria Investigacion------------------------------------------
+        	InfluenciaNodo.crearInfluencias(postgrados.Secretaria.id_nodo, postgrados.Secretaria.nombre,
+        	                                postgrados.Secretaria.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_SECRETARIAS);
+        	
+        	//-- inpluencia desde Programas Postgrado hacia Publicaciones------------------------------------------
+        	foreach(var nodo in doctorados.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_PROGRAMA_PUBLICACIONES);        	
+        	foreach(var nodo in magister.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_PROGRAMA_PUBLICACIONES);
+			
+        	//-- influencia desde Becas hacia Programas postgrado ------------------------------------------
+        	InfluenciaNodo.crearInfluencias(attExterno.Becas.id_nodo, attExterno.Becas.nombre, 
+        	                                attExterno.Becas.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_BECAS_PROGRAMAS);
+			
+        	//-- influencia desde Academicos hacia Publicaciones ------------------------------------------
+        	foreach(var nodo in academicosCiencias.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_ACADEMICO_PUBLICACIONES);        	
+        	foreach(var nodo in academicosFacse.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_ACADEMICO_PUBLICACIONES);			
+        	foreach(var nodo in academicosIngenieria.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_ACADEMICO_PUBLICACIONES);			
+        	foreach(var nodo in academicosHumanidades.Nodos)
+        		InfluenciaNodo.crearInfluencias(nodo.id_nodo, nodo.nombre, nodo.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        		                                InfluenciaNodo.INF_ACADEMICO_PUBLICACIONES);
+			
+        	
+        	//-- influencia desde Investigacion hacia Postgrado y Programas ------------------------------------------
+        	InfluenciaNodo.crearInfluencias(investigacion.Investigacion.id_nodo, investigacion.Investigacion.nombre, 
+        	                                investigacion.Investigacion.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_INVESTIGACION_PROGRAMAS);
+        	
+        	//-- influencia desde Director Investigacion hacia Director Postgrado ------------------------------------------
+        	InfluenciaNodo.crearInfluencias(investigacion.Director.id_nodo, investigacion.Director.nombre, 
+        	                                investigacion.Director.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_DIRECTORES);
+        	
+        	//-- influencia desde Secretaria Investigacion hacia Secretaria Postgrado ------------------------------------------
+        	InfluenciaNodo.crearInfluencias(investigacion.Secretaria.id_nodo, investigacion.Secretaria.nombre, 
+        	                                investigacion.Secretaria.listarVariables(Nodo.NODOS_INFLUENCIADOS),
+        	                                InfluenciaNodo.INF_SECRETARIAS);
+        	
+        	
         	
         	
         	/*
