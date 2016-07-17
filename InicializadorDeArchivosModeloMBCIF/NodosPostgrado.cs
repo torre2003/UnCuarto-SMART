@@ -26,29 +26,29 @@ namespace InicializadorDeArchivosModeloMBCIF
             //____________________________________________________________________________________________
 
           	Nodo nodo_postgrado;
-            nodo_postgrado = new Nodo("n.p", "Postgrado");
+            nodo_postgrado = new Nodo("np", "Postgrado");
             nodo_postgrado.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.pp", new VariableDifusa("n.pp", 0, 1,	
+                    {"npp", new VariableDifusa("npp", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })},
-                    {"n.psd", new VariableDifusa("n.psd", 0, 1,
+                    {"npsd", new VariableDifusa("npsd", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.psm", new VariableDifusa("n.psm", 0, 1,
+                    {"npsm", new VariableDifusa("npsm", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.psdyp", new VariableDifusa("n.psdyp", 0, 1,
+                    {"npsdyp", new VariableDifusa("npsdyp", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -70,42 +70,42 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
             
 
-              nodo_postgrado.agregarVariable("n.pp", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado.agregarVariable("n.psd", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado.agregarVariable("n.psm", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado.agregarVariable("n.psdyp", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("npp", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("npsd", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("npsm", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado.agregarVariable("npsdyp", Nodo.DATOS_NODOS_EXTERNOS);
 
-              nodo_postgrado.agregarVariable("i_n.i_n.p", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_postgrado.agregarVariable("i_ni_np", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-              nodo_postgrado.agregarVariable("n.i", Nodo.NODOS_INFLUENCIADOS);
-              nodo_postgrado.calculos = new InterfaceCalculosGenerica(new string[] { "n.pp", "n.psd", "n.psm", "n.psdyp"});
+              nodo_postgrado.agregarVariable("ni", Nodo.NODOS_INFLUENCIADOS);
+              nodo_postgrado.calculos = new InterfaceCalculosGenerica(new string[] { "npp", "npsd", "npsm", "npsdyp"});
             #endregion
 
 
-              #region Nodo Postgrado Sección Doctorados
+              #region Nodo Postgrado Seccion Doctorados
               //____________________________________________________________________________________________
-              //_________________ Nodo Postgrado Sección Doctorados ___________________________________________________
+              //_________________ Nodo Postgrado Seccion Doctorados ___________________________________________________
               //_________________________________________________________________________________________
 
               Nodo nodo_postgrado_seccion_doctorados;
-              nodo_postgrado_seccion_doctorados = new Nodo("n.psd", "Postgrado Sección Doctorados");
+              nodo_postgrado_seccion_doctorados = new Nodo("npsd", "Postgrado Seccion Doctorados");
               nodo_postgrado_seccion_doctorados.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"n.deq", new VariableDifusa("n.deq", 0, 1,	
+                    {"ndeq", new VariableDifusa("ndeq", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })},
-                    {"n.deidayb", new VariableDifusa("n.deidayb", 0, 1,
+                    {"ndeidayb", new VariableDifusa("ndeidayb", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.debyea", new VariableDifusa("n.debyea", 0, 1,
+                    {"ndebyea", new VariableDifusa("ndebyea", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -127,62 +127,62 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nodo_postgrado_seccion_doctorados.agregarVariable("n.deq", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_doctorados.agregarVariable("n.deidayb", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_doctorados.agregarVariable("n.debyea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_doctorados.agregarVariable("ndeq", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_doctorados.agregarVariable("ndeidayb", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_doctorados.agregarVariable("ndebyea", Nodo.DATOS_NODOS_EXTERNOS);
         
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.debyea", "n.deidayb", "n.deq" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "ndebyea", "ndeidayb", "ndeq" });
               #endregion
 
-              #region Nodo Postgrado Sección Magister
+              #region Nodo Postgrado Seccion Magister
               //____________________________________________________________________________________________
-              //_________________ Nodo Postgrado Sección Magister ___________________________________________________
+              //_________________ Nodo Postgrado Seccion Magister ___________________________________________________
               //____________________________________________________________________________________________
 
               Nodo nodo_postgrado_seccion_magister;
-              nodo_postgrado_seccion_magister = new Nodo("n.psm", "Postgrado Sección Magister");
+              nodo_postgrado_seccion_magister = new Nodo("npsm", "Postgrado Seccion Magister");
               nodo_postgrado_seccion_magister.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                   {"n.memc", new VariableDifusa("n.memc", 0, 1,	
+                   {"nmemc", new VariableDifusa("nmemc", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })}, 
-                   {"n.mecef", new VariableDifusa("n.mecef", 0, 1,	
+                   {"nmecef", new VariableDifusa("nmecef", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })},
-                    {"n.mem", new VariableDifusa("n.mem", 0, 1,
+                    {"nmem", new VariableDifusa("nmem", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.meldyce", new VariableDifusa("n.meldyce", 0, 1,
+                    {"nmeldyce", new VariableDifusa("nmeldyce", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.mea", new VariableDifusa("n.mea", 0, 1,	
+                    {"nmea", new VariableDifusa("nmea", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })},
-                    {"n.mecmiea", new VariableDifusa("n.mecmiea", 0, 1,
+                    {"nmecmiea", new VariableDifusa("nmecmiea", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.meelmelofol", new VariableDifusa("n.meelmelofol", 0, 1,
+                    {"nmeelmelofol", new VariableDifusa("nmeelmelofol", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -205,48 +205,48 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nodo_postgrado_seccion_magister.agregarVariable("n.memc", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.mecef", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.mem", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.meldyce", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.mea", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.mecmiea", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_magister.agregarVariable("n.meelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmemc", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmecef", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmem", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmeldyce", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmecmiea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_magister.agregarVariable("nmeelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.memc", "n.mecef", "n.mem", "n.meldyce", "n.mea", "n.mecmiea", "n.meelmelofol" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "nmemc", "nmecef", "nmem", "nmeldyce", "nmea", "nmecmiea", "nmeelmelofol" });
               #endregion
 
-              #region Nodo Postgrado Sección diplomados y postitulos
+              #region Nodo Postgrado Seccion diplomados y postitulos
               //____________________________________________________________________________________________
-              //_________________ Nodo Postgrado Sección diplomados y postitulos ___________________________________________________
+              //_________________ Nodo Postgrado Seccion diplomados y postitulos ___________________________________________________
               //____________________________________________________________________________________________
-              //TODO Postgrado Sección diplomados y postitulos
+              //TODO Postgrado Seccion diplomados y postitulos
 
               Nodo nodo_postgrado_seccion_diplomados_y_postitulos;
-              nodo_postgrado_seccion_diplomados_y_postitulos = new Nodo("n.psdyp", "Postgrado Sección diplomados y postitulos");
+              nodo_postgrado_seccion_diplomados_y_postitulos = new Nodo("npsdyp", "Postgrado Seccion diplomados y postitulos");
               nodo_postgrado_seccion_diplomados_y_postitulos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                   {"n.dieie", new VariableDifusa("n.dgt", 0, 1,	
+                   {"ndieie", new VariableDifusa("ndgt", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })}, 
-                   {"n.degt", new VariableDifusa("n.dieie", 0, 1,	
+                   {"ndegt", new VariableDifusa("ndieie", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })},
-                    {"n.pmpdqeescdebppelacn", new VariableDifusa("n.pmpdqeescdebppelacn", 0, 1,
+                    {"npmpdqeescdebppelacn", new VariableDifusa("npmpdqeescdebppelacn", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                               })},
-                    {"n.deee", new VariableDifusa("n.dee", 0, 1,
+                    {"ndeee", new VariableDifusa("ndee", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -268,13 +268,13 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dieie", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.degt", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.pmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.deee", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("ndieie", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("ndegt", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("npmpdqeescdebppelacn", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("ndeee", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dieie", "n.degt", "n.pmpdqeescdebppelacn", "n.deee" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "ndieie", "ndegt", "npmpdqeescdebppelacn", "ndeee" });
               #endregion
 
               #region nodo Personal Postgrado
@@ -283,17 +283,17 @@ namespace InicializadorDeArchivosModeloMBCIF
               //____________________________________________________________________________________________
               //TODO Personal Postgrado
               Nodo nodo_personal_postgrado;
-              nodo_personal_postgrado = new Nodo("n.pp", "Personal Postgrado");
+              nodo_personal_postgrado = new Nodo("npp", "Personal Postgrado");
               nodo_personal_postgrado.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                   {"n.dp", new VariableDifusa("n.dp", 0, 1,	
+                   {"ndp", new VariableDifusa("ndp", 0, 1,	
                                                               new List<FuncionPertenencia>() {
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
                                                                 new FuncionSaturacion("alto", 0.5, 0.6, 1)
                                                                 })}, 
-                    {"n.sp", new VariableDifusa("n.sp", 0, 1,
+                    {"nsp", new VariableDifusa("nsp", 0, 1,
                                                               new List<FuncionPertenencia>(){
                                                                 new FuncionHombro("bajo", 0, 0.3, 0.4),
                                                                 new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
@@ -314,11 +314,11 @@ namespace InicializadorDeArchivosModeloMBCIF
                    }
                 );
 
-              nodo_personal_postgrado.agregarVariable("n.dp", Nodo.DATOS_NODOS_EXTERNOS);
-              nodo_personal_postgrado.agregarVariable("n.sp", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_personal_postgrado.agregarVariable("ndp", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_personal_postgrado.agregarVariable("nsp", Nodo.DATOS_NODOS_EXTERNOS);
               
 
-              nodo_personal_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "n.dp", "n.sp" });
+              nodo_personal_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "ndp", "nsp" });
               #endregion
 
               #region Nodo Secretaria Postgrado
@@ -327,7 +327,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               //____________________________________________________________________________________________
               //TODO Secretaria Postgrado
               Nodo nodo_secretaria_postgrado;
-              nodo_secretaria_postgrado = new Nodo("n.sp", "Secretaria Postgrado");
+              nodo_secretaria_postgrado = new Nodo("nsp", "Secretaria Postgrado");
               nodo_secretaria_postgrado.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
@@ -397,8 +397,8 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_secretaria_postgrado.agregarVariable("manejo de tics", Nodo.DATOS_INTERNOS);
 
 
-              nodo_secretaria_postgrado.agregarVariable("i_n.si_n.sp", Nodo.INFLUENCIAS_EXTERNAS);
-              nodo_secretaria_postgrado.agregarVariable("n.si", Nodo.NODOS_INFLUENCIADOS);
+              nodo_secretaria_postgrado.agregarVariable("i_nsi_nsp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_secretaria_postgrado.agregarVariable("nsi", Nodo.NODOS_INFLUENCIADOS);
 
 
               nodo_secretaria_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "compromiso", "empatia", "manejo verbal", "flexibilidad", "trabajo bajo presion", "sistematibilidad", "manejo de tics" });
@@ -410,7 +410,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               //____________________________________________________________________________________________
               //TODO Director Postgrado
               Nodo nodo_director_postgrado;
-              nodo_director_postgrado = new Nodo("n.dp", "Director Postgrado");
+              nodo_director_postgrado = new Nodo("ndp", "Director Postgrado");
               nodo_director_postgrado.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
@@ -466,26 +466,26 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_director_postgrado.agregarVariable("gestion externa", Nodo.DATOS_INTERNOS);
 
     
-              nodo_director_postgrado.agregarVariable("i_n.di_n.dp", Nodo.INFLUENCIAS_EXTERNAS);
-              nodo_director_postgrado.agregarVariable("n.di", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("i_ndi_ndp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_director_postgrado.agregarVariable("ndi", Nodo.NODOS_INFLUENCIADOS);
 
             // doctorados
-              nodo_director_postgrado.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.deidayb", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.debyea", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndeq", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndeidayb", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndebyea", Nodo.NODOS_INFLUENCIADOS);
             //magister
-              nodo_director_postgrado.agregarVariable("n.memc", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.mecef", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.mem", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.meldyce", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.mea", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.mecmiea", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.meelmelofol", Nodo.NODOS_INFLUENCIADOS);  
+              nodo_director_postgrado.agregarVariable("nmemc", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmecef", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmem", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmeldyce", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmea", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmecmiea", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nmeelmelofol", Nodo.NODOS_INFLUENCIADOS);  
             //postitulos 
-              nodo_director_postgrado.agregarVariable("n.dieie", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.degt", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.pmpdqeescdebppelacn", Nodo.NODOS_INFLUENCIADOS);
-              nodo_director_postgrado.agregarVariable("n.deee", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndieie", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndegt", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("npmpdqeescdebppelacn", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("ndeee", Nodo.NODOS_INFLUENCIADOS);
             
               nodo_director_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
 

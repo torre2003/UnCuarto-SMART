@@ -24,7 +24,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             //____________________________________________________________________________________________
             //TODO Financiamiento y Becas
             Nodo nodo_financiamiento_y_becas;
-            nodo_financiamiento_y_becas = new Nodo("n.fyb", "Financiamiento y Becas");
+            nodo_financiamiento_y_becas = new Nodo("nfyb", "Financiamiento y Becas");
             nodo_financiamiento_y_becas.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -73,16 +73,16 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_financiamiento_y_becas.agregarVariable("cyted", Nodo.DATOS_INTERNOS);
             
             //-- influencias DESDE este nodo -----
-            nodo_financiamiento_y_becas.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.deidayb", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.debyea", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.memc", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.mecef", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.mem", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.meldyce", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.mea", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.mecmiea", Nodo.NODOS_INFLUENCIADOS);
-            nodo_financiamiento_y_becas.agregarVariable("n.meelmelofol", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("ndeq", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("ndeidayb", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("ndebyea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmemc", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmecef", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmem", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmeldyce", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmecmiea", Nodo.NODOS_INFLUENCIADOS);
+            nodo_financiamiento_y_becas.agregarVariable("nmeelmelofol", Nodo.NODOS_INFLUENCIADOS);
 
 
             //           postitulo_en_algo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);

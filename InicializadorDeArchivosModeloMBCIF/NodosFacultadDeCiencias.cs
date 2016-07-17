@@ -21,7 +21,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Guillermo Saa Gamboa _________
 				//___________________________________________________
 				Nodo academico_guillermo_saa;
-				academico_guillermo_saa = new Nodo("n.agsg", "academico Guillermo Saa Gamboa");
+				academico_guillermo_saa = new Nodo("nagsg", "Academico Guillermo Saa Gamboa");
 				academico_guillermo_saa.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -75,9 +75,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_guillermo_saa.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_guillermo_saa.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_guillermo_saa.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_guillermo_saa.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_guillermo_saa.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_guillermo_saa.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_guillermo_saa.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_guillermo_saa.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 				
                 academico_guillermo_saa.calculos = new InterfaceCalculoProfesores();
@@ -92,7 +92,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________ Nodo academico Francisco Squeo _________
 				//___________________________________________________
 				Nodo academico_francisco_squeo;
-				academico_francisco_squeo = new Nodo("n.afs", "academico Francisco Squeo");
+				academico_francisco_squeo = new Nodo("nafs", "Academico Francisco Squeo");
 				academico_francisco_squeo.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -146,9 +146,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_francisco_squeo.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_francisco_squeo.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_francisco_squeo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_francisco_squeo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_francisco_squeo.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_francisco_squeo.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_francisco_squeo.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_francisco_squeo.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_francisco_squeo.calculos = new InterfaceCalculoProfesores();
@@ -162,7 +162,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_______________ Nodo academico Pedro Vega _________
 				//___________________________________________________
 				Nodo academico_pedro_vega;
-				academico_pedro_vega = new Nodo("n.apv", "academico Pedro Vega");
+				academico_pedro_vega = new Nodo("napv", "Academico Pedro Vega");
 				academico_pedro_vega.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -215,9 +215,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_pedro_vega.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_pedro_vega.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_pedro_vega.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_pedro_vega.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_pedro_vega.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_pedro_vega.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_pedro_vega.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_pedro_vega.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_pedro_vega.calculos = new InterfaceCalculoProfesores();
@@ -231,7 +231,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Marco Corgini _________
 				//___________________________________________________
 				Nodo academico_marco_corgini;
-				academico_marco_corgini = new Nodo("n.amc", "academico Marco Corgini");
+				academico_marco_corgini = new Nodo("namc", "Academico Marco Corgini");
 				academico_marco_corgini.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -284,9 +284,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_marco_corgini.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_marco_corgini.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_marco_corgini.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_marco_corgini.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_marco_corgini.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_marco_corgini.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_marco_corgini.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_marco_corgini.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_marco_corgini.calculos = new InterfaceCalculoProfesores();
@@ -300,7 +300,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Julia Arias _________
 				//___________________________________________________
 				Nodo academico_julia_arias;
-				academico_julia_arias = new Nodo("n.aja", "academica Julia Arias");
+				academico_julia_arias = new Nodo("naja", "Academica Julia Arias");
 				academico_julia_arias.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -353,9 +353,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_julia_arias.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_julia_arias.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_julia_arias.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_julia_arias.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_julia_arias.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_julia_arias.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_julia_arias.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_julia_arias.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_julia_arias.calculos = new InterfaceCalculoProfesores();
@@ -369,7 +369,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Ivan Fernandez _________
 				//___________________________________________________
 				Nodo academico_ivan_fernandez;
-				academico_ivan_fernandez = new Nodo("n.aif", "academico Ivan Fernandez");
+				academico_ivan_fernandez = new Nodo("naif", "Academico Ivan Fernandez");
 				academico_ivan_fernandez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -422,9 +422,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_ivan_fernandez.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_ivan_fernandez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_ivan_fernandez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_ivan_fernandez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_ivan_fernandez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_ivan_fernandez.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_ivan_fernandez.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_ivan_fernandez.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 				academico_ivan_fernandez.calculos = new InterfaceCalculoProfesores();
 			#endregion

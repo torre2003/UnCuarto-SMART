@@ -31,7 +31,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Mauricio godoy Ceura _________
 				//___________________________________________________
 				Nodo academico_mauricio_godoy;
-				academico_mauricio_godoy = new Nodo("n.amgs", "academico Mauricio Godoy Seura");
+				academico_mauricio_godoy = new Nodo("namgs", "Academico Mauricio Godoy Seura");
 				academico_mauricio_godoy.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -85,9 +85,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_mauricio_godoy.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
         		academico_mauricio_godoy.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_mauricio_godoy.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_mauricio_godoy.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-				academico_mauricio_godoy.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_mauricio_godoy.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_mauricio_godoy.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+				academico_mauricio_godoy.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_mauricio_godoy.calculos = new InterfaceCalculoProfesores();
@@ -101,7 +101,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Nelson Moraga _________
 				//___________________________________________________
 				Nodo academico_nelson_moraga;
-				academico_nelson_moraga = new Nodo("n.anm", "academico Nelson Moraga");
+				academico_nelson_moraga = new Nodo("nanm", "Academico Nelson Moraga");
 				academico_nelson_moraga.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -155,9 +155,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_nelson_moraga.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_nelson_moraga.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_nelson_moraga.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_nelson_moraga.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_nelson_moraga.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_nelson_moraga.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_nelson_moraga.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_nelson_moraga.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_nelson_moraga.calculos = new InterfaceCalculoProfesores();
@@ -171,7 +171,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Hector  Paez _________
 				//___________________________________________________
 				Nodo academico_hector_paez;
-				academico_hector_paez = new Nodo("n.ahp", "academico Hector Paez");
+				academico_hector_paez = new Nodo("nahp", "Academico Hector Paez");
 				academico_hector_paez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -224,9 +224,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_hector_paez.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_hector_paez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_hector_paez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_hector_paez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_hector_paez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_hector_paez.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_hector_paez.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_hector_paez.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_hector_paez.calculos = new InterfaceCalculoProfesores();
@@ -239,7 +239,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//Escribiendo nodos en archivo
 			manejador_de_datos.ingresarNuevoNodo(academico_nelson_moraga);
 			manejador_de_datos.ingresarNuevoNodo(academico_mauricio_godoy);
-				manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
+			manejador_de_datos.ingresarNuevoNodo(academico_hector_paez);
 			Console.WriteLine("Nodos Academico Facultad Ingenieria ingresados");
 					
 			

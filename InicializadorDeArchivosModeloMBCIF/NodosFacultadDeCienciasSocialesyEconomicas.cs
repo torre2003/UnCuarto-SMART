@@ -33,7 +33,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico_luperfina rojas _________
 				//___________________________________________________
 				Nodo academico_luperfina_rojas;
-				academico_luperfina_rojas = new Nodo("n.alr", "academica Luperfina Rojas");
+				academico_luperfina_rojas = new Nodo("nalr", "Academica Luperfina Rojas");
 				academico_luperfina_rojas.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -87,9 +87,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_luperfina_rojas.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
         		academico_luperfina_rojas.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_luperfina_rojas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_luperfina_rojas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-                academico_luperfina_rojas.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_luperfina_rojas.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_luperfina_rojas.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+                academico_luperfina_rojas.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
                 academico_luperfina_rojas.calculos = new InterfaceCalculoProfesores();
 				
@@ -102,7 +102,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________ Nodo academico Alberto Hernandez _________
 				//___________________________________________________
 				Nodo academico_alberto_hernandez;
-				academico_alberto_hernandez = new Nodo("n.aah", "academico Alberto Hernandez");
+				academico_alberto_hernandez = new Nodo("naah", "Academico Alberto Hernandez");
 				academico_alberto_hernandez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -156,9 +156,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_alberto_hernandez.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
         		academico_alberto_hernandez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_alberto_hernandez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_alberto_hernandez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_alberto_hernandez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_alberto_hernandez.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_alberto_hernandez.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_alberto_hernandez.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
                 academico_alberto_hernandez.calculos = new InterfaceCalculoProfesores();
@@ -169,7 +169,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				//Escribiendo nodos en archivo
 			manejador_de_datos.ingresarNuevoNodo(academico_luperfina_rojas);
-				manejador_de_datos.ingresarNuevoNodo(academico_alberto_hernandez);
+			manejador_de_datos.ingresarNuevoNodo(academico_alberto_hernandez);
 			Console.WriteLine("Nodos Academicos FACSE ingresados");
 				
 		}
