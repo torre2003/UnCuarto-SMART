@@ -22,6 +22,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 	{
 		
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		public List<Nodo> Nodos = new List<Nodo>();
 		
 		public NodosFacultadDeCienciasSocialesyEconomicas()
 		{
@@ -92,8 +93,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
                 academico_luperfina_rojas.calculos = new InterfaceCalculoProfesores();
 				
-
-
+		
 			#endregion	
 				
 			#region Nodo Academico Alberto Hernandez
@@ -164,7 +164,6 @@ namespace InicializadorDeArchivosModeloMBCIF
                 academico_alberto_hernandez.calculos = new InterfaceCalculoProfesores();
 			#endregion
 				
-
 			Nodos.Add(academico_luperfina_rojas);
 			Nodos.Add(academico_alberto_hernandez);
 				
@@ -172,7 +171,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 			manejador_de_datos.ingresarNuevoNodo(academico_luperfina_rojas);
 				manejador_de_datos.ingresarNuevoNodo(academico_alberto_hernandez);
 			Console.WriteLine("Nodos Academicos FACSE ingresados");
-
+				
 		}
 	}
 }

@@ -132,8 +132,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-
                 nivel_academico_diplomado_innovacion_educativa.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.asldm" });
+											
 
 				#endregion	
 			#endregion
@@ -241,8 +241,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-
                 nivel_academico_diplomado_gestion_tributaria.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.aah" });
+						
 
 				#endregion	
 			#endregion
@@ -325,8 +325,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-						}
-                    },
+						}/*, {"n.docente 2", new VariableDifusa("n.docente 2", 0, 1,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("calificado", 0, 0.2, 0.4),
+									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
+									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
+								})
+						}*/},
 						//salidas
 						new Dictionary<string, VariableDifusa> { 
 							{"estado", new VariableDifusa("estado", 0, 1,
@@ -344,10 +349,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 						
 				nivel_academico_postitulo_mencion_docentes_s_ciclo.agregarVariable("n.amea", Nodo.DATOS_NODOS_EXTERNOS);
-
+				//nivel_academico_postitulo_en_algo.agregarVariable("n.docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 
 
                 nivel_academico_postitulo_mencion_docentes_s_ciclo.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amea" });
+						
 
 				#endregion	
 			#endregion		
@@ -459,7 +465,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 	
                 nivel_academico_diplomado_en_eficiencia_energética.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.anm" });
-
 				#endregion	
 			#endregion
 						
@@ -479,7 +484,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 			Console.WriteLine("Nodos Postitulos ingresado");
-
 
 		}
 	}

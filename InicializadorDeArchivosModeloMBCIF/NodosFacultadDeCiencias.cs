@@ -11,9 +11,7 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosFacultadDeCiencias
     {
         ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
-
 		public List<Nodo> Nodos = new List<Nodo>();
-
 
         public NodosFacultadDeCiencias()
         {
@@ -81,9 +79,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_guillermo_saa.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_guillermo_saa.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-
 				
                 academico_guillermo_saa.calculos = new InterfaceCalculoProfesores();
+				
 
 					
 			#endregion
@@ -151,7 +149,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_francisco_squeo.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				academico_francisco_squeo.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_francisco_squeo.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
-
 
 
                 academico_francisco_squeo.calculos = new InterfaceCalculoProfesores();
@@ -223,8 +220,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_pedro_vega.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 
-
                 academico_pedro_vega.calculos = new InterfaceCalculoProfesores();
+				
 
 			#endregion
 			
@@ -293,6 +290,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
                 academico_marco_corgini.calculos = new InterfaceCalculoProfesores();
+				
 
 			#endregion
 			
@@ -360,8 +358,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_julia_arias.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 
-
                 academico_julia_arias.calculos = new InterfaceCalculoProfesores();
+				
 
 			#endregion
 			
@@ -429,7 +427,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_ivan_fernandez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 				academico_ivan_fernandez.calculos = new InterfaceCalculoProfesores();
-
 			#endregion
 				
 			// lista para crear influencias
@@ -450,11 +447,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 			Console.WriteLine("Nodos Academicos Facultad Ciencias ingresados");
 					
-
         }
-
-
-
-
     }
 }

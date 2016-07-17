@@ -13,7 +13,6 @@ namespace InicializadorDeArchivosModeloMBCIF
     class NodosInvestigaciones
     {
         ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
-
 		public Nodo Investigacion;
 		public Nodo Director;
 		public Nodo Secretaria;
@@ -21,7 +20,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
         public NodosInvestigaciones()
-
         {
             #region Nodo Investigacion
             //____________________________________________________________________________________________
@@ -31,7 +29,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             Nodo nodo_investigacion;
 
             nodo_investigacion = new Nodo("n.i", "Investigacion");
-
             nodo_investigacion.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -79,7 +76,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_investigacion.agregarVariable("n.pisi", Nodo.DATOS_NODOS_EXTERNOS);
             nodo_investigacion.agregarVariable("n.pscielo", Nodo.DATOS_NODOS_EXTERNOS);
             nodo_investigacion.agregarVariable("n.pe", Nodo.DATOS_NODOS_EXTERNOS);
-
 
             //-- influencias DESDE este nodo -----
             nodo_investigacion.agregarVariable("n.deq", Nodo.NODOS_INFLUENCIADOS);
@@ -161,9 +157,7 @@ namespace InicializadorDeArchivosModeloMBCIF
             //TODO Secretaria Investigacion
             Nodo nodo_secretaria_investigacion;
 
-
             nodo_secretaria_investigacion = new Nodo("n.si", "Secretaria Investigacion");
-
             nodo_secretaria_investigacion.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -233,14 +227,12 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_secretaria_investigacion.agregarVariable("manejo de tics", Nodo.DATOS_INTERNOS);
 
 
-
 			//-- influencias DESDE este nodo -----
 			nodo_secretaria_investigacion.agregarVariable("n.sp", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
 			nodo_secretaria_investigacion.agregarVariable("i_n.sp_n.si", Nodo.INFLUENCIAS_EXTERNAS);
-
 
 
  
@@ -311,14 +303,12 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_director_investigacion.agregarVariable("gestion externa", Nodo.DATOS_INTERNOS);
 
 
-
 			//-- influencias DESDE este nodo -----
             nodo_director_investigacion.agregarVariable("n.dp", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
             nodo_director_investigacion.agregarVariable("i_n.dp_n.di", Nodo.INFLUENCIAS_EXTERNAS);
-
 
             nodo_director_investigacion.calculos = new InterfaceCalculosPersonas(new string[] { "formacion", "empatia", "poder de resolucion", "compromiso", "gestion externa" });
             #endregion
@@ -362,7 +352,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_publicaciones_isi.agregarVariable("tasa de publicaciones anuales", Nodo.DATOS_INTERNOS);
             nodo_publicaciones_isi.agregarVariable("promedio de impacto publicaciones", Nodo.DATOS_INTERNOS);
             
-
 			//-- influencias HACIA este nodo -----
 			nodo_publicaciones_isi.agregarVariable("i_n.deq_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
 			nodo_publicaciones_isi.agregarVariable("i_n.deidayb_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
@@ -390,7 +379,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			nodo_publicaciones_isi.agregarVariable("i_n.amgs_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
 			nodo_publicaciones_isi.agregarVariable("i_n.anm_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
 			nodo_publicaciones_isi.agregarVariable("i_n.ahp_n.pisi", Nodo.INFLUENCIAS_EXTERNAS);
-
 
 
             nodo_publicaciones_isi.calculos = new ICalculosPublicaciones();
@@ -467,7 +455,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			nodo_publicaciones_scielo.agregarVariable("i_n.ahp_n.pscielo", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-
             nodo_publicaciones_scielo.calculos = new ICalculosPublicaciones();
             #endregion
             #region Nodo Publicaciones equivalentes
@@ -510,7 +497,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_publicaciones_equivalentes.agregarVariable("tasa de publicaciones anuales", Nodo.DATOS_INTERNOS);
             nodo_publicaciones_equivalentes.agregarVariable("promedio de impacto publicaciones", Nodo.DATOS_INTERNOS);
 
-
 			//-- influencias HACIA este nodo -----
 			nodo_publicaciones_equivalentes.agregarVariable("i_n.deq_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
 			nodo_publicaciones_equivalentes.agregarVariable("i_n.deidayb_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
@@ -540,7 +526,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			nodo_publicaciones_equivalentes.agregarVariable("i_n.ahp_n.pe", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-
             nodo_publicaciones_equivalentes.calculos = new ICalculosPublicaciones();
 
             #endregion
@@ -555,7 +540,6 @@ namespace InicializadorDeArchivosModeloMBCIF
             Publicaciones.Add(nodo_publicaciones_isi);
             Publicaciones.Add(nodo_publicaciones_scielo);
             Publicaciones.Add(nodo_publicaciones_equivalentes);
-
 
 
             // ingreso de nodos

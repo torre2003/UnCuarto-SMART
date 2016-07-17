@@ -22,6 +22,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 	{
 		
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		public List<Nodo> Nodos = new List<Nodo>();
 		
 		public NodosFacultadDeHumanidades()
 		{
@@ -88,7 +89,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_cristian_noemi.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_cristian_noemi.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-
+		
 
 			
                 academico_cristian_noemi.calculos = new InterfaceCalculoProfesores();
@@ -163,10 +164,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_silvia_lopez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_silvia_lopez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-
 	
 				academico_silvia_lopez.calculos = new InterfaceCalculoProfesores();
-
 
 			#endregion
 			
@@ -233,7 +232,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_maria_ester_alvarez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				academico_maria_ester_alvarez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
-
 				
                 academico_maria_ester_alvarez.calculos = new InterfaceCalculoProfesores();
 			#endregion
@@ -249,7 +247,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			manejador_de_datos.ingresarNuevoNodo(academico_silvia_lopez);
 			Console.WriteLine("Nodos Academico Facultad Humanidades ingresados");
 					
-
 		}
 	}
 }

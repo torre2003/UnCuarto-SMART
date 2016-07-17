@@ -21,6 +21,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 	public class NodosDoctorado
 	{
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		public List<Nodo> Nodos = new List<Nodo>();
 		
 		public NodosDoctorado()
 		{
@@ -61,9 +62,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 					},
 	
 					//salidas
-
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
-
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("pesimo", 0, 0.1, 0.3),
 									new FuncionTriangular("malo", 0.1, 0.3, 0.5),
@@ -81,7 +80,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				//doctorado_en_quimica.agregarVariable("i_ni_npea", Nodo.INFLUENCIAS_EXTERNAS);
 				
-
 			//-- influencias DESDE este nodo -----
 			doctorado_en_quimica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);	
 			doctorado_en_quimica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
@@ -95,7 +93,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			
 			
             doctorado_en_quimica.calculos = new ICalculosNodo_programas("n.nadeq");
-
 				
 				#endregion
 				
@@ -108,18 +105,14 @@ namespace InicializadorDeArchivosModeloMBCIF
 				nivel_academico_doctorado_en_quimica.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-
 						{"n.agsg", new VariableDifusa("n.agsg", 0, 1,
-
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("calificado", 0, 0.2, 0.4),
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-
 						}
 				},
-
 						//salidas
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
 									new List<FuncionPertenencia>() {
@@ -177,9 +170,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 					},
 	
 					//salidas
-
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
-
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("pesimo", 0, 0.1, 0.3),
 									new FuncionTriangular("malo", 0.1, 0.3, 0.5),
@@ -199,13 +190,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			
 
 			//-- influencias HACIA este nodo -----
 			doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("i_n.dp_n.deidayb", Nodo.INFLUENCIAS_EXTERNAS);
 			doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("i_n.i_n.deidayb", Nodo.INFLUENCIAS_EXTERNAS);
 			doctorado_en_ingeniería_de_alimentos_y_bioprocesos.agregarVariable("i_n.fyb_n.deidayb", Nodo.INFLUENCIAS_EXTERNAS);
 			
-
 
                 doctorado_en_ingeniería_de_alimentos_y_bioprocesos.calculos = new ICalculosNodo_programas("n.nadeidayb");
 				
@@ -220,18 +211,20 @@ namespace InicializadorDeArchivosModeloMBCIF
 				nivel_academico_ingenieria_en_alimentos_y_bioprocesos.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-
  {					/* Nelson Moraga */"n.anm", new VariableDifusa("n.anm", 0, 1,
-
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("calificado", 0, 0.2, 0.4),
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-
-						}
+						}/*, {"docente 2", new VariableDifusa("docente 2", 0, 1,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("calificado", 0, 0.2, 0.4),
+									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
+									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
+								})
+						}*/
 				},
-
 						//salidas
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
 									new List<FuncionPertenencia>() {
@@ -248,7 +241,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 						
 				nivel_academico_ingenieria_en_alimentos_y_bioprocesos.agregarVariable("n.anm", Nodo.DATOS_NODOS_EXTERNOS);
-
+				//nivel_academico_ingenieria_en_alimentos_y_bioprocesos.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 			
 			
                 nivel_academico_ingenieria_en_alimentos_y_bioprocesos.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.anm" });		
@@ -290,9 +283,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 					},
 
 					//salidas
-
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
-
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("pesimo", 0, 0.1, 0.3),
 									new FuncionTriangular("malo", 0.1, 0.3, 0.5),
@@ -308,7 +299,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				doctorado_en_biologia.agregarVariable("n.nadebyea", Nodo.DATOS_NODOS_EXTERNOS);
 				
-
 			//-- influencias DESDE este nodo -----
 			doctorado_en_biologia.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
 			doctorado_en_biologia.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
@@ -319,7 +309,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			doctorado_en_biologia.agregarVariable("i_n.dp_n.debyea", Nodo.INFLUENCIAS_EXTERNAS);
 			doctorado_en_biologia.agregarVariable("i_n.i_n.debyea", Nodo.INFLUENCIAS_EXTERNAS);
 			doctorado_en_biologia.agregarVariable("i_n.fyb_n.debyea", Nodo.INFLUENCIAS_EXTERNAS);
-
 
 
                 doctorado_en_biologia.calculos = new ICalculosNodo_programas("n.nadebyea");
@@ -341,9 +330,14 @@ namespace InicializadorDeArchivosModeloMBCIF
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-						}
+						}/*, {"docente 2", new VariableDifusa("docente 2", 0, 1,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("calificado", 0, 0.2, 0.4),
+									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
+									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
+								})
+						}*/
 				},
-
 						//salidas
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
 									new List<FuncionPertenencia>() {
@@ -360,10 +354,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 						
 				nivel_academico_doctorado_en_biologia.agregarVariable("n.afs", Nodo.DATOS_NODOS_EXTERNOS);
-				
+				//nivel_academico_doctorado_en_biologia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
 			
                 nivel_academico_doctorado_en_biologia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.afs" });	
-
 			#endregion
 			#endregion
 						
@@ -383,7 +376,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 		
 
 			
-
 		}
 			
 	}

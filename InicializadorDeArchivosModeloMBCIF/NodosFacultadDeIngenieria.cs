@@ -21,6 +21,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 	public class NodosFacultadDeIngenieria
 	{
 		ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
+		public List<Nodo> Nodos = new List<Nodo>();
+		
 		public NodosFacultadDeIngenieria()
 		{
 			#region Nodo Academico Mauricio Godoy Seura
@@ -90,7 +92,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
                 academico_mauricio_godoy.calculos = new InterfaceCalculoProfesores();
 				
-
+			
 			#endregion	
 				
 			#region Nodo Academico Nelson Moraga
@@ -158,9 +160,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_nelson_moraga.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 
-
                 academico_nelson_moraga.calculos = new InterfaceCalculoProfesores();
-
+				
+			
 			#endregion
 			
 			#region Nodo Academico Hector Paez
@@ -227,7 +229,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_hector_paez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
 
 
-
                 academico_hector_paez.calculos = new InterfaceCalculoProfesores();
 			#endregion
 				
@@ -242,7 +243,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 			Console.WriteLine("Nodos Academico Facultad Ingenieria ingresados");
 					
 			
-
 		}
 	}
 }
