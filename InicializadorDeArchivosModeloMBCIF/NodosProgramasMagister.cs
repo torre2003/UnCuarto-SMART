@@ -17,14 +17,14 @@ namespace InicializadorDeArchivosModeloMBCIF
         
         public NodosProgramasMagister()
         {
-            #region Nodo Magister en Mecánica Computacional
+            #region Nodo Magister en Mecanica Computacional
             //ingresar nodos X
-            //TODO Magister en Mecánica Computacional 
+            //TODO Magister en Mecanica Computacional 
             //___________________________________________________________________________________
-            //_________________ Nodo Magister en Mecánica Computacional _________
+            //_________________ Nodo Magister en Mecanica Computacional _________
             //___________________________________________________________________________________
             Nodo nodo_mag_en_mecanica_computacional;
-            nodo_mag_en_mecanica_computacional = new Nodo("n.memc", "Magister en Mecánica Computacional");
+            nodo_mag_en_mecanica_computacional = new Nodo("nmemc", "Magister en Mecanica Computacional");
             nodo_mag_en_mecanica_computacional.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -42,7 +42,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo Nivel Academico postitulo en algo :-)
-                    {"n.namemc", new VariableDifusa("n.namemc", 0, 1,
+                    {"nnamemc", new VariableDifusa("nnamemc", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -65,36 +65,36 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_mag_en_mecanica_computacional.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
             nodo_mag_en_mecanica_computacional.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-            nodo_mag_en_mecanica_computacional.agregarVariable("n.namemc", Nodo.DATOS_NODOS_EXTERNOS);
+            nodo_mag_en_mecanica_computacional.agregarVariable("nnamemc", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_mag_en_mecanica_computacional.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_mecanica_computacional.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_mecanica_computacional.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.dp_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.i_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_mecanica_computacional.agregarVariable("i_n.fyb_n.memc", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_ndp_nmemc", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_ni_nmemc", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_mecanica_computacional.agregarVariable("i_nfyb_nmemc", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-            nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_programas("n.namemc");
+            nodo_mag_en_mecanica_computacional.calculos = new ICalculosNodo_programas("nnamemc");
             
             #endregion
 
-            #region Nodo Nivel academico Magister en Mecánica Computacional
+            #region Nodo Nivel academico Magister en Mecanica Computacional
             //______________________________________________________________________________________________________
-            //_________________ Nodo Nivel academico Magister en Mecánica Computacional _________
+            //_________________ Nodo Nivel academico Magister en Mecanica Computacional _________
             //______________________________________________________________________________________________________
             //TODO nivel academico magister en emcanica computacional
             Nodo nivel_academico_nodo_mag_en_mecanica_computacional;
-            nivel_academico_nodo_mag_en_mecanica_computacional = new Nodo("n.namemc", "nivel academico Magister en Mecánica Computacional");
+            nivel_academico_nodo_mag_en_mecanica_computacional = new Nodo("nnamemc", "nivel academico Magister en Mecanica Computacional");
             nivel_academico_nodo_mag_en_mecanica_computacional.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.amgs", new VariableDifusa("docente 1", 0, 1,	
+                    {"namgs", new VariableDifusa("namgs", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -118,11 +118,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
 
 
-            nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("n.amgs", Nodo.DATOS_NODOS_EXTERNOS);
+            nivel_academico_nodo_mag_en_mecanica_computacional.agregarVariable("namgs", Nodo.DATOS_NODOS_EXTERNOS);
 
             
 
-            nivel_academico_nodo_mag_en_mecanica_computacional.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amgs" });
+            nivel_academico_nodo_mag_en_mecanica_computacional.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "namgs" });
             
             #endregion
 
@@ -131,13 +131,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-            #region  Nodo Magister en Ciencias en Física
+            #region  Nodo Magister en Ciencias en Fisica
             //____________________________________________________________________________________________
-            //_________________ Nodo Magister en Ciencias en Física_______________________________________
+            //_________________ Nodo Magister en Ciencias en Fisica_______________________________________
             //____________________________________________________________________________________________
-            //TODO Magister en Ciencias en Física
+            //TODO Magister en Ciencias en Fisica
             Nodo nodo_magister_en_ciencias_fiscas;
-            nodo_magister_en_ciencias_fiscas = new Nodo("n.mecef", "Magister en Ciencias en Física");
+            nodo_magister_en_ciencias_fiscas = new Nodo("nmecef", "Magister en Ciencias en Fisica");
             nodo_magister_en_ciencias_fiscas.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -155,7 +155,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo Nivel Academico postitulo en algo :-)
-                    {"n.namecef", new VariableDifusa("n.namecef", 0, 1,
+                    {"nnamecef", new VariableDifusa("nnamecef", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -178,22 +178,22 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_magister_en_ciencias_fiscas.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
             nodo_magister_en_ciencias_fiscas.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-            nodo_magister_en_ciencias_fiscas.agregarVariable("n.namecef", Nodo.DATOS_NODOS_EXTERNOS);
+            nodo_magister_en_ciencias_fiscas.agregarVariable("nnamecef", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_magister_en_ciencias_fiscas.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.dp_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.i_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_magister_en_ciencias_fiscas.agregarVariable("i_n.fyb_n.mecef", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_ndp_nmecef", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_ni_nmecef", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_ciencias_fiscas.agregarVariable("i_nfyb_nmecef", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-            nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_programas("n.namecef");
+            nodo_magister_en_ciencias_fiscas.calculos = new ICalculosNodo_programas("nnamecef");
             #endregion
 
 
@@ -201,17 +201,17 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-            #region Nodo Nivel academico Magister en Ciencias en Física
+            #region Nodo Nivel academico Magister en Ciencias en Fisica
             //______________________________________________________________________________________________________
-            //_________________ Nodo Nivel academico Magister en Ciencias en Física _____________________________________________
+            //_________________ Nodo Nivel academico Magister en Ciencias en Fisica _____________________________________________
             //______________________________________________________________________________________________________
-            //TODO Nivel academico Magister en Ciencias en Física
+            //TODO Nivel academico Magister en Ciencias en Fisica
             Nodo nivel_academico_magister_en_ciencias_fisicas;
-            nivel_academico_magister_en_ciencias_fisicas = new Nodo("n.namecef", "nivel academico Magister en Ciencias en Física");
+            nivel_academico_magister_en_ciencias_fisicas = new Nodo("nnamecef", "nivel academico Magister en Ciencias en Fisica");
             nivel_academico_magister_en_ciencias_fisicas.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.apv", new VariableDifusa("n.apv", 0, 1,	
+                    {"napv", new VariableDifusa("napv", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -232,11 +232,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
 
 
-            nivel_academico_magister_en_ciencias_fisicas.agregarVariable("n.apv", Nodo.DATOS_NODOS_EXTERNOS);
+            nivel_academico_magister_en_ciencias_fisicas.agregarVariable("napv", Nodo.DATOS_NODOS_EXTERNOS);
 
 
 
-            nivel_academico_magister_en_ciencias_fisicas.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.apv" });
+            nivel_academico_magister_en_ciencias_fisicas.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "napv" });
 
 
             
@@ -244,14 +244,14 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-            #region  Nodo Magister en Matemáticas"
+            #region  Nodo Magister en Matematicas"
             //____________________________________________________________________________________________
-            //_________________ Nodo Magister en Matemáticas" ___________________________________________________
+            //_________________ Nodo Magister en Matematicas" ___________________________________________________
             //____________________________________________________________________________________________
-            //TODO Nodo Magister en Matemáticas"
+            //TODO Nodo Magister en Matematicas"
 
             Nodo nodo_magister_en_matematica;
-            nodo_magister_en_matematica = new Nodo("n.mem", "Magister en Matemáticas");
+            nodo_magister_en_matematica = new Nodo("nmem", "Magister en Matematicas");
             nodo_magister_en_matematica.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -269,7 +269,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo Nivel Academico postitulo en algo :-)
-                    {"n.namem", new VariableDifusa("n.namem", 0, 1,
+                    {"nnamem", new VariableDifusa("nnamem", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -294,35 +294,35 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_magister_en_matematica.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
 
-            nodo_magister_en_matematica.agregarVariable("n.namem", Nodo.DATOS_NODOS_EXTERNOS);
+            nodo_magister_en_matematica.agregarVariable("nnamem", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_magister_en_matematica.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_magister_en_matematica.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_magister_en_matematica.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_matematica.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_matematica.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_magister_en_matematica.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_magister_en_matematica.agregarVariable("i_n.dp_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_magister_en_matematica.agregarVariable("i_n.i_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_magister_en_matematica.agregarVariable("i_n.fyb_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_matematica.agregarVariable("i_ndp_nmem", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_matematica.agregarVariable("i_ni_nmem", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_magister_en_matematica.agregarVariable("i_nfyb_nmem", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-            nodo_magister_en_matematica.calculos = new ICalculosNodo_programas("n.namem");
+            nodo_magister_en_matematica.calculos = new ICalculosNodo_programas("nnamem");
             #endregion
 
-            #region  Nodo Nivel academico Magister en Matemáticas
+            #region  Nodo Nivel academico Magister en Matematicas
             //______________________________________________________________________________________________________
-            //_________________ Nodo Nivel academico Magister en Matemáticas _____________________________________________
+            //_________________ Nodo Nivel academico Magister en Matematicas _____________________________________________
             //______________________________________________________________________________________________________
-            //TODO Nodo Nivel academico Magister en Matemáticas
+            //TODO Nodo Nivel academico Magister en Matematicas
             Nodo nivel_academico_magister_en_matematica;
-            nivel_academico_magister_en_matematica = new Nodo("n.namem", "nivel academico Magister en Matemáticas");
+            nivel_academico_magister_en_matematica = new Nodo("nnamem", "nivel academico Magister en Matematicas");
             nivel_academico_magister_en_matematica.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.amc", new VariableDifusa("n.amc", 0, 1,	
+                    {"namc", new VariableDifusa("namc", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -343,20 +343,20 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
 
 
-            nivel_academico_magister_en_matematica.agregarVariable("n.amc", Nodo.DATOS_NODOS_EXTERNOS);
+            nivel_academico_magister_en_matematica.agregarVariable("namc", Nodo.DATOS_NODOS_EXTERNOS);
 
 
 
-            nivel_academico_magister_en_matematica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.amc" });
+            nivel_academico_magister_en_matematica.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "namc" });
 
             #endregion
 
-            #region Nodo Magister en Liderazgo, Dirección y comunicación Estratégica
+            #region Nodo Magister en Liderazgo, Direccion y comunicacion Estrategica
             //____________________________________________________________________________________________
-            //_________________ Nodo Magister en Liderazgo, Dirección y comunicación Estratégica ___________________________________________________
+            //_________________ Nodo Magister en Liderazgo, Direccion y comunicacion Estrategica ___________________________________________________
             //____________________________________________________________________________________________
           	Nodo nodo_mag_en_lid_dir_y_com_est;
-            nodo_mag_en_lid_dir_y_com_est = new Nodo("n.meldyce", "Magister en Liderazgo, Dirección y comunicación Estratégica");
+            nodo_mag_en_lid_dir_y_com_est = new Nodo("nmeldyce", "Magister en Liderazgo, Direccion y comunicacion Estrategica");
             nodo_mag_en_lid_dir_y_com_est.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
@@ -375,7 +375,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo --->Nivel Academico<---- postitulo en algo :-)
-                    {"n.nameldyce", new VariableDifusa("n.nameldyce", 0, 1,
+                    {"nnameldyce", new VariableDifusa("nnameldyce", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -398,34 +398,34 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_en_lid_dir_y_com_est.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
               nodo_mag_en_lid_dir_y_com_est.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-              nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.nameldyce", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_mag_en_lid_dir_y_com_est.agregarVariable("nnameldyce", Nodo.DATOS_NODOS_EXTERNOS);
               
 
             //-- influencias DESDE este nodo -----
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
               
 
 			//-- influencias HACIA este nodo -----
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.dp_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.i_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_n.fyb_n.meldyce", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_ndp_nmeldyce", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_ni_nmeldyce", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_lid_dir_y_com_est.agregarVariable("i_nfyb_nmeldyce", Nodo.INFLUENCIAS_EXTERNAS);
               
 
-              nodo_mag_en_lid_dir_y_com_est.calculos = new ICalculosNodo_programas("n.nameldyce"); ;
+              nodo_mag_en_lid_dir_y_com_est.calculos = new ICalculosNodo_programas("nnameldyce"); ;
             #endregion
             
-              #region Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica
+              #region Nodo Nivel academico Magister en Liderazgo, Direccion y comunicacion Estrategica
               //______________________________________________________________________________________________________
-            //_________________ Nodo Nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica _____________________________________________
+            //_________________ Nodo Nivel academico Magister en Liderazgo, Direccion y comunicacion Estrategica _____________________________________________
             //______________________________________________________________________________________________________
           	Nodo nivel_academico_mag_en_lid_dir_y_com_est;
-            nivel_academico_mag_en_lid_dir_y_com_est = new Nodo("n.nameldyce", "nivel academico Magister en Liderazgo, Dirección y comunicación Estratégica");
+            nivel_academico_mag_en_lid_dir_y_com_est = new Nodo("nnameldyce", "nivel academico Magister en Liderazgo, Direccion y comunicacion Estrategica");
             nivel_academico_mag_en_lid_dir_y_com_est.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"n.alr", new VariableDifusa("n.alr", 0, 1,	
+                    {"nalr", new VariableDifusa("nalr", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -446,10 +446,10 @@ namespace InicializadorDeArchivosModeloMBCIF
               );
   
           
-              nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("n.alr", Nodo.DATOS_NODOS_EXTERNOS);
+              nivel_academico_mag_en_lid_dir_y_com_est.agregarVariable("nalr", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nivel_academico_mag_en_lid_dir_y_com_est.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.alr" });
+              nivel_academico_mag_en_lid_dir_y_com_est.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nalr" });
               #endregion
 
 
@@ -458,13 +458,13 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-              #region Nodo Magister en Astronomía
+              #region Nodo Magister en Astronomia
               //____________________________________________________________________________________________
-              //_________________ Nodo Magister en Astronomía ___________________________________________________
+              //_________________ Nodo Magister en Astronomia ___________________________________________________
               //____________________________________________________________________________________________
-              //TODO Magister en Astronomía
+              //TODO Magister en Astronomia
               Nodo nodo_mag_en_astronomia;
-              nodo_mag_en_astronomia = new Nodo("n.mea", "Magister en Astronomía");
+              nodo_mag_en_astronomia = new Nodo("nmea", "Magister en Astronomia");
               nodo_mag_en_astronomia.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
@@ -482,7 +482,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo --->Nivel Academico<---- postitulo en algo :-)
-                    {"n.namea", new VariableDifusa("n.namea", 0, 1,
+                    {"nnamea", new VariableDifusa("nnamea", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -505,35 +505,35 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_en_astronomia.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
               nodo_mag_en_astronomia.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-              nodo_mag_en_astronomia.agregarVariable("n.namea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_mag_en_astronomia.agregarVariable("nnamea", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_mag_en_astronomia.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_astronomia.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_astronomia.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_astronomia.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_astronomia.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_astronomia.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_mag_en_astronomia.agregarVariable("i_n.dp_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_astronomia.agregarVariable("i_n.i_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_astronomia.agregarVariable("i_n.fyb_n.mea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_astronomia.agregarVariable("i_ndp_nmea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_astronomia.agregarVariable("i_ni_nmea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_astronomia.agregarVariable("i_nfyb_nmea", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-              nodo_mag_en_astronomia.calculos = new ICalculosNodo_programas("n.namea");
+              nodo_mag_en_astronomia.calculos = new ICalculosNodo_programas("nnamea");
               #endregion
 
-              #region Nodo Nivel academico Magister en Astronomía
+              #region Nodo Nivel academico Magister en Astronomia
               //______________________________________________________________________________________________________
-              //_________________ Nodo Nivel academico Magister en Astronomía _____________________________________________
+              //_________________ Nodo Nivel academico Magister en Astronomia _____________________________________________
               //______________________________________________________________________________________________________
-              //TODO Nivel Academico Magister en Astronomía
+              //TODO Nivel Academico Magister en Astronomia
               Nodo nivel_academico_mag_en_astronomia;
-              nivel_academico_mag_en_astronomia = new Nodo("n.namea", "nivel academico " + "Magister en Astronomía");
+              nivel_academico_mag_en_astronomia = new Nodo("nnamea", "nivel academico " + "Magister en Astronomia");
               nivel_academico_mag_en_astronomia.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"n.aja", new VariableDifusa("n.aja", 0, 1,	
+                    {"naja", new VariableDifusa("naja", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -554,23 +554,23 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nivel_academico_mag_en_astronomia.agregarVariable("n.aja", Nodo.DATOS_NODOS_EXTERNOS);
+              nivel_academico_mag_en_astronomia.agregarVariable("naja", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.aja" });
+              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "naja" });
               #endregion
 
 
 
 
 
-              #region Nodo Magister en Ciencias mención Ingeniería en Alimentos
+              #region Nodo Magister en Ciencias mencion Ingenieria en Alimentos
               //____________________________________________________________________________________________
-              //_________________ Nodo Magister en Ciencias mención Ingeniería en Alimentos ___________________________________________________
+              //_________________ Nodo Magister en Ciencias mencion Ingenieria en Alimentos ___________________________________________________
               //____________________________________________________________________________________________
-              //TODO Magister en Ciencias mención Ingeniería en Alimentos
+              //TODO Magister en Ciencias mencion Ingenieria en Alimentos
               Nodo nodo_mag_en_ciencias_mencion_ing_en_alimentos;
-              nodo_mag_en_ciencias_mencion_ing_en_alimentos = new Nodo("n.mecmiea", "Magister en Ciencias mención Ingeniería en Alimentos");
+              nodo_mag_en_ciencias_mencion_ing_en_alimentos = new Nodo("nmecmiea", "Magister en Ciencias mencion Ingenieria en Alimentos");
               nodo_mag_en_ciencias_mencion_ing_en_alimentos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
@@ -589,7 +589,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo --->Nivel Academico<---- postitulo en algo :-)
-                    {"n.namecmiea", new VariableDifusa("n.namecmiea", 0, 1,
+                    {"nnamecmiea", new VariableDifusa("nnamecmiea", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -612,35 +612,35 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
               nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-              nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.namecmiea", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("nnamecmiea", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.dp_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.i_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_n.fyb_n.mecmiea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_ndp_nmecmiea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_ni_nmecmiea", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("i_nfyb_nmecmiea", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-              nodo_mag_en_ciencias_mencion_ing_en_alimentos.calculos = new ICalculosNodo_programas("n.namecmiea");
+              nodo_mag_en_ciencias_mencion_ing_en_alimentos.calculos = new ICalculosNodo_programas("nnamecmiea");
               #endregion
 
-              #region Nodo Nivel academico Magister en Ciencias mención Ingeniería en Alimentos
+              #region Nodo Nivel academico Magister en Ciencias mencion Ingenieria en Alimentos
               //______________________________________________________________________________________________________
-              //_________________ Nodo Nivel academico Magister en Ciencias mención Ingeniería en Alimentos _____________________________________________
+              //_________________ Nodo Nivel academico Magister en Ciencias mencion Ingenieria en Alimentos _____________________________________________
               //______________________________________________________________________________________________________
-              //TODO Nivel Academico Magister en Ciencias mención Ingeniería en Alimentos
+              //TODO Nivel Academico Magister en Ciencias mencion Ingenieria en Alimentos
               Nodo nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos;
-              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos = new Nodo("n.namecmiea", "nivel academico " + "Magister en Ciencias mención Ingeniería en Alimentos");
+              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos = new Nodo("nnamecmiea", "nivel academico " + "Magister en Ciencias mencion Ingenieria en Alimentos");
               nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"n.ahp", new VariableDifusa("n.ahp", 0, 1,	
+                    {"nahp", new VariableDifusa("nahp", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -661,25 +661,25 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("n.ahp", Nodo.DATOS_NODOS_EXTERNOS);
+              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.agregarVariable("nahp", Nodo.DATOS_NODOS_EXTERNOS);
 
 
 
 
-              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.ahp" });
+              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nahp" });
               #endregion
 
 
 
 
 
-              #region Nodo Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
+              #region Nodo Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura
               //____________________________________________________________________________________________
-              //_________________ Nodo Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura ___________________________________________________
+              //_________________ Nodo Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura ___________________________________________________
               //____________________________________________________________________________________________
-              //TODO Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
+              //TODO Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura
               Nodo nodo_mag_es_std_lat;
-              nodo_mag_es_std_lat = new Nodo("n.meelmelofol", "Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura");
+              nodo_mag_es_std_lat = new Nodo("nmeelmelofol", "Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura");
               nodo_mag_es_std_lat.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
@@ -698,7 +698,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionSaturacion("periodo_prolongado", 5, 6, 10)
                                                               })},
                     //napea: id del nodo --->Nivel Academico<---- postitulo en algo :-)
-                    {"n.nameelmelofol", new VariableDifusa("n.nameelmelofol", 0, 1,
+                    {"nnameelmelofol", new VariableDifusa("nnameelmelofol", 0, 1,
                                                              new List<FuncionPertenencia>(){
                                                               new FuncionHombro("normal", 0, 0.3, 0.4),
                                                               new FuncionTrapezoidal("alto", 0.3, 0.4, 0.5, 0.6),
@@ -721,34 +721,34 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_es_std_lat.agregarVariable("matricula alumnos", Nodo.DATOS_INTERNOS);
               nodo_mag_es_std_lat.agregarVariable("acreditacion", Nodo.DATOS_INTERNOS);
 
-              nodo_mag_es_std_lat.agregarVariable("n.nameelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
+              nodo_mag_es_std_lat.agregarVariable("nnameelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
 
             //-- influencias DESDE este nodo -----
-			nodo_mag_es_std_lat.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_es_std_lat.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);
-			nodo_mag_es_std_lat.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_es_std_lat.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_es_std_lat.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);
+			nodo_mag_es_std_lat.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 
 			//-- influencias HACIA este nodo -----
-			nodo_mag_es_std_lat.agregarVariable("i_n.dp_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_es_std_lat.agregarVariable("i_n.i_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
-			nodo_mag_es_std_lat.agregarVariable("i_n.fyb_n.meelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_es_std_lat.agregarVariable("i_ndp_nmeelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_es_std_lat.agregarVariable("i_ni_nmeelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
+			nodo_mag_es_std_lat.agregarVariable("i_nfyb_nmeelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
 
 
               #endregion
 
-              #region Nodo Nivel academico Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
+              #region Nodo Nivel academico Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura
               //______________________________________________________________________________________________________
-              //_________________ Nodo Nivel academico Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura _____________________________________________
+              //_________________ Nodo Nivel academico Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura _____________________________________________
               //______________________________________________________________________________________________________
-              //TODO Nivel Academico Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura
+              //TODO Nivel Academico Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura
               Nodo nivel_academico_mag_es_std_lat;
-              nivel_academico_mag_es_std_lat = new Nodo("n.nameelmelofol", "nivel academico " + "Magister en Estudios Latinoamericanos mención en Lingüística o Filosofía o Literatura");
+              nivel_academico_mag_es_std_lat = new Nodo("nnameelmelofol", "nivel academico " + "Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura");
               nivel_academico_mag_es_std_lat.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"n.acnp", new VariableDifusa("n.acnp", 0, 1,	
+                    {"nacnp", new VariableDifusa("nacnp", 0, 1,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("calificado", 0, 0.2, 0.4),
                                                                   new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
@@ -769,12 +769,12 @@ namespace InicializadorDeArchivosModeloMBCIF
                 );
 
 
-              nivel_academico_mag_es_std_lat.agregarVariable("n.acnp", Nodo.DATOS_NODOS_EXTERNOS);
+              nivel_academico_mag_es_std_lat.agregarVariable("nacnp", Nodo.DATOS_NODOS_EXTERNOS);
 
 
 
 
-              nivel_academico_mag_es_std_lat.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "n.acnp" });
+              nivel_academico_mag_es_std_lat.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nacnp" });
 
               #endregion
 

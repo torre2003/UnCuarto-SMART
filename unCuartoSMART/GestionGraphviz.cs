@@ -149,6 +149,7 @@ namespace unCuartoSMART
                     texto_graphviz.AppendLine(nodo_actual.id_nodo + " [ label=\"" + nodo_actual.id_nodo + "\\n" + nodo_actual.nombre + "\" ]");
                 texto_graphviz.AppendLine(nodo_actual.id_nodo + "[fillcolor=" + retornarColorNodo(nodo_actual.peso) + "]");
 
+                //Graficando conexiones influencias 
                 string[] influencias = nodo_actual.listarVariables(Nodo.NODOS_INFLUENCIADOS);
                 for (int j = 0; j < influencias.Length; j++)
                 {
@@ -167,7 +168,16 @@ namespace unCuartoSMART
                         texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color= \"" + color+":"+color + "\" arrowhead=\"box\"]");//Flechas influencias
                     else
                         texto_graphviz.AppendLine(nodo_actual.id_nodo + " -> " + influencias[j] + "[color=" + color + " ]");//Flechas influencias
+                }//End for influencias
+
+                //Graficando conexiones nodos externos
+                string[] nodos_externos = nodo_actual.listarVariables(Nodo.DATOS_NODOS_EXTERNOS);
+                for (int j = 0; j < nodos_externos.Length; j++)
+                {
+
+                    texto_graphviz.AppendLine( nodos_externos[j] + " -> " + nodo_actual.id_nodo + "[color= \"" + " hotpink " + "\" arrowhead=\"dot\"]");//Flechas influencias
                 }
+
             }
 
             //Completando sistemas
