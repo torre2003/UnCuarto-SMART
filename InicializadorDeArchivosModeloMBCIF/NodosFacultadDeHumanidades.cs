@@ -32,7 +32,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Cristian Noemi Padilla _________
 				//___________________________________________________
 				Nodo academico_cristian_noemi;
-				academico_cristian_noemi = new Nodo("n.acnp", "academico Cristian Noemi Padilla");
+				academico_cristian_noemi = new Nodo("nacnp", "Academico Cristian Noemi Padilla");
 				academico_cristian_noemi.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -85,9 +85,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_cristian_noemi.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_cristian_noemi.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_cristian_noemi.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_cristian_noemi.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_cristian_noemi.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_cristian_noemi.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_cristian_noemi.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_cristian_noemi.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 		
 
@@ -105,7 +105,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//___________________________________________________
 
 				Nodo academico_silvia_lopez;
-				academico_silvia_lopez = new Nodo("n.asldm", "academico Silvia Lopez de Maturana");
+				academico_silvia_lopez = new Nodo("nasldm", "Academica Silvia Lopez de Maturana");
 				academico_silvia_lopez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -160,9 +160,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_silvia_lopez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
 
-				academico_silvia_lopez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_silvia_lopez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_silvia_lopez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_silvia_lopez.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_silvia_lopez.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_silvia_lopez.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 	
 				academico_silvia_lopez.calculos = new InterfaceCalculoProfesores();
@@ -175,7 +175,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo academico Maria Ester Alvarez _________
 				//___________________________________________________
 				Nodo academico_maria_ester_alvarez;
-				academico_maria_ester_alvarez = new Nodo("n.amea", "academico Maria Ester Alvarez");
+				academico_maria_ester_alvarez = new Nodo("namea", "Academico Maria Ester Alvarez");
 				academico_maria_ester_alvarez.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
@@ -228,9 +228,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 				academico_maria_ester_alvarez.agregarVariable("publicaciones equivalentes", Nodo.DATOS_INTERNOS);
 				academico_maria_ester_alvarez.agregarVariable("impacto", Nodo.DATOS_INTERNOS);
 				
-				academico_maria_ester_alvarez.agregarVariable("n.pisi", Nodo.NODOS_INFLUENCIADOS);
-				academico_maria_ester_alvarez.agregarVariable("n.pscielo", Nodo.NODOS_INFLUENCIADOS);	
-				academico_maria_ester_alvarez.agregarVariable("n.pe", Nodo.NODOS_INFLUENCIADOS);
+				academico_maria_ester_alvarez.agregarVariable("npisi", Nodo.NODOS_INFLUENCIADOS);
+				academico_maria_ester_alvarez.agregarVariable("npscielo", Nodo.NODOS_INFLUENCIADOS);	
+				academico_maria_ester_alvarez.agregarVariable("npe", Nodo.NODOS_INFLUENCIADOS);
 
 				
                 academico_maria_ester_alvarez.calculos = new InterfaceCalculoProfesores();
@@ -242,8 +242,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 			
 				//Escribiendo nodos en archivo
 			manejador_de_datos.ingresarNuevoNodo(academico_cristian_noemi);
-				manejador_de_datos.ingresarNuevoNodo(academico_maria_ester_alvarez);
-
+			manejador_de_datos.ingresarNuevoNodo(academico_maria_ester_alvarez);
 			manejador_de_datos.ingresarNuevoNodo(academico_silvia_lopez);
 			Console.WriteLine("Nodos Academico Facultad Humanidades ingresados");
 					
