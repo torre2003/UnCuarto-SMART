@@ -18,6 +18,12 @@ namespace unCuartoSMART
         }
         string _seleccion = null;
         
+
+        public string descripcion_seleccion
+        {
+            get { return _descripcion_seleccion; }
+        }
+        string _descripcion_seleccion = null;
         public FormVentanaBuscar()
         {
             InitializeComponent();
@@ -43,6 +49,8 @@ namespace unCuartoSMART
             {
                 ElementosCheckBox elemento_seleccionado = (ElementosCheckBox)listBox_elementos.SelectedItem;
                 _seleccion = ""+elemento_seleccionado.id_elemento;
+                if (elemento_seleccionado.descripcion_elemento != null)
+                    _descripcion_seleccion = elemento_seleccionado.descripcion_elemento;
                 this.Hide();
                 this.Dispose();
             }
@@ -64,6 +72,8 @@ namespace unCuartoSMART
             {
                 ElementosCheckBox elemento_seleccionado = (ElementosCheckBox)listBox_elementos.SelectedItem;
                 _seleccion = "" + elemento_seleccionado.id_elemento;
+                if (elemento_seleccionado.descripcion_elemento != null)
+                    _descripcion_seleccion = elemento_seleccionado.descripcion_elemento;
                 this.Hide();
                 this.Dispose();
             }

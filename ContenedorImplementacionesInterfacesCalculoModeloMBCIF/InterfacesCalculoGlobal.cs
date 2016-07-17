@@ -26,7 +26,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
 		public double calculoPeso(InferenciaDifusa fuzzy)
 		{
 			var nodoActual = fuzzy.Entradas[IdOrigen] ;
-			var influencia = fuzzy.Salidas["Influencia"];
+			var influencia = fuzzy.Salidas["influencia"];
 			
 			fuzzy.Si(nodoActual.Es("pesimo")).Entonces(influencia, "altera_negativamente");
 			fuzzy.Si(nodoActual.Es("malo")).Entonces(influencia, "influye_negativamente");

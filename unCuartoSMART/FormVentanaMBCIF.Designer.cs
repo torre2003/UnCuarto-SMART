@@ -190,7 +190,6 @@
             this.textBox_id_buscada.Name = "textBox_id_buscada";
             this.textBox_id_buscada.Size = new System.Drawing.Size(100, 20);
             this.textBox_id_buscada.TabIndex = 1;
-            this.textBox_id_buscada.Text = "n11";
             this.textBox_id_buscada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_id_buscada_KeyPress);
             // 
             // label1

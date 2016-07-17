@@ -70,6 +70,20 @@ namespace ModeloMBCIF
         string _nombre;
 
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+        // salida_fuzzy
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+        /// <summary>
+        /// Nombre identificatorio de la salida difusa del nodo
+        /// </summary>
+        public string nombre_salida_fuzzy
+        {
+            get { return _nombre_salida_fuzzy; }
+            set { _nombre_salida_fuzzy = value; }
+        }
+        string _nombre_salida_fuzzy = "estado";
+        
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-
         // peso
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
@@ -695,7 +709,7 @@ namespace ModeloMBCIF
         public Dato[] extraerVariablesDeSalidaNodo()
         {
             ArrayList datos = new ArrayList();
-            foreach (var item in fuzzy.Salidas[this.nombre].UniversoDiscurso)
+            foreach (var item in fuzzy.Salidas[nombre_salida_fuzzy].UniversoDiscurso)
 	        {
                 Dato dato = new Dato();
                 dato.id = item.Nombre;

@@ -387,7 +387,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
                 return arreglo_retorno;
             }
             if (cantidad_de_programas == 2)
-                return arreglo_retorno;
+                return new double[] { 0, 1, 2, 3, 4 };
             int numeros_restantes_por_repartir = (3 * cantidad_de_programas) - cantidad_de_programas;
             numeros_restantes_por_repartir -= 5;
             int[] orden_de_aumento = new int[] {0,4,1,3,2,2};
@@ -533,7 +533,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
                 return arreglo_retorno;
             }
             if (cantidad_de_programas == 2)
-                return arreglo_retorno;
+                return new double[] { 0,1,2,3,4};
             int numeros_restantes_por_repartir = (3 * cantidad_de_programas) - cantidad_de_programas;
             numeros_restantes_por_repartir -= 5;
             int[] orden_de_aumento = new int[] {0,4,1,3,2,2};
@@ -679,7 +679,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
                 return arreglo_retorno;
             }
             if (cantidad_de_programas == 2)
-                return arreglo_retorno;
+                return new double[] { 0, 1, 2, 3, 4 };
             int numeros_restantes_por_repartir = (3 * cantidad_de_programas) - cantidad_de_programas;
             numeros_restantes_por_repartir -= 5;
             int[] orden_de_aumento = new int[] { 0, 4, 1, 3, 2, 2 };

@@ -313,23 +313,17 @@ namespace InicializadorDeArchivosModeloMBCIF
 				//_________________ Nodo Nivel academico doctorado en biologia _________
 				//______________________________________________________________________________________________________
 				Nodo nivel_academico_doctorado_en_biologia;
-				nivel_academico_doctorado_en_biologia = new Nodo("nnadebyea", "Nivel Academico Doctorado en Biolegia y Ecologia Aplicada");
+				nivel_academico_doctorado_en_biologia = new Nodo("nnadebyea", "Nivel Academico Doctorado en Biologia y Ecologia Aplicada");
 				nivel_academico_doctorado_en_biologia.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
- {					/* Francisco Squeo */"n.afs", new VariableDifusa("nafs", 0, 1,
+ {					/* Francisco Squeo */"nafs", new VariableDifusa("nafs", 0, 1,
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("calificado", 0, 0.2, 0.4),
 									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
 									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
 								})
-						}/*, {"docente 2", new VariableDifusa("docente 2", 0, 1,
-								new List<FuncionPertenencia>() {
-									new FuncionHombro("calificado", 0, 0.2, 0.4),
-									new FuncionTrapezoidal("destacado", 0.2, 0.4, 0.7, 0.9),
-									new FuncionSaturacion("eminente", 0.7, 0.9, 1.0)
-								})
-						}*/
+						}
 				},
 						//salidas
 				new Dictionary<string, VariableDifusa> { {"estado", new VariableDifusa("estado", 0, 1,
@@ -347,7 +341,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						
 						
 				nivel_academico_doctorado_en_biologia.agregarVariable("nafs", Nodo.DATOS_NODOS_EXTERNOS);
-				//nivel_academico_doctorado_en_biologia.agregarVariable("docente 2", Nodo.DATOS_NODOS_EXTERNOS);
+
 			
                 nivel_academico_doctorado_en_biologia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nafs" });	
 			#endregion

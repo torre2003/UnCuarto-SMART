@@ -30,7 +30,9 @@ namespace unCuartoSMART
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
-			InitializeComponent();
+            manejador_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+            InitializeComponent();
 			lstNodos.Items.Clear();
 			cargarListadoNodos(_ruta_carpeta_mbcif);
 			
@@ -42,22 +44,24 @@ namespace unCuartoSMART
 			a.AxisX.MajorGrid.Enabled = false;
 			a.AxisY.MajorGrid.Enabled = false;
 			a.BorderDashStyle = ChartDashStyle.Solid;
-			
-			manejador_archivos = new ManejadorDeDatosArchivos();
-			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+
+            
 			if(data.bdd_conectada)
 				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
 			else
 				maxActual = 10 ;
-			udIteraciones.Value = maxActual;
-			udIteraciones.Maximum = maxActual;
+            //if (maxActual == 0)
+              //  maxActual = 1;
+            udIteraciones.Maximum = maxActual;
+            udIteraciones.Value = maxActual;
+			
 			
 		}
 	//--------------------------------------------------------------------------------------
 		private void cargarListadoNodos(string _ruta_carpeta_mbcif)
 		{
-			var manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
-			listaNodos = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
+			//var manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
+            listaNodos = manejador_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.NODOS);
 		}
 	//--------------------------------------------------------------------------------------
 		void BtnAgregarNodosClick(object sender, EventArgs e)
@@ -66,8 +70,13 @@ namespace unCuartoSMART
 			var ventana_buscar = new FormVentanaBuscar("Nodos");
 
 			for (int i = 0; i < listaNodos.Length; i++) {
-				if (lstNodos.Items.IndexOf(listaNodos[i]) == -1)
-					ventana_buscar.agregarElemento(listaNodos[i]);
+                if (lstNodos.Items.IndexOf(listaNodos[i]) == -1)
+                {
+                    ModeloMBCIF.Nodo nodo = manejador_archivos.extraerNodo(listaNodos[i]);
+                    ventana_buscar.agregarElemento(listaNodos[i],nodo.nombre);
+                }
+
+					
 			}
             
 			ventana_buscar.ShowDialog(this);

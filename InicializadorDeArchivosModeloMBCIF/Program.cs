@@ -88,9 +88,19 @@ namespace InicializadorDeArchivosModeloMBCIF
         	                                InfluenciaNodo.INF_SECRETARIAS);
         	
         	
-        	
-        	
-        	/*
+
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos ();
+            string[] listado_influencias = manejador_de_archivos.listarArchivosEnDirectorio(ManejadorDeDatosArchivos.INFLUENCIAS);
+            for (int i = 0; i < listado_influencias.Length; i++)
+            {
+                Influencia influencia = manejador_de_archivos.extraerInfluencia(listado_influencias[i]);
+                Nodo origen = manejador_de_archivos.extraerNodo(influencia.id_nodo_origen);
+                Nodo destino = manejador_de_archivos.extraerNodo(influencia.id_nodo_influenciado);
+                influencia.nombre_nodo_origen = origen.nombre;
+                influencia.nombre_nodo_destino = destino.nombre;
+                manejador_de_archivos.actualizarInfluencia(influencia);
+            }
+            /*
             ManejadorDeDatosArchivos manejador_de_datos = new ManejadorDeDatosArchivos();
             Console.WriteLine("Repositorio limpiado");
             Console.WriteLine(manejador_de_datos.limpiarDirectorioRepositorioDeDatos());

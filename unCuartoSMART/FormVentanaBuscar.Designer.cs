@@ -36,7 +36,11 @@
             // 
             // listBox_elementos
             // 
+            this.listBox_elementos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox_elementos.FormattingEnabled = true;
+            this.listBox_elementos.HorizontalScrollbar = true;
             this.listBox_elementos.Location = new System.Drawing.Point(34, 64);
             this.listBox_elementos.Name = "listBox_elementos";
             this.listBox_elementos.Size = new System.Drawing.Size(328, 225);
@@ -54,6 +58,7 @@
             // 
             // button_aceptar
             // 
+            this.button_aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_aceptar.Location = new System.Drawing.Point(34, 323);
             this.button_aceptar.Name = "button_aceptar";
             this.button_aceptar.Size = new System.Drawing.Size(132, 23);
@@ -64,6 +69,7 @@
             // 
             // button_cancelar
             // 
+            this.button_cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_cancelar.Location = new System.Drawing.Point(218, 323);
             this.button_cancelar.Name = "button_cancelar";
             this.button_cancelar.Size = new System.Drawing.Size(144, 23);

@@ -175,7 +175,7 @@ namespace unCuartoSMART
                 for (int j = 0; j < nodos_externos.Length; j++)
                 {
 
-                    texto_graphviz.AppendLine( nodos_externos[j] + " -> " + nodo_actual.id_nodo + "[color= \"" + " hotpink " + "\" arrowhead=\"dot\"]");//Flechas influencias
+                    texto_graphviz.AppendLine( nodos_externos[j] + " -> " + nodo_actual.id_nodo + "[color= \"" + "chocolate2" + "\" arrowhead=\"dot\"]");//Flechas influencias
                 }
 
             }

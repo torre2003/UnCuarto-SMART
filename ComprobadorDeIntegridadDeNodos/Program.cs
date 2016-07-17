@@ -39,7 +39,7 @@ namespace ComprobadorDeIntegridadDeNodos
 
             
             Program comprobador = new Program();
-            Console.ReadKey();
+            
             comprobador.comprobarNodos(manejador_de_archivos, false);
             comprobador.comprobarTodasLasInfluencias(manejador_de_archivos);
            
@@ -112,6 +112,11 @@ namespace ComprobadorDeIntegridadDeNodos
                     Console.WriteLine(influencias_externas[j] +" : "+existe+ "  ->  " + nodo_influenciante +" : " +existe2);
                 }
 
+                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine("Calculando fuzzy");
+                nodo_actual.actualizacionNodo();
+                Console.WriteLine("...OK");
+
                 Console.WriteLine("");
                 Console.WriteLine("**************************************************");
                 if(flag)
@@ -182,7 +187,11 @@ namespace ComprobadorDeIntegridadDeNodos
 
             if (!existe_influencia || !existe_nodo_origen || !existe_nodo_destino || !concuerda_nodo_origen || !concuerda_nodo_destino)
                 flag = false;
-
+            
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("Calculando fuzzy");
+            influencia.actualizacionInfluencia();
+            Console.WriteLine("...OK");
 
             Console.WriteLine("**************************************************");
             if (flag)

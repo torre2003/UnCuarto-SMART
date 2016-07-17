@@ -214,7 +214,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado_seccion_magister.agregarVariable("nmeelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "nmemc", "nmecef", "nmem", "nmeldyce", "nmea", "nmecmiea", "nmeelmelofol" });
+              nodo_postgrado_seccion_magister.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "nmemc", "nmecef", "nmem", "nmeldyce", "nmea", "nmecmiea", "nmeelmelofol" });
               #endregion
 
               #region Nodo Postgrado Seccion diplomados y postitulos
@@ -274,7 +274,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("ndeee", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "ndieie", "ndegt", "npmpdqeescdebppelacn", "ndeee" });
+              nodo_postgrado_seccion_diplomados_y_postitulos.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "ndieie", "ndegt", "npmpdqeescdebppelacn", "ndeee" });
               #endregion
 
               #region nodo Personal Postgrado
@@ -398,7 +398,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
               nodo_secretaria_postgrado.agregarVariable("i_nsi_nsp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_secretaria_postgrado.agregarVariable("i_ndp_nsp", Nodo.INFLUENCIAS_EXTERNAS);
               nodo_secretaria_postgrado.agregarVariable("nsi", Nodo.NODOS_INFLUENCIADOS);
+              nodo_secretaria_postgrado.agregarVariable("ndp", Nodo.NODOS_INFLUENCIADOS);
 
 
               nodo_secretaria_postgrado.calculos = new InterfaceCalculosPersonas(new string[] { "compromiso", "empatia", "manejo verbal", "flexibilidad", "trabajo bajo presion", "sistematibilidad", "manejo de tics" });
@@ -467,7 +469,9 @@ namespace InicializadorDeArchivosModeloMBCIF
 
     
               nodo_director_postgrado.agregarVariable("i_ndi_ndp", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_director_postgrado.agregarVariable("i_nsp_ndp", Nodo.INFLUENCIAS_EXTERNAS);
               nodo_director_postgrado.agregarVariable("ndi", Nodo.NODOS_INFLUENCIADOS);
+              nodo_director_postgrado.agregarVariable("nsp", Nodo.NODOS_INFLUENCIADOS);
 
             // doctorados
               nodo_director_postgrado.agregarVariable("ndeq", Nodo.NODOS_INFLUENCIADOS);

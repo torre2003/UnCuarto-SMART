@@ -666,7 +666,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
 
-              nivel_academico_mag_en_astronomia.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nahp" });
+              nivel_academico_mag_en_ciencias_mencion_ing_en_alimentos.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nahp" });
               #endregion
 
 
@@ -735,7 +735,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 			nodo_mag_es_std_lat.agregarVariable("i_ni_nmeelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
 			nodo_mag_es_std_lat.agregarVariable("i_nfyb_nmeelmelofol", Nodo.INFLUENCIAS_EXTERNAS);
 
-
+            nodo_mag_es_std_lat.calculos = new ICalculosNodo_programas("nnameelmelofol");
               #endregion
 
               #region Nodo Nivel academico Magister en Estudios Latinoamericanos mencion en Lingüistica o Filosofia o Literatura
