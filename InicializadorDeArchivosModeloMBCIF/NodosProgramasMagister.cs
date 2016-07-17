@@ -258,7 +258,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                     {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
                                                                 new List<FuncionPertenencia>() {
                                                                   new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),                                                                  new FuncionSaturacion("exedido", 4, 6, 10)
+                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),                                                                 
                                                                   new FuncionSaturacion("excedido", 4, 6, 10)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
@@ -309,7 +309,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 			nodo_magister_en_matematica.agregarVariable("i_n.fyb_n.mem", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-            nodo_magister_en_matemacica.calculos = new ICalculosNodo_programas("n.namem");
+            nodo_magister_en_matematica.calculos = new ICalculosNodo_programas("n.namem");
             #endregion
 
             #region  Nodo Nivel academico Magister en Matemáticas

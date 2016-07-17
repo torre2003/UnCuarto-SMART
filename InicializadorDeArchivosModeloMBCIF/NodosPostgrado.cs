@@ -75,11 +75,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado.agregarVariable("n.psm", Nodo.DATOS_NODOS_EXTERNOS);
               nodo_postgrado.agregarVariable("n.psdyp", Nodo.DATOS_NODOS_EXTERNOS);
 
-              nodo_postrado.agregarVariable("i_n.i_n.p", Nodo.INFLUENCIAS_EXTERNAS);
+              nodo_postgrado.agregarVariable("i_n.i_n.p", Nodo.INFLUENCIAS_EXTERNAS);
 
 
-              nodo_postrado.agregarVariable("n.i", Nodo.NODOS_INFLUENCIADOS);
-              nodo_postrado.calculos = new InterfaceCalculosGenerica(new string[] { "n.pp", "n.psd", "n.psm", "n.psdyp"});
+              nodo_postgrado.agregarVariable("n.i", Nodo.NODOS_INFLUENCIADOS);
+              nodo_postgrado.calculos = new InterfaceCalculosGenerica(new string[] { "n.pp", "n.psd", "n.psm", "n.psdyp"});
             #endregion
 
 
@@ -133,7 +133,7 @@ namespace InicializadorDeArchivosModeloMBCIF
         
 
 
-              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.debyea", "n.deidayb", "n.deq" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.debyea", "n.deidayb", "n.deq" });
               #endregion
 
               #region Nodo Postgrado Sección Magister
@@ -214,7 +214,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado_seccion_magister.agregarVariable("n.meelmelofol", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.memc", "n.mecef", "n.mem", "n.meldyce", "n.mea", "n.mecmiea", "n.meelmelofol" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.memc", "n.mecef", "n.mem", "n.meldyce", "n.mea", "n.mecmiea", "n.meelmelofol" });
               #endregion
 
               #region Nodo Postgrado Sección diplomados y postitulos
@@ -274,7 +274,7 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_postgrado_seccion_diplomados_y_postitulos.agregarVariable("n.dee", Nodo.DATOS_NODOS_EXTERNOS);
 
 
-              nodo_postrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dgt", "n.dieie", "n.pmpdqeescdebppelacn", "n.dee" });
+              nodo_postgrado_seccion_doctorados.calculos = new InterfaceCalculosSeccionesPostgrado(new string[] { "n.dgt", "n.dieie", "n.pmpdqeescdebppelacn", "n.dee" });
               #endregion
 
 
