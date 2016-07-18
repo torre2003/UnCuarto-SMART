@@ -262,7 +262,10 @@ namespace unCuartoSMART
 	            {
 	                Cursor = Cursors.WaitCursor;
 					var reporte = new Reporte(ventana_mbcif._ruta_carpeta_mbcif);
+					reporte.Show();
 					bool flag = reporte.generarReporte(saveDialogReporte.FileName);
+					//bool flag = false;
+					reporte.Close();
 					Cursor = Cursors.Default;
 					if(flag)
 	                	MessageBox.Show("Reporte generado exitosamente","Reporte",MessageBoxButtons.OK,MessageBoxIcon.Information);

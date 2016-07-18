@@ -32,8 +32,9 @@ namespace unCuartoSMART
 			//
             manejador_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
             var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+            
             InitializeComponent();
-			lstNodos.Items.Clear();
+			lvNodos.Items.Clear();
 			cargarListadoNodos(_ruta_carpeta_mbcif);
 			
 			var a = grEstados.ChartAreas[0];
@@ -46,6 +47,7 @@ namespace unCuartoSMART
 			a.BorderDashStyle = ChartDashStyle.Solid;
 
             
+			// disable once ConvertIfStatementToConditionalTernaryExpression
 			if(data.bdd_conectada)
 				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
 			else
@@ -70,26 +72,29 @@ namespace unCuartoSMART
 			var ventana_buscar = new FormVentanaBuscar("Nodos");
 
 			for (int i = 0; i < listaNodos.Length; i++) {
-                if (lstNodos.Items.IndexOf(listaNodos[i]) == -1)
+                if (lvNodos.Items.Find(listaNodos[i],false).Length == 0)
                 {
                     ModeloMBCIF.Nodo nodo = manejador_archivos.extraerNodo(listaNodos[i]);
-                    ventana_buscar.agregarElemento(listaNodos[i],nodo.nombre);
-                }
-
-					
+                    ventana_buscar.agregarElemento(listaNodos[i], nodo.nombre);
+                }					
 			}
             
 			ventana_buscar.ShowDialog(this);
 			if (ventana_buscar.seleccion != null) {
-				lstNodos.Items.Add(ventana_buscar.seleccion);
+				//lstNodos.Items.Add(ventana_buscar.seleccion);
+				var item = new ListViewItem(ventana_buscar.descripcion_seleccion);
+				item.Name = ventana_buscar.seleccion ;
+				item.SubItems.Add(ventana_buscar.seleccion);
+					lvNodos.Items.Add(item);
 			}
             
 		}
 	//--------------------------------------------------------------------------------------
 		void btnQuitarClick(object sender, EventArgs e)
 		{
-			if (lstNodos.SelectedIndex > -1)
-				lstNodos.Items.RemoveAt(lstNodos.SelectedIndex);
+			if (lvNodos.SelectedItems.Count > 0)
+				//lstNodos.Items.RemoveAt(lstNodos.SelectedIndex);
+				lvNodos.Items.Remove(lvNodos.SelectedItems[0]);
 		}
 	//--------------------------------------------------------------------------------------
 		void FormVentanaGraficosFormClosing(object sender, FormClosingEventArgs e)
@@ -101,41 +106,52 @@ namespace unCuartoSMART
 		void BtnGenerarGraficoClick(object sender, EventArgs e)
 		{
 			
-			if (lstNodos.Items.Count < 1)
-				return;
-			
-			var nodos = new string[lstNodos.Items.Count];
-			for (int i = 0; i < lstNodos.Items.Count; i++)
-				nodos[i] = lstNodos.Items[i].ToString();
-			
-			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
-			var pesos = data.obtenerPesos(nodos, (int)udIteraciones.Value);
-			
-			grEstados.Series.Clear();
-			
-            
-			for (int col = 0; col < pesos.Count; col++) {          
-				var lines = new Series(nodos[col]);
-				lines.ChartType = SeriesChartType.Line; 
-				for (int fil = 0; fil < pesos[col].Count; fil++)
-					lines.Points.Add(new DataPoint((maxActual-pesos[col].Count + fil+1 ), pesos[col][fil]));
-				lines.YAxisType = AxisType.Primary;
-				grEstados.Series.Add(lines);
-                
+			try {
+				if (lvNodos.Items.Count < 1)
+					return;
+				
+				var nodos = new string[lvNodos.Items.Count];
+				var nombreNodos = new string[lvNodos.Items.Count];
+				for (int i = 0; i < lvNodos.Items.Count; i++){
+					nodos[i] = lvNodos.Items[i].Name;//.SubItems[0].Text;
+					nombreNodos[i] = lvNodos.Items[i].Text;
+				}
+				
+				var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
+				var pesos = data.obtenerPesos(nodos, (int)udIteraciones.Value);
+				
+				
+				grEstados.Series.Clear();
+				
+				for (int col = 0; col < pesos.Count; col++) {          
+					var lines = new Series(nombreNodos[col]);
+					lines.ChartType = SeriesChartType.Line; 
+					for (int fil = 0; fil < pesos[col].Count; fil++)
+						lines.Points.Add(new DataPoint((maxActual-pesos[col].Count + fil+1 ), pesos[col][fil]));
+					lines.YAxisType = AxisType.Primary;
+					grEstados.Series.Add(lines);          
+				}
+			} catch (Exception ex) {				
+				MessageBox.Show(ex.Message);
 			}
-
 		}
 		void FormVentanaGraficosActivated(object sender, EventArgs e)
 		{
-			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
-			var maxNuevo = Int32.Parse(data.obtenerUltimaIdCreada());
-			var dif = maxNuevo - maxActual ;
-			udIteraciones.Maximum = maxNuevo;
-			udIteraciones.Value += dif ;
-			maxActual = maxNuevo;
-			
-			if(dif > 0)
-				BtnGenerarGraficoClick(null,null);
+			try {
+				var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
+				//var dif = maxNuevo - maxActual ;
+				
+				//udIteraciones.Value += dif ;
+				//maxActual = maxNuevo;
+				udIteraciones.Maximum = maxActual;
+				udIteraciones.Value = maxActual;
+				//if(dif > 0)
+				//	BtnGenerarGraficoClick(null,null);
+			} catch (Exception ex) {				
+				MessageBox.Show(ex.Message);
+			}
 		}
 	//--------------------------------------------------------------------------------------
 	}

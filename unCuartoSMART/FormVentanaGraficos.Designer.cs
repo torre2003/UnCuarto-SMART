@@ -22,9 +22,9 @@ namespace unCuartoSMART
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.NumericUpDown udIteraciones;
 		private System.Windows.Forms.Button btnGenerarGrafico;
-		private System.Windows.Forms.ListBox lstNodos;
 		private System.Windows.Forms.Button btnAgregarNodos;
 		private System.Windows.Forms.Button btnQuitar;
+		private System.Windows.Forms.ListView lvNodos;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -49,19 +49,18 @@ namespace unCuartoSMART
 		{
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVentanaGraficos));
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.grEstados = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.lstNodos = new System.Windows.Forms.ListBox();
 			this.btnAgregarNodos = new System.Windows.Forms.Button();
 			this.btnGenerarGrafico = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.udIteraciones = new System.Windows.Forms.NumericUpDown();
 			this.btnQuitar = new System.Windows.Forms.Button();
+			this.lvNodos = new System.Windows.Forms.ListView();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grEstados)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -96,15 +95,16 @@ namespace unCuartoSMART
 			chartArea1.Name = "ChartArea1";
 			this.grEstados.ChartAreas.Add(chartArea1);
 			this.grEstados.Dock = System.Windows.Forms.DockStyle.Fill;
+			legend1.DockedToChartArea = "ChartArea1";
+			legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+			legend1.IsDockedInsideChartArea = false;
+			legend1.MaximumAutoSize = 5F;
 			legend1.Name = "Legend1";
+			legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Wide;
 			this.grEstados.Legends.Add(legend1);
 			this.grEstados.Location = new System.Drawing.Point(13, 13);
 			this.grEstados.Name = "grEstados";
 			this.grEstados.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-			series1.ChartArea = "ChartArea1";
-			series1.Legend = "Legend1";
-			series1.Name = "Series1";
-			this.grEstados.Series.Add(series1);
 			this.grEstados.Size = new System.Drawing.Size(883, 376);
 			this.grEstados.TabIndex = 0;
 			this.grEstados.Text = "Estados";
@@ -123,51 +123,42 @@ namespace unCuartoSMART
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.ColumnCount = 8;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 247F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
 			this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.lstNodos, 2, 0);
 			this.tableLayoutPanel2.Controls.Add(this.btnAgregarNodos, 3, 0);
 			this.tableLayoutPanel2.Controls.Add(this.btnGenerarGrafico, 6, 1);
 			this.tableLayoutPanel2.Controls.Add(this.label2, 3, 2);
 			this.tableLayoutPanel2.Controls.Add(this.udIteraciones, 4, 2);
 			this.tableLayoutPanel2.Controls.Add(this.btnQuitar, 3, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lvNodos, 2, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 4;
+			this.tableLayoutPanel2.RowCount = 3;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(877, 139);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
 			// label1
 			// 
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Location = new System.Drawing.Point(130, 0);
+			this.label1.Location = new System.Drawing.Point(53, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(52, 32);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Nodos";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// lstNodos
-			// 
-			this.lstNodos.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lstNodos.FormattingEnabled = true;
-			this.lstNodos.Location = new System.Drawing.Point(188, 3);
-			this.lstNodos.Name = "lstNodos";
-			this.tableLayoutPanel2.SetRowSpan(this.lstNodos, 4);
-			this.lstNodos.Size = new System.Drawing.Size(241, 133);
-			this.lstNodos.TabIndex = 4;
 			// 
 			// btnAgregarNodos
 			// 
@@ -175,7 +166,7 @@ namespace unCuartoSMART
 			this.btnAgregarNodos.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnAgregarNodos.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarNodos.Image")));
 			this.btnAgregarNodos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnAgregarNodos.Location = new System.Drawing.Point(435, 3);
+			this.btnAgregarNodos.Location = new System.Drawing.Point(462, 3);
 			this.btnAgregarNodos.Name = "btnAgregarNodos";
 			this.btnAgregarNodos.Size = new System.Drawing.Size(141, 26);
 			this.btnAgregarNodos.TabIndex = 5;
@@ -187,7 +178,7 @@ namespace unCuartoSMART
 			// 
 			this.btnGenerarGrafico.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnGenerarGrafico.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarGrafico.Image")));
-			this.btnGenerarGrafico.Location = new System.Drawing.Point(617, 35);
+			this.btnGenerarGrafico.Location = new System.Drawing.Point(644, 35);
 			this.btnGenerarGrafico.Name = "btnGenerarGrafico";
 			this.tableLayoutPanel2.SetRowSpan(this.btnGenerarGrafico, 2);
 			this.btnGenerarGrafico.Size = new System.Drawing.Size(130, 76);
@@ -200,7 +191,7 @@ namespace unCuartoSMART
 			// label2
 			// 
 			this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.label2.Location = new System.Drawing.Point(435, 64);
+			this.label2.Location = new System.Drawing.Point(462, 64);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(80, 26);
 			this.label2.TabIndex = 1;
@@ -210,7 +201,7 @@ namespace unCuartoSMART
 			// udIteraciones
 			// 
 			this.udIteraciones.Dock = System.Windows.Forms.DockStyle.Top;
-			this.udIteraciones.Location = new System.Drawing.Point(521, 67);
+			this.udIteraciones.Location = new System.Drawing.Point(548, 67);
 			this.udIteraciones.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -238,13 +229,27 @@ namespace unCuartoSMART
 			this.btnQuitar.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnQuitar.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitar.Image")));
 			this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnQuitar.Location = new System.Drawing.Point(435, 35);
+			this.btnQuitar.Location = new System.Drawing.Point(462, 35);
 			this.btnQuitar.Name = "btnQuitar";
 			this.btnQuitar.Size = new System.Drawing.Size(141, 26);
 			this.btnQuitar.TabIndex = 6;
 			this.btnQuitar.Text = "Quitar";
 			this.btnQuitar.UseVisualStyleBackColor = true;
 			this.btnQuitar.Click += new System.EventHandler(this.btnQuitarClick);
+			// 
+			// lvNodos
+			// 
+			this.lvNodos.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvNodos.FullRowSelect = true;
+			this.lvNodos.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.lvNodos.Location = new System.Drawing.Point(111, 3);
+			this.lvNodos.MultiSelect = false;
+			this.lvNodos.Name = "lvNodos";
+			this.tableLayoutPanel2.SetRowSpan(this.lvNodos, 5);
+			this.lvNodos.Size = new System.Drawing.Size(345, 133);
+			this.lvNodos.TabIndex = 7;
+			this.lvNodos.UseCompatibleStateImageBehavior = false;
+			this.lvNodos.View = System.Windows.Forms.View.List;
 			// 
 			// FormVentanaGraficos
 			// 
