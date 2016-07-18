@@ -146,6 +146,7 @@ namespace unCuartoSMART
 				udIteraciones.Value = maxActual;
 			} catch (Exception ex) {				
 				MessageBox.Show(ex.Message);
+			}
 
 		}
 	//--------------------------------------------------------------------------------------
