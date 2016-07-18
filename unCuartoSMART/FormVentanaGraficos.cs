@@ -34,6 +34,7 @@ namespace unCuartoSMART
             var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
             
             InitializeComponent();
+
 			lvNodos.Items.Clear();
 			cargarListadoNodos(_ruta_carpeta_mbcif);
 			
@@ -72,6 +73,7 @@ namespace unCuartoSMART
 			var ventana_buscar = new FormVentanaBuscar("Nodos");
 
 			for (int i = 0; i < listaNodos.Length; i++) {
+
                 if (lvNodos.Items.Find(listaNodos[i],false).Length == 0)
                 {
                     ModeloMBCIF.Nodo nodo = manejador_archivos.extraerNodo(listaNodos[i]);
@@ -81,7 +83,6 @@ namespace unCuartoSMART
             
 			ventana_buscar.ShowDialog(this);
 			if (ventana_buscar.seleccion != null) {
-				//lstNodos.Items.Add(ventana_buscar.seleccion);
 				var item = new ListViewItem(ventana_buscar.descripcion_seleccion);
 				item.Name = ventana_buscar.seleccion ;
 				item.SubItems.Add(ventana_buscar.seleccion);
@@ -93,7 +94,6 @@ namespace unCuartoSMART
 		void btnQuitarClick(object sender, EventArgs e)
 		{
 			if (lvNodos.SelectedItems.Count > 0)
-				//lstNodos.Items.RemoveAt(lstNodos.SelectedIndex);
 				lvNodos.Items.Remove(lvNodos.SelectedItems[0]);
 		}
 	//--------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ namespace unCuartoSMART
 					for (int fil = 0; fil < pesos[col].Count; fil++)
 						lines.Points.Add(new DataPoint((maxActual-pesos[col].Count + fil+1 ), pesos[col][fil]));
 					lines.YAxisType = AxisType.Primary;
-					grEstados.Series.Add(lines);          
+					grEstados.Series.Add(lines);                         
 				}
 			} catch (Exception ex) {				
 				MessageBox.Show(ex.Message);
@@ -141,17 +141,12 @@ namespace unCuartoSMART
 			try {
 				var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
 				maxActual = Int32.Parse(data.obtenerUltimaIdCreada());
-				//var dif = maxNuevo - maxActual ;
 				
-				//udIteraciones.Value += dif ;
-				//maxActual = maxNuevo;
 				udIteraciones.Maximum = maxActual;
 				udIteraciones.Value = maxActual;
-				//if(dif > 0)
-				//	BtnGenerarGraficoClick(null,null);
 			} catch (Exception ex) {				
 				MessageBox.Show(ex.Message);
-			}
+
 		}
 	//--------------------------------------------------------------------------------------
 	}

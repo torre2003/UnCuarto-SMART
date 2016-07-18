@@ -735,6 +735,12 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private void button_modificar_nodo_Click(object sender, EventArgs e)
         {
+            if (id_ultimo_nodo_consultado.Equals(""))
+            {
+                button_modificar_nodo.Enabled = false;
+                return;
+            }
+
             Nodo nodo = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif).extraerNodo(this.id_ultimo_nodo_consultado);
             
             
@@ -784,11 +790,9 @@ namespace unCuartoSMART
 
                     manejador_MBCIF.ingresarPonderacionesANodo(this.id_ultimo_nodo_consultado, ponderaciones_datos_internos, ponderaciones_nodos_externos);
                 }
-
-
-
-
+                manejador_MBCIF.actualizarPesoNodo(id_ultimo_nodo_consultado);
                 buscarNodo(nodo.id_nodo);
+                mostrarDiagramaMatriz();
             }
 
         }

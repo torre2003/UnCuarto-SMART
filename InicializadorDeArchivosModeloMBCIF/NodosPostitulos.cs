@@ -262,8 +262,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
 									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-									new FuncionSaturacion("excedido", 4, 6, 10)
+                                    new FuncionSaturacion("excedido", 4, 6, 10)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
