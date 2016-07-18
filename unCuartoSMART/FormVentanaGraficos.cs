@@ -126,8 +126,8 @@ namespace unCuartoSMART
 
 		}
 		void FormVentanaGraficosActivated(object sender, EventArgs e)
-		{
-			var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
+		{/*
+		    var data = new ManejadorDeDatosBaseDeDatos(manejador_archivos);
 			var maxNuevo = Int32.Parse(data.obtenerUltimaIdCreada());
 			var dif = maxNuevo - maxActual ;
 			udIteraciones.Maximum = maxNuevo;
@@ -136,7 +136,7 @@ namespace unCuartoSMART
 			
 			if(dif > 0)
 				BtnGenerarGraficoClick(null,null);
-		}
+		*/}
 	//--------------------------------------------------------------------------------------
 	}
 }

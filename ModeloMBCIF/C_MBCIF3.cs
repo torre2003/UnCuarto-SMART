@@ -604,5 +604,18 @@ namespace ModeloMBCIF
             cola_de_analisis.Clear();
         }
 
+        //*************************************************************************
+        // actualizarPesoNodo
+        //*************************************************************************
+        /// <summary>
+        /// Actualiza el peso del nodo sin agreagarlo o sacarlo de la cola de analisis
+        /// </summary>
+        /// <param name="id_nodo">id del nodo a actualizar</param>
+        public void actualizarPesoNodo(string id_nodo)
+        {
+            Nodo nodo = manejador_de_datos_archivos.extraerNodo(id_nodo);
+            nodo.actualizacionNodo();
+            manejador_de_datos_archivos.actualizarNodo(nodo);
+        }
     }
 }

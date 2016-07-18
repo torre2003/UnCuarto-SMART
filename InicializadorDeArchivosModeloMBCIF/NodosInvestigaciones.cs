@@ -402,7 +402,7 @@ namespace InicializadorDeArchivosModeloMBCIF
                                                                 new FuncionTrapezoidal("medio", 10, 20, 30, 40),
                                                                 new FuncionSaturacion("alto", 30, 40, 60)
                                                                 })},
-                    {"promedio de impacto publicaciones", new VariableDifusa("promedio de impacto publicaciones",  0, 10,	
+                    {"promedio de impacto publicaciones", new VariableDifusa("promedio de impacto publicaciones",  0, 1,	
                                                               new List<FuncionPertenencia>() {
 									                                new FuncionHombro("bajo", 0, 0.1, 0.3),
 									                                new FuncionTrapezoidal("medio", 0.1,0.3,0.4,0.6),

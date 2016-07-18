@@ -33,37 +33,40 @@ namespace InicializadorDeArchivosModeloMBCIF
 				Nodo academico_mauricio_godoy;
 				academico_mauricio_godoy = new Nodo("namgs", "Academico Mauricio Godoy Seura");
 				academico_mauricio_godoy.fuzzy = new InferenciaDifusa(
-					//entradas
-					new Dictionary<string, VariableDifusa> { 
+                    //entradas
+                    new Dictionary<string, VariableDifusa> { 
 						{"publicaciones isi-wos", new VariableDifusa("publicaciones isi-wos", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
-             			{"publicaciones scielo", new VariableDifusa("publicaciones scielo", 0, 6,
+						{"publicaciones scielo", new VariableDifusa("publicaciones scielo", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"publicaciones equivalentes", new VariableDifusa("publicaciones equivalentes", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"impacto", new VariableDifusa("impacto", 0, 1,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 0.1, 0.3),
-									new FuncionTrapezoidal("medio", 0.1,0.3,0.4,0.6),
-									new FuncionSaturacion("alto", 0.4, 0.6, 1)
+									new FuncionHombro("bajo", 0, 0.1, 0.2),
+									new FuncionTrapezoidal("medio", 0.1,0.2,0.3,0.5),
+									new FuncionSaturacion("alto", 0.3, 0.5, 1)
 								})
 						}                                                             
-                                                              
+															  
 					},
 
 					//salidas
@@ -103,34 +106,37 @@ namespace InicializadorDeArchivosModeloMBCIF
 				Nodo academico_nelson_moraga;
 				academico_nelson_moraga = new Nodo("nanm", "Academico Nelson Moraga");
 				academico_nelson_moraga.fuzzy = new InferenciaDifusa(
-					//entradas
-					new Dictionary<string, VariableDifusa> { 
+                    //entradas
+                    new Dictionary<string, VariableDifusa> { 
 						{"publicaciones isi-wos", new VariableDifusa("publicaciones isi-wos", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"publicaciones scielo", new VariableDifusa("publicaciones scielo", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"publicaciones equivalentes", new VariableDifusa("publicaciones equivalentes", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"impacto", new VariableDifusa("impacto", 0, 1,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 0.1, 0.3),
-									new FuncionTrapezoidal("medio", 0.1,0.3,0.4,0.6),
-									new FuncionSaturacion("alto", 0.4, 0.6, 1)
+									new FuncionHombro("bajo", 0, 0.1, 0.2),
+									new FuncionTrapezoidal("medio", 0.1,0.2,0.3,0.5),
+									new FuncionSaturacion("alto", 0.3, 0.5, 1)
 								})
 						}                                                             
 															  
@@ -173,36 +179,40 @@ namespace InicializadorDeArchivosModeloMBCIF
 				Nodo academico_hector_paez;
 				academico_hector_paez = new Nodo("nahp", "Academico Hector Paez");
 				academico_hector_paez.fuzzy = new InferenciaDifusa(
-					//entradas
-					new Dictionary<string, VariableDifusa> { 
+                    //entradas
+                    new Dictionary<string, VariableDifusa> { 
 						{"publicaciones isi-wos", new VariableDifusa("publicaciones isi-wos", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"publicaciones scielo", new VariableDifusa("publicaciones scielo", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"publicaciones equivalentes", new VariableDifusa("publicaciones equivalentes", 0, 6,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 2, 3),
+									new FuncionHombro("sin publicaciones", 0, 0.1, 0.11),
+                                    new FuncionTrapezoidal("bajo", 0.11, 0.12, 2, 3),
 									new FuncionTrapezoidal("medio", 2, 3, 4, 5),
 									new FuncionSaturacion("alto", 4, 5, 6)
 								})
 						},
 						{"impacto", new VariableDifusa("impacto", 0, 1,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("bajo", 0, 0.1, 0.3),
-									new FuncionTrapezoidal("medio", 0.1,0.3,0.4,0.6),
-									new FuncionSaturacion("alto", 0.4, 0.6, 1)
+									new FuncionHombro("bajo", 0, 0.1, 0.2),
+									new FuncionTrapezoidal("medio", 0.1,0.2,0.3,0.5),
+									new FuncionSaturacion("alto", 0.3, 0.5, 1)
 								})
-						} 
+						}                                                             
+															  
 					},
 
 					//salidas
