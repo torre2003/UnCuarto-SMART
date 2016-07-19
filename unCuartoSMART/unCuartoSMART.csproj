@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>smart-2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.Microsoft.Office.Interop.Excel">
       <HintPath>..\Extras\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -207,6 +210,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Document-Prepare16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="smart-2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

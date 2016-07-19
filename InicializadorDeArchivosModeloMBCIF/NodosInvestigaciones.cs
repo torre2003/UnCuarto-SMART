@@ -34,27 +34,27 @@ namespace InicializadorDeArchivosModeloMBCIF
                 new Dictionary<string, VariableDifusa> {
                      {"npi", new VariableDifusa("npi", 0, 1,
                                                               new List<FuncionPertenencia>(){
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                               })},
                     {"npisi", new VariableDifusa("npisi", 0, 1,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                                 })},
                     {"npscielo", new VariableDifusa("npscielo", 0, 1,
                                                               new List<FuncionPertenencia>(){
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                               })},
                     {"npe", new VariableDifusa("npe", 0, 1,
                                                               new List<FuncionPertenencia>(){
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                               })}
 
                    	},
@@ -113,15 +113,15 @@ namespace InicializadorDeArchivosModeloMBCIF
                 new Dictionary<string, VariableDifusa> {
                    {"ndi", new VariableDifusa("ndi", 0, 1,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                                 })}, 
                     {"nsi", new VariableDifusa("nsi", 0, 1,
                                                               new List<FuncionPertenencia>(){
-                                                                new FuncionHombro("bajo", 0, 0.3, 0.4),
-                                                                new FuncionTrapezoidal("medio", 0.3, 0.4, 0.5, 0.6),
-                                                                new FuncionSaturacion("alto", 0.5, 0.6, 1)
+                                                                new FuncionHombro("bajo", 0, 0.2, 0.4),
+                                                                new FuncionTrapezoidal("medio", 0.2, 0.4, 0.6, 0.8),
+                                                                new FuncionSaturacion("alto", 0.6, 0.8, 1)
                                                               })}
                     },
 
@@ -163,45 +163,45 @@ namespace InicializadorDeArchivosModeloMBCIF
                 new Dictionary<string, VariableDifusa> {
                    {"compromiso", new VariableDifusa("compromiso", 0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                                new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })},
                     {"empatia", new VariableDifusa("empatia",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"manejo verbal", new VariableDifusa("manejo verbal",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                                new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"flexibilidad", new VariableDifusa("flexibilidad",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                              new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"trabajo bajo presion", new VariableDifusa("trabajo bajo presion",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                                new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"sistematibilidad", new VariableDifusa("sistematibilidad",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"manejo de tics", new VariableDifusa("manejo de tics",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                               })}
                     },
 
@@ -253,33 +253,33 @@ namespace InicializadorDeArchivosModeloMBCIF
                 new Dictionary<string, VariableDifusa> {
                    {"formacion", new VariableDifusa("formacion", 0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })},
                     {"empatia", new VariableDifusa("empatia",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                                new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"poder de resolucion", new VariableDifusa("poder de resolucion",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"compromiso", new VariableDifusa("compromiso",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}, 
                     {"gestion externa", new VariableDifusa("gestion externa",  0, 10,	
                                                               new List<FuncionPertenencia>() {
-                                                                new FuncionHombro("bajo", 0, 3, 4),
-                                                                new FuncionTrapezoidal("medio", 3, 4, 5, 6),
-                                                                new FuncionSaturacion("alto", 5, 6, 10)
+                                                               new FuncionHombro("bajo", 0, 2, 4),
+                                                                new FuncionTrapezoidal("medio", 2, 4, 6, 8),
+                                                                new FuncionSaturacion("alto", 6, 8, 10)
                                                                 })}
                     },
 
