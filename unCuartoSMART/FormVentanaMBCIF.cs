@@ -65,7 +65,7 @@ namespace unCuartoSMART
             set
             {
                 _imagen_principal = value;
-                cambiarTamañoImagen(_imagen_principal, 100,pictureBox_imagen);
+                cambiarTamañoImagen(_imagen_principal, escala_imagen,pictureBox_imagen);
                 pictureBox_imagen.Image = value;
                 pictureBox_imagen.Refresh();
             }
@@ -109,7 +109,7 @@ namespace unCuartoSMART
             InitializeComponent();
             iniciarMBCIF();
             mostrarDiagramaMatriz();
-            
+            button_colapzar_panel.Image = imageList_ocultar_ventana.Images[0];
         }
 
         //--------------------------------------------------------------
@@ -142,7 +142,7 @@ namespace unCuartoSMART
         }
 
 
-
+        #region Metodos buscar y mostrar Nodo, Influencias y Sistemas
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -358,6 +358,10 @@ namespace unCuartoSMART
             }
         }
 
+
+        #endregion
+
+
         //--------------------------------------------------------------
         //--------------------------------------------------------------
         //            extraerDatosInternosDeNodos
@@ -409,6 +413,8 @@ namespace unCuartoSMART
             }
             return sb;
         }
+
+
 
         //--------------------------------------------------------------
         //--------------------------------------------------------------
@@ -995,6 +1001,49 @@ namespace unCuartoSMART
                 manejador_de_archivos.actualizarInfluencia(influencia);
                 mostrarInformacionInfluencia(influencia);
             }
+        }
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_ir_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        private void button_ir_Click(object sender, EventArgs e)
+        {
+            if (!textBox_id_buscada.Text.Equals(""))
+            {
+                if (radioButton_nodo.Checked)
+                {
+                    buscarNodo(textBox_id_buscada.Text);
+                }
+                else if (radioButton_influencia.Checked)
+                {
+                    buscarInfluencia(textBox_id_buscada.Text);
+                }
+                else if (radioButton_sistema.Checked)
+                {
+                    buscarSistema(textBox_id_buscada.Text);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha completado el campo ID", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+        //            button_colapzar_panel_Click
+        //--------------------------------------------------------------
+        //--------------------------------------------------------------
+
+
+        private void button_colapzar_panel_Click(object sender, EventArgs e)
+        {
+            this.panel_datos.Visible = !this.panel_datos.Visible;
+            if (this.panel_datos.Visible)
+                button_colapzar_panel.Image = imageList_ocultar_ventana.Images[0];
+            else
+                button_colapzar_panel.Image = imageList_ocultar_ventana.Images[1];
         }
 
 

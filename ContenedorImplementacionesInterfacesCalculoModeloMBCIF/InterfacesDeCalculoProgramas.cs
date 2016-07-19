@@ -59,7 +59,7 @@ namespace ContenedorImplementacionesInterfacesCalculoModeloMBCIF
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_corto") & nivel_academico.Es("normal")).Entonces(estado, "malo");
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_corto") & nivel_academico.Es("alto")).Entonces(estado, "malo");
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_corto") & nivel_academico.Es("muy_alto")).Entonces(estado, "regular");
-            fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_medio") & nivel_academico.Es("normal")).Entonces(estado, "rgular");
+            fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_medio") & nivel_academico.Es("normal")).Entonces(estado, "regular");
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_medio") & nivel_academico.Es("alto")).Entonces(estado, "bueno");
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_medio") & nivel_academico.Es("muy_alto")).Entonces(estado, "bueno");
             fuzzy.Si(m_alumnos.Es("poco") & acreditacion.Es("periodo_prolongado") & nivel_academico.Es("normal")).Entonces(estado, "regular");

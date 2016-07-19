@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVentanaMBCIF));
             this.tableLayoutPanel_principal = new System.Windows.Forms.TableLayoutPanel();
             this.panel_datos = new System.Windows.Forms.Panel();
+            this.button_ir = new System.Windows.Forms.Button();
             this.button_modificar_ajuste_influencia = new System.Windows.Forms.Button();
             this.radioButton_sistema = new System.Windows.Forms.RadioButton();
             this.radioButton_influencia = new System.Windows.Forms.RadioButton();
@@ -40,11 +43,12 @@
             this.textBox_id_buscada = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_vizor = new System.Windows.Forms.Panel();
-            this.button_disminuir = new System.Windows.Forms.Button();
-            this.button_aumentar = new System.Windows.Forms.Button();
             this.pictureBox_imagen = new System.Windows.Forms.PictureBox();
             this.panel_controles = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button_disminuir = new System.Windows.Forms.Button();
             this.progressBar_proceso_iterativo = new System.Windows.Forms.ProgressBar();
+            this.button_aumentar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown_intervalo_de_guardado_de_datos = new System.Windows.Forms.NumericUpDown();
@@ -60,11 +64,14 @@
             this.radioButton_iterar_todo_a_la_vez = new System.Windows.Forms.RadioButton();
             this.numericUpDown_tiempo_entre_iteracion = new System.Windows.Forms.NumericUpDown();
             this.button_iniciar_iteracion = new System.Windows.Forms.Button();
+            this.button_colapzar_panel = new System.Windows.Forms.Button();
+            this.imageList_ocultar_ventana = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel_principal.SuspendLayout();
             this.panel_datos.SuspendLayout();
             this.panel_vizor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_imagen)).BeginInit();
             this.panel_controles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_intervalo_de_guardado_de_datos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numero_de_iteraciones)).BeginInit();
@@ -85,14 +92,15 @@
             this.tableLayoutPanel_principal.Name = "tableLayoutPanel_principal";
             this.tableLayoutPanel_principal.RowCount = 2;
             this.tableLayoutPanel_principal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_principal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel_principal.Size = new System.Drawing.Size(850, 612);
+            this.tableLayoutPanel_principal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanel_principal.Size = new System.Drawing.Size(1060, 639);
             this.tableLayoutPanel_principal.TabIndex = 0;
             // 
             // panel_datos
             // 
             this.panel_datos.AutoScroll = true;
             this.panel_datos.AutoSize = true;
+            this.panel_datos.Controls.Add(this.button_ir);
             this.panel_datos.Controls.Add(this.button_modificar_ajuste_influencia);
             this.panel_datos.Controls.Add(this.radioButton_sistema);
             this.panel_datos.Controls.Add(this.radioButton_influencia);
@@ -108,9 +116,21 @@
             this.panel_datos.Size = new System.Drawing.Size(291, 606);
             this.panel_datos.TabIndex = 0;
             // 
+            // button_ir
+            // 
+            this.button_ir.Image = global::unCuartoSMART.Properties.Resources.Resultset;
+            this.button_ir.Location = new System.Drawing.Point(147, 20);
+            this.button_ir.Name = "button_ir";
+            this.button_ir.Size = new System.Drawing.Size(29, 20);
+            this.button_ir.TabIndex = 10;
+            this.button_ir.UseVisualStyleBackColor = true;
+            this.button_ir.Click += new System.EventHandler(this.button_ir_Click);
+            // 
             // button_modificar_ajuste_influencia
             // 
             this.button_modificar_ajuste_influencia.Enabled = false;
+            this.button_modificar_ajuste_influencia.Image = global::unCuartoSMART.Properties.Resources.Document_Prepare16;
+            this.button_modificar_ajuste_influencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_modificar_ajuste_influencia.Location = new System.Drawing.Point(21, 580);
             this.button_modificar_ajuste_influencia.Name = "button_modificar_ajuste_influencia";
             this.button_modificar_ajuste_influencia.Size = new System.Drawing.Size(267, 23);
@@ -157,6 +177,8 @@
             // button_modificar_nodo
             // 
             this.button_modificar_nodo.Enabled = false;
+            this.button_modificar_nodo.Image = global::unCuartoSMART.Properties.Resources.Document_Prepare16;
+            this.button_modificar_nodo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_modificar_nodo.Location = new System.Drawing.Point(21, 554);
             this.button_modificar_nodo.Name = "button_modificar_nodo";
             this.button_modificar_nodo.Size = new System.Drawing.Size(267, 23);
@@ -176,9 +198,11 @@
             // 
             // button_buscar
             // 
-            this.button_buscar.Location = new System.Drawing.Point(169, 27);
+            this.button_buscar.Image = global::unCuartoSMART.Properties.Resources.Zoom16;
+            this.button_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_buscar.Location = new System.Drawing.Point(182, 20);
             this.button_buscar.Name = "button_buscar";
-            this.button_buscar.Size = new System.Drawing.Size(93, 23);
+            this.button_buscar.Size = new System.Drawing.Size(106, 20);
             this.button_buscar.TabIndex = 2;
             this.button_buscar.Text = "Buscar";
             this.button_buscar.UseVisualStyleBackColor = true;
@@ -186,7 +210,7 @@
             // 
             // textBox_id_buscada
             // 
-            this.textBox_id_buscada.Location = new System.Drawing.Point(63, 29);
+            this.textBox_id_buscada.Location = new System.Drawing.Point(41, 20);
             this.textBox_id_buscada.Name = "textBox_id_buscada";
             this.textBox_id_buscada.Size = new System.Drawing.Size(100, 20);
             this.textBox_id_buscada.TabIndex = 1;
@@ -195,7 +219,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 32);
+            this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 0;
@@ -205,34 +229,13 @@
             // 
             this.panel_vizor.AutoScroll = true;
             this.panel_vizor.BackColor = System.Drawing.Color.White;
-            this.panel_vizor.Controls.Add(this.button_disminuir);
-            this.panel_vizor.Controls.Add(this.button_aumentar);
             this.panel_vizor.Controls.Add(this.pictureBox_imagen);
             this.panel_vizor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_vizor.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel_vizor.Location = new System.Drawing.Point(300, 3);
             this.panel_vizor.Name = "panel_vizor";
-            this.panel_vizor.Size = new System.Drawing.Size(547, 406);
+            this.panel_vizor.Size = new System.Drawing.Size(757, 413);
             this.panel_vizor.TabIndex = 1;
-            // 
-            // button_disminuir
-            // 
-            this.button_disminuir.Location = new System.Drawing.Point(17, 70);
-            this.button_disminuir.Name = "button_disminuir";
-            this.button_disminuir.Size = new System.Drawing.Size(28, 23);
-            this.button_disminuir.TabIndex = 2;
-            this.button_disminuir.Text = "-";
-            this.button_disminuir.UseVisualStyleBackColor = true;
-            this.button_disminuir.Click += new System.EventHandler(this.button_disminuir_Click);
-            // 
-            // button_aumentar
-            // 
-            this.button_aumentar.Location = new System.Drawing.Point(17, 27);
-            this.button_aumentar.Name = "button_aumentar";
-            this.button_aumentar.Size = new System.Drawing.Size(28, 23);
-            this.button_aumentar.TabIndex = 1;
-            this.button_aumentar.Text = "+";
-            this.button_aumentar.UseVisualStyleBackColor = true;
-            this.button_aumentar.Click += new System.EventHandler(this.button_aumentar_Click);
             // 
             // pictureBox_imagen
             // 
@@ -248,22 +251,55 @@
             this.panel_controles.AutoScroll = true;
             this.panel_controles.AutoSize = true;
             this.panel_controles.BackColor = System.Drawing.Color.Transparent;
+            this.panel_controles.Controls.Add(this.button_colapzar_panel);
+            this.panel_controles.Controls.Add(this.pictureBox1);
+            this.panel_controles.Controls.Add(this.button_disminuir);
             this.panel_controles.Controls.Add(this.progressBar_proceso_iterativo);
+            this.panel_controles.Controls.Add(this.button_aumentar);
             this.panel_controles.Controls.Add(this.panel2);
             this.panel_controles.Controls.Add(this.panel1);
             this.panel_controles.Controls.Add(this.button_iniciar_iteracion);
             this.panel_controles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_controles.Location = new System.Drawing.Point(300, 415);
+            this.panel_controles.Location = new System.Drawing.Point(300, 422);
             this.panel_controles.Name = "panel_controles";
-            this.panel_controles.Size = new System.Drawing.Size(547, 194);
+            this.panel_controles.Size = new System.Drawing.Size(757, 214);
             this.panel_controles.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::unCuartoSMART.Properties.Resources.legendado;
+            this.pictureBox1.Location = new System.Drawing.Point(582, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(169, 207);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button_disminuir
+            // 
+            this.button_disminuir.Image = global::unCuartoSMART.Properties.Resources.Zoom_Out;
+            this.button_disminuir.Location = new System.Drawing.Point(534, 111);
+            this.button_disminuir.Name = "button_disminuir";
+            this.button_disminuir.Size = new System.Drawing.Size(42, 94);
+            this.button_disminuir.TabIndex = 2;
+            this.button_disminuir.UseVisualStyleBackColor = true;
+            this.button_disminuir.Click += new System.EventHandler(this.button_disminuir_Click);
             // 
             // progressBar_proceso_iterativo
             // 
-            this.progressBar_proceso_iterativo.Location = new System.Drawing.Point(17, 168);
+            this.progressBar_proceso_iterativo.Location = new System.Drawing.Point(26, 168);
             this.progressBar_proceso_iterativo.Name = "progressBar_proceso_iterativo";
-            this.progressBar_proceso_iterativo.Size = new System.Drawing.Size(521, 23);
+            this.progressBar_proceso_iterativo.Size = new System.Drawing.Size(502, 37);
             this.progressBar_proceso_iterativo.TabIndex = 12;
+            // 
+            // button_aumentar
+            // 
+            this.button_aumentar.Image = global::unCuartoSMART.Properties.Resources.Zoom_In;
+            this.button_aumentar.Location = new System.Drawing.Point(534, 7);
+            this.button_aumentar.Name = "button_aumentar";
+            this.button_aumentar.Size = new System.Drawing.Size(42, 98);
+            this.button_aumentar.TabIndex = 1;
+            this.button_aumentar.UseVisualStyleBackColor = true;
+            this.button_aumentar.Click += new System.EventHandler(this.button_aumentar_Click);
             // 
             // panel2
             // 
@@ -274,15 +310,15 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.checkBox_actualizacion_inmediata_nodos);
             this.panel2.Controls.Add(this.numericUpDown_numero_de_iteraciones);
-            this.panel2.Location = new System.Drawing.Point(17, 0);
+            this.panel2.Location = new System.Drawing.Point(26, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(521, 88);
+            this.panel2.Size = new System.Drawing.Size(502, 88);
             this.panel2.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(254, 32);
+            this.label7.Location = new System.Drawing.Point(235, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(158, 13);
             this.label7.TabIndex = 13;
@@ -290,7 +326,7 @@
             // 
             // numericUpDown_intervalo_de_guardado_de_datos
             // 
-            this.numericUpDown_intervalo_de_guardado_de_datos.Location = new System.Drawing.Point(418, 30);
+            this.numericUpDown_intervalo_de_guardado_de_datos.Location = new System.Drawing.Point(399, 30);
             this.numericUpDown_intervalo_de_guardado_de_datos.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -372,7 +408,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.radioButton_iterar_todo_a_la_vez);
             this.panel1.Controls.Add(this.numericUpDown_tiempo_entre_iteracion);
-            this.panel1.Location = new System.Drawing.Point(17, 94);
+            this.panel1.Location = new System.Drawing.Point(26, 94);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(342, 74);
             this.panel1.TabIndex = 9;
@@ -455,8 +491,10 @@
             // 
             // button_iniciar_iteracion
             // 
-            this.button_iniciar_iteracion.BackColor = System.Drawing.Color.YellowGreen;
-            this.button_iniciar_iteracion.Location = new System.Drawing.Point(384, 94);
+            this.button_iniciar_iteracion.BackColor = System.Drawing.Color.Transparent;
+            this.button_iniciar_iteracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_iniciar_iteracion.Image = global::unCuartoSMART.Properties.Resources._1468922753_Rotation___copia1;
+            this.button_iniciar_iteracion.Location = new System.Drawing.Point(374, 94);
             this.button_iniciar_iteracion.Name = "button_iniciar_iteracion";
             this.button_iniciar_iteracion.Size = new System.Drawing.Size(154, 74);
             this.button_iniciar_iteracion.TabIndex = 2;
@@ -464,12 +502,29 @@
             this.button_iniciar_iteracion.UseVisualStyleBackColor = false;
             this.button_iniciar_iteracion.Click += new System.EventHandler(this.button_iniciar_iteracion_Click);
             // 
+            // button_colapzar_panel
+            // 
+            this.button_colapzar_panel.Location = new System.Drawing.Point(0, 7);
+            this.button_colapzar_panel.Name = "button_colapzar_panel";
+            this.button_colapzar_panel.Size = new System.Drawing.Size(25, 198);
+            this.button_colapzar_panel.TabIndex = 9;
+            this.button_colapzar_panel.UseVisualStyleBackColor = true;
+            this.button_colapzar_panel.Click += new System.EventHandler(this.button_colapzar_panel_Click);
+            // 
+            // imageList_ocultar_ventana
+            // 
+            this.imageList_ocultar_ventana.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_ocultar_ventana.ImageStream")));
+            this.imageList_ocultar_ventana.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_ocultar_ventana.Images.SetKeyName(0, "izq.png");
+            this.imageList_ocultar_ventana.Images.SetKeyName(1, "der.png");
+            // 
             // FormVentanaMBCIF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 612);
+            this.ClientSize = new System.Drawing.Size(1060, 639);
             this.Controls.Add(this.tableLayoutPanel_principal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVentanaMBCIF";
             this.Text = "Gestión Matriz Base Conocimiento Intervalo Difuso";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormVentanaMBCIF_FormClosing);
@@ -480,6 +535,7 @@
             this.panel_vizor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_imagen)).EndInit();
             this.panel_controles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_intervalo_de_guardado_de_datos)).EndInit();
@@ -525,5 +581,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ProgressBar progressBar_proceso_iterativo;
         private System.Windows.Forms.Button button_modificar_ajuste_influencia;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button_ir;
+        private System.Windows.Forms.Button button_colapzar_panel;
+        private System.Windows.Forms.ImageList imageList_ocultar_ventana;
     }
 }
