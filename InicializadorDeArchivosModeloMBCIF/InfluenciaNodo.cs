@@ -90,19 +90,19 @@ namespace InicializadorDeArchivosModeloMBCIF
 					case INF_BECAS_PROGRAMAS:
 						influencia.fuzzy.Salidas["influencia"].Rango(-0.4, 0.4);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
-							new FuncionSaturacion("altera_negativamente", -0.4, -0.4, -0.016),
-							new FuncionTriangular("influye_negativamente", -0.032, -0.016, 0),
-							new FuncionTriangular("influye_positivamente", 0, 0.016, 0.032),
-							new FuncionSaturacion("altera_positivamente", 0.016, 0.032, 0.075),
+							new FuncionSaturacion("altera_negativamente", -0.4, -0.4, -0.16),
+							new FuncionTriangular("influye_negativamente", -0.32, -0.16, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.16, 0.32),
+							new FuncionSaturacion("altera_positivamente", 0.16, 0.32, 0.75),
 						};
 						break;
 					case INF_INVESTIGACION_PROGRAMAS:
 						influencia.fuzzy.Salidas["influencia"].Rango(-0.2, 0.2);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
-							new FuncionSaturacion("altera_negativamente", -0.2, -0.2, -0.008),
-							new FuncionTriangular("influye_negativamente", -0.016, -0.008, 0),
-							new FuncionTriangular("influye_positivamente", 0, 0.008, 0.016),
-							new FuncionSaturacion("altera_positivamente", 0.008, 0.2, 0.2),
+							new FuncionSaturacion("altera_negativamente", -0.2, -0.2, -0.08),
+							new FuncionTriangular("influye_negativamente", -0.16, -0.08, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.08, 0.16),
+							new FuncionSaturacion("altera_positivamente", 0.08, 0.2, 0.2),
 						};
 						break;
 					case INF_DIRPOSTGRADO_PROGRAMAS:
@@ -126,10 +126,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 					case INF_SECRETARIAS:
 						influencia.fuzzy.Salidas["influencia"].Rango(-0.2, 0.2);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
-							new FuncionSaturacion("altera_negativamente", -0.2, -0.2, -0.008),
-							new FuncionTriangular("influye_negativamente", -0.016, -0.008, 0),
-							new FuncionTriangular("influye_positivamente", 0, 0.008, 0.016),
-							new FuncionSaturacion("altera_positivamente", 0.008, 0.2, 0.2),
+							new FuncionSaturacion("altera_negativamente", -0.2, -0.2, -0.08),
+							new FuncionTriangular("influye_negativamente", -0.16, -0.08, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.08, 0.16),
+							new FuncionSaturacion("altera_positivamente", 0.08, 0.2, 0.2),
 						};
 						break;
 					case INF_DIRECTOR_SECRETRIA:
