@@ -29,7 +29,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 		public const int INF_DIRPOSTGRADO_PROGRAMAS = 6;
 		public const int INF_DIRECTORES = 7;
 		public const int INF_SECRETARIAS = 8;
-		public const int INF_INVESTIGACION_POSTGRADO = 9;
+		public const int INF_DIRECTOR_SECRETRIA = 9;
+		public const int INF_INVESTIGACION_POSTGRADO = 10;
 		
 		public static void crearInfluencias(string idOrigen, string nombreOrigen, string[] idDestinos, int tipoInfluecia)
 		{
@@ -87,7 +88,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_BECAS_PROGRAMAS:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.4, 0.4);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
@@ -96,7 +97,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_INVESTIGACION_PROGRAMAS:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.2, 0.2);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
@@ -105,7 +106,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_DIRPOSTGRADO_PROGRAMAS:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.1, 0.1);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
@@ -114,7 +115,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_DIRECTORES:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.1, 0.1);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
@@ -123,7 +124,16 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_SECRETARIAS:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.2, 0.2);
+						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
+							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
+							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.03, 0.06),
+							new FuncionSaturacion("altera_positivamente", 0.03, 0.075, 0.075),
+						};
+						break;
+					case INF_DIRECTOR_SECRETRIA:
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.3, 0.3);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
@@ -132,7 +142,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 						};
 						break;
 					case INF_INVESTIGACION_POSTGRADO:
-						influencia.fuzzy.Salidas["influencia"].Rango(-0.075, 0.075);
+						influencia.fuzzy.Salidas["influencia"].Rango(-0.1, 0.1);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
 							new FuncionSaturacion("altera_negativamente", -0.075, -0.075, -0.03),
 							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),

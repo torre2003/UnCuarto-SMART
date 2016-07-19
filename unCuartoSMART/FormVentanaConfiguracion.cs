@@ -76,7 +76,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         public bool comprobarConexion()
         {
-            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
             ManejadorDeDatosBaseDeDatos manejador_de_base_de_datos = new ManejadorDeDatosBaseDeDatos(manejador_de_archivos);
             return manejador_de_base_de_datos.bdd_conectada;
         }
@@ -87,7 +87,7 @@ namespace unCuartoSMART
         //--------------------------------------------------------------
         private bool comprobarBaseDeDatosIniciada()
         {
-            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos();
+            ManejadorDeDatosArchivos manejador_de_archivos = new ManejadorDeDatosArchivos(_ruta_carpeta_mbcif);
             ManejadorDeDatosBaseDeDatos manejador_de_base_de_datos = new ManejadorDeDatosBaseDeDatos(manejador_de_archivos);
             return manejador_de_base_de_datos.comproabrInicializacionBaseDeDatos();
         }
