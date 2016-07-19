@@ -135,10 +135,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 					case INF_DIRECTOR_SECRETRIA:
 						influencia.fuzzy.Salidas["influencia"].Rango(-0.3, 0.3);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
-							new FuncionSaturacion("altera_negativamente", -0.3, -0.3, -0.03),
-							new FuncionTriangular("influye_negativamente", -0.06, -0.03, 0),
-							new FuncionTriangular("influye_positivamente", 0, 0.03, 0.06),
-							new FuncionSaturacion("altera_positivamente", 0.03, 0.3, 0.3),
+							new FuncionSaturacion("altera_negativamente", -0.3, -0.3, -0.12),
+							new FuncionTriangular("influye_negativamente", -0.24, -0.12, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.12, 0.24),
+							new FuncionSaturacion("altera_positivamente", 0.12, 0.3, 0.3),
 						};
 						break;
 					case INF_INVESTIGACION_POSTGRADO:
