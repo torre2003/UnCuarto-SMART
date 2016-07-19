@@ -37,11 +37,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				doctorado_en_quimica = new Nodo("ndeq", "Doctorado en Quimica");
 				doctorado_en_quimica.fuzzy = new InferenciaDifusa(
 					//entradas
-							new Dictionary<string, VariableDifusa> { {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+							new Dictionary<string, VariableDifusa> { {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -146,11 +146,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos = new Nodo("ndeidayb", "Doctorado en Ingenieria de Alimentos y Bioprocesos");
 				doctorado_en_ingeniería_de_alimentos_y_bioprocesos.fuzzy = new InferenciaDifusa(
 					//entradas
-				new Dictionary<string, VariableDifusa> { {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+				new Dictionary<string, VariableDifusa> { {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -204,7 +204,7 @@ namespace InicializadorDeArchivosModeloMBCIF
 				
 				#region Nivel Academico
 				//______________________________________________________________________________________________________
-				//_________________ Nodo Nivel academico postitulo_en_algo _________
+                //_________________ Nodo Nivel academico ingenieria_en_alimentos_y_bioprocesos _________
 				//______________________________________________________________________________________________________
 				Nodo nivel_academico_ingenieria_en_alimentos_y_bioprocesos;
 				nivel_academico_ingenieria_en_alimentos_y_bioprocesos = new Nodo("nnadeidayb", "Nivel Academicos Doctorado en Ingenieria de Alimentos y Bioprocesos");
@@ -255,8 +255,8 @@ namespace InicializadorDeArchivosModeloMBCIF
 				new Dictionary<string, VariableDifusa> { {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
 								new List<FuncionPertenencia>() {
 									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionTrapezoidal("optimo", 1, 3, 5 , 7),
+									new FuncionSaturacion("excedido", 5,7 ,8)
 								})
 						}, {"acreditacion", new VariableDifusa("Acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {

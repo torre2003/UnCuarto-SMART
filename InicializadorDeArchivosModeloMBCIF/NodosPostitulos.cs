@@ -38,12 +38,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				diplomado_innovacion_educativa.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 20,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionHombro("poco", 0, 4, 8),
+									new FuncionTrapezoidal("optimo", 4, 8, 12, 16),
+                                    new FuncionSaturacion("excedido", 12, 16, 20)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -142,18 +141,18 @@ namespace InicializadorDeArchivosModeloMBCIF
 				#region Nodo Diplomado
 				//TODO nodo Diplomado Gestion Tributaria
 				//___________________________________________________
-				//_________________ Nodo postitulo_en_algo _________
+                //_________________ Nodo diplomado_gestion_tributaria _________
 				//___________________________________________________
 				Nodo diplomado_gestion_tributaria;
 				diplomado_gestion_tributaria = new Nodo("ndegt", "Diplomado en Gestion Tributaria");
 				diplomado_gestion_tributaria.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 20,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionHombro("poco", 0, 4, 8),
+									new FuncionTrapezoidal("optimo", 4, 8, 12, 16),
+									new FuncionSaturacion("excedido", 12, 16, 20)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -258,11 +257,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				postitulo_mencion_docentes_s_ciclo.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 60,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                    new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionHombro("poco", 0, 15, 25),
+									new FuncionTrapezoidal("optimo", 15, 25, 35, 45),
+                                    new FuncionSaturacion("excedido", 35, 45, 60)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {
@@ -369,12 +368,11 @@ namespace InicializadorDeArchivosModeloMBCIF
 				diplomado_en_eficiencia_energetica.fuzzy = new InferenciaDifusa(
 					//entradas
 					new Dictionary<string, VariableDifusa> { 
-						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,
+						{"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 60,
 								new List<FuncionPertenencia>() {
-									new FuncionHombro("poco", 0, 1, 3),
-									new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-									new FuncionSaturacion("excedido", 4, 6, 10)
+									new FuncionHombro("poco", 0, 15, 25),
+									new FuncionTrapezoidal("optimo", 15, 25, 35, 45),
+                                    new FuncionSaturacion("excedido", 35, 45, 60)
 								})
 						}, {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
 								new List<FuncionPertenencia>() {

@@ -28,11 +28,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_mag_en_mecanica_computacional.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
-                                                                new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("poco", 0, 1, 3),
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -141,11 +141,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_magister_en_ciencias_fiscas.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
-                                                                new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                   {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("poco", 0, 1, 3),
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -255,11 +255,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_magister_en_matematica.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
-                                                                new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),                                                                 
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("poco", 0, 1, 3),
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -360,12 +360,11 @@ namespace InicializadorDeArchivosModeloMBCIF
             nodo_mag_en_lid_dir_y_com_est.fuzzy = new InferenciaDifusa(
                 //entradas 
                 new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
+                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 40,	
                                                                 new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                                                                  new FuncionHombro("poco", 0, 5, 15),
+                                                                  new FuncionTrapezoidal("optimo", 5, 15, 25, 35),
+                                                                  new FuncionSaturacion("excedido", 25, 35, 40)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -468,11 +467,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_en_astronomia.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
-                                                                new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("poco", 0, 1, 3),
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -574,12 +573,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_en_ciencias_mencion_ing_en_alimentos.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
-                                                                new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                   {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 6,
+								new List<FuncionPertenencia>() {
+									new FuncionHombro("poco", 0, 1, 3),
+									new FuncionTriangular("optimo", 1, 3, 5),
+									new FuncionSaturacion("excedido", 3, 5, 6)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -683,12 +681,11 @@ namespace InicializadorDeArchivosModeloMBCIF
               nodo_mag_es_std_lat.fuzzy = new InferenciaDifusa(
                   //entradas 
                   new Dictionary<string, VariableDifusa> {
-                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 10,	
+                    {"matricula alumnos", new VariableDifusa("matricula alumnos", 0, 15,	
                                                                 new List<FuncionPertenencia>() {
-                                                                  new FuncionHombro("poco", 0, 1, 3),
-                                                                  new FuncionTrapezoidal("optimo", 1, 3, 4, 6),
-
-                                                                  new FuncionSaturacion("excedido", 4, 6, 10)
+                                                                  new FuncionHombro("poco", 0, 3, 6),
+                                                                  new FuncionTrapezoidal("optimo", 3, 6, 9, 12),
+                                                                    new FuncionSaturacion("excedido", 9, 12, 15)
                                                                 })},
                     {"acreditacion", new VariableDifusa("acreditacion", 0, 10,
                                                               new List<FuncionPertenencia>(){
@@ -770,10 +767,6 @@ namespace InicializadorDeArchivosModeloMBCIF
 
 
               nivel_academico_mag_es_std_lat.agregarVariable("nacnp", Nodo.DATOS_NODOS_EXTERNOS);
-
-
-
-
               nivel_academico_mag_es_std_lat.calculos = new InterfaceCalculoNivelesAcademicos(new string[] { "nacnp" });
 
               #endregion
