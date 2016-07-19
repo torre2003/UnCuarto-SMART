@@ -144,10 +144,10 @@ namespace InicializadorDeArchivosModeloMBCIF
 					case INF_INVESTIGACION_POSTGRADO:
 						influencia.fuzzy.Salidas["influencia"].Rango(-0.1, 0.1);
 						influencia.fuzzy.Salidas["influencia"].UniversoDiscurso = new List<FuncionPertenencia>() {
-							new FuncionSaturacion("altera_negativamente", -0.1, -0.1, -0.012),
-							new FuncionTriangular("influye_negativamente", -0.024, -0.012, 0),
-							new FuncionTriangular("influye_positivamente", 0, 0.012, 0.024),
-							new FuncionSaturacion("altera_positivamente", 0.012, 0.1, 0.1),
+							new FuncionSaturacion("altera_negativamente", -0.1, -0.1, -0.04),
+							new FuncionTriangular("influye_negativamente", -0.08, -0.04, 0),
+							new FuncionTriangular("influye_positivamente", 0, 0.04, 0.08),
+							new FuncionSaturacion("altera_positivamente", 0.04, 0.1, 0.1),
 						};
 						break;
 				}
