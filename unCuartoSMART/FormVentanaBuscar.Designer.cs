@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVentanaBuscar));
             this.listBox_elementos = new System.Windows.Forms.ListBox();
             this.label_lista = new System.Windows.Forms.Label();
             this.button_aceptar = new System.Windows.Forms.Button();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.button_aceptar);
             this.Controls.Add(this.label_lista);
             this.Controls.Add(this.listBox_elementos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVentanaBuscar";
             this.Text = "Buscar";
             this.ResumeLayout(false);

@@ -94,7 +94,9 @@
     <Compile Include="GestionGraphviz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporte.cs" />
+    <Compile Include="Reporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reporte.Designer.cs">
       <DependentUpon>Reporte.cs</DependentUpon>
     </Compile>
@@ -127,6 +129,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reporte.resx">
       <DependentUpon>Reporte.Designer.cs</DependentUpon>
@@ -153,6 +156,57 @@
       <Project>{ad59995f-df8b-4a27-8ef7-2fc42e51cb0e}</Project>
       <Name>ModeloMBCIF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom-In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom-Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1468922753_Rotation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1468922753_Rotation - copia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1468922753_Rotation - copia1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mbcif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart-Curve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export-Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Setting-Tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder-Page-White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Door-Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Resultset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document-Prepare16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
